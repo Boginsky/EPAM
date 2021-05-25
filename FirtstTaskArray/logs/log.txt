@@ -1,0 +1,463 @@
+2021-05-22 22:31:20 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers 1
+2021-05-22 22:31:20 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 5
+2021-05-22 22:31:20 [main] DEBUG service.impl.ArithmeticalActions - Average: 16
+2021-05-22 22:31:20 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 6
+2021-05-22 22:31:20 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -3
+2021-05-22 22:31:20 [main] DEBUG service.impl.ArithmeticalActions - Sum: 16
+2021-05-22 22:31:20 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 0 0 -3 0 0 0 0 
+2021-05-22 22:32:39 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers 1
+2021-05-22 22:32:39 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 5
+2021-05-22 22:32:39 [main] DEBUG service.impl.ArithmeticalActions - Average: 16
+2021-05-22 22:32:39 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 6
+2021-05-22 22:32:39 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -3
+2021-05-22 22:32:39 [main] DEBUG service.impl.ArithmeticalActions - Sum: 16
+2021-05-22 22:32:39 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 0 0 -3 0 0 0 0 
+2021-05-22 22:35:34 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers 1
+2021-05-22 22:35:34 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 5
+2021-05-22 22:35:34 [main] DEBUG service.impl.ArithmeticalActions - Average: 16
+2021-05-22 22:35:34 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 6
+2021-05-22 22:35:34 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -3
+2021-05-22 22:35:34 [main] DEBUG service.impl.ArithmeticalActions - Sum: 16
+2021-05-22 22:35:34 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 0 0 -3 0 0 0 0 
+2021-05-22 22:35:59 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers 1
+2021-05-22 22:35:59 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 5
+2021-05-22 22:35:59 [main] DEBUG service.impl.ArithmeticalActions - Average: 16
+2021-05-22 22:35:59 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 6
+2021-05-22 22:35:59 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -3
+2021-05-22 22:35:59 [main] DEBUG service.impl.ArithmeticalActions - Sum: 16
+2021-05-22 22:35:59 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 0 0 -3 0 0 0 0 
+2021-05-22 22:37:27 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers 1
+2021-05-22 22:37:27 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 5
+2021-05-22 22:37:27 [main] DEBUG service.impl.ArithmeticalActions - Average: 2
+2021-05-22 22:37:27 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 6
+2021-05-22 22:37:27 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -3
+2021-05-22 22:37:27 [main] DEBUG service.impl.ArithmeticalActions - Sum: 16
+2021-05-22 22:37:27 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 0 0 -3 0 0 0 0 
+2021-05-22 22:38:26 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers 1
+2021-05-22 22:38:26 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 5
+2021-05-22 22:39:28 [main] DEBUG service.impl.ArithmeticalActions - Average: 2
+2021-05-22 22:39:28 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 6
+2021-05-22 22:39:28 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -3
+2021-05-22 22:39:28 [main] DEBUG service.impl.ArithmeticalActions - Sum: 16
+2021-05-22 22:39:28 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 0 0 -3 0 0 0 0 
+2021-05-22 22:40:19 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers 1
+2021-05-22 22:40:19 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 5
+2021-05-22 22:40:19 [main] DEBUG service.impl.ArithmeticalActions - Average: 2.2857142857142856
+2021-05-22 22:40:19 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 6
+2021-05-22 22:40:19 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -3
+2021-05-22 22:40:19 [main] DEBUG service.impl.ArithmeticalActions - Sum: 16
+2021-05-22 22:40:19 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 0 0 -3 0 0 0 0 
+2021-05-23 20:27:35 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: 0
+2021-05-23 20:28:51 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: 0
+2021-05-23 20:28:54 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: 0
+2021-05-23 23:05:08 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 4
+2021-05-23 23:11:57 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers 0
+2021-05-23 23:11:57 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 4
+2021-05-23 23:11:57 [main] DEBUG service.impl.ArithmeticalActions - Average: 2.0
+2021-05-23 23:11:57 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 4
+2021-05-23 23:11:57 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: 0
+2021-05-23 23:11:57 [main] DEBUG service.impl.ArithmeticalActions - Sum: 10
+2021-05-23 23:11:57 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers 0
+2021-05-23 23:15:52 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers 0
+2021-05-23 23:15:52 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 4
+2021-05-23 23:15:52 [main] DEBUG service.impl.ArithmeticalActions - Average: 2.0
+2021-05-23 23:15:52 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 4
+2021-05-23 23:15:52 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: 0
+2021-05-23 23:15:52 [main] DEBUG service.impl.ArithmeticalActions - Sum: 10
+2021-05-23 23:15:52 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 0 0 0 0 0 
+2021-05-23 23:15:52 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers 0
+2021-05-23 23:18:32 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers 0
+2021-05-23 23:18:32 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 4
+2021-05-23 23:18:32 [main] DEBUG service.impl.ArithmeticalActions - Average: 2.0
+2021-05-23 23:18:32 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 4
+2021-05-23 23:18:32 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: 0
+2021-05-23 23:18:32 [main] DEBUG service.impl.ArithmeticalActions - Sum: 10
+2021-05-23 23:18:32 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 0 0 0 0 0 
+2021-05-23 23:18:32 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers 0
+2021-05-24 22:12:29 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers 1
+2021-05-24 22:12:29 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 5
+2021-05-24 22:12:29 [main] DEBUG service.impl.ArithmeticalActions - Average: 5.5
+2021-05-24 22:12:29 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 55
+2021-05-24 22:12:29 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -44
+2021-05-24 22:12:29 [main] DEBUG service.impl.ArithmeticalActions - Sum: 33
+2021-05-24 22:12:29 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 0 0 0 0 -44 0 
+2021-05-24 22:12:29 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers 1
+2021-05-24 22:15:22 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers 1
+2021-05-24 22:15:22 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 4
+2021-05-24 22:15:22 [main] DEBUG service.impl.ArithmeticalActions - Average: 4.2
+2021-05-24 22:15:22 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 7
+2021-05-24 22:15:22 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-24 22:15:22 [main] DEBUG service.impl.ArithmeticalActions - Sum: 21
+2021-05-24 22:15:22 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 0 0 0 0 -1 
+2021-05-24 22:15:22 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers 1
+2021-05-24 22:15:55 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers 1
+2021-05-24 22:15:55 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 4
+2021-05-24 22:15:55 [main] DEBUG service.impl.ArithmeticalActions - Average: 4.2
+2021-05-24 22:15:55 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 7
+2021-05-24 22:15:55 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-24 22:15:55 [main] DEBUG service.impl.ArithmeticalActions - Sum: 21
+2021-05-24 22:15:55 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 0 0 0 0 -1 
+2021-05-24 22:15:55 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers 1
+2021-05-24 22:16:16 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers 1
+2021-05-24 22:16:16 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 4
+2021-05-24 22:16:16 [main] DEBUG service.impl.ArithmeticalActions - Average: 4.2
+2021-05-24 22:16:16 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 7
+2021-05-24 22:16:16 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-24 22:16:16 [main] DEBUG service.impl.ArithmeticalActions - Sum: 21
+2021-05-24 22:16:16 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 0 0 0 0 -1 
+2021-05-24 22:16:16 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers 1
+2021-05-24 22:30:50 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 0 0 0 0 -1 
+2021-05-24 22:30:50 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers 1
+2021-05-24 22:31:45 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers 1
+2021-05-24 22:31:45 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 5
+2021-05-24 22:31:45 [main] DEBUG service.impl.ArithmeticalActions - Average: 2.2857142857142856
+2021-05-24 22:31:45 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 6
+2021-05-24 22:31:45 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -3
+2021-05-24 22:31:45 [main] DEBUG service.impl.ArithmeticalActions - Sum: 16
+2021-05-24 22:31:45 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 0 0 -3 0 0 0 0 
+2021-05-24 22:32:12 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers 2
+2021-05-24 22:32:12 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 3
+2021-05-24 22:32:12 [main] DEBUG service.impl.ArithmeticalActions - Average: 2.4
+2021-05-24 22:32:12 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 7
+2021-05-24 22:32:12 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -3
+2021-05-24 22:32:12 [main] DEBUG service.impl.ArithmeticalActions - Sum: 12
+2021-05-24 22:32:12 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 0 0 -3 0 -1 
+2021-05-24 22:32:30 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers 1
+2021-05-24 22:32:30 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 4
+2021-05-24 22:32:30 [main] DEBUG service.impl.ArithmeticalActions - Average: 4.2
+2021-05-24 22:32:30 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 7
+2021-05-24 22:32:30 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-24 22:32:30 [main] DEBUG service.impl.ArithmeticalActions - Sum: 21
+2021-05-24 22:32:30 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 0 0 0 0 -1 
+2021-05-24 22:32:54 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers 1
+2021-05-24 22:32:54 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 4
+2021-05-24 22:32:54 [main] DEBUG service.impl.ArithmeticalActions - Average: 4.2
+2021-05-24 22:32:54 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 7
+2021-05-24 22:32:54 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-24 22:32:54 [main] DEBUG service.impl.ArithmeticalActions - Sum: 21
+2021-05-24 22:32:54 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 4 5 6 7 0 
+2021-05-24 22:33:30 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 4 5 6 7 0 
+2021-05-24 22:33:30 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers 0
+2021-05-24 22:33:34 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers 1
+2021-05-24 22:33:34 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 4
+2021-05-24 22:33:34 [main] DEBUG service.impl.ArithmeticalActions - Average: 4.2
+2021-05-24 22:33:34 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 7
+2021-05-24 22:33:34 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-24 22:33:34 [main] DEBUG service.impl.ArithmeticalActions - Sum: 21
+2021-05-24 22:33:34 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 4 5 6 7 0 
+2021-05-24 22:33:34 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers 0
+2021-05-25 16:11:11 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1
+2021-05-25 16:11:11 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1Amount of positive numbers: 4
+2021-05-25 16:11:11 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1Amount of positive numbers: 4Average: 4.2
+2021-05-25 16:11:11 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1Amount of positive numbers: 4Average: 4.2Maximum array value: 7
+2021-05-25 16:11:11 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1Amount of positive numbers: 4Average: 4.2Maximum array value: 7Minimum array value: -1
+2021-05-25 16:11:11 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1Amount of positive numbers: 4Average: 4.2Maximum array value: 7Minimum array value: -1Sum: 21
+2021-05-25 16:11:11 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1Amount of positive numbers: 4Average: 4.2Maximum array value: 7Minimum array value: -1Sum: 21Array after replacement: Array content: 4 5 6 7 -1 
+2021-05-25 16:12:35 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 4 5 6 7 -1 
+2021-05-25 16:12:45 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 4 5 6 7 -1 
+2021-05-25 16:13:44 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 4 5 6 7 -1 
+2021-05-25 16:14:23 [main] DEBUG service.impl.SortingArray - Sorted array: Array content: 4 5 6 7 -1 
+2021-05-25 16:49:30 [main] DEBUG service.impl.SortingArray - Sorted array: Array content: -1 4 5 6 7 
+2021-05-25 16:50:22 [main] DEBUG service.impl.SortingArray - Sorted array: Array content: -1 4 5 6 7 
+2021-05-25 16:50:51 [main] DEBUG service.impl.SortingArray - Sorted array: Array content: -1 4 5 6 7 
+2021-05-25 16:50:51 [main] DEBUG service.impl.SortingArray - Sorted array: Array content: -1 4 5 6 7 Sorted array: Array content: -1 4 5 7 6 
+2021-05-25 16:52:08 [main] DEBUG service.impl.SortingArray - Array sorted by bubbleSort: Array content: -1 4 5 6 7 
+2021-05-25 16:52:08 [main] DEBUG service.impl.SortingArray - Array sorted by bubbleSort: Array content: -1 4 5 6 7 Array sorted by selectionSort: Array content: -1 4 5 7 6 
+2021-05-25 16:52:16 [main] DEBUG service.impl.SortingArray - Array sorted by bubbleSort: Array content: -1 4 5 6 7 
+2021-05-25 16:52:16 [main] DEBUG service.impl.SortingArray - Array sorted by bubbleSort: Array content: -1 4 5 6 7 Array sorted by selectionSort: Array content: -1 4 5 7 6 
+2021-05-25 16:53:59 [main] DEBUG service.impl.SortingArray - Array sorted by bubbleSort: Array content: -1 4 5 6 7 
+2021-05-25 16:53:59 [main] DEBUG service.impl.SortingArray - Array sorted by selectionSort: Array content: -1 4 5 7 6 
+2021-05-25 17:53:19 [main] DEBUG service.impl.SortingArray - Array sorted by bubbleSort: Array content: -1 4 5 6 7 
+2021-05-25 17:53:19 [main] DEBUG service.impl.SortingArray - Array sorted by insertionSort: Array content: -1 4 5 6 7 
+2021-05-25 17:53:19 [main] DEBUG service.impl.SortingArray - Array sorted by selectionSort: Array content: -1 4 5 7 6 
+2021-05-25 17:55:27 [main] DEBUG service.impl.SortingArray - Array sorted by bubbleSort: Array content: 4 5 6 7 8 9 19 
+2021-05-25 17:55:27 [main] DEBUG service.impl.SortingArray - Array sorted by insertionSort: Array content: 4 5 6 7 8 9 19 
+2021-05-25 17:55:27 [main] DEBUG service.impl.SortingArray - Array sorted by selectionSort: Array content: 4 5 6 7 19 8 9 
+2021-05-25 17:55:40 [main] DEBUG service.impl.SortingArray - Array sorted by bubbleSort: Array content: -1 4 5 6 7 8 9 20 
+2021-05-25 17:55:40 [main] DEBUG service.impl.SortingArray - Array sorted by insertionSort: Array content: -1 4 5 6 7 8 9 20 
+2021-05-25 17:55:40 [main] DEBUG service.impl.SortingArray - Array sorted by selectionSort: Array content: -1 4 5 6 7 8 20 9 
+2021-05-25 17:56:06 [main] DEBUG service.impl.SortingArray - Array sorted by bubbleSort: Array content: -1 4 5 6 7 8 9 20 
+2021-05-25 17:56:06 [main] DEBUG service.impl.SortingArray - Array sorted by insertionSort: Array content: -1 4 5 6 7 8 9 20 
+2021-05-25 17:56:22 [main] DEBUG service.impl.SortingArray - Array sorted by bubbleSort: Array content: -1 4 5 6 7 8 9 20 
+2021-05-25 17:56:22 [main] DEBUG service.impl.SortingArray - Array sorted by insertionSort: Array content: -1 4 5 6 7 8 9 20 
+2021-05-25 17:56:22 [main] DEBUG service.impl.SortingArray - Array sorted by selectionSort: Array content: -1 4 5 6 7 8 20 9 
+2021-05-25 17:56:47 [main] DEBUG service.impl.SortingArray - Array sorted by bubbleSort: Array content: -1 4 5 6 7 8 9 20 
+2021-05-25 17:56:47 [main] DEBUG service.impl.SortingArray - Array sorted by insertionSort: Array content: -1 4 5 6 7 8 9 20 
+2021-05-25 17:57:10 [main] DEBUG service.impl.SortingArray - Array sorted by bubbleSort: Array content: -1 4 5 6 7 8 9 20 
+2021-05-25 17:57:10 [main] DEBUG service.impl.SortingArray - Array sorted by insertionSort: Array content: -1 4 5 6 7 8 9 20 
+2021-05-25 17:57:10 [main] DEBUG service.impl.SortingArray - Array sorted by selectionSort: Array content: -1 4 5 6 7 8 20 9 
+2021-05-25 17:57:26 [main] DEBUG service.impl.SortingArray - Array sorted by bubbleSort: Array content: 4 5 6 7 8 9 20 29 
+2021-05-25 17:57:26 [main] DEBUG service.impl.SortingArray - Array sorted by insertionSort: Array content: 4 5 6 7 8 9 20 29 
+2021-05-25 17:57:26 [main] DEBUG service.impl.SortingArray - Array sorted by selectionSort: Array content: 4 5 6 7 8 29 9 20 
+2021-05-25 17:57:34 [main] DEBUG service.impl.SortingArray - Array sorted by bubbleSort: Array content: -1 4 5 6 7 8 9 20 30 
+2021-05-25 17:57:34 [main] DEBUG service.impl.SortingArray - Array sorted by insertionSort: Array content: -1 4 5 6 7 8 9 20 30 
+2021-05-25 17:57:34 [main] DEBUG service.impl.SortingArray - Array sorted by selectionSort: Array content: -1 4 5 6 7 8 9 30 20 
+2021-05-25 17:57:47 [main] DEBUG service.impl.SortingArray - Array sorted by bubbleSort: Array content: -1 4 5 6 7 8 9 30 30 
+2021-05-25 17:57:47 [main] DEBUG service.impl.SortingArray - Array sorted by insertionSort: Array content: -1 4 5 6 7 8 9 30 30 
+2021-05-25 17:57:47 [main] DEBUG service.impl.SortingArray - Array sorted by selectionSort: Array content: -1 4 5 6 7 8 9 30 30 
+2021-05-25 17:58:20 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1
+2021-05-25 17:58:20 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 8
+2021-05-25 17:58:20 [main] DEBUG service.impl.ArithmeticalActions - Average: 10.88888888888889
+2021-05-25 17:58:20 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 30
+2021-05-25 17:58:20 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-25 17:58:20 [main] DEBUG service.impl.ArithmeticalActions - Sum: 98
+2021-05-25 17:58:20 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 4 5 6 7 8 9 30 30 0 
+2021-05-25 17:58:20 [main] DEBUG service.impl.SortingArray - Array sorted by bubbleSort: Array content: 0 4 5 6 7 8 9 30 30 
+2021-05-25 17:58:20 [main] DEBUG service.impl.SortingArray - Array sorted by insertionSort: Array content: 0 4 5 6 7 8 9 30 30 
+2021-05-25 17:58:20 [main] DEBUG service.impl.SortingArray - Array sorted by selectionSort: Array content: 0 4 5 6 7 8 9 30 30 
+2021-05-25 17:58:51 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1
+2021-05-25 17:58:51 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 4
+2021-05-25 17:58:51 [main] DEBUG service.impl.ArithmeticalActions - Average: 4.2
+2021-05-25 17:58:51 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 7
+2021-05-25 17:58:51 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-25 17:58:51 [main] DEBUG service.impl.ArithmeticalActions - Sum: 21
+2021-05-25 17:58:51 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 4 5 6 7 0 
+2021-05-25 17:58:51 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 0
+2021-05-25 17:59:52 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-25 18:01:00 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-25 18:02:49 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-25 18:08:32 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-25 18:08:37 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-25 18:08:40 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 7
+2021-05-25 18:12:25 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1
+2021-05-25 18:12:25 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 4
+2021-05-25 18:12:25 [main] DEBUG service.impl.ArithmeticalActions - Average: 4.2
+2021-05-25 18:12:25 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 7
+2021-05-25 18:12:25 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-25 18:12:25 [main] DEBUG service.impl.ArithmeticalActions - Sum: 21
+2021-05-25 18:12:25 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 4 5 6 7 0 
+2021-05-25 18:12:25 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 0
+2021-05-25 18:17:58 [main] DEBUG service.impl.SortingArray - Array sorted by bubbleSort: Array content: -1 4 5 6 7 8 9 30 30 
+2021-05-25 18:25:50 [main] DEBUG service.impl.SortingArray - Array sorted by bubbleSort: Array content: -1 4 5 6 7 8 9 30 30 
+2021-05-25 18:30:12 [main] DEBUG service.impl.SortingArray - Array sorted by bubbleSort: Array content: -1 4 5 6 7 8 9 30 30 
+2021-05-25 18:30:31 [main] DEBUG service.impl.SortingArray - Array sorted by bubbleSort: Array content: -1 4 5 6 7 8 9 30 30 
+2021-05-25 18:32:37 [main] DEBUG service.impl.SortingArray - Array sorted by bubbleSort: Array content: -1 4 5 6 7 8 9 30 30 
+2021-05-25 18:32:37 [main] DEBUG service.impl.SortingArray - Array sorted by insertionSort: Array content: -1 4 5 6 7 8 9 30 30 
+2021-05-25 18:32:37 [main] DEBUG service.impl.SortingArray - Array sorted by selectionSort: Array content: -1 4 5 6 7 8 9 30 30 
+2021-05-25 18:34:04 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1
+2021-05-25 18:34:04 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 8
+2021-05-25 18:34:04 [main] DEBUG service.impl.ArithmeticalActions - Average: 10.88888888888889
+2021-05-25 18:34:04 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 30
+2021-05-25 18:34:04 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-25 18:34:04 [main] DEBUG service.impl.ArithmeticalActions - Sum: 98
+2021-05-25 18:34:04 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 4 5 6 7 8 9 30 30 -1 
+2021-05-25 18:37:28 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1
+2021-05-25 18:37:28 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 8
+2021-05-25 18:37:28 [main] DEBUG service.impl.ArithmeticalActions - Average: 10.88888888888889
+2021-05-25 18:37:28 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 30
+2021-05-25 18:37:28 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-25 18:37:28 [main] DEBUG service.impl.ArithmeticalActions - Sum: 98
+2021-05-25 18:37:28 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 4 5 6 7 8 9 30 30 -1 
+2021-05-25 18:37:28 [main] DEBUG service.impl.SortingArray - Array sorted by bubbleSort: Array content: 4 5 6 7 8 9 30 30 -1 
+2021-05-25 18:38:44 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1
+2021-05-25 18:38:44 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 8
+2021-05-25 18:38:44 [main] DEBUG service.impl.ArithmeticalActions - Average: 10.88888888888889
+2021-05-25 18:38:44 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 30
+2021-05-25 18:38:44 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-25 18:38:44 [main] DEBUG service.impl.ArithmeticalActions - Sum: 98
+2021-05-25 18:38:44 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 4 5 6 7 8 9 30 30 -1 
+2021-05-25 18:38:44 [main] DEBUG service.impl.SortingArray - Array sorted by bubbleSort: Array content: 4 5 6 7 8 9 30 30 -1 
+2021-05-25 18:39:25 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1
+2021-05-25 18:39:25 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 8
+2021-05-25 18:39:25 [main] DEBUG service.impl.ArithmeticalActions - Average: 10.88888888888889
+2021-05-25 18:39:25 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 30
+2021-05-25 18:39:25 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-25 18:39:25 [main] DEBUG service.impl.ArithmeticalActions - Sum: 98
+2021-05-25 18:39:25 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 4 5 6 7 8 9 30 30 -1 
+2021-05-25 18:39:25 [main] DEBUG service.impl.SortingArray - Array sorted by bubbleSort: [I@4c583ecf
+2021-05-25 18:41:02 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1
+2021-05-25 18:41:02 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 8
+2021-05-25 18:41:02 [main] DEBUG service.impl.ArithmeticalActions - Average: 10.88888888888889
+2021-05-25 18:41:02 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 30
+2021-05-25 18:41:02 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-25 18:41:02 [main] DEBUG service.impl.ArithmeticalActions - Sum: 98
+2021-05-25 18:41:02 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 4 5 6 7 8 9 30 30 -1 
+2021-05-25 18:41:02 [main] DEBUG service.impl.SortingArray - Array sorted by bubbleSort: [I@692f203f
+2021-05-25 18:42:42 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1
+2021-05-25 18:42:42 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 8
+2021-05-25 18:42:42 [main] DEBUG service.impl.ArithmeticalActions - Average: 10.88888888888889
+2021-05-25 18:42:42 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 30
+2021-05-25 18:42:42 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-25 18:42:42 [main] DEBUG service.impl.ArithmeticalActions - Sum: 98
+2021-05-25 18:42:42 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 4 5 6 7 8 9 30 30 -1 
+2021-05-25 18:42:42 [main] DEBUG service.impl.SortingArray - 4 5 6 7 8 9 30 -1 4 5 6 7 8 9 -1 30 4 5 6 7 8 -1 9 30 4 5 6 7 -1 8 9 30 4 5 6 -1 7 8 9 30 4 5 -1 6 7 8 9 30 4 -1 5 6 7 8 9 30 -1 4 5 6 7 8 9 30 -1 4 5 6 7 8 9 30 - array sorted by bubbleSort.
+2021-05-25 18:43:18 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1
+2021-05-25 18:43:18 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 8
+2021-05-25 18:43:18 [main] DEBUG service.impl.ArithmeticalActions - Average: 10.88888888888889
+2021-05-25 18:43:18 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 30
+2021-05-25 18:43:18 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-25 18:43:18 [main] DEBUG service.impl.ArithmeticalActions - Sum: 98
+2021-05-25 18:43:18 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 4 5 6 7 8 9 30 30 -1 
+2021-05-25 18:43:18 [main] DEBUG service.impl.SortingArray - -1 -1 -1 -1 -1 -1 -1 -1 - array sorted by bubbleSort.
+2021-05-25 18:46:32 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1
+2021-05-25 18:46:32 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 8
+2021-05-25 18:46:32 [main] DEBUG service.impl.ArithmeticalActions - Average: 10.88888888888889
+2021-05-25 18:46:32 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 30
+2021-05-25 18:46:32 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-25 18:46:32 [main] DEBUG service.impl.ArithmeticalActions - Sum: 98
+2021-05-25 18:46:32 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 4 5 6 7 8 9 30 30 -1 
+2021-05-25 18:46:32 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by bubbleSort.
+2021-05-25 18:51:15 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1
+2021-05-25 18:51:15 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 8
+2021-05-25 18:51:15 [main] DEBUG service.impl.ArithmeticalActions - Average: 10.88888888888889
+2021-05-25 18:51:15 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 30
+2021-05-25 18:51:15 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-25 18:51:15 [main] DEBUG service.impl.ArithmeticalActions - Sum: 98
+2021-05-25 18:51:15 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 4 5 6 7 8 9 30 30 -1 
+2021-05-25 18:51:15 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by bubbleSort.
+2021-05-25 18:51:15 [main] DEBUG service.impl.SortingArray - 0 1 2 3 4 5 6 7 8 - array sorted by insertionSort.
+2021-05-25 18:51:15 [main] DEBUG service.impl.SortingArray - 0 1 2 3 4 5 6 7 8 - array sorted by selectionSort.
+2021-05-25 18:52:23 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1
+2021-05-25 18:52:23 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 8
+2021-05-25 18:52:23 [main] DEBUG service.impl.ArithmeticalActions - Average: 10.88888888888889
+2021-05-25 18:52:23 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 30
+2021-05-25 18:52:23 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-25 18:52:23 [main] DEBUG service.impl.ArithmeticalActions - Sum: 98
+2021-05-25 18:52:23 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 4 5 6 7 8 9 30 30 -1 
+2021-05-25 18:52:23 [main] DEBUG service.impl.SortingArray - 0 1 2 3 4 5 6 7 8 - array sorted by insertionSort.
+2021-05-25 18:52:23 [main] DEBUG service.impl.SortingArray - 0 1 2 3 4 5 6 7 8 - array sorted by selectionSort.
+2021-05-25 18:53:14 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1
+2021-05-25 18:53:14 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 8
+2021-05-25 18:53:14 [main] DEBUG service.impl.ArithmeticalActions - Average: 10.88888888888889
+2021-05-25 18:53:14 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 30
+2021-05-25 18:53:14 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-25 18:53:14 [main] DEBUG service.impl.ArithmeticalActions - Sum: 98
+2021-05-25 18:53:14 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 4 5 6 7 8 9 30 30 -1 
+2021-05-25 18:53:14 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by insertionSort.
+2021-05-25 18:53:14 [main] DEBUG service.impl.SortingArray - 4 5 6 7 8 9 -1 30 30 - array sorted by selectionSort.
+2021-05-25 18:53:54 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1
+2021-05-25 18:53:54 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 8
+2021-05-25 18:53:54 [main] DEBUG service.impl.ArithmeticalActions - Average: 10.88888888888889
+2021-05-25 18:53:54 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 30
+2021-05-25 18:53:54 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-25 18:53:54 [main] DEBUG service.impl.ArithmeticalActions - Sum: 98
+2021-05-25 18:53:54 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 4 5 6 7 8 9 30 30 -1 
+2021-05-25 18:53:54 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by bubbleSort.
+2021-05-25 18:53:54 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by insertionSort.
+2021-05-25 18:53:54 [main] DEBUG service.impl.SortingArray - 4 5 6 7 8 9 -1 30 30 - array sorted by selectionSort.
+2021-05-25 18:54:06 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1
+2021-05-25 18:54:06 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 8
+2021-05-25 18:54:06 [main] DEBUG service.impl.ArithmeticalActions - Average: 10.88888888888889
+2021-05-25 18:54:06 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 30
+2021-05-25 18:54:06 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-25 18:54:06 [main] DEBUG service.impl.ArithmeticalActions - Sum: 98
+2021-05-25 18:54:06 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 4 5 6 7 8 9 30 30 -1 
+2021-05-25 18:54:06 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by insertionSort.
+2021-05-25 18:54:06 [main] DEBUG service.impl.SortingArray - 4 5 6 7 8 9 -1 30 30 - array sorted by selectionSort.
+2021-05-25 18:54:19 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1
+2021-05-25 18:54:19 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 8
+2021-05-25 18:54:19 [main] DEBUG service.impl.ArithmeticalActions - Average: 10.88888888888889
+2021-05-25 18:54:19 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 30
+2021-05-25 18:54:19 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-25 18:54:19 [main] DEBUG service.impl.ArithmeticalActions - Sum: 98
+2021-05-25 18:54:19 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 4 5 6 7 8 9 30 30 -1 
+2021-05-25 18:54:19 [main] DEBUG service.impl.SortingArray - 4 5 6 7 8 9 -1 30 30 - array sorted by selectionSort.
+2021-05-25 18:54:35 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by bubbleSort.
+2021-05-25 18:54:35 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by insertionSort.
+2021-05-25 18:54:35 [main] DEBUG service.impl.SortingArray - 4 5 6 7 8 9 -1 30 30 - array sorted by selectionSort.
+2021-05-25 18:55:23 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by bubbleSort.
+2021-05-25 18:55:23 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by insertionSort.
+2021-05-25 18:55:23 [main] DEBUG service.impl.SortingArray - 4 5 6 7 8 9 -1 30 30 - array sorted by selectionSort.
+2021-05-25 18:55:29 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1
+2021-05-25 18:55:29 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 4
+2021-05-25 18:55:29 [main] DEBUG service.impl.ArithmeticalActions - Average: 4.2
+2021-05-25 18:55:29 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 7
+2021-05-25 18:55:29 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-25 18:55:29 [main] DEBUG service.impl.ArithmeticalActions - Sum: 21
+2021-05-25 18:55:29 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 4 5 6 7 -1 
+2021-05-25 18:55:29 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1
+2021-05-25 18:57:22 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 4 5 6 7 -1 
+2021-05-25 18:57:22 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1
+2021-05-25 19:01:40 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1
+2021-05-25 19:01:40 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 4
+2021-05-25 19:01:40 [main] DEBUG service.impl.ArithmeticalActions - Average: 4.2
+2021-05-25 19:01:40 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 7
+2021-05-25 19:01:40 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-25 19:01:40 [main] DEBUG service.impl.ArithmeticalActions - Sum: 21
+2021-05-25 19:01:40 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 4 5 6 7 -1 
+2021-05-25 19:01:40 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1
+2021-05-25 19:04:38 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1
+2021-05-25 19:04:38 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 4
+2021-05-25 19:04:38 [main] DEBUG service.impl.ArithmeticalActions - Average: 4.2
+2021-05-25 19:04:38 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 7
+2021-05-25 19:04:38 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-25 19:04:38 [main] DEBUG service.impl.ArithmeticalActions - Sum: 21
+2021-05-25 19:04:38 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 4 5 6 7 0 
+2021-05-25 19:04:38 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 0
+2021-05-25 19:11:33 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1
+2021-05-25 19:11:33 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 8
+2021-05-25 19:11:33 [main] DEBUG service.impl.ArithmeticalActions - Average: 10.88888888888889
+2021-05-25 19:11:33 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 30
+2021-05-25 19:11:33 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-25 19:11:33 [main] DEBUG service.impl.ArithmeticalActions - Sum: 98
+2021-05-25 19:11:33 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 4 5 6 7 8 9 30 30 -1 
+2021-05-25 19:11:33 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by bubbleSort.
+2021-05-25 19:11:33 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by insertionSort.
+2021-05-25 19:11:33 [main] DEBUG service.impl.SortingArray - 4 5 6 7 8 9 -1 30 30 - array sorted by selectionSort.
+2021-05-25 19:11:48 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1
+2021-05-25 19:11:48 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 8
+2021-05-25 19:11:48 [main] DEBUG service.impl.ArithmeticalActions - Average: 10.88888888888889
+2021-05-25 19:11:48 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 30
+2021-05-25 19:11:48 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-25 19:11:48 [main] DEBUG service.impl.ArithmeticalActions - Sum: 98
+2021-05-25 19:11:48 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 4 5 6 7 8 9 30 30 -1 
+2021-05-25 19:11:48 [main] DEBUG service.impl.SortingArray - 4 5 6 7 8 9 -1 30 30 - array sorted by selectionSort.
+2021-05-25 19:12:58 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: Array content: 4 5 6 7 8 9 30 30 -1 
+2021-05-25 19:15:26 [main] DEBUG service.impl.ArithmeticalActions - 4 5 6 7 8 9 30 30 0 - array after replacement.
+2021-05-25 19:15:44 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1
+2021-05-25 19:15:44 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 4
+2021-05-25 19:15:44 [main] DEBUG service.impl.ArithmeticalActions - Average: 4.2
+2021-05-25 19:15:44 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 7
+2021-05-25 19:15:44 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-25 19:15:44 [main] DEBUG service.impl.ArithmeticalActions - Sum: 21
+2021-05-25 19:16:17 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1
+2021-05-25 19:16:17 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 8
+2021-05-25 19:16:17 [main] DEBUG service.impl.ArithmeticalActions - Average: 10.88888888888889
+2021-05-25 19:16:17 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 30
+2021-05-25 19:16:17 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-25 19:16:17 [main] DEBUG service.impl.ArithmeticalActions - Sum: 98
+2021-05-25 19:16:17 [main] DEBUG service.impl.ArithmeticalActions - 4 5 6 7 8 9 30 30 0 - array after replacement.
+2021-05-25 19:16:32 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by bubbleSort.
+2021-05-25 19:16:32 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by insertionSort.
+2021-05-25 19:16:32 [main] DEBUG service.impl.SortingArray - 4 5 6 7 8 9 -1 30 30 - array sorted by selectionSort.
+2021-05-25 19:23:58 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by bubbleSort.
+2021-05-25 19:23:58 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by insertionSort.
+2021-05-25 19:23:58 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by selectionSort.
+2021-05-25 19:24:07 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by bubbleSort.
+2021-05-25 19:24:07 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by insertionSort.
+2021-05-25 19:24:07 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by selectionSort.
+2021-05-25 19:25:11 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by bubbleSort.
+2021-05-25 19:25:11 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by insertionSort.
+2021-05-25 19:25:11 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by selectionSort.
+2021-05-25 19:25:39 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by bubbleSort.
+2021-05-25 19:25:39 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by insertionSort.
+2021-05-25 19:25:39 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by selectionSort.
+2021-05-25 19:25:47 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by selectionSort.
+2021-05-25 19:26:01 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by bubbleSort.
+2021-05-25 19:26:01 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by insertionSort.
+2021-05-25 19:26:01 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by selectionSort.
+2021-05-25 19:27:38 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by bubbleSort.
+2021-05-25 19:27:38 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by insertionSort.
+2021-05-25 19:27:38 [main] DEBUG service.impl.SortingArray - -1 4 5 6 7 8 9 30 30 - array sorted by selectionSort.
+2021-05-25 20:11:51 [main] DEBUG service.impl.ArithmeticalActions - 4 5 6 7 8 9 30 30 0 - array after replacement. [4, 5, 6, 7, 8, 9, 30, 30, 0]
+2021-05-25 20:14:50 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1
+2021-05-25 20:14:50 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 8
+2021-05-25 20:14:50 [main] DEBUG service.impl.ArithmeticalActions - Average: 10.88888888888889
+2021-05-25 20:14:50 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 30
+2021-05-25 20:14:50 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-25 20:14:50 [main] DEBUG service.impl.ArithmeticalActions - Sum: 98
+2021-05-25 20:14:50 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: [4, 5, 6, 7, 8, 9, 30, 30, 0]
+2021-05-25 20:14:50 [main] DEBUG service.impl.SortingArray - Array sorted by bubbleSort: [-1, 4, 5, 6, 7, 8, 9, 30, 30]
+2021-05-25 20:14:50 [main] DEBUG service.impl.SortingArray - Array sorted by insertionSort: [-1, 4, 5, 6, 7, 8, 9, 30, 30]
+2021-05-25 20:14:50 [main] DEBUG service.impl.SortingArray - Array sorted by selectionSort:[-1, 4, 5, 6, 7, 8, 9, 30, 30]
+2021-05-25 22:16:02 [main] DEBUG service.impl.SortingArray - Array sorted by bubbleSort: [-1, 4, 5, 6, 7, 8, 9, 30, 30]
+2021-05-25 22:16:02 [main] DEBUG service.impl.SortingArray - Array sorted by insertionSort: [-1, 4, 5, 6, 7, 8, 9, 30, 30]
+2021-05-25 22:16:02 [main] DEBUG service.impl.SortingArray - Array sorted by selectionSort:[-1, 4, 5, 6, 7, 8, 9, 30, 30]
+2021-05-25 22:16:16 [main] DEBUG service.impl.ArithmeticalActions - Amount of negative numbers: 1
+2021-05-25 22:16:16 [main] DEBUG service.impl.ArithmeticalActions - Amount of positive numbers: 4
+2021-05-25 22:16:16 [main] DEBUG service.impl.ArithmeticalActions - Average: 4.2
+2021-05-25 22:16:16 [main] DEBUG service.impl.ArithmeticalActions - Maximum array value: 7
+2021-05-25 22:16:16 [main] DEBUG service.impl.ArithmeticalActions - Minimum array value: -1
+2021-05-25 22:16:16 [main] DEBUG service.impl.ArithmeticalActions - Sum: 21
+2021-05-25 22:17:48 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: [4, 5, 6, 7, 0]
+2021-05-25 22:17:59 [main] DEBUG service.impl.ArithmeticalActions - Array after replacement: [4, 5, 6, 7, 0]
