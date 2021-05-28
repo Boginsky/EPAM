@@ -23,17 +23,20 @@ public class SortingArrayTest {
 
     @Test
     public void testBubbleSort() {
-        assertEquals(sortingArray.bubbleSort(selfMadeArrayActual),arrayExpected, "Test failed because method isn't working correctly");
+        int [] arrayForTestActual = sortingArray.bubbleSort(selfMadeArrayActual);
+        assertEquals(arrayForTestActual,arrayExpected, "Test failed because method isn't working correctly");
     }
 
     @Test
     public void testInsertionSort(){
-        assertEquals(sortingArray.insertionSort(selfMadeArrayActual),arrayExpected, "Test failed because method isn't working correctly");
+        int [] arrayForTestActual = sortingArray.insertionSort(selfMadeArrayActual);
+        assertEquals(arrayForTestActual,arrayExpected, "Test failed because method isn't working correctly");
     }
 
     @Test
     public void testSelectionSort(){
-        assertEquals(sortingArray.selectionSort(selfMadeArrayActual),arrayExpected, "Test failed because method isn't working correctly");
+        int [] arrayForTestActual = sortingArray.selectionSort(selfMadeArrayActual);
+        assertEquals(arrayForTestActual,arrayExpected, "Test failed because method isn't working correctly");
     }
 
     @AfterClass
