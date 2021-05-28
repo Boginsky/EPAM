@@ -24,6 +24,5 @@ public class Main {
         SelfMadeArray selfMadeArray = customCreator.creatorOfArray(list1);
         System.out.println(selfMadeArray.toString());
 
-
     }
 }

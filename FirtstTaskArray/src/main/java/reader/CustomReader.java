@@ -25,10 +25,8 @@ public class CustomReader {
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(new File(path)));
             String line;
-            int i = 0;
             while ((line = bufferedReader.readLine()) != null) {
                 rowList.add(line);
-                i++;
             }
         } catch (IOException e) {
             e.getMessage();

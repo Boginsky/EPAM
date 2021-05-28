@@ -21,7 +21,7 @@ public class CustomParser {
 
         ArrayList<Integer> intermediateListOfInteger = new ArrayList<>();
         for (int i = 0; i < rowList.size(); i++) {
-            if (CustomValidator.validatorOfString(rowList.get(i))) {
+            if (CustomValidator.validationOfString(rowList.get(i))) {
                 String[] arrayOfString = rowList.get(i).split(SEPARATOR);
                 for (int j = 0; j < arrayOfString.length; j++) {
                     String arrayOfStringElement = arrayOfString[j].trim();
