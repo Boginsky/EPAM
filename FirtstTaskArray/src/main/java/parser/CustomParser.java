@@ -6,20 +6,21 @@ import org.apache.logging.log4j.Logger;
 import validator.CustomValidator;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CustomParser {
 
     static Logger logger = LogManager.getLogger();
     private static final String SEPARATOR = "\\s";
 
-    public int[] parserOfRowArray(ArrayList<String> rowList) throws CustomException {
+    public int[] parserOfRowArray(List<String> rowList) throws CustomException {
 
         if (rowList == null) {
             logger.error("Argument is null");
             throw new CustomException("Argument is null");
         }
 
-        ArrayList<Integer> intermediateListOfInteger = new ArrayList<>();
+        List<Integer> intermediateListOfInteger = new ArrayList<>();
         for (int i = 0; i < rowList.size(); i++) {
             if (CustomValidator.validationOfString(rowList.get(i))) {
                 String[] arrayOfString = rowList.get(i).split(SEPARATOR);

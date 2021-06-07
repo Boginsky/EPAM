@@ -5,6 +5,7 @@ import exception.CustomException;
 import java.util.Arrays;
 
 public class SelfMadeArray implements Cloneable {
+
     private int[] array;
 
     public SelfMadeArray() {

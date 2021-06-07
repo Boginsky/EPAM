@@ -10,7 +10,6 @@ import java.util.Arrays;
 
 public class ArithmeticalActions implements IArithmeticalActions {
 
-    StringBuilder stringBuilder = new StringBuilder();
     static Logger logger = LogManager.getLogger();
 
     public int findMinimumArrayValue(SelfMadeArray selfMadeArray) throws CustomException {
@@ -20,8 +19,7 @@ public class ArithmeticalActions implements IArithmeticalActions {
                 min = selfMadeArray.getElementByPositionInArray(i);
             }
         }
-        stringBuilder.setLength(0);
-        logger.debug(stringBuilder.append("Minimum array value: ").append(min));
+        logger.debug("Minimum array value: " + min);
         return min;
     }
 
@@ -32,20 +30,18 @@ public class ArithmeticalActions implements IArithmeticalActions {
                 max = selfMadeArray.getElementByPositionInArray(i);
             }
         }
-        stringBuilder.setLength(0);
-        logger.debug(stringBuilder.append("Maximum array value: ").append(max));
+        logger.debug("Maximum array value: " + max);
         return max;
     }
 
     public int[] replacementOfAllNegativeNumbers(SelfMadeArray selfMadeArray) throws CustomException {
-        int [] localArray = selfMadeArray.getArray();
+        int[] localArray = selfMadeArray.getArray();
         for (int i = 0; i < localArray.length; i++) {
             if (localArray[i] < 0) {
                 localArray[i] = 0;
             }
         }
-        stringBuilder.setLength(0);
-        logger.debug(stringBuilder.append("Array after replacement: ").append(Arrays.toString(localArray)));
+        logger.debug("Array after replacement: " + Arrays.toString(localArray));
         return localArray;
     }
 
@@ -55,8 +51,7 @@ public class ArithmeticalActions implements IArithmeticalActions {
             average += selfMadeArray.getElementByPositionInArray(i);
         }
         average /= selfMadeArray.getSize();
-        stringBuilder.setLength(0);
-        logger.debug(stringBuilder.append("Average: ").append(average));
+        logger.debug("Average: " + average);
         return average;
     }
 
@@ -65,8 +60,7 @@ public class ArithmeticalActions implements IArithmeticalActions {
         for (int i = 0; i < selfMadeArray.getSize(); i++) {
             sum += selfMadeArray.getElementByPositionInArray(i);
         }
-        stringBuilder.setLength(0);
-        logger.debug(stringBuilder.append("Sum: ").append(sum));
+        logger.debug("Sum: " + sum);
         return sum;
     }
 
@@ -77,8 +71,7 @@ public class ArithmeticalActions implements IArithmeticalActions {
                 amountOfPositiveNumbersInArray++;
             }
         }
-        stringBuilder.setLength(0);
-        logger.debug(stringBuilder.append("Amount of positive numbers: ").append(amountOfPositiveNumbersInArray));
+        logger.debug("Amount of positive numbers: " + amountOfPositiveNumbersInArray);
         return amountOfPositiveNumbersInArray;
     }
 
@@ -89,8 +82,7 @@ public class ArithmeticalActions implements IArithmeticalActions {
                 amountOfNegativeNumbersInArray++;
             }
         }
-        stringBuilder.setLength(0);
-        logger.debug(stringBuilder.append("Amount of negative numbers: ").append(amountOfNegativeNumbersInArray));
+        logger.debug("Amount of negative numbers: " + amountOfNegativeNumbersInArray);
         return amountOfNegativeNumbersInArray;
     }
 }

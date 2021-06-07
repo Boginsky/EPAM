@@ -1,6 +1,7 @@
 package service.impl;
 
 import entity.SelfMadeArray;
+import exception.CustomException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import service.ISortingArray;
@@ -9,11 +10,13 @@ import java.util.Arrays;
 
 public class SortingArray implements ISortingArray {
 
-    StringBuilder stringBuilder = new StringBuilder();
     static Logger logger = LogManager.getLogger();
 
     @Override
-    public int[] bubbleSort(SelfMadeArray selfMadeArray) {
+    public int[] bubbleSort(SelfMadeArray selfMadeArray) throws CustomException {
+        if (selfMadeArray == null) {
+            throw new CustomException("Array is null");
+        }
         int[] localArray = selfMadeArray.getArray();
         boolean arraySorted = false;
         int temp;
@@ -28,13 +31,15 @@ public class SortingArray implements ISortingArray {
                 }
             }
         }
-        stringBuilder.setLength(0);
-        logger.debug(stringBuilder.append("Array sorted by bubbleSort: ").append(Arrays.toString(localArray)));
+        logger.debug("Array sorted by bubbleSort: " + Arrays.toString(localArray));
         return localArray;
     }
 
     @Override
-    public int[] insertionSort(SelfMadeArray selfMadeArray) {
+    public int[] insertionSort(SelfMadeArray selfMadeArray) throws CustomException {
+        if (selfMadeArray == null) {
+            throw new CustomException("Array is null");
+        }
         int[] localArray = selfMadeArray.getArray();
         for (int i = 0; i < localArray.length; i++) {
             int current = localArray[i];
@@ -45,19 +50,21 @@ public class SortingArray implements ISortingArray {
             }
             localArray[j + 1] = current;
         }
-        stringBuilder.setLength(0);
-        logger.debug(stringBuilder.append("Array sorted by insertionSort: ").append(Arrays.toString(localArray)));
+        logger.debug("Array sorted by insertionSort: " + Arrays.toString(localArray));
         return localArray;
     }
 
     @Override
-    public int[] selectionSort(SelfMadeArray selfMadeArray) {
+    public int[] selectionSort(SelfMadeArray selfMadeArray) throws CustomException {
+        if (selfMadeArray == null) {
+            throw new CustomException("Array is null");
+        }
         int[] localArray = selfMadeArray.getArray();
-        for (int i = 0; i <localArray.length; i++) {
+        for (int i = 0; i < localArray.length; i++) {
             int pos = i;
             int min = localArray[i];
-            for (int j = i+1; j < localArray.length; j++) {
-                if(localArray[j]<min){
+            for (int j = i + 1; j < localArray.length; j++) {
+                if (localArray[j] < min) {
                     pos = j;
                     min = localArray[j];
                 }
@@ -65,8 +72,7 @@ public class SortingArray implements ISortingArray {
             localArray[pos] = localArray[i];
             localArray[i] = min;
         }
-        stringBuilder.setLength(0);
-        logger.debug(stringBuilder.append("Array sorted by selectionSort:").append(Arrays.toString(localArray)));
+        logger.debug("Array sorted by selectionSort:" + Arrays.toString(localArray));
         return localArray;
     }
 }

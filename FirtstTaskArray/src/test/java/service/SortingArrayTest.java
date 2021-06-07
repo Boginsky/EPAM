@@ -1,6 +1,7 @@
 package service;
 
 import entity.SelfMadeArray;
+import exception.CustomException;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -22,19 +23,19 @@ public class SortingArrayTest {
     }
 
     @Test
-    public void testBubbleSort() {
+    public void testBubbleSort() throws CustomException {
         int [] arrayForTestActual = sortingArray.bubbleSort(selfMadeArrayActual);
         assertEquals(arrayForTestActual,arrayExpected, "Test failed because method isn't working correctly");
     }
 
     @Test
-    public void testInsertionSort(){
+    public void testInsertionSort() throws CustomException{
         int [] arrayForTestActual = sortingArray.insertionSort(selfMadeArrayActual);
         assertEquals(arrayForTestActual,arrayExpected, "Test failed because method isn't working correctly");
     }
 
     @Test
-    public void testSelectionSort(){
+    public void testSelectionSort() throws CustomException{
         int [] arrayForTestActual = sortingArray.selectionSort(selfMadeArrayActual);
         assertEquals(arrayForTestActual,arrayExpected, "Test failed because method isn't working correctly");
     }
