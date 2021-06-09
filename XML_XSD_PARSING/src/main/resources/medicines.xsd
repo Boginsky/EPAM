@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-        targetNamespace="http://www.example.org/medicins"
-        xmlns:tns="http://www.example.org/medicins"
+        targetNamespace="http://www.example.org/medicines"
+        xmlns:tns="http://www.example.org/medicines"
         elementFormDefault="qualified">
 
-    <element name="medicins">
+    <element name="medicines">
         <complexType>
             <sequence>
                 <element ref="tns:medicine" minOccurs="1" maxOccurs="unbounded"/>

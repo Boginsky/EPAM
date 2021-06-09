@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<medicins xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xmlns="http://www.example.org/medicins"
-          xsi:schemaLocation="http://www.example.org/medicins.xsd">
+<medicines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns="http://www.example.org/medicines"
+          xsi:schemaLocation="http://www.example.org/medicines.xsd">
     <tablet>
         <name-of-medicine>panadol</name-of-medicine>
         <group-of-medicine>analgesic-antipyretic</group-of-medicine>
@@ -338,4 +338,4 @@
         </version>
         <form>liquid</form>
     </solution>
-</medicins>
+</medicines>
