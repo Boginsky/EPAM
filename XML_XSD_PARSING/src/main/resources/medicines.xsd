@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.example.org/medicins"
+        xmlns:tns="http://www.example.org/medicins"
+        elementFormDefault="qualified">
+
+    <element name="medicins">
+        <complexType>
+            <sequence>
+                <element ref="tns:medicine" minOccurs="1" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="medicine" type="tns:common-medicine" abstract="true"/>
+    <element name="tablet" type="tns:tablet" substitutionGroup="tns:medicine"/>
+    <element name="capsule" type="tns:capsule" substitutionGroup="tns:medicine"/>
+    <element name="solution" type="tns:solution" substitutionGroup="tns:medicine"/>
+
+    <complexType name="common-medicine">
+        <sequence>
+            <element name="name-of-medicine" type="string"/>
+            <element name="group-of-medicine" type="string"/>
+            <element name="manufacturer" type="tns:manufacturer"/>
+            <element name="analogs" type="string"/>
+            <element name="version" type="tns:version"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="tablet">
+        <complexContent>
+            <extension base="tns:common-medicine">
+                <sequence>
+                    <element name="form" type="tns:form"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <complexType name="capsule">
+        <complexContent>
+            <extension base="tns:common-medicine">
+                <sequence>
+                    <element name="form" type="tns:form"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <complexType name="solution">
+        <complexContent>
+            <extension base="tns:common-medicine">
+                <sequence>
+                    <element name="form" type="tns:form"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <complexType name="version">
+        <sequence>
+            <element name="certificate" type="tns:certificate"/>
+            <element name="package" type="tns:package"/>
+            <element name="dosage" type="tns:dosage"/>
+        </sequence>
+    </complexType>
+
+    <simpleType name="form">
+        <restriction base="string">
+            <enumeration value="solid"/>
+            <enumeration value="soft"/>
+            <enumeration value="liquid"/>
+        </restriction>
+    </simpleType>
+
+    <simpleType name="manufacturer">
+        <restriction base="string">
+            <enumeration value="usa"/>
+            <enumeration value="canada"/>
+            <enumeration value="russia"/>
+            <enumeration value="china"/>
+            <enumeration value="germany"/>
+            <enumeration value="france"/>
+        </restriction>
+    </simpleType>
+
+    <complexType name="certificate">
+        <sequence>
+            <element name="date-of-issue" type="gYearMonth"/>
+        </sequence>
+        <attribute name="id" type="tns:certificateID" use="required"/>
+        <attribute name="country-of-registration" type="string" use="optional" default="unknown"/>
+    </complexType>
+
+    <complexType name="package">
+        <sequence>
+            <element name="type-of-package">
+                <simpleType>
+                    <restriction base="string">
+                        <enumeration value="cardboard-boxes"/>
+                        <enumeration value="vials"/>
+                    </restriction>
+                </simpleType>
+            </element>
+            <element name="amount-of-medicine" type="nonNegativeInteger"/>
+            <element name="price" type="float"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="dosage">
+        <sequence>
+            <element name="dosage-of-medicine" type="float"/>
+            <element name="frequency-of-admission" type="nonNegativeInteger"/>
+        </sequence>
+    </complexType>
+
+    <simpleType name="certificateID">
+        <restriction base="int">
+            <pattern value="[0-9]+"/>
+        </restriction>
+    </simpleType>
+</schema>

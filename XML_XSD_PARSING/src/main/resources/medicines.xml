@@ -1,94 +1,341 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema"
-        targetNamespace="http://www.example.org/medicins"
-        xmlns:tns="http://www.example.org/medicins"
-        elementFormDefault="qualified">
-
-    <element name="medicins">
-        <complexType>
-            <sequence>
-                <element ref="tns:medicine" minOccurs="16" maxOccurs="unbounded"/>
-            </sequence>
-        </complexType>
-    </element>
-
-    <element name="medicine" type="tns:common-medicine" abstract="true"/>
-    <element name="tablets" type="tns:tablet" substitutionGroup="tns:medicine"/>
-
-
-    <complexType name="common-medicine">
-        <sequence>
-            <element name="name-of-medicine" type="string"/>
-            <element name="group-of-medicine" type="string"/>
-            <element name="manufacturer" type="tns:manufacturer"/>
-            <element name="analogs" type="string"/>
-            <element name="certificate" type="tns:certificate"/>
-            <element name="package" type="tns:package"/>
-            <element name="dosage" type="tns:dosage"/>
-        </sequence>
-    </complexType>
-
-    <complexType name="tablet">
-        <complexContent>
-            <extension base="tns:common-medicine">
-                <sequence>
-                    <element name = "form" type="tns:version-of-medicine"/>
-                </sequence>
-            </extension>
-        </complexContent>
-    </complexType>
-
-    <complexType name="version-of-medicine">
-        <element name="form-of-medicine" type="string">
-            <resitriction base="string">
-                <enumeration value="tablet"/>
-                <enumeration value="capsule"/>
-                <enumeration value="powder"/>
-                <enumeration value="drops"/>
-            </resitriction>
-        </element>
-    </complexType>
-
-    <simpleType name="manufacturer">
-        <restriction base="string">
-            <enumeration value="USA"/>
-            <enumeration value="Canada"/>
-            <enumeration value="Russia"/>
-            <enumeration value="China"/>
-        </restriction>
-    </simpleType>
-
-    <simpleType name="certificate">
-        <element name="date-of-issue" type="gYearMonth"/>
-        <attribute name="id" type="tns:certificateID" use="required"/>
-        <attribute name="country-of-registration" type="string" use="optional"/>
-    </simpleType>
-
-    <complexType name="package">
-        <sequence>
-            <element name="type-of-package" type="string">
-                <simpleType>
-                    <restriction base="string">
-                        <minLength value="5"/>
-                        <maxLength value="50"/>
-                    </restriction>
-                </simpleType>
-            </element>
-            <element name="amount-of-medicine" type="nonNegativeInteger"/>
-            <element name="price" type="nonNegativeInteger"/>
-        </sequence>
-    </complexType>
-
-    <complexType name="dosage">
-        <sequence>
-            <element name="dosage-of-medicine" type="nonNegativeInteger"/>
-            <element name="frequency-of-admission" type="nonNegativeInteger"/>
-        </sequence>
-    </complexType>
-
-    <simpleType name="certificateID">
-        <restriction base="ID">
-            <pattern value="\d{1,20}"/>
-        </restriction>
-    </simpleType>
-</schema>
+<?xml version="1.0" encoding="UTF-8" ?>
+<medicins xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns="http://www.example.org/medicins"
+          xsi:schemaLocation="http://www.example.org/medicins.xsd">
+    <tablet>
+        <name-of-medicine>panadol</name-of-medicine>
+        <group-of-medicine>analgesic-antipyretic</group-of-medicine>
+        <manufacturer>germany</manufacturer>
+        <analogs>paracetamol</analogs>
+        <version>
+            <certificate id="444" country-of-registration="Germany">
+                <date-of-issue>2021-04</date-of-issue>
+            </certificate>
+            <package>
+                <type-of-package>cardboard-boxes</type-of-package>
+                <amount-of-medicine>24</amount-of-medicine>
+                <price>3.0</price>
+            </package>
+            <dosage>
+                <dosage-of-medicine>500</dosage-of-medicine>
+                <frequency-of-admission>4</frequency-of-admission>
+            </dosage>
+        </version>
+        <form>solid</form>
+    </tablet>
+    <tablet>
+        <name-of-medicine>tritace</name-of-medicine>
+        <group-of-medicine>ACE inhibitors</group-of-medicine>
+        <manufacturer>germany</manufacturer>
+        <analogs>ramipril</analogs>
+        <version>
+            <certificate id="32">
+                <date-of-issue>2021-05</date-of-issue>
+            </certificate>
+            <package>
+                <type-of-package>cardboard-boxes</type-of-package>
+                <amount-of-medicine>28</amount-of-medicine>
+                <price>4</price>
+            </package>
+            <dosage>
+                <dosage-of-medicine>10</dosage-of-medicine>
+                <frequency-of-admission>2</frequency-of-admission>
+            </dosage>
+        </version>
+        <form>solid</form>
+    </tablet>
+    <tablet>
+        <name-of-medicine>duphaston</name-of-medicine>
+        <group-of-medicine>gestagen</group-of-medicine>
+        <manufacturer>usa</manufacturer>
+        <analogs>dydrogesterone</analogs>
+        <version>
+            <certificate id="55">
+                <date-of-issue>2020-04</date-of-issue>
+            </certificate>
+            <package>
+                <type-of-package>cardboard-boxes</type-of-package>
+                <amount-of-medicine>20</amount-of-medicine>
+                <price>20</price>
+            </package>
+            <dosage>
+                <dosage-of-medicine>10</dosage-of-medicine>
+                <frequency-of-admission>1</frequency-of-admission>
+            </dosage>
+        </version>
+        <form>solid</form>
+    </tablet>
+    <tablet>
+        <name-of-medicine>concor</name-of-medicine>
+        <group-of-medicine>beta-blocker</group-of-medicine>
+        <manufacturer>germany</manufacturer>
+        <analogs>bisoprolol</analogs>
+        <version>
+            <certificate id="66">
+                <date-of-issue>2019-03</date-of-issue>
+            </certificate>
+            <package>
+                <type-of-package>cardboard-boxes</type-of-package>
+                <amount-of-medicine>50</amount-of-medicine>
+                <price>15</price>
+            </package>
+            <dosage>
+                <dosage-of-medicine>10</dosage-of-medicine>
+                <frequency-of-admission>1</frequency-of-admission>
+            </dosage>
+        </version>
+        <form>solid</form>
+    </tablet>
+    <tablet>
+        <name-of-medicine>noophen</name-of-medicine>
+        <group-of-medicine>nootropic</group-of-medicine>
+        <manufacturer>france</manufacturer>
+        <analogs>phenybut</analogs>
+        <version>
+            <certificate id="656">
+                <date-of-issue>2018-01</date-of-issue>
+            </certificate>
+            <package>
+                <type-of-package>cardboard-boxes</type-of-package>
+                <amount-of-medicine>26</amount-of-medicine>
+                <price>8</price>
+            </package>
+            <dosage>
+                <dosage-of-medicine>500</dosage-of-medicine>
+                <frequency-of-admission>6</frequency-of-admission>
+            </dosage>
+        </version>
+        <form>solid</form>
+    </tablet>
+    <tablet>
+        <name-of-medicine>stimuloton</name-of-medicine>
+        <group-of-medicine>antidepressant</group-of-medicine>
+        <manufacturer>germany</manufacturer>
+        <analogs>sertralin</analogs>
+        <version>
+            <certificate id="55">
+                <date-of-issue>2021-09</date-of-issue>
+            </certificate>
+            <package>
+                <type-of-package>cardboard-boxes</type-of-package>
+                <amount-of-medicine>50</amount-of-medicine>
+                <price>25</price>
+            </package>
+            <dosage>
+                <dosage-of-medicine>10</dosage-of-medicine>
+                <frequency-of-admission>2</frequency-of-admission>
+            </dosage>
+        </version>
+        <form>solid</form>
+    </tablet>
+    <capsule>
+        <name-of-medicine>naklofen-DUO</name-of-medicine>
+        <group-of-medicine>analgesic</group-of-medicine>
+        <manufacturer>canada</manufacturer>
+        <analogs>diclofenak</analogs>
+        <version>
+            <certificate id="55">
+                <date-of-issue>2018-02</date-of-issue>
+            </certificate>
+            <package>
+                <type-of-package>cardboard-boxes</type-of-package>
+                <amount-of-medicine>20</amount-of-medicine>
+                <price>2.5</price>
+            </package>
+            <dosage>
+                <dosage-of-medicine>75</dosage-of-medicine>
+                <frequency-of-admission>2</frequency-of-admission>
+            </dosage>
+        </version>
+        <form>soft</form>
+    </capsule>
+    <capsule>
+        <name-of-medicine>adaptol</name-of-medicine>
+        <group-of-medicine>anxiolytic</group-of-medicine>
+        <manufacturer>france</manufacturer>
+        <analogs>mibicar</analogs>
+        <version>
+            <certificate id="66">
+                <date-of-issue>2018-06</date-of-issue>
+            </certificate>
+            <package>
+                <type-of-package>cardboard-boxes</type-of-package>
+                <amount-of-medicine>20</amount-of-medicine>
+                <price>6</price>
+            </package>
+            <dosage>
+                <dosage-of-medicine>300</dosage-of-medicine>
+                <frequency-of-admission>6</frequency-of-admission>
+            </dosage>
+        </version>
+        <form>soft</form>
+    </capsule>
+    <capsule>
+        <name-of-medicine>ursosan</name-of-medicine>
+        <group-of-medicine>hepatoprotector</group-of-medicine>
+        <manufacturer>usa</manufacturer>
+        <analogs>heptral</analogs>
+        <version>
+            <certificate id="698">
+                <date-of-issue>2020-02</date-of-issue>
+            </certificate>
+            <package>
+                <type-of-package>cardboard-boxes</type-of-package>
+                <amount-of-medicine>50</amount-of-medicine>
+                <price>40</price>
+            </package>
+            <dosage>
+                <dosage-of-medicine>500</dosage-of-medicine>
+                <frequency-of-admission>6</frequency-of-admission>
+            </dosage>
+        </version>
+        <form>soft</form>
+    </capsule>
+    <capsule>
+        <name-of-medicine>essentiale</name-of-medicine>
+        <group-of-medicine>hepatoprotector</group-of-medicine>
+        <manufacturer>germany</manufacturer>
+        <analogs>essencicaps</analogs>
+        <version>
+            <certificate id="89">
+                <date-of-issue>2020-11</date-of-issue>
+            </certificate>
+            <package>
+                <type-of-package>cardboard-boxes</type-of-package>
+                <amount-of-medicine>90</amount-of-medicine>
+                <price>30</price>
+            </package>
+            <dosage>
+                <dosage-of-medicine>300</dosage-of-medicine>
+                <frequency-of-admission>6</frequency-of-admission>
+            </dosage>
+        </version>
+        <form>soft</form>
+    </capsule>
+    <capsule>
+        <name-of-medicine>omnic</name-of-medicine>
+        <group-of-medicine>alpha-blocker</group-of-medicine>
+        <manufacturer>usa</manufacturer>
+        <analogs>tamsulosin</analogs>
+        <version>
+            <certificate id="56">
+                <date-of-issue>2018-01</date-of-issue>
+            </certificate>
+            <package>
+                <type-of-package>cardboard-boxes</type-of-package>
+                <amount-of-medicine>30</amount-of-medicine>
+                <price>10</price>
+            </package>
+            <dosage>
+                <dosage-of-medicine>4</dosage-of-medicine>
+                <frequency-of-admission>1</frequency-of-admission>
+            </dosage>
+        </version>
+        <form>soft</form>
+    </capsule>
+    <capsule>
+        <name-of-medicine>indap</name-of-medicine>
+        <group-of-medicine>diuretic</group-of-medicine>
+        <manufacturer>germany</manufacturer>
+        <analogs>indapamide</analogs>
+        <version>
+            <certificate id="78">
+                <date-of-issue>2018-03</date-of-issue>
+            </certificate>
+            <package>
+                <type-of-package>cardboard-boxes</type-of-package>
+                <amount-of-medicine>30</amount-of-medicine>
+                <price>8</price>
+            </package>
+            <dosage>
+                <dosage-of-medicine>2.5</dosage-of-medicine>
+                <frequency-of-admission>2</frequency-of-admission>
+            </dosage>
+        </version>
+        <form>soft</form>
+    </capsule>
+    <solution>
+        <name-of-medicine>ceraxon</name-of-medicine>
+        <group-of-medicine>nootropic</group-of-medicine>
+        <manufacturer>usa</manufacturer>
+        <analogs>citicolin</analogs>
+        <version>
+            <certificate id="65">
+                <date-of-issue>2018-07</date-of-issue>
+            </certificate>
+            <package>
+                <type-of-package>vials</type-of-package>
+                <amount-of-medicine>10</amount-of-medicine>
+                <price>30</price>
+            </package>
+            <dosage>
+                <dosage-of-medicine>1000</dosage-of-medicine>
+                <frequency-of-admission>1</frequency-of-admission>
+            </dosage>
+        </version>
+        <form>liquid</form>
+    </solution>
+    <solution>
+        <name-of-medicine>emoxipine</name-of-medicine>
+        <group-of-medicine>antioxidant</group-of-medicine>
+        <manufacturer>russia</manufacturer>
+        <analogs>methylethylpiridinol</analogs>
+        <version>
+            <certificate id="99">
+                <date-of-issue>2020-01</date-of-issue>
+            </certificate>
+            <package>
+                <type-of-package>vials</type-of-package>
+                <amount-of-medicine>5</amount-of-medicine>
+                <price>1.5</price>
+            </package>
+            <dosage>
+                <dosage-of-medicine>30</dosage-of-medicine>
+                <frequency-of-admission>1</frequency-of-admission>
+            </dosage>
+        </version>
+        <form>liquid</form>
+    </solution>
+    <solution>
+        <name-of-medicine>alflutop</name-of-medicine>
+        <group-of-medicine>chondroprotectors</group-of-medicine>
+        <manufacturer>usa</manufacturer>
+        <analogs>mukosat</analogs>
+        <version>
+            <certificate id="32">
+                <date-of-issue>2017-02</date-of-issue>
+            </certificate>
+            <package>
+                <type-of-package>vials</type-of-package>
+                <amount-of-medicine>5</amount-of-medicine>
+                <price>35</price>
+            </package>
+            <dosage>
+                <dosage-of-medicine>0.1</dosage-of-medicine>
+                <frequency-of-admission>1</frequency-of-admission>
+            </dosage>
+        </version>
+        <form>liquid</form>
+    </solution>
+    <solution>
+        <name-of-medicine>movalis</name-of-medicine>
+        <group-of-medicine>analgesic</group-of-medicine>
+        <manufacturer>france</manufacturer>
+        <analogs>melbek</analogs>
+        <version>
+            <certificate id="21">
+                <date-of-issue>2020-04</date-of-issue>
+            </certificate>
+            <package>
+                <type-of-package>vials</type-of-package>
+                <amount-of-medicine>3</amount-of-medicine>
+                <price>15</price>
+            </package>
+            <dosage>
+                <dosage-of-medicine>1.5</dosage-of-medicine>
+                <frequency-of-admission>1</frequency-of-admission>
+            </dosage>
+        </version>
+        <form>liquid</form>
+    </solution>
+</medicins>
