@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <medicines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xmlns="http://www.example.org/medicines"
-          xsi:schemaLocation="http://www.example.org/medicines.xsd">
+           xmlns="http://www.example.org/medicines"
+           xsi:schemaLocation="http://www.example.org/medicines.xsd">
     <tablet>
         <name-of-medicine>panadol</name-of-medicine>
         <group-of-medicine>analgesic-antipyretic</group-of-medicine>
@@ -22,6 +22,7 @@
             </dosage>
         </version>
         <form>solid</form>
+        <engraving>true</engraving>
     </tablet>
     <tablet>
         <name-of-medicine>tritace</name-of-medicine>
@@ -43,6 +44,7 @@
             </dosage>
         </version>
         <form>solid</form>
+        <engraving>false</engraving>
     </tablet>
     <tablet>
         <name-of-medicine>duphaston</name-of-medicine>
@@ -64,6 +66,7 @@
             </dosage>
         </version>
         <form>solid</form>
+        <engraving>true</engraving>
     </tablet>
     <tablet>
         <name-of-medicine>concor</name-of-medicine>
@@ -85,6 +88,7 @@
             </dosage>
         </version>
         <form>solid</form>
+        <engraving>false</engraving>
     </tablet>
     <tablet>
         <name-of-medicine>noophen</name-of-medicine>
@@ -106,6 +110,7 @@
             </dosage>
         </version>
         <form>solid</form>
+        <engraving>true</engraving>
     </tablet>
     <tablet>
         <name-of-medicine>stimuloton</name-of-medicine>
@@ -127,6 +132,7 @@
             </dosage>
         </version>
         <form>solid</form>
+        <engraving>true</engraving>
     </tablet>
     <capsule>
         <name-of-medicine>naklofen-DUO</name-of-medicine>
@@ -148,6 +154,7 @@
             </dosage>
         </version>
         <form>soft</form>
+        <modified>true</modified>
     </capsule>
     <capsule>
         <name-of-medicine>adaptol</name-of-medicine>
@@ -169,6 +176,7 @@
             </dosage>
         </version>
         <form>soft</form>
+        <modified>false</modified>
     </capsule>
     <capsule>
         <name-of-medicine>ursosan</name-of-medicine>
@@ -190,6 +198,7 @@
             </dosage>
         </version>
         <form>soft</form>
+        <modified>true</modified>
     </capsule>
     <capsule>
         <name-of-medicine>essentiale</name-of-medicine>
@@ -211,6 +220,7 @@
             </dosage>
         </version>
         <form>soft</form>
+        <modified>false</modified>
     </capsule>
     <capsule>
         <name-of-medicine>omnic</name-of-medicine>
@@ -232,6 +242,7 @@
             </dosage>
         </version>
         <form>soft</form>
+        <modified>true</modified>
     </capsule>
     <capsule>
         <name-of-medicine>indap</name-of-medicine>
@@ -253,6 +264,7 @@
             </dosage>
         </version>
         <form>soft</form>
+        <modified>true</modified>
     </capsule>
     <solution>
         <name-of-medicine>ceraxon</name-of-medicine>
@@ -274,6 +286,7 @@
             </dosage>
         </version>
         <form>liquid</form>
+        <solvent>alcohol</solvent>
     </solution>
     <solution>
         <name-of-medicine>emoxipine</name-of-medicine>
@@ -295,6 +308,7 @@
             </dosage>
         </version>
         <form>liquid</form>
+        <solvent>water</solvent>
     </solution>
     <solution>
         <name-of-medicine>alflutop</name-of-medicine>
@@ -316,6 +330,7 @@
             </dosage>
         </version>
         <form>liquid</form>
+        <solvent>water</solvent>
     </solution>
     <solution>
         <name-of-medicine>movalis</name-of-medicine>
@@ -337,5 +352,6 @@
             </dosage>
         </version>
         <form>liquid</form>
+        <solvent>ether</solvent>
     </solution>
 </medicines>

@@ -17,13 +17,14 @@
     <element name="capsule" type="tns:capsule" substitutionGroup="tns:medicine"/>
     <element name="solution" type="tns:solution" substitutionGroup="tns:medicine"/>
 
-    <complexType name="common-medicine">
+    <complexType name="common-medicine" abstract="true">
         <sequence>
             <element name="name-of-medicine" type="string"/>
             <element name="group-of-medicine" type="string"/>
             <element name="manufacturer" type="tns:manufacturer"/>
             <element name="analogs" type="string"/>
             <element name="version" type="tns:version"/>
+            <element name="form" type="tns:form"/>
         </sequence>
     </complexType>
 
@@ -31,7 +32,7 @@
         <complexContent>
             <extension base="tns:common-medicine">
                 <sequence>
-                    <element name="form" type="tns:form"/>
+                    <element name = "engraving" type="boolean"/>
                 </sequence>
             </extension>
         </complexContent>
@@ -41,7 +42,7 @@
         <complexContent>
             <extension base="tns:common-medicine">
                 <sequence>
-                    <element name="form" type="tns:form"/>
+                <element name="modified" type="boolean"/>
                 </sequence>
             </extension>
         </complexContent>
@@ -51,7 +52,15 @@
         <complexContent>
             <extension base="tns:common-medicine">
                 <sequence>
-                    <element name="form" type="tns:form"/>
+                    <element name ="solvent">
+                        <simpleType>
+                            <restriction base="string">
+                                <enumeration value="alcohol"/>
+                                <enumeration value="ether"/>
+                                <enumeration value="water"/>
+                            </restriction>
+                        </simpleType>
+                    </element>
                 </sequence>
             </extension>
         </complexContent>
@@ -62,6 +71,29 @@
             <element name="certificate" type="tns:certificate"/>
             <element name="package" type="tns:package"/>
             <element name="dosage" type="tns:dosage"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="certificate">
+        <sequence>
+            <element name="date-of-issue" type="gYearMonth"/>
+        </sequence>
+        <attribute name="id" type="tns:certificateID" use="required"/>
+        <attribute name="country-of-registration" type="string" use="optional" default="unknown"/>
+    </complexType>
+
+    <complexType name="package">
+        <sequence>
+            <element name="type-of-package" type="string"/>
+            <element name="amount-of-medicine" type="nonNegativeInteger"/>
+            <element name="price" type="float"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="dosage">
+        <sequence>
+            <element name="dosage-of-medicine" type="float"/>
+            <element name="frequency-of-admission" type="nonNegativeInteger"/>
         </sequence>
     </complexType>
 
@@ -83,36 +115,6 @@
             <enumeration value="france"/>
         </restriction>
     </simpleType>
-
-    <complexType name="certificate">
-        <sequence>
-            <element name="date-of-issue" type="gYearMonth"/>
-        </sequence>
-        <attribute name="id" type="tns:certificateID" use="required"/>
-        <attribute name="country-of-registration" type="string" use="optional" default="unknown"/>
-    </complexType>
-
-    <complexType name="package">
-        <sequence>
-            <element name="type-of-package">
-                <simpleType>
-                    <restriction base="string">
-                        <enumeration value="cardboard-boxes"/>
-                        <enumeration value="vials"/>
-                    </restriction>
-                </simpleType>
-            </element>
-            <element name="amount-of-medicine" type="nonNegativeInteger"/>
-            <element name="price" type="float"/>
-        </sequence>
-    </complexType>
-
-    <complexType name="dosage">
-        <sequence>
-            <element name="dosage-of-medicine" type="float"/>
-            <element name="frequency-of-admission" type="nonNegativeInteger"/>
-        </sequence>
-    </complexType>
 
     <simpleType name="certificateID">
         <restriction base="int">
