@@ -1,0 +1,83 @@
+2021-06-15 19:42:52 [main] ERROR by.boginsky.validator.MedicineXmlAndXsdValidator - File XML or XSD are not validorg.xml.sax.SAXParseException; systemId: file:///E:/EPAM/XML_XSD_PARSING/src/main/resources/data/medicines.xml; lineNumber: 6; columnNumber: 36; s4s-elt-character: Non-whitespace characters are not allowed in schema elements other than 'xs:appinfo' and 'xs:documentation'. Saw 'panadol'.
+2021-06-15 19:44:24 [main] ERROR by.boginsky.validator.MedicineXmlAndXsdValidator - Xml of Xsd are not valids4s-elt-character: Non-whitespace characters are not allowed in schema elements other than 'xs:appinfo' and 'xs:documentation'. Saw 'panadol'.
+2021-06-15 19:45:05 [main] ERROR by.boginsky.validator.MedicineXmlAndXsdValidator - Xml of Xsd are not valids4s-elt-character: Non-whitespace characters are not allowed in schema elements other than 'xs:appinfo' and 'xs:documentation'. Saw 'panadol'.
+2021-06-15 19:45:33 [main] ERROR by.boginsky.validator.MedicineXmlAndXsdValidator - Xml of Xsd are not valids4s-elt-character: Non-whitespace characters are not allowed in schema elements other than 'xs:appinfo' and 'xs:documentation'. Saw 'panadol'.
+2021-06-15 19:45:48 [main] ERROR by.boginsky.validator.MedicineXmlAndXsdValidator - Xml of Xsd are not valids4s-elt-character: Non-whitespace characters are not allowed in schema elements other than 'xs:appinfo' and 'xs:documentation'. Saw 'panadol'.
+2021-06-15 19:52:31 [main] ERROR by.boginsky.validator.MedicineXmlAndXsdValidator - Xml of Xsd are not valids4s-elt-character: Non-whitespace characters are not allowed in schema elements other than 'xs:appinfo' and 'xs:documentation'. Saw 'panadol'.
+2021-06-15 19:53:49 [main] ERROR by.boginsky.validator.MedicineXmlAndXsdValidator - Xml of Xsd are not valids4s-elt-character: Non-whitespace characters are not allowed in schema elements other than 'xs:appinfo' and 'xs:documentation'. Saw 'panadol'.
+2021-06-15 20:01:07 [main] ERROR by.boginsky.validator.MedicineXmlAndXsdValidator - Xml of Xsd are not valids4s-elt-character: Non-whitespace characters are not allowed in schema elements other than 'xs:appinfo' and 'xs:documentation'. Saw 'panadol'.
+2021-06-15 20:03:32 [main] ERROR by.boginsky.validator.MedicineXmlAndXsdValidator - Xml of Xsd are not valids4s-elt-character: Non-whitespace characters are not allowed in schema elements other than 'xs:appinfo' and 'xs:documentation'. Saw 'panadol'.
+2021-06-15 20:05:00 [main] ERROR by.boginsky.validator.MedicineXmlAndXsdValidator - Xml of Xsd are not valids4s-elt-character: Non-whitespace characters are not allowed in schema elements other than 'xs:appinfo' and 'xs:documentation'. Saw 'panadol'.
+2021-06-15 20:05:08 [main] ERROR by.boginsky.validator.MedicineXmlAndXsdValidator - Xml of Xsd are not valids4s-elt-character: Non-whitespace characters are not allowed in schema elements other than 'xs:appinfo' and 'xs:documentation'. Saw 'panadol'.
+2021-06-15 20:06:26 [main] ERROR by.boginsky.validator.MedicineXmlAndXsdValidator - Xml of Xsd are not valids4s-elt-character: Non-whitespace characters are not allowed in schema elements other than 'xs:appinfo' and 'xs:documentation'. Saw 'panadol'.
+2021-06-15 20:07:05 [main] ERROR by.boginsky.validator.MedicineXmlAndXsdValidator - Xml of Xsd are not valids4s-elt-character: Non-whitespace characters are not allowed in schema elements other than 'xs:appinfo' and 'xs:documentation'. Saw 'panadol'.
+2021-06-15 20:08:16 [main] ERROR by.boginsky.validator.MedicineXmlAndXsdValidator - Xml of Xsd are not valids4s-elt-character: Non-whitespace characters are not allowed in schema elements other than 'xs:appinfo' and 'xs:documentation'. Saw 'panadol'.
+2021-06-15 21:07:25 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 11 : 68 - cvc-datatype-valid.1.2.1: '44' is not a valid value for 'NCName'.
+2021-06-15 21:07:25 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 11 : 68 - cvc-attribute.3: The value '44' of attribute 'id' on element 'certificate' is not valid with respect to its type, 'certificateID'.
+2021-06-15 21:07:25 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 33 : 34 - cvc-datatype-valid.1.2.1: '32' is not a valid value for 'NCName'.
+2021-06-15 21:07:25 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 33 : 34 - cvc-attribute.3: The value '32' of attribute 'id' on element 'certificate' is not valid with respect to its type, 'certificateID'.
+2021-06-15 21:07:25 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 55 : 34 - cvc-datatype-valid.1.2.1: '22' is not a valid value for 'NCName'.
+2021-06-15 21:07:25 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 55 : 34 - cvc-attribute.3: The value '22' of attribute 'id' on element 'certificate' is not valid with respect to its type, 'certificateID'.
+2021-06-15 21:07:25 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 77 : 34 - cvc-datatype-valid.1.2.1: '66' is not a valid value for 'NCName'.
+2021-06-15 21:07:25 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 77 : 34 - cvc-attribute.3: The value '66' of attribute 'id' on element 'certificate' is not valid with respect to its type, 'certificateID'.
+2021-06-15 21:07:25 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 99 : 35 - cvc-datatype-valid.1.2.1: '656' is not a valid value for 'NCName'.
+2021-06-15 21:07:25 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 99 : 35 - cvc-attribute.3: The value '656' of attribute 'id' on element 'certificate' is not valid with respect to its type, 'certificateID'.
+2021-06-15 21:07:25 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 121 : 34 - cvc-datatype-valid.1.2.1: '55' is not a valid value for 'NCName'.
+2021-06-15 21:07:25 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 121 : 34 - cvc-attribute.3: The value '55' of attribute 'id' on element 'certificate' is not valid with respect to its type, 'certificateID'.
+2021-06-15 21:07:25 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 143 : 34 - cvc-datatype-valid.1.2.1: '55' is not a valid value for 'NCName'.
+2021-06-15 21:07:25 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 143 : 34 - cvc-attribute.3: The value '55' of attribute 'id' on element 'certificate' is not valid with respect to its type, 'certificateID'.
+2021-06-15 21:07:25 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 165 : 34 - cvc-datatype-valid.1.2.1: '66' is not a valid value for 'NCName'.
+2021-06-15 21:07:25 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 165 : 34 - cvc-attribute.3: The value '66' of attribute 'id' on element 'certificate' is not valid with respect to its type, 'certificateID'.
+2021-06-15 21:07:25 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 187 : 35 - cvc-datatype-valid.1.2.1: '698' is not a valid value for 'NCName'.
+2021-06-15 21:07:25 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 187 : 35 - cvc-attribute.3: The value '698' of attribute 'id' on element 'certificate' is not valid with respect to its type, 'certificateID'.
+2021-06-15 21:07:25 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 209 : 34 - cvc-datatype-valid.1.2.1: '89' is not a valid value for 'NCName'.
+2021-06-15 21:07:25 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 209 : 34 - cvc-attribute.3: The value '89' of attribute 'id' on element 'certificate' is not valid with respect to its type, 'certificateID'.
+2021-06-15 21:07:25 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 231 : 34 - cvc-datatype-valid.1.2.1: '56' is not a valid value for 'NCName'.
+2021-06-15 21:07:25 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 231 : 34 - cvc-attribute.3: The value '56' of attribute 'id' on element 'certificate' is not valid with respect to its type, 'certificateID'.
+2021-06-15 21:07:25 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 253 : 34 - cvc-datatype-valid.1.2.1: '78' is not a valid value for 'NCName'.
+2021-06-15 21:07:25 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 253 : 34 - cvc-attribute.3: The value '78' of attribute 'id' on element 'certificate' is not valid with respect to its type, 'certificateID'.
+2021-06-15 21:07:25 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 275 : 34 - cvc-datatype-valid.1.2.1: '65' is not a valid value for 'NCName'.
+2021-06-15 21:07:25 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 275 : 34 - cvc-attribute.3: The value '65' of attribute 'id' on element 'certificate' is not valid with respect to its type, 'certificateID'.
+2021-06-15 21:07:25 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 297 : 34 - cvc-datatype-valid.1.2.1: '99' is not a valid value for 'NCName'.
+2021-06-15 21:07:25 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 297 : 34 - cvc-attribute.3: The value '99' of attribute 'id' on element 'certificate' is not valid with respect to its type, 'certificateID'.
+2021-06-15 21:07:25 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 319 : 34 - cvc-datatype-valid.1.2.1: '32' is not a valid value for 'NCName'.
+2021-06-15 21:07:25 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 319 : 34 - cvc-attribute.3: The value '32' of attribute 'id' on element 'certificate' is not valid with respect to its type, 'certificateID'.
+2021-06-15 21:07:25 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 341 : 34 - cvc-datatype-valid.1.2.1: '21' is not a valid value for 'NCName'.
+2021-06-15 21:07:25 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 341 : 34 - cvc-attribute.3: The value '21' of attribute 'id' on element 'certificate' is not valid with respect to its type, 'certificateID'.
+2021-06-18 08:52:33 [main] ERROR by.boginsky.parser.SaxXmlParser - Invalid fileThere is no such constant class by.boginsky.parser.MedicineXmlTag modified
+2021-06-18 08:52:34 [main] ERROR by.boginsky.parser.SaxXmlParser - Invalid fileThere is no such constant class by.boginsky.parser.MedicineXmlTag modified
+2021-06-18 08:52:58 [main] ERROR by.boginsky.parser.SaxXmlParser - Invalid fileThere is no such constant class by.boginsky.parser.MedicineXmlTag modified
+2021-06-18 08:53:01 [main] ERROR by.boginsky.parser.SaxXmlParser - Invalid fileThere is no such constant class by.boginsky.parser.MedicineXmlTag modified
+2021-06-18 08:55:24 [main] ERROR by.boginsky.parser.SaxXmlParser - Invalid fileThere is no such constant class by.boginsky.parser.MedicineXmlTag modified
+2021-06-18 08:56:39 [main] ERROR by.boginsky.parser.SaxXmlParser - Invalid fileThere is no such constant class by.boginsky.parser.MedicineXmlTag modified
+2021-06-18 08:57:38 [main] ERROR by.boginsky.parser.SaxXmlParser - Invalid fileThere is no such constant class by.boginsky.parser.MedicineXmlTag modified
+2021-06-18 08:58:34 [main] ERROR by.boginsky.parser.SaxXmlParser - Invalid fileThere is no such constant class by.boginsky.parser.MedicineXmlTag modified
+2021-06-18 09:07:23 [main] ERROR by.boginsky.parser.SaxXmlParser - Invalid fileThere is no such constant class by.boginsky.parser.MedicineXmlTag modified
+2021-06-18 09:07:25 [main] ERROR by.boginsky.parser.SaxXmlParser - Invalid fileThere is no such constant class by.boginsky.parser.MedicineXmlTag medicines
+2021-06-18 09:07:35 [main] ERROR by.boginsky.parser.SaxXmlParser - Invalid fileThere is no such constant class by.boginsky.parser.MedicineXmlTag medicines
+2021-06-18 09:07:40 [main] ERROR by.boginsky.parser.SaxXmlParser - Invalid fileThere is no such constant class by.boginsky.parser.MedicineXmlTag medicines
+2021-06-18 09:07:58 [main] ERROR by.boginsky.parser.SaxXmlParser - Invalid fileThere is no such constant class by.boginsky.parser.MedicineXmlTag medicines
+2021-06-18 09:08:23 [main] ERROR by.boginsky.parser.SaxXmlParser - Invalid fileThere is no such constant class by.boginsky.parser.MedicineXmlTag medicines
+2021-06-18 09:10:55 [main] ERROR by.boginsky.parser.SaxXmlParser - Invalid fileThere is no such constant class by.boginsky.parser.MedicineXmlTag medicines
+2021-06-18 09:13:33 [main] ERROR by.boginsky.parser.SaxXmlParser - Invalid fileThere is no such constant class by.boginsky.parser.MedicineXmlTag medicines
+2021-06-18 09:14:43 [main] ERROR by.boginsky.parser.SaxXmlParser - Invalid fileThere is no such constant class by.boginsky.parser.MedicineXmlTag modified
+2021-06-18 09:48:17 [main] ERROR by.boginsky.parser.SaxXmlParser - Invalid fileThere is no such constant class by.boginsky.parser.MedicineXmlTag modified
+2021-06-18 09:48:32 [main] ERROR by.boginsky.parser.SaxXmlParser - Invalid fileThere is no such constant class by.boginsky.parser.MedicineXmlTag medicines
+2021-06-18 09:49:44 [main] ERROR by.boginsky.parser.SaxXmlParser - Invalid fileThere is no such constant class by.boginsky.parser.MedicineXmlTag modified
+2021-06-18 09:49:53 [main] ERROR by.boginsky.parser.SaxXmlParser - Invalid fileThere is no such constant class by.boginsky.parser.MedicineXmlTag modified
+2021-06-18 09:50:14 [main] ERROR by.boginsky.parser.SaxXmlParser - Invalid fileThere is no such constant class by.boginsky.parser.MedicineXmlTag modified
+2021-06-18 09:50:31 [main] ERROR by.boginsky.parser.SaxXmlParser - Invalid fileThere is no such constant class by.boginsky.parser.MedicineXmlTag modified
+2021-06-18 09:50:32 [main] ERROR by.boginsky.parser.SaxXmlParser - Invalid fileThere is no such constant class by.boginsky.parser.MedicineXmlTag modified
+2021-06-18 09:51:01 [main] ERROR by.boginsky.parser.SaxXmlParser - Invalid fileThere is no such constant class by.boginsky.parser.MedicineXmlTag modified
+2021-06-18 10:13:32 [main] ERROR by.boginsky.parser.SaxXmlParser - Invalid fileThere is no such constant class by.boginsky.parser.MedicineXmlTag modified
+2021-06-18 10:23:35 [main] ERROR by.boginsky.parser.SaxXmlParser - Invalid fileThere is no such constant class by.boginsky.parser.MedicineXmlTag modified
+2021-06-18 10:41:23 [main] ERROR by.boginsky.parser.SaxXmlParser - Invalid fileThere is no such constant class by.boginsky.parser.MedicineXmlTag modified
+2021-06-18 10:41:30 [main] ERROR by.boginsky.parser.SaxXmlParser - Invalid fileThere is no such constant class by.boginsky.parser.MedicineXmlTag modified
+2021-06-18 10:42:04 [main] ERROR by.boginsky.parser.SaxXmlParser - Invalid fileThere is no such constant class by.boginsky.parser.MedicineXmlTag modified
+2021-06-18 10:44:41 [main] ERROR by.boginsky.parser.SaxXmlParser - Invalid fileThere is no such constant class by.boginsky.parser.MedicineXmlTag modified
+2021-06-19 21:24:59 [main] ERROR by.boginsky.validator.MedicineXmlAndXsdValidator - Xml of Xsd are not valids4s-elt-character: Non-whitespace characters are not allowed in schema elements other than 'xs:appinfo' and 'xs:documentation'. Saw 'panadol'.
+2021-06-19 21:24:59 [main] ERROR by.boginsky.validator.MedicineXmlAndXsdValidator - Xml of Xsd are not valids4s-elt-character: Non-whitespace characters are not allowed in schema elements other than 'xs:appinfo' and 'xs:documentation'. Saw 'panadol'.
+2021-06-19 21:25:25 [main] ERROR by.boginsky.validator.MedicineXmlAndXsdValidator - Xml of Xsd are not valids4s-elt-character: Non-whitespace characters are not allowed in schema elements other than 'xs:appinfo' and 'xs:documentation'. Saw 'panadol'.
+2021-06-19 21:26:21 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 26 : 14 - cvc-complex-type.2.4.b: The content of element 'tablet' is not complete. One of '{"http://www.example.org/medicines":engraving}' is expected.
+2021-06-19 21:26:21 [main] FATAL by.boginsky.handler.MedicineErrorHandler - 27 : 1 - XML document structures must start and end within the same entity.
+2021-06-19 21:26:21 [main] ERROR by.boginsky.validator.MedicineXmlAndXsdValidator - Xml of Xsd are not validXML document structures must start and end within the same entity.

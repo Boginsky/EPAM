@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<medicines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.example.org/medicines"
+           xsi:schemaLocation="http://www.example.org/medicines medicines.xsd">
+    <tablet>
+        <name-of-medicine>panadol</name-of-medicine>
+        <group-of-medicine>analgesic-antipyretic</group-of-medicine>
+        <manufacturer>germany</manufacturer>
+        <analogs>paracetamol</analogs>
+        <version>
+            <certificate id="22" country-of-registration="Germany">
+                <date-of-issue>2021-04-22</date-of-issue>
+            </certificate>
+            <package>
+                <type-of-package>cardboard-boxes</type-of-package>
+                <amount-of-medicine>24</amount-of-medicine>
+                <price>3.0</price>
+            </package>
+            <dosage>
+                <dosage-of-medicine>500</dosage-of-medicine>
+                <frequency-of-admission>4</frequency-of-admission>
+            </dosage>
+        </version>
+        <form>solid</form>
+<!--        <engraving>true</engraving>-->
+    </tablet>

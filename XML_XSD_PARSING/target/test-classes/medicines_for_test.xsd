@@ -117,7 +117,7 @@
   </simpleType>
 
   <simpleType name="certificateID">
-    <restriction base="ID"> <!-- fixme-->
+    <restriction base="int"> <!-- fixme-->
       <pattern value="[0-9]+"/>
     </restriction>
   </simpleType>
