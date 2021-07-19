@@ -55,7 +55,7 @@ public class Tablet extends AbstractCommonMedicine {
         return new Builder();
     }
 
-    public static class Builder { // FIXME: 14.06.2021 make default
+   public static class Builder {
         private Tablet tablet;
 
         private Builder() {

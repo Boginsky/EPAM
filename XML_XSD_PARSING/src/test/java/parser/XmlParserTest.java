@@ -2,7 +2,6 @@ package parser;
 
 import by.boginsky.entity.AbstractCommonMedicine;
 import by.boginsky.exception.MedicineException;
-import by.boginsky.parser.StaxXmlParser;
 import by.boginsky.parser.XmlParser;
 import by.boginsky.parser.factory.XmlParserFactory;
 import by.boginsky.parser.factory.impl.DomXmlParserFactory;
@@ -18,29 +17,29 @@ public class XmlParserTest {
 
     private static final String pathToXml = "src/test/resources/medicines_for_test.xml";
     private static final int AMOUNT_OF_ENTITIES = 16;
-    private XmlParserFactory xmlParserFacory;
+    private XmlParserFactory xmlParserFactory;
 
     @Test
     public void testDomXmlParser() throws MedicineException {
-        xmlParserFacory = new DomXmlParserFactory();
-        XmlParser xmlParser = xmlParserFacory.newParser();
+        xmlParserFactory = new DomXmlParserFactory();
+        XmlParser xmlParser = xmlParserFactory.newParser();
         Set<AbstractCommonMedicine> medicines = xmlParser.parserXml(pathToXml);
         assertEquals(medicines.size(), AMOUNT_OF_ENTITIES);
     }
 
     @Test
-    public void testSaxXmlParser() throws MedicineException{
-        xmlParserFacory = new SaxXmlParserFactory();
-        XmlParser xmlParser = xmlParserFacory.newParser();
+    public void testSaxXmlParser() throws MedicineException {
+        xmlParserFactory = new SaxXmlParserFactory();
+        XmlParser xmlParser = xmlParserFactory.newParser();
         Set<AbstractCommonMedicine> medicines = xmlParser.parserXml(pathToXml);
-        assertEquals(medicines.size(),AMOUNT_OF_ENTITIES);
+        assertEquals(medicines.size(), AMOUNT_OF_ENTITIES);
     }
 
     @Test
-    public void testStaxXmlParser() throws MedicineException{
-        xmlParserFacory = new StaxXmlParserFactory();
-        XmlParser xmlParser = xmlParserFacory.newParser();
+    public void testStaxXmlParser() throws MedicineException {
+        xmlParserFactory = new StaxXmlParserFactory();
+        XmlParser xmlParser = xmlParserFactory.newParser();
         Set<AbstractCommonMedicine> medicines = xmlParser.parserXml(pathToXml);
-        assertEquals(medicines.size(),AMOUNT_OF_ENTITIES);
+        assertEquals(medicines.size(), AMOUNT_OF_ENTITIES);
     }
 }

@@ -81,3 +81,6 @@
 2021-06-19 21:26:21 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 26 : 14 - cvc-complex-type.2.4.b: The content of element 'tablet' is not complete. One of '{"http://www.example.org/medicines":engraving}' is expected.
 2021-06-19 21:26:21 [main] FATAL by.boginsky.handler.MedicineErrorHandler - 27 : 1 - XML document structures must start and end within the same entity.
 2021-06-19 21:26:21 [main] ERROR by.boginsky.validator.MedicineXmlAndXsdValidator - Xml of Xsd are not validXML document structures must start and end within the same entity.
+2021-06-20 22:07:38 [main] ERROR by.boginsky.handler.MedicineErrorHandler - 26 : 14 - cvc-complex-type.2.4.b: The content of element 'tablet' is not complete. One of '{"http://www.example.org/medicines":engraving}' is expected.
+2021-06-20 22:07:38 [main] FATAL by.boginsky.handler.MedicineErrorHandler - 27 : 1 - XML document structures must start and end within the same entity.
+2021-06-20 22:07:38 [main] ERROR by.boginsky.validator.MedicineXmlAndXsdValidator - Xml of Xsd are not validXML document structures must start and end within the same entity.

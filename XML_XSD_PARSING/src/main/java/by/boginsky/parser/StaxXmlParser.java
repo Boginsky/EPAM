@@ -66,12 +66,14 @@ public class StaxXmlParser implements XmlParser {
                     MedicineXmlTag medicineType = MedicineXmlTag.valueOf(tagToEnum(startElement.getName().getLocalPart()));
                     switch (medicineType) {
                         case TABLET:
-                        case CAPSULE:
                         case SOLUTION:
+                        case CAPSULE:
                             makeMedicine = medicineType;
-                            getAttribute(startElement);
                             break;
                         default:
+                            if(medicineType.equals(CERTIFICATE)) {
+                                getAttribute(startElement);
+                            }
                             element = medicineType;
                             event = xmlEventReader.nextEvent();
                             eventHandler(event);
@@ -129,6 +131,7 @@ public class StaxXmlParser implements XmlParser {
                         .versionSet(versionMaker())
                         .formSet(Form.valueOf(tagToEnum(elementMap.get(FORM.tagName()))))
                         .solventSet(Solvent.valueOf(tagToEnum(elementMap.get(SOLVENT.tagName()))));
+                medicines.add(solutionBuilder.build());
                 break;
         }
     }

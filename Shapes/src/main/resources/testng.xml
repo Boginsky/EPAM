@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="EpamTask_Shapes" verbose="1">
+    <test name="Validators">
+        <groups>
+            <run>
+                <include name="validators"/>
+            </run>
+        </groups>
+    </test>
+</suite>

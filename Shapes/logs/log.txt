@@ -1,0 +1,192 @@
+2021-07-01 17:14:06 [main] INFO  reader.CubeReader - Reading a data file data/data.txt
+2021-07-01 17:14:06 [main] INFO  reader.CubeReader - Reading a data file data/data.txt finished. String list: [1.0 2.0 3.0 1.0, -1 2 1 4, 0 1 2 3, -5.2 0 14 5, 0 1 4 6]
+2021-07-01 17:14:06 [main] INFO  parser.CubeParser - Parsing finished
+2021-07-01 17:14:06 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=1, point=Point{x=1.0, y=2.0, z=3.0}, sideLength=1.0} from Map: {POINT_X=1.0, POINT_Y=2.0, POINT_Z=3.0, SIDE_LENGTH=1.0}
+2021-07-01 17:14:06 [main] INFO  action.CubeAction - Volume for Cube(Cube{cubeId=1, point=Point{x=1.0, y=2.0, z=3.0}, sideLength=1.0}) is 1.0
+2021-07-01 17:14:06 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=1, point=Point{x=1.0, y=2.0, z=3.0}, sideLength=1.0}) is 1.0
+2021-07-01 17:14:06 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=1, point=Point{x=1.0, y=2.0, z=3.0}, sideLength=1.0}) is 1.0
+2021-07-01 17:14:06 [main] INFO  action.CubeAction - Cube square for Cube(Cube{cubeId=1, point=Point{x=1.0, y=2.0, z=3.0}, sideLength=1.0}) is 6.0
+2021-07-01 17:14:06 [main] INFO  parser.CubeParser - Parsing finished
+2021-07-01 17:14:06 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=2, point=Point{x=-1.0, y=2.0, z=1.0}, sideLength=4.0} from Map: {POINT_X=-1.0, POINT_Y=2.0, POINT_Z=1.0, SIDE_LENGTH=4.0}
+2021-07-01 17:14:06 [main] INFO  action.CubeAction - Volume for Cube(Cube{cubeId=2, point=Point{x=-1.0, y=2.0, z=1.0}, sideLength=4.0}) is 64.0
+2021-07-01 17:14:06 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=2, point=Point{x=-1.0, y=2.0, z=1.0}, sideLength=4.0}) is 16.0
+2021-07-01 17:14:06 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=2, point=Point{x=-1.0, y=2.0, z=1.0}, sideLength=4.0}) is 16.0
+2021-07-01 17:14:06 [main] INFO  action.CubeAction - Cube square for Cube(Cube{cubeId=2, point=Point{x=-1.0, y=2.0, z=1.0}, sideLength=4.0}) is 96.0
+2021-07-01 17:14:06 [main] INFO  parser.CubeParser - Parsing finished
+2021-07-01 17:14:06 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=3, point=Point{x=0.0, y=1.0, z=2.0}, sideLength=3.0} from Map: {POINT_X=0.0, POINT_Y=1.0, POINT_Z=2.0, SIDE_LENGTH=3.0}
+2021-07-01 17:14:06 [main] INFO  action.CubeAction - Volume for Cube(Cube{cubeId=3, point=Point{x=0.0, y=1.0, z=2.0}, sideLength=3.0}) is 27.0
+2021-07-01 17:14:06 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=3, point=Point{x=0.0, y=1.0, z=2.0}, sideLength=3.0}) is 9.0
+2021-07-01 17:14:06 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=3, point=Point{x=0.0, y=1.0, z=2.0}, sideLength=3.0}) is 9.0
+2021-07-01 17:14:06 [main] INFO  action.CubeAction - Cube square for Cube(Cube{cubeId=3, point=Point{x=0.0, y=1.0, z=2.0}, sideLength=3.0}) is 54.0
+2021-07-01 17:14:06 [main] INFO  parser.CubeParser - Parsing finished
+2021-07-01 17:14:06 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=4, point=Point{x=-5.2, y=0.0, z=14.0}, sideLength=5.0} from Map: {POINT_X=-5.2, POINT_Y=0.0, POINT_Z=14.0, SIDE_LENGTH=5.0}
+2021-07-01 17:14:06 [main] INFO  action.CubeAction - Volume for Cube(Cube{cubeId=4, point=Point{x=-5.2, y=0.0, z=14.0}, sideLength=5.0}) is 125.0
+2021-07-01 17:14:06 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=4, point=Point{x=-5.2, y=0.0, z=14.0}, sideLength=5.0}) is 25.0
+2021-07-01 17:14:06 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=4, point=Point{x=-5.2, y=0.0, z=14.0}, sideLength=5.0}) is 25.0
+2021-07-01 17:14:06 [main] INFO  action.CubeAction - Cube square for Cube(Cube{cubeId=4, point=Point{x=-5.2, y=0.0, z=14.0}, sideLength=5.0}) is 150.0
+2021-07-01 17:14:06 [main] INFO  parser.CubeParser - Parsing finished
+2021-07-01 17:14:06 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=5, point=Point{x=0.0, y=1.0, z=4.0}, sideLength=6.0} from Map: {POINT_X=0.0, POINT_Y=1.0, POINT_Z=4.0, SIDE_LENGTH=6.0}
+2021-07-01 17:14:06 [main] INFO  action.CubeAction - Volume for Cube(Cube{cubeId=5, point=Point{x=0.0, y=1.0, z=4.0}, sideLength=6.0}) is 216.0
+2021-07-01 17:14:06 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=5, point=Point{x=0.0, y=1.0, z=4.0}, sideLength=6.0}) is 36.0
+2021-07-01 17:14:06 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=5, point=Point{x=0.0, y=1.0, z=4.0}, sideLength=6.0}) is 36.0
+2021-07-01 17:14:06 [main] INFO  action.CubeAction - Cube square for Cube(Cube{cubeId=5, point=Point{x=0.0, y=1.0, z=4.0}, sideLength=6.0}) is 216.0
+2021-07-01 17:25:42 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=1, point=Point{x=1.0, y=2.4, z=2.0}, sideLength=3.0} with data: x=1.0, y=2.4, z=2.0, sideLength=3.0
+2021-07-01 17:25:42 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=2, point=Point{x=-1.0, y=2.0, z=1.0}, sideLength=4.0} with data: x=-1.0, y=2.0, z=1.0, sideLength=4.0
+2021-07-01 17:25:42 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=3, point=Point{x=0.0, y=1.0, z=4.0}, sideLength=6.0} with data: x=0.0, y=1.0, z=4.0, sideLength=6.0
+2021-07-01 17:25:42 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=4, point=Point{x=-5.2, y=0.0, z=14.0}, sideLength=5.0} with data: x=-5.2, y=0.0, z=14.0, sideLength=5.0
+2021-07-01 17:25:42 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=5, point=Point{x=5.6, y=1.7, z=0.0}, sideLength=4.0} with data: x=5.6, y=1.7, z=0.0, sideLength=4.0
+2021-07-01 17:25:42 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=6, point=Point{x=12.0, y=-12.0, z=-12.0}, sideLength=20.0} with data: x=12.0, y=-12.0, z=-12.0, sideLength=20.0
+2021-07-01 17:27:51 [main] INFO  reader.CubeReader - Reading a data file data/data.txt
+2021-07-01 17:27:51 [main] INFO  reader.CubeReader - Reading a data file data/data.txt finished. String list: [1.0 2.0 3.0 1.0, -1 2 1 4, 0 1 2 3, -5.2 0 14 5, 0 1 4 6]
+2021-07-01 17:29:34 [main] INFO  reader.CubeReader - Reading a data file data/data.txt
+2021-07-01 17:29:34 [main] INFO  reader.CubeReader - Reading a data file data/data.txt finished. String list: [1.0 2.0 3.0 1.0, -1 2 1 4, 0 1 2 3, -5.2 0 14 5, 0 1 4 6]
+2021-07-01 17:30:58 [main] INFO  reader.CubeReader - Reading a data file data/data.txt
+2021-07-01 17:30:58 [main] INFO  reader.CubeReader - Reading a data file data/data.txt finished. String list: [1.0 2.0 3.0 1.0, -1 2 1 4, 0 1 2 3, -5.2 0 14 5, 0 1 4 6]
+2021-07-01 17:31:26 [main] INFO  reader.CubeReader - Reading a data file data/data.txt
+2021-07-01 17:31:26 [main] INFO  reader.CubeReader - Reading a data file data/data.txt finished. String list: [1.0 2.0 3.0 1.0, -1 2 1 4, 0 1 2 3, -5.2 0 14 5, 0 1 4 6]
+2021-07-01 17:31:26 [main] INFO  parser.CubeParser - Parsing finished
+2021-07-01 17:31:26 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=1, point=Point{x=1.0, y=2.0, z=3.0}, sideLength=1.0} from Map: {POINT_X=1.0, POINT_Y=2.0, POINT_Z=3.0, SIDE_LENGTH=1.0}
+2021-07-01 17:31:26 [main] INFO  action.CubeAction - Volume for Cube(Cube{cubeId=1, point=Point{x=1.0, y=2.0, z=3.0}, sideLength=1.0}) is 1.0
+2021-07-01 17:31:26 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=1, point=Point{x=1.0, y=2.0, z=3.0}, sideLength=1.0}) is 1.0
+2021-07-01 17:31:26 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=1, point=Point{x=1.0, y=2.0, z=3.0}, sideLength=1.0}) is 1.0
+2021-07-01 17:31:26 [main] INFO  action.CubeAction - Cube square for Cube(Cube{cubeId=1, point=Point{x=1.0, y=2.0, z=3.0}, sideLength=1.0}) is 6.0
+2021-07-01 17:31:26 [main] INFO  parser.CubeParser - Parsing finished
+2021-07-01 17:31:26 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=2, point=Point{x=-1.0, y=2.0, z=1.0}, sideLength=4.0} from Map: {POINT_X=-1.0, POINT_Y=2.0, POINT_Z=1.0, SIDE_LENGTH=4.0}
+2021-07-01 17:31:26 [main] INFO  action.CubeAction - Volume for Cube(Cube{cubeId=2, point=Point{x=-1.0, y=2.0, z=1.0}, sideLength=4.0}) is 64.0
+2021-07-01 17:31:26 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=2, point=Point{x=-1.0, y=2.0, z=1.0}, sideLength=4.0}) is 16.0
+2021-07-01 17:31:26 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=2, point=Point{x=-1.0, y=2.0, z=1.0}, sideLength=4.0}) is 16.0
+2021-07-01 17:31:26 [main] INFO  action.CubeAction - Cube square for Cube(Cube{cubeId=2, point=Point{x=-1.0, y=2.0, z=1.0}, sideLength=4.0}) is 96.0
+2021-07-01 17:31:26 [main] INFO  parser.CubeParser - Parsing finished
+2021-07-01 17:31:26 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=3, point=Point{x=0.0, y=1.0, z=2.0}, sideLength=3.0} from Map: {POINT_X=0.0, POINT_Y=1.0, POINT_Z=2.0, SIDE_LENGTH=3.0}
+2021-07-01 17:31:26 [main] INFO  action.CubeAction - Volume for Cube(Cube{cubeId=3, point=Point{x=0.0, y=1.0, z=2.0}, sideLength=3.0}) is 27.0
+2021-07-01 17:31:26 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=3, point=Point{x=0.0, y=1.0, z=2.0}, sideLength=3.0}) is 9.0
+2021-07-01 17:31:26 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=3, point=Point{x=0.0, y=1.0, z=2.0}, sideLength=3.0}) is 9.0
+2021-07-01 17:31:26 [main] INFO  action.CubeAction - Cube square for Cube(Cube{cubeId=3, point=Point{x=0.0, y=1.0, z=2.0}, sideLength=3.0}) is 54.0
+2021-07-01 17:31:26 [main] INFO  parser.CubeParser - Parsing finished
+2021-07-01 17:31:26 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=4, point=Point{x=-5.2, y=0.0, z=14.0}, sideLength=5.0} from Map: {POINT_X=-5.2, POINT_Y=0.0, POINT_Z=14.0, SIDE_LENGTH=5.0}
+2021-07-01 17:31:26 [main] INFO  action.CubeAction - Volume for Cube(Cube{cubeId=4, point=Point{x=-5.2, y=0.0, z=14.0}, sideLength=5.0}) is 125.0
+2021-07-01 17:31:26 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=4, point=Point{x=-5.2, y=0.0, z=14.0}, sideLength=5.0}) is 25.0
+2021-07-01 17:31:26 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=4, point=Point{x=-5.2, y=0.0, z=14.0}, sideLength=5.0}) is 25.0
+2021-07-01 17:31:26 [main] INFO  action.CubeAction - Cube square for Cube(Cube{cubeId=4, point=Point{x=-5.2, y=0.0, z=14.0}, sideLength=5.0}) is 150.0
+2021-07-01 17:31:26 [main] INFO  parser.CubeParser - Parsing finished
+2021-07-01 17:31:26 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=5, point=Point{x=0.0, y=1.0, z=4.0}, sideLength=6.0} from Map: {POINT_X=0.0, POINT_Y=1.0, POINT_Z=4.0, SIDE_LENGTH=6.0}
+2021-07-01 17:31:26 [main] INFO  action.CubeAction - Volume for Cube(Cube{cubeId=5, point=Point{x=0.0, y=1.0, z=4.0}, sideLength=6.0}) is 216.0
+2021-07-01 17:31:26 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=5, point=Point{x=0.0, y=1.0, z=4.0}, sideLength=6.0}) is 36.0
+2021-07-01 17:31:26 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=5, point=Point{x=0.0, y=1.0, z=4.0}, sideLength=6.0}) is 36.0
+2021-07-01 17:31:26 [main] INFO  action.CubeAction - Cube square for Cube(Cube{cubeId=5, point=Point{x=0.0, y=1.0, z=4.0}, sideLength=6.0}) is 216.0
+2021-07-01 17:32:15 [main] INFO  reader.CubeReader - Reading a data file missing_file.txt
+2021-07-01 17:32:15 [main] INFO  reader.CubeReader - Reading a data file data/data.txt
+2021-07-01 17:32:15 [main] INFO  reader.CubeReader - Reading a data file data/data.txt finished. String list: [1.0 2.0 3.0 1.0, -1 2 1 4, 0 1 2 3, -5.2 0 14 5, 0 1 4 6]
+2021-07-01 17:36:32 [main] INFO  parser.CubeParser - Parsing finished
+2021-07-01 17:36:32 [main] INFO  parser.CubeParser - Parsing finished
+2021-07-01 17:36:32 [main] INFO  parser.CubeParser - Parsing finished
+2021-07-01 17:36:32 [main] INFO  parser.CubeParser - Parsing finished
+2021-07-01 17:36:32 [main] INFO  parser.CubeParser - Parsing finished
+2021-07-01 17:37:45 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=1, point=Point{x=0.0, y=1.0, z=1.0}, sideLength=2.0} with data: x=0.0, y=1.0, z=1.0, sideLength=2.0
+2021-07-01 17:37:45 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=2, point=Point{x=1.0, y=0.0, z=1.0}, sideLength=3.0} with data: x=1.0, y=0.0, z=1.0, sideLength=3.0
+2021-07-01 17:37:45 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=3, point=Point{x=1.0, y=1.0, z=0.0}, sideLength=4.0} with data: x=1.0, y=1.0, z=0.0, sideLength=4.0
+2021-07-01 17:37:45 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=4, point=Point{x=1.0, y=1.0, z=1.0}, sideLength=1.8} with data: x=1.0, y=1.0, z=1.0, sideLength=1.8
+2021-07-01 17:37:59 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=1, point=Point{x=0.0, y=1.0, z=1.0}, sideLength=2.0} with data: x=0.0, y=1.0, z=1.0, sideLength=2.0
+2021-07-01 17:37:59 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=2, point=Point{x=1.0, y=0.0, z=1.0}, sideLength=3.0} with data: x=1.0, y=0.0, z=1.0, sideLength=3.0
+2021-07-01 17:37:59 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=3, point=Point{x=1.0, y=1.0, z=0.0}, sideLength=4.0} with data: x=1.0, y=1.0, z=0.0, sideLength=4.0
+2021-07-01 17:37:59 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=4, point=Point{x=-1.0, y=1.0, z=1.0}, sideLength=1.8} with data: x=-1.0, y=1.0, z=1.0, sideLength=1.8
+2021-07-01 17:38:07 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=1, point=Point{x=0.0, y=1.0, z=1.0}, sideLength=2.0} with data: x=0.0, y=1.0, z=1.0, sideLength=2.0
+2021-07-01 17:38:07 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=2, point=Point{x=1.0, y=0.0, z=1.0}, sideLength=3.0} with data: x=1.0, y=0.0, z=1.0, sideLength=3.0
+2021-07-01 17:38:07 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=3, point=Point{x=1.0, y=1.0, z=0.0}, sideLength=4.0} with data: x=1.0, y=1.0, z=0.0, sideLength=4.0
+2021-07-01 17:38:07 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=4, point=Point{x=0.0, y=1.0, z=1.0}, sideLength=1.8} with data: x=0.0, y=1.0, z=1.0, sideLength=1.8
+2021-07-01 17:38:15 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=1, point=Point{x=0.0, y=1.0, z=1.0}, sideLength=2.0} with data: x=0.0, y=1.0, z=1.0, sideLength=2.0
+2021-07-01 17:38:15 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=2, point=Point{x=1.0, y=0.0, z=1.0}, sideLength=3.0} with data: x=1.0, y=0.0, z=1.0, sideLength=3.0
+2021-07-01 17:38:15 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=3, point=Point{x=1.0, y=1.0, z=0.0}, sideLength=4.0} with data: x=1.0, y=1.0, z=0.0, sideLength=4.0
+2021-07-01 17:38:15 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=4, point=Point{x=-100.0, y=1.0, z=1.0}, sideLength=1.8} with data: x=-100.0, y=1.0, z=1.0, sideLength=1.8
+2021-07-01 17:39:08 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=1, point=Point{x=1.0, y=1.0, z=1.0}, sideLength=2.0} with data: x=1.0, y=1.0, z=1.0, sideLength=2.0
+2021-07-01 17:39:08 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=2, point=Point{x=1.0, y=1.0, z=1.0}, sideLength=3.0} with data: x=1.0, y=1.0, z=1.0, sideLength=3.0
+2021-07-01 17:39:08 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=3, point=Point{x=1.0, y=1.0, z=1.0}, sideLength=4.0} with data: x=1.0, y=1.0, z=1.0, sideLength=4.0
+2021-07-01 17:39:08 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=4, point=Point{x=1.0, y=1.0, z=1.0}, sideLength=1.8} with data: x=1.0, y=1.0, z=1.0, sideLength=1.8
+2021-07-01 17:39:08 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=1, point=Point{x=1.0, y=1.0, z=1.0}, sideLength=2.0}) is 4.0
+2021-07-01 17:39:08 [main] INFO  action.CubeAction - Cube square for Cube(Cube{cubeId=1, point=Point{x=1.0, y=1.0, z=1.0}, sideLength=2.0}) is 24.0
+2021-07-01 17:39:08 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=2, point=Point{x=1.0, y=1.0, z=1.0}, sideLength=3.0}) is 9.0
+2021-07-01 17:39:08 [main] INFO  action.CubeAction - Cube square for Cube(Cube{cubeId=2, point=Point{x=1.0, y=1.0, z=1.0}, sideLength=3.0}) is 54.0
+2021-07-01 17:39:08 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=3, point=Point{x=1.0, y=1.0, z=1.0}, sideLength=4.0}) is 16.0
+2021-07-01 17:39:08 [main] INFO  action.CubeAction - Cube square for Cube(Cube{cubeId=3, point=Point{x=1.0, y=1.0, z=1.0}, sideLength=4.0}) is 96.0
+2021-07-01 17:39:08 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=4, point=Point{x=1.0, y=1.0, z=1.0}, sideLength=1.8}) is 3.24
+2021-07-01 17:39:08 [main] INFO  action.CubeAction - Cube square for Cube(Cube{cubeId=4, point=Point{x=1.0, y=1.0, z=1.0}, sideLength=1.8}) is 19.44
+2021-07-01 17:39:08 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=5, point=Point{x=1.0, y=1.0, z=1.0}, sideLength=2.0} with data: x=1.0, y=1.0, z=1.0, sideLength=2.0
+2021-07-01 17:39:08 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=6, point=Point{x=1.0, y=1.0, z=1.0}, sideLength=3.0} with data: x=1.0, y=1.0, z=1.0, sideLength=3.0
+2021-07-01 17:39:08 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=7, point=Point{x=1.0, y=1.0, z=1.0}, sideLength=4.0} with data: x=1.0, y=1.0, z=1.0, sideLength=4.0
+2021-07-01 17:39:08 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=8, point=Point{x=1.0, y=1.0, z=1.0}, sideLength=1.8} with data: x=1.0, y=1.0, z=1.0, sideLength=1.8
+2021-07-01 17:39:08 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=5, point=Point{x=1.0, y=1.0, z=1.0}, sideLength=2.0}) is 4.0
+2021-07-01 17:39:08 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=6, point=Point{x=1.0, y=1.0, z=1.0}, sideLength=3.0}) is 9.0
+2021-07-01 17:39:08 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=7, point=Point{x=1.0, y=1.0, z=1.0}, sideLength=4.0}) is 16.0
+2021-07-01 17:39:08 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=8, point=Point{x=1.0, y=1.0, z=1.0}, sideLength=1.8}) is 3.24
+2021-07-01 17:39:08 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=9, point=Point{x=1.0, y=1.0, z=1.0}, sideLength=2.0} with data: x=1.0, y=1.0, z=1.0, sideLength=2.0
+2021-07-01 17:39:08 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=10, point=Point{x=1.0, y=1.0, z=1.0}, sideLength=3.0} with data: x=1.0, y=1.0, z=1.0, sideLength=3.0
+2021-07-01 17:39:08 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=11, point=Point{x=1.0, y=1.0, z=1.0}, sideLength=4.0} with data: x=1.0, y=1.0, z=1.0, sideLength=4.0
+2021-07-01 17:39:08 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=12, point=Point{x=1.0, y=1.0, z=1.0}, sideLength=1.8} with data: x=1.0, y=1.0, z=1.0, sideLength=1.8
+2021-07-01 17:39:08 [main] INFO  action.CubeAction - Volume for Cube(Cube{cubeId=9, point=Point{x=1.0, y=1.0, z=1.0}, sideLength=2.0}) is 8.0
+2021-07-01 17:39:08 [main] INFO  action.CubeAction - Volume for Cube(Cube{cubeId=10, point=Point{x=1.0, y=1.0, z=1.0}, sideLength=3.0}) is 27.0
+2021-07-01 17:39:08 [main] INFO  action.CubeAction - Volume for Cube(Cube{cubeId=11, point=Point{x=1.0, y=1.0, z=1.0}, sideLength=4.0}) is 64.0
+2021-07-01 17:39:08 [main] INFO  action.CubeAction - Volume for Cube(Cube{cubeId=12, point=Point{x=1.0, y=1.0, z=1.0}, sideLength=1.8}) is 5.832000000000001
+2021-07-01 18:53:53 [main] INFO  reader.CubeReader - Reading a data file data/data.txt
+2021-07-01 18:53:53 [main] INFO  reader.CubeReader - Reading a data file data/data.txt finished. String list: [1.0 2.0 3.0 1.0, -1 2 1 4, 0 1 2 3, -5.2 0 14 5, 0 1 4 6]
+2021-07-01 18:53:53 [main] INFO  parser.CubeParser - Parsing finished
+2021-07-01 18:53:53 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=1, point=Point{x=1.0, y=2.0, z=3.0}, sideLength=1.0} from Map: {POINT_X=1.0, POINT_Y=2.0, POINT_Z=3.0, SIDE_LENGTH=1.0}
+2021-07-01 18:53:53 [main] INFO  action.CubeAction - Volume for Cube(Cube{cubeId=1, point=Point{x=1.0, y=2.0, z=3.0}, sideLength=1.0}) is 1.0
+2021-07-01 18:53:53 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=1, point=Point{x=1.0, y=2.0, z=3.0}, sideLength=1.0}) is 1.0
+2021-07-01 18:53:53 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=1, point=Point{x=1.0, y=2.0, z=3.0}, sideLength=1.0}) is 1.0
+2021-07-01 18:53:53 [main] INFO  action.CubeAction - Cube square for Cube(Cube{cubeId=1, point=Point{x=1.0, y=2.0, z=3.0}, sideLength=1.0}) is 6.0
+2021-07-01 18:53:53 [main] INFO  parser.CubeParser - Parsing finished
+2021-07-01 18:53:53 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=2, point=Point{x=-1.0, y=2.0, z=1.0}, sideLength=4.0} from Map: {POINT_X=-1.0, POINT_Y=2.0, POINT_Z=1.0, SIDE_LENGTH=4.0}
+2021-07-01 18:53:53 [main] INFO  action.CubeAction - Volume for Cube(Cube{cubeId=2, point=Point{x=-1.0, y=2.0, z=1.0}, sideLength=4.0}) is 64.0
+2021-07-01 18:53:53 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=2, point=Point{x=-1.0, y=2.0, z=1.0}, sideLength=4.0}) is 16.0
+2021-07-01 18:53:53 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=2, point=Point{x=-1.0, y=2.0, z=1.0}, sideLength=4.0}) is 16.0
+2021-07-01 18:53:53 [main] INFO  action.CubeAction - Cube square for Cube(Cube{cubeId=2, point=Point{x=-1.0, y=2.0, z=1.0}, sideLength=4.0}) is 96.0
+2021-07-01 18:53:53 [main] INFO  parser.CubeParser - Parsing finished
+2021-07-01 18:53:53 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=3, point=Point{x=0.0, y=1.0, z=2.0}, sideLength=3.0} from Map: {POINT_X=0.0, POINT_Y=1.0, POINT_Z=2.0, SIDE_LENGTH=3.0}
+2021-07-01 18:53:53 [main] INFO  action.CubeAction - Volume for Cube(Cube{cubeId=3, point=Point{x=0.0, y=1.0, z=2.0}, sideLength=3.0}) is 27.0
+2021-07-01 18:53:53 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=3, point=Point{x=0.0, y=1.0, z=2.0}, sideLength=3.0}) is 9.0
+2021-07-01 18:53:53 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=3, point=Point{x=0.0, y=1.0, z=2.0}, sideLength=3.0}) is 9.0
+2021-07-01 18:53:53 [main] INFO  action.CubeAction - Cube square for Cube(Cube{cubeId=3, point=Point{x=0.0, y=1.0, z=2.0}, sideLength=3.0}) is 54.0
+2021-07-01 18:53:53 [main] INFO  parser.CubeParser - Parsing finished
+2021-07-01 18:53:53 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=4, point=Point{x=-5.2, y=0.0, z=14.0}, sideLength=5.0} from Map: {POINT_X=-5.2, POINT_Y=0.0, POINT_Z=14.0, SIDE_LENGTH=5.0}
+2021-07-01 18:53:53 [main] INFO  action.CubeAction - Volume for Cube(Cube{cubeId=4, point=Point{x=-5.2, y=0.0, z=14.0}, sideLength=5.0}) is 125.0
+2021-07-01 18:53:53 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=4, point=Point{x=-5.2, y=0.0, z=14.0}, sideLength=5.0}) is 25.0
+2021-07-01 18:53:53 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=4, point=Point{x=-5.2, y=0.0, z=14.0}, sideLength=5.0}) is 25.0
+2021-07-01 18:53:53 [main] INFO  action.CubeAction - Cube square for Cube(Cube{cubeId=4, point=Point{x=-5.2, y=0.0, z=14.0}, sideLength=5.0}) is 150.0
+2021-07-01 18:53:53 [main] INFO  parser.CubeParser - Parsing finished
+2021-07-01 18:53:53 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=5, point=Point{x=0.0, y=1.0, z=4.0}, sideLength=6.0} from Map: {POINT_X=0.0, POINT_Y=1.0, POINT_Z=4.0, SIDE_LENGTH=6.0}
+2021-07-01 18:53:53 [main] INFO  action.CubeAction - Volume for Cube(Cube{cubeId=5, point=Point{x=0.0, y=1.0, z=4.0}, sideLength=6.0}) is 216.0
+2021-07-01 18:53:53 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=5, point=Point{x=0.0, y=1.0, z=4.0}, sideLength=6.0}) is 36.0
+2021-07-01 18:53:53 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=5, point=Point{x=0.0, y=1.0, z=4.0}, sideLength=6.0}) is 36.0
+2021-07-01 18:53:53 [main] INFO  action.CubeAction - Cube square for Cube(Cube{cubeId=5, point=Point{x=0.0, y=1.0, z=4.0}, sideLength=6.0}) is 216.0
+2021-07-16 10:46:37 [main] INFO  reader.CubeReader - Reading a data file data/data.txt
+2021-07-16 10:46:37 [main] INFO  reader.CubeReader - Reading a data file data/data.txt finished. String list: [1.0 2.0 3.0 1.0, -1 2 1 4, 0 1 2 3, -5.2 0 14 5, 0 1 4 6]
+2021-07-16 10:46:37 [main] INFO  parser.CubeParser - Parsing finished
+2021-07-16 10:46:37 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=1, point=Point{x=1.0, y=2.0, z=3.0}, sideLength=1.0} from Map: {POINT_X=1.0, POINT_Y=2.0, POINT_Z=3.0, SIDE_LENGTH=1.0}
+2021-07-16 10:46:37 [main] INFO  action.CubeAction - Volume for Cube(Cube{cubeId=1, point=Point{x=1.0, y=2.0, z=3.0}, sideLength=1.0}) is 1.0
+2021-07-16 10:46:37 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=1, point=Point{x=1.0, y=2.0, z=3.0}, sideLength=1.0}) is 1.0
+2021-07-16 10:46:37 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=1, point=Point{x=1.0, y=2.0, z=3.0}, sideLength=1.0}) is 1.0
+2021-07-16 10:46:37 [main] INFO  action.CubeAction - Cube square for Cube(Cube{cubeId=1, point=Point{x=1.0, y=2.0, z=3.0}, sideLength=1.0}) is 6.0
+2021-07-16 10:46:37 [main] INFO  parser.CubeParser - Parsing finished
+2021-07-16 10:46:37 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=2, point=Point{x=-1.0, y=2.0, z=1.0}, sideLength=4.0} from Map: {POINT_X=-1.0, POINT_Y=2.0, POINT_Z=1.0, SIDE_LENGTH=4.0}
+2021-07-16 10:46:37 [main] INFO  action.CubeAction - Volume for Cube(Cube{cubeId=2, point=Point{x=-1.0, y=2.0, z=1.0}, sideLength=4.0}) is 64.0
+2021-07-16 10:46:37 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=2, point=Point{x=-1.0, y=2.0, z=1.0}, sideLength=4.0}) is 16.0
+2021-07-16 10:46:37 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=2, point=Point{x=-1.0, y=2.0, z=1.0}, sideLength=4.0}) is 16.0
+2021-07-16 10:46:37 [main] INFO  action.CubeAction - Cube square for Cube(Cube{cubeId=2, point=Point{x=-1.0, y=2.0, z=1.0}, sideLength=4.0}) is 96.0
+2021-07-16 10:46:37 [main] INFO  parser.CubeParser - Parsing finished
+2021-07-16 10:46:37 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=3, point=Point{x=0.0, y=1.0, z=2.0}, sideLength=3.0} from Map: {POINT_X=0.0, POINT_Y=1.0, POINT_Z=2.0, SIDE_LENGTH=3.0}
+2021-07-16 10:46:37 [main] INFO  action.CubeAction - Volume for Cube(Cube{cubeId=3, point=Point{x=0.0, y=1.0, z=2.0}, sideLength=3.0}) is 27.0
+2021-07-16 10:46:37 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=3, point=Point{x=0.0, y=1.0, z=2.0}, sideLength=3.0}) is 9.0
+2021-07-16 10:46:37 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=3, point=Point{x=0.0, y=1.0, z=2.0}, sideLength=3.0}) is 9.0
+2021-07-16 10:46:37 [main] INFO  action.CubeAction - Cube square for Cube(Cube{cubeId=3, point=Point{x=0.0, y=1.0, z=2.0}, sideLength=3.0}) is 54.0
+2021-07-16 10:46:37 [main] INFO  parser.CubeParser - Parsing finished
+2021-07-16 10:46:37 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=4, point=Point{x=-5.2, y=0.0, z=14.0}, sideLength=5.0} from Map: {POINT_X=-5.2, POINT_Y=0.0, POINT_Z=14.0, SIDE_LENGTH=5.0}
+2021-07-16 10:46:37 [main] INFO  action.CubeAction - Volume for Cube(Cube{cubeId=4, point=Point{x=-5.2, y=0.0, z=14.0}, sideLength=5.0}) is 125.0
+2021-07-16 10:46:37 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=4, point=Point{x=-5.2, y=0.0, z=14.0}, sideLength=5.0}) is 25.0
+2021-07-16 10:46:37 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=4, point=Point{x=-5.2, y=0.0, z=14.0}, sideLength=5.0}) is 25.0
+2021-07-16 10:46:37 [main] INFO  action.CubeAction - Cube square for Cube(Cube{cubeId=4, point=Point{x=-5.2, y=0.0, z=14.0}, sideLength=5.0}) is 150.0
+2021-07-16 10:46:37 [main] INFO  parser.CubeParser - Parsing finished
+2021-07-16 10:46:37 [main] INFO  factory.CubeFactory - Created Cube: Cube{cubeId=5, point=Point{x=0.0, y=1.0, z=4.0}, sideLength=6.0} from Map: {POINT_X=0.0, POINT_Y=1.0, POINT_Z=4.0, SIDE_LENGTH=6.0}
+2021-07-16 10:46:37 [main] INFO  action.CubeAction - Volume for Cube(Cube{cubeId=5, point=Point{x=0.0, y=1.0, z=4.0}, sideLength=6.0}) is 216.0
+2021-07-16 10:46:37 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=5, point=Point{x=0.0, y=1.0, z=4.0}, sideLength=6.0}) is 36.0
+2021-07-16 10:46:37 [main] INFO  action.CubeAction - Side square for Cube(Cube{cubeId=5, point=Point{x=0.0, y=1.0, z=4.0}, sideLength=6.0}) is 36.0
+2021-07-16 10:46:37 [main] INFO  action.CubeAction - Cube square for Cube(Cube{cubeId=5, point=Point{x=0.0, y=1.0, z=4.0}, sideLength=6.0}) is 216.0
