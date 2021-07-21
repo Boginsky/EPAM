@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Information Handling tests" verbose="1">
+    <test name="Test Lexeme Parsers">
+        <classes>
+            <class name="parser.ParagraphParserTest"/>
+            <class name="parser.SentenceParserTest"/>
+            <class name="parser.LexemeParserTest"/>
+            <class name="parser.SymbolParserTest"/>
+        </classes>
+    </test>
+
+    <test name="Test service">
+        <classes>
+            <class name="service.TextComponentServiceImplTest"/>
+        </classes>
+    </test>
+
+</suite>
