@@ -139,11 +139,11 @@ public class User extends Entity {
         return sb.toString();
     }
 
-    enum UserRole {
+    public enum UserRole {
         ADMIN, USER, VISITOR;
     }
 
-    protected enum UserStatus {
+    public enum UserStatus {
         BLOCKED, ACTIVE;
     }
 }

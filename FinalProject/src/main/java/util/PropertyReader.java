@@ -17,8 +17,8 @@ public class PropertyReader {
             properties.load(inputStream);
             return properties;
         } catch (IOException e) {
-            logger.error("Error in reading properties for database ", e);
-            throw new RuntimeException("Error in reading properties for database ", e);
+            logger.error("Error in reading properties", e);
+            throw new RuntimeException("Error in reading properties", e);
         }
     }
 }
