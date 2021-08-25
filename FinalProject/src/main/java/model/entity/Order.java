@@ -3,7 +3,7 @@ package model.entity;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
-public class Order extends Entity {
+public class Order extends AbstractEntity {
 
     private Long orderId;
     private BigDecimal totalPrice;

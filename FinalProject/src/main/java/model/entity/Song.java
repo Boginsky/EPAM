@@ -1,9 +1,8 @@
 package model.entity;
 
 import java.math.BigDecimal;
-import java.util.Objects;
 
-public class Song extends Entity {
+public class Song extends AbstractEntity {
 
     private Long songId;
     private String songName;

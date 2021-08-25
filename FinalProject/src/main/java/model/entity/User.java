@@ -3,7 +3,7 @@ package model.entity;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
-public class User extends Entity {
+public class User extends AbstractEntity {
 
     public enum UserRole {
         ADMIN, USER, VISITOR;

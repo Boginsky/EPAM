@@ -2,7 +2,7 @@ package model.entity;
 
 import java.sql.Timestamp;
 
-public class Author extends Entity {
+public class Author extends AbstractEntity {
     private Long authorId;
     private String firstName;
     private String lastName;

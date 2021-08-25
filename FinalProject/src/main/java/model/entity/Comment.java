@@ -1,6 +1,6 @@
 package model.entity;
 
-public class Comment extends Entity {
+public class Comment extends AbstractEntity {
 
     private Long commentId;
     private String commentMessage;

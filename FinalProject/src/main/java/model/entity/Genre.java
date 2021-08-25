@@ -2,7 +2,7 @@ package model.entity;
 
 import java.util.Objects;
 
-public class Genre extends Entity {
+public class Genre extends AbstractEntity {
 
     Long genreId;
     private String genreName;

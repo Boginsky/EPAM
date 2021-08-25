@@ -2,7 +2,7 @@ package model.entity;
 
 import java.sql.Timestamp;
 
-public class Album extends Entity {
+public class Album extends AbstractEntity {
 
     private Long albumId;
     private String albumName;

@@ -1,7 +1,7 @@
 package model.dao;
 
 import exception.DaoException;
-import model.entity.Entity;
+import model.entity.AbstractEntity;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
-public interface BaseDao<K, T extends Entity> {
+public interface BaseDao<K, T extends AbstractEntity> {
     static final Logger logger = LogManager.getLogger();
 
     List<T> findAll() throws DaoException;
