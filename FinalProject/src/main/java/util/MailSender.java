@@ -1,5 +1,6 @@
 package util;
 
+import exception.ServiceException;
 import jakarta.mail.*;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
@@ -17,14 +18,13 @@ public class MailSender {
     public static final String MAIL_TITLE = "MY FIRST EMAIL";
     public static final String MAIL_CONTENT_TYPE = "text/html";
 
-    public boolean sendEmail(String emailTo, String content) {
+    public boolean sendEmail(String emailTo, String content) throws ServiceException {
         boolean result;
         PropertyReader reader = new PropertyReader();
         Properties properties;
         properties = reader.read(MAIL_PROPERTY_PATH);
         String user = properties.getProperty(USER_KEY);
         String password = properties.getProperty(PASSWORD_KEY);
-
         Session session = createSession(properties, user, password);
 
         try {

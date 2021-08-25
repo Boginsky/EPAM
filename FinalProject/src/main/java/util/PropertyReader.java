@@ -1,5 +1,6 @@
 package util;
 
+import exception.ServiceException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -10,7 +11,7 @@ import java.util.Properties;
 public class PropertyReader {
     private static final Logger logger = LogManager.getLogger();
 
-    public Properties read(String path) {
+    public Properties read(String path) throws ServiceException {
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         try (InputStream inputStream = classLoader.getResourceAsStream(path)) {
             Properties properties = new Properties();
@@ -18,7 +19,7 @@ public class PropertyReader {
             return properties;
         } catch (IOException e) {
             logger.error("Error in reading properties", e);
-            throw new RuntimeException("Error in reading properties", e);
+            throw new ServiceException("Error in reading properties", e);
         }
     }
 }

@@ -1,5 +1,6 @@
 package model.pool;
 
+import exception.ServiceException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import util.PropertyReader;
@@ -14,19 +15,19 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class ConnectionPool {
-    private static final Logger logger = LogManager.getLogger();
 
-    private static ConnectionPool instance;
+    private static final Logger logger = LogManager.getLogger();
     private static final ReentrantLock locker = new ReentrantLock();
     private static final AtomicBoolean create = new AtomicBoolean(false);
-
     private static final int CONNECTION_POOL_SIZE = 8;
-    private BlockingDeque<ProxyConnection> freeConnections;
-    private BlockingDeque<ProxyConnection> busyConnections;
 
     public static final String DATABASE_PROPERTY_PATH = "database.properties";
     public static final String DATABASE_URL = "url";
     public static final String DATABASE_DRIVER = "driverClassName";
+
+    private static ConnectionPool instance;
+    private BlockingDeque<ProxyConnection> freeConnections;
+    private BlockingDeque<ProxyConnection> busyConnections;
 
     private ConnectionPool(){
         try {
@@ -40,7 +41,7 @@ public class ConnectionPool {
             for (int i = 0; i < CONNECTION_POOL_SIZE; i++) {
                 freeConnections.add(new ProxyConnection(DriverManager.getConnection(url, properties)));
             }
-        }catch (SQLException | ClassNotFoundException e){
+        }catch (SQLException | ClassNotFoundException |ServiceException e){
             logger.fatal("Fatal error during connection pool creation ", e);
             throw new RuntimeException("Fatal error during connection pool creation ", e);
         }
@@ -79,11 +80,11 @@ public class ConnectionPool {
             try {
                 freeConnections.put((ProxyConnection) connection);
             }catch (InterruptedException e){
-                logger.error("Error: wrong connection to put in free connections.", e);
+                logger.error("Wrong connection to put.", e);
                 Thread.currentThread().interrupt();
             }
         }else {
-            logger.error("Error:Wrong connection to release");
+            logger.error("Wrong connection to release");
             result = false;
         }
         return result;
@@ -94,13 +95,13 @@ public class ConnectionPool {
             for(ProxyConnection freeConnection : freeConnections){
                 freeConnection.reallyClose();
             }
-            deregisterDrevers();
+            deregisterDrivers();
         }catch (SQLException e){
             logger.error("Error during pool destruction");
         }
     }
 
-    private void deregisterDrevers() throws SQLException{
+    private void deregisterDrivers() throws SQLException{
         while (DriverManager.getDrivers().hasMoreElements()){
             DriverManager.deregisterDriver(DriverManager.getDrivers().nextElement());
         }

@@ -5,9 +5,17 @@ import java.sql.Timestamp;
 
 public class User extends Entity {
 
+    public enum UserRole {
+        ADMIN, USER, VISITOR;
+    }
+
+    public enum UserStatus {
+        BLOCKED, ACTIVE;
+    }
+
     private Long userId;
     private String email;
-    private String password;
+    private String password;// FIXME: 24.08.2021 delete
     private String firstName;
     private String lastName;
     private Timestamp userCreated;
@@ -139,11 +147,4 @@ public class User extends Entity {
         return sb.toString();
     }
 
-    public enum UserRole {
-        ADMIN, USER, VISITOR;
-    }
-
-    public enum UserStatus {
-        BLOCKED, ACTIVE;
-    }
 }
