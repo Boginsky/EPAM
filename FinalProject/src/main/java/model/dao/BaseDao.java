@@ -2,6 +2,7 @@ package model.dao;
 
 import exception.DaoException;
 import model.entity.AbstractEntity;
+import model.pool.ProxyConnection;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -9,23 +10,23 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
+import java.util.Optional;
 
-public interface BaseDao<K, T extends AbstractEntity> {
-    static final Logger logger = LogManager.getLogger();
+public abstract class BaseDao<T extends AbstractEntity> {
 
-    List<T> findAll() throws DaoException;
+    protected ProxyConnection connection;
 
-    T findEntityById(K id) throws DaoException;
+    protected static final Logger logger = LogManager.getLogger(BaseDao.class);
 
-    boolean delete(T t) throws DaoException;
+    public abstract List<T> findAll() throws DaoException;
 
-    boolean delete(K id) throws DaoException;
+    public abstract Optional<T> findById(Long id) throws DaoException;
 
-    boolean create(T t) throws DaoException;
+    public void setConnection(ProxyConnection connection) {
+        this.connection = connection;
+    }
 
-    T update(T t) throws DaoException;
-
-    default void close(Statement statement) {
+    public void close(Statement statement) {
         try {
             if (statement != null) {
                 statement.close();
@@ -35,7 +36,7 @@ public interface BaseDao<K, T extends AbstractEntity> {
         }
     }
 
-    default void close(Connection connection) {
+    public void close(Connection connection) {
         try {
             if (connection != null) {
                 connection.close();

@@ -62,7 +62,7 @@ public class ConnectionPool {
         return instance;
     }
 
-    public Connection getConnection(){
+    public ProxyConnection getConnection(){
         ProxyConnection connection = null;
         try {
             connection = freeConnections.take();
