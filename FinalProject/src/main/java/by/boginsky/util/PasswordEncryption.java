@@ -9,13 +9,14 @@ import java.security.NoSuchAlgorithmException;
 
 public class PasswordEncryption {
 
+    private static final String MESSAGE_DIGEST_5 = "MD5";
     private static final Logger logger  = LogManager.getLogger();
 
     public static String encryptsPassword(String password){
         MessageDigest messageDigest;
         byte[] digest = new byte[0];
         try {
-            messageDigest = MessageDigest.getInstance("MD5");
+            messageDigest = MessageDigest.getInstance(MESSAGE_DIGEST_5);
             messageDigest.reset();
             messageDigest.update(password.getBytes());
             digest = messageDigest.digest();

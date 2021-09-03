@@ -47,6 +47,7 @@ public class ConnectionPool {
         return instance;
     }
 
+    // FIXME: 03.09.2021 change on connection
     public ProxyConnection getConnection() {
         ProxyConnection connection = null;
         try {
