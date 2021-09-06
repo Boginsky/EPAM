@@ -91,7 +91,7 @@ public class Comment extends AbstractEntity {
         }
 
         public Comment build(){
-            return build();
+            return comment;
         }
     }
 

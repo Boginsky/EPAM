@@ -6,9 +6,8 @@ import java.math.BigDecimal;
 
 public final class InputDataValidatorImpl implements InputDataValidator {
 
-    private static final String CHECK_EMAIL = "[-a-z0-9!#$%&'*+/=?^_`{|}~]+(\\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@" +
-            "([a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\\.)*([a-z]{2,4})";
-    private static final String CHECK_PASSWORD = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$";
+    private static final String CHECK_EMAIL = "^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$";
+    private static final String CHECK_PASSWORD = "[0-9a-zA-Z]{1,20}";
     private static final String REPLACE_SCRIPT = "</?script>";
     private static final int MAX_LOGIN_LENGTH = 20;
     private static final int MAX_LENGTH_USER_NAME = 255;

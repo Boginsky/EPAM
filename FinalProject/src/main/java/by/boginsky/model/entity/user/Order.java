@@ -133,7 +133,7 @@ public class Order extends AbstractEntity {
         }
 
         public Order build(){
-            return build();
+            return order;
         }
     }
 }

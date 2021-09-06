@@ -74,7 +74,7 @@ public class Genre extends AbstractEntity {
         }
 
         public Genre build(){
-            return build();
+            return genre;
         }
     }
 }

@@ -94,7 +94,7 @@ public class Album extends AbstractEntity {
         }
 
         public Album build(){
-            return build();
+            return album;
         }
     }
 }

@@ -144,7 +144,7 @@ public class Song extends AbstractEntity {
         }
 
         public Song build(){
-            return build();
+            return song;
         }
     }
 }

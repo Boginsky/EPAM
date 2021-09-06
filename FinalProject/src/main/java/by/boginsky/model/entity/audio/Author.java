@@ -111,7 +111,7 @@ public class Author extends AbstractEntity {
         }
 
         public Author build(){
-            return build();
+            return author;
         }
     }
 }

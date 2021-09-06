@@ -171,7 +171,7 @@ public class User extends AbstractEntity {
         }
 
         public User build(){
-            return build();
+            return user;
         }
     }
 }
