@@ -9,7 +9,6 @@ public final class InputDataValidatorImpl implements InputDataValidator {
     private static final String CHECK_EMAIL = "^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$";
     private static final String CHECK_PASSWORD = "[0-9a-zA-Z]{1,20}";
     private static final String REPLACE_SCRIPT = "</?script>";
-    private static final int MAX_LOGIN_LENGTH = 20;
     private static final int MAX_LENGTH_USER_NAME = 255;
 
     @Override
@@ -25,11 +24,6 @@ public final class InputDataValidatorImpl implements InputDataValidator {
     @Override
     public boolean arePasswordsEqual(String firstPassword, String secondPassword) {
         return firstPassword.equals(secondPassword);
-    }
-
-    @Override
-    public boolean isCorrectLogin(String login) {
-        return login.length() <= MAX_LOGIN_LENGTH;
     }
 
     @Override

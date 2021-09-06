@@ -11,8 +11,6 @@ public interface InputDataValidator {
 
     boolean arePasswordsEqual(String firstPassword, String secondPassword);
 
-    boolean isCorrectLogin(String login);
-
     boolean isCorrectPrice(BigDecimal price);
 
     String replaceScript(String value);
