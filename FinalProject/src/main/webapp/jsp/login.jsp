@@ -19,7 +19,7 @@
             <div class="form-group">
                 <label><fmt:message key="label.email"/></label>
                 <input type="email" class="form-control" name="email" placeholder="<fmt:message key="label.enterYourEmail"/>" required>
-            </div>git s
+            </div>
             <div class="form-group">
                 <label><fmt:message key="label.password"/></label>
                 <input type="password" class="form-control" name="password" placeholder="<fmt:message key="label.enterYourPassword"/>"

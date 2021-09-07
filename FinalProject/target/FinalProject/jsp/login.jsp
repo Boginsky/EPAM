@@ -18,11 +18,11 @@
         <form action="./controller" name="command" method="post">
             <div class="form-group">
                 <label><fmt:message key="label.email"/></label>
-                <input type="email" class="form-control" name="login-email" placeholder="<fmt:message key="label.enterYourEmail"/>" required>
+                <input type="email" class="form-control" name="email" placeholder="<fmt:message key="label.enterYourEmail"/>" required>
             </div>
             <div class="form-group">
                 <label><fmt:message key="label.password"/></label>
-                <input type="password" class="form-control" name="login-password" placeholder="<fmt:message key="label.enterYourPassword"/>"
+                <input type="password" class="form-control" name="password" placeholder="<fmt:message key="label.enterYourPassword"/>"
                        required>
             </div>
             <div class="text-center">
