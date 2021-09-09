@@ -26,7 +26,7 @@ public class GenreDaoImpl extends BaseDao implements GenreDao {
         List<Genre> listOfGenres = new ArrayList<>();
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_GENRES)) {
             ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
+            while (resultSet.next()) {
                 String genreName = resultSet.getString(GENRE_NAME);
                 String informationAboutGenre = resultSet.getString(GENRE_INFO);
                 listOfGenres.add(Genre.builder()
@@ -41,32 +41,12 @@ public class GenreDaoImpl extends BaseDao implements GenreDao {
     }
 
     @Override
-    public Optional<Genre> findById(Long genreId) throws DaoException {
-        Optional<Genre> genre = null;
-        try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_GENRE_BY_ID)) {
-            preparedStatement.setLong(1, genreId);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                String genreName = resultSet.getString(GENRE_NAME);
-                String informationAboutGenre = resultSet.getString(GENRE_INFO);
-                genre = Optional.of(Genre.builder()
-                        .setGenreName(genreName)
-                        .setInformationAboutGenre(informationAboutGenre)
-                        .build());
-            }
-        } catch (SQLException e) {
-            throw new DaoException("SQLException,finding genre by id", e);
-        }
-        return genre;
-    }
-
-    @Override
     public Optional<Genre> findByName(String nameOfGenre) throws DaoException {
         Optional<Genre> genre = null;
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_GENRE_BY_NAME)) {
             preparedStatement.setString(1, nameOfGenre);
             ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
+            while (resultSet.next()) {
                 String genreName = resultSet.getString(GENRE_NAME);
                 String informationAboutGenre = resultSet.getString(GENRE_INFO);
                 genre = Optional.of(Genre.builder()

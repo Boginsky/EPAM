@@ -9,9 +9,9 @@ public class Song extends AbstractEntity {
     private String songName;
     private String imageUrl;
     private BigDecimal price;
-    private Long authorId;
-    private Long genreId;
-    private Long albumId;
+    private String author;
+    private String genre;
+    private String album;
 
     public String getSongName() {
         return songName;
@@ -37,28 +37,28 @@ public class Song extends AbstractEntity {
         this.price = price;
     }
 
-    public Long getAuthorId() {
-        return authorId;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setAuthorId(Long authorId) {
-        this.authorId = authorId;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
-    public Long getGenreId() {
-        return genreId;
+    public String getGenre() {
+        return genre;
     }
 
-    public void setGenreId(Long genreId) {
-        this.genreId = genreId;
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
-    public Long getAlbumId() {
-        return albumId;
+    public String getAlbum() {
+        return album;
     }
 
-    public void setAlbumId(Long albumId) {
-        this.albumId = albumId;
+    public void setAlbum(String album) {
+        this.album = album;
     }
 
     @Override
@@ -72,9 +72,9 @@ public class Song extends AbstractEntity {
         return songName.equals(song.songName) &&
                 imageUrl.equals(song.imageUrl) &&
                 price.equals(song.price) &&
-                authorId.equals(song.authorId) &&
-                genreId.equals(song.genreId) &&
-                albumId.equals(song.albumId);
+                author.equals(song.author) &&
+                genre.equals(song.genre) &&
+                album.equals(song.album);
     }
 
     @Override
@@ -83,9 +83,9 @@ public class Song extends AbstractEntity {
         result = 31 * result + ((songName == null) ? 0 : songName.hashCode());
         result = 31 * result + ((imageUrl == null) ? 0 : imageUrl.hashCode());
         result = 31 * result + ((price == null) ? 0 : price.hashCode());
-        result = 31 * result + ((authorId == null) ? 0 : authorId.hashCode());
-        result = 31 * result + ((genreId== null) ? 0 : genreId.hashCode());
-        result = 31 * result + ((albumId == null) ? 0 : albumId.hashCode());
+        result = 31 * result + ((author == null) ? 0 : author.hashCode());
+        result = 31 * result + ((genre== null) ? 0 : genre.hashCode());
+        result = 31 * result + ((album == null) ? 0 : album.hashCode());
         return result;
     }
 
@@ -95,9 +95,9 @@ public class Song extends AbstractEntity {
         sb.append("songName='").append(songName).append('\'');
         sb.append(", imageUrl='").append(imageUrl).append('\'');
         sb.append(", price=").append(price);
-        sb.append(", authorName='").append(authorId).append('\'');
-        sb.append(", genreName='").append(genreId).append('\'');
-        sb.append(", albumName='").append(albumId).append('\'');
+        sb.append(", authorName='").append(author).append('\'');
+        sb.append(", genreName='").append(genre).append('\'');
+        sb.append(", albumName='").append(album).append('\'');
         sb.append('}');
         return sb.toString();
     }
@@ -128,18 +128,18 @@ public class Song extends AbstractEntity {
             return this;
         }
 
-        public Builder setAuthorId(Long authorId){
-            song.setAuthorId(authorId);
+        public Builder setAuthor(String author){
+            song.setAuthor(author);
             return this;
         }
 
-        public Builder setGenreId(Long genreId){
-            song.setGenreId(genreId);
+        public Builder setGenre(String genre){
+            song.setGenre(genre);
             return this;
         }
 
-        public Builder setAlbumId(Long albumId){
-            song.setAlbumId(albumId);
+        public Builder setAlbum(String album){
+            song.setAlbum(album);
             return this;
         }
 

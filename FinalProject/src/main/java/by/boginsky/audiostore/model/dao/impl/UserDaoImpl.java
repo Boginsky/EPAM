@@ -33,7 +33,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
         List<User> listOfUsers = new ArrayList<>();
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_USERS)) {
             ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
+            while (resultSet.next()) {
                 String email = resultSet.getString(USER_EMAIL);
                 String firstName = resultSet.getString(USER_FIRST_NAME);
                 String lastName = resultSet.getString(USER_LAST_NAME);
@@ -57,43 +57,13 @@ public class UserDaoImpl extends BaseDao implements UserDao {
         return listOfUsers;
     }
 
-    @Override
-    public Optional<User> findById(Long userId) throws DaoException {
-        Optional<User> user = null;
-        try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_USER_BY_ID)) {
-            preparedStatement.setLong(1, userId);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                String email = resultSet.getString(USER_EMAIL);
-                String firstName = resultSet.getString(USER_FIRST_NAME);
-                String lastName = resultSet.getString(USER_LAST_NAME);
-                Timestamp dateOfCreation = resultSet.getTimestamp(USER_DATE_OF_CREATION);
-                BigDecimal balance = resultSet.getBigDecimal(USER_BALANCE);
-                User.UserRole userRole = User.UserRole.valueOf(resultSet.getString(USER_ROLE));
-                User.UserStatus userStatus = User.UserStatus.valueOf(resultSet.getString(USER_STATUS));
-                user = Optional.of(User.builder()
-                        .setEmail(email)
-                        .setFirstName(firstName)
-                        .setLastName(lastName)
-                        .setUserCreated(dateOfCreation.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime())
-                        .setBalance(balance)
-                        .setUserRole(userRole)
-                        .setUserStatus(userStatus)
-                        .build());
-            }
-        } catch (SQLException e) {
-            throw new DaoException("SQLException, finding user by id", e);
-        }
-        return user;
-    }
-
     public Optional<User> findUserByEmailAndPassword(String email,String password) throws DaoException{
         Optional<User> user = null;
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_USER_BY_EMAIL_AND_PASSWORD)) {
             preparedStatement.setString(1,email);
             preparedStatement.setString(2,password);
             ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
+            while (resultSet.next()) {
                 String firstName = resultSet.getString(USER_FIRST_NAME);
                 String lastName = resultSet.getString(USER_LAST_NAME);
                 Timestamp dateOfCreation = resultSet.getTimestamp(USER_DATE_OF_CREATION);
@@ -122,7 +92,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_USER_BY_EMAIL)) {
             preparedStatement.setString(1, email);
             ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
+            while (resultSet.next()) {
                 userId = Optional.of(resultSet.getLong(USER_ID));
             }
         } catch (SQLException e) {

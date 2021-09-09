@@ -11,8 +11,6 @@ public interface OrderService {
 
     List<Order> findAllOrders() throws ServiceException;
 
-    Optional<Order> findOrderById(Long orderId) throws ServiceException;
-
     void addNewOrder(Long orderStatusId, Long userId, Long songId, Long orderId) throws ServiceException;
 
     List<Order> findAllByUserName(String userFirstName, String userLastName) throws ServiceException;

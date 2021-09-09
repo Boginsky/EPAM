@@ -34,7 +34,7 @@ public class OrderDaoImpl extends BaseDao implements OrderDao {
         List<Order> listOfOrders = new ArrayList<>();
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_ORDERS)) {
             ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
+            while (resultSet.next()) {
                 BigDecimal totalPrice = getTotalOrderPriceByOrderID(resultSet.getLong(ORDER_ID));
                 Timestamp dateOfCreation = resultSet.getTimestamp(ORDER_DATE_OF_CREATION);
                 String orderStatus = resultSet.getString(ORDER_STATUS);
@@ -52,32 +52,6 @@ public class OrderDaoImpl extends BaseDao implements OrderDao {
             throw new DaoException("SQLException, finding all orders", e);
         }
         return listOfOrders;
-    }
-
-    @Override
-    public Optional<Order> findById(Long orderId) throws DaoException {
-        Optional<Order> order = null;
-        try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_ORDER_BY_ID)) {
-            preparedStatement.setLong(1, orderId);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                BigDecimal totalPrice = getTotalOrderPriceByOrderID(orderId);
-                Timestamp dateOfCreation = resultSet.getTimestamp(ORDER_DATE_OF_CREATION);
-                String orderStatus = resultSet.getString(ORDER_STATUS);
-                Long userId = resultSet.getLong(USER_ID);
-                Long songId = resultSet.getLong(SONG_ID);
-                order = Optional.of(Order.builder()
-                        .setTotalPrice(totalPrice)
-                        .setDateOfCreation(dateOfCreation.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime())
-                        .setOrderStatus(Order.OrderStatus.valueOf(orderStatus))
-                        .setUserId(userId)
-                        .setSongId(songId)
-                        .build());
-            }
-        } catch (SQLException e) {
-            throw new DaoException("SQLException, finding order by id", e);
-        }
-        return order;
     }
 
     @Override
@@ -101,7 +75,7 @@ public class OrderDaoImpl extends BaseDao implements OrderDao {
             preparedStatement.setString(1, userFirstName);
             preparedStatement.setString(2,userLastName);
             ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
+            while (resultSet.next()) {
                 BigDecimal bigDecimal = getTotalOrderPriceByOrderID(resultSet.getLong(ORDER_ID));
                 Timestamp dateOfCreation = resultSet.getTimestamp(ORDER_DATE_OF_CREATION);
                 String orderStatus = resultSet.getString(ORDER_STATUS);
@@ -139,7 +113,7 @@ public class OrderDaoImpl extends BaseDao implements OrderDao {
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_CANCELED_ORDERS_BY_USER_ID)) {
             preparedStatement.setLong(1, userId);
             ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
+            while (resultSet.next()) {
                 BigDecimal bigDecimal = getTotalOrderPriceByOrderID(resultSet.getLong(ORDER_ID));
                 Timestamp dateOfCreation = resultSet.getTimestamp(ORDER_DATE_OF_CREATION);
                 String orderStatus = resultSet.getString(ORDER_STATUS);
@@ -163,7 +137,7 @@ public class OrderDaoImpl extends BaseDao implements OrderDao {
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_TOTAL_PRICE_BY_ORDER_ID)) {
             preparedStatement.setLong(1,orderId);
             ResultSet resultSet = preparedStatement.executeQuery();
-            if(resultSet.next()){
+            while (resultSet.next()){
                 bigDecimal = resultSet.getBigDecimal(ORDER_TOTAL_PRICE);
             }
         }catch (SQLException e){

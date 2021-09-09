@@ -42,19 +42,6 @@ public class OrderServiceImpl implements OrderService {
         }
     }
 
-    public Optional<Order> findOrderById(Long orderId) throws ServiceException {
-        TransactionManager transactionManager = new TransactionManager();
-        OrderDaoImpl orderDaoImpl = new OrderDaoImpl();
-        try {
-            transactionManager.startTransaction(orderDaoImpl);
-            return orderDaoImpl.findById(orderId);
-        } catch (DaoException e) {
-            throw new ServiceException("Exception in method finding order by id", e);
-        } finally {
-            transactionManager.endTransaction();
-        }
-    }
-
     public void addNewOrder(Long orderStatusId, Long userId, Long songId, Long orderId) throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
         OrderDaoImpl orderDaoImpl = new OrderDaoImpl();

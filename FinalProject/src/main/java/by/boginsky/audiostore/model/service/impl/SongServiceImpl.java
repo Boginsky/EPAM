@@ -42,19 +42,6 @@ public class SongServiceImpl implements SongService {
         }
     }
 
-    public Optional<Song> findSongById(Long songId) throws ServiceException {
-        TransactionManager transactionManager = new TransactionManager();
-        SongDaoImpl songDaoImpl = new SongDaoImpl();
-        try {
-            transactionManager.startTransaction(songDaoImpl);
-            return songDaoImpl.findById(songId);
-        } catch (DaoException e) {
-            throw new ServiceException("Exception in method finding song by id", e);
-        } finally {
-            transactionManager.endTransaction();
-        }
-    }
-
     public List<Song> findSongByName(String nameOfSong) throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
         SongDaoImpl songDaoImpl = new SongDaoImpl();

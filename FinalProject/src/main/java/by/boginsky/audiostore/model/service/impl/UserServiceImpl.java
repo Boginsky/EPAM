@@ -45,19 +45,6 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    public Optional<User> findById(Long userId) throws ServiceException{
-        TransactionManager transactionManager = new TransactionManager();
-        UserDaoImpl userDaoImpl = new UserDaoImpl();
-        try {
-            transactionManager.startTransaction(userDaoImpl);
-            return userDaoImpl.findById(userId);
-        }catch (DaoException e){
-            throw new ServiceException("Service exception in method finding user by id",e);
-        }finally {
-            transactionManager.endTransaction();
-        }
-    }
-
     public Optional<User> findUserByEmailAndPassword(String email, String password) throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
         UserDaoImpl userDaoImpl = new UserDaoImpl();

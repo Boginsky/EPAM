@@ -86,17 +86,4 @@ public class CommentServiceImpl implements CommentService {
             transactionManager.endTransaction();
         }
     }
-
-    public Optional<Comment> findCommentById(Long commentId) throws ServiceException{
-        TransactionManager transactionManager = new TransactionManager();
-        CommentDaoImpl commentDaoImpl = new CommentDaoImpl();
-        try {
-            transactionManager.startTransaction(commentDaoImpl);
-            return commentDaoImpl.findById(commentId);
-        }catch (DaoException e){
-            throw new ServiceException("Exception in method finding comment by id",e);
-        }finally {
-            transactionManager.endTransaction();
-        }
-    }
 }

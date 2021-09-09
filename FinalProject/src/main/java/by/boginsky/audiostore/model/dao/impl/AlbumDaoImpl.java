@@ -30,7 +30,7 @@ public class AlbumDaoImpl extends BaseDao implements AlbumDao {
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALBUM_BY_NAME)) {
             preparedStatement.setString(1, nameOfAlbum);
             ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
+            while (resultSet.next()) {
                 String albumName = resultSet.getString(ALBUM_NAME);
                 Timestamp dateOfCreation = resultSet.getTimestamp(ALBUM_DATE_OF_CREATION);
                 String albumInfo = resultSet.getString(ALBUM_INFO);
@@ -52,7 +52,7 @@ public class AlbumDaoImpl extends BaseDao implements AlbumDao {
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALBUM_BY_GENRE)) {
             preparedStatement.setString(1, nameOfGenre);
             ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
+            while (resultSet.next()) {
                 String albumName = resultSet.getString(ALBUM_NAME);
                 Timestamp dateOfCreation = resultSet.getTimestamp(ALBUM_DATE_OF_CREATION);
                 String albumInfo = resultSet.getString(ALBUM_INFO);
@@ -85,7 +85,7 @@ public class AlbumDaoImpl extends BaseDao implements AlbumDao {
         List<Album> listOfAlbums = new ArrayList<>();
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_ALBUMS)) {
             ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
+            while (resultSet.next()) {
                 String albumName = resultSet.getString(ALBUM_NAME);
                 Timestamp dateOfCreation = resultSet.getTimestamp(ALBUM_DATE_OF_CREATION);
                 String informationAboutAlbum = resultSet.getString(ALBUM_INFO);
@@ -99,27 +99,5 @@ public class AlbumDaoImpl extends BaseDao implements AlbumDao {
             throw new DaoException("SQLException, finding all genres", e);
         }
         return listOfAlbums;
-    }
-
-    @Override
-    public Optional<Album> findById(Long albumId) throws DaoException {
-        Optional<Album> album = null;
-        try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALBUM_BY_ID)) {
-            preparedStatement.setLong(1, albumId);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                String albumName = resultSet.getString(ALBUM_NAME);
-                Timestamp dateOfCreation = resultSet.getTimestamp(ALBUM_DATE_OF_CREATION);
-                String informationAboutAlbum = resultSet.getString(ALBUM_INFO);
-                album = Optional.of(Album.builder()
-                        .setAlbumName(albumName)
-                        .setDateOfCreation(dateOfCreation.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime())
-                        .setInformationAboutAlbum(informationAboutAlbum)
-                        .build());
-            }
-        } catch (SQLException e) {
-            throw new DaoException("SQLException, finding album by id", e);
-        }
-        return album;
     }
 }

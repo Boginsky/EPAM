@@ -13,6 +13,4 @@ public interface GenreService {
     Optional<Genre> findByName(String genreName) throws ServiceException;
 
     void addNewGenre(String genreName, String informationAboutGenre) throws ServiceException;
-
-    Optional<Genre> findGenreById(Long genreId) throws ServiceException;
 }

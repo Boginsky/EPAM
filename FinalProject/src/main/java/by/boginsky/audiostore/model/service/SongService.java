@@ -11,8 +11,6 @@ public interface SongService {
 
     List<Song> findAllSongs() throws ServiceException;
 
-    Optional<Song> findSongById(Long songId) throws ServiceException;
-
     List<Song> findSongByName(String nameOfSong) throws ServiceException;
 
     List<Song> findSongByAuthor(String authorFirstName, String authorLasName) throws ServiceException;

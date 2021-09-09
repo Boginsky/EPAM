@@ -72,16 +72,4 @@ public class GenreServiceImpl implements GenreService {
         }
     }
 
-    public Optional<Genre> findGenreById(Long genreId) throws ServiceException{
-        TransactionManager transactionManager = new TransactionManager();
-        GenreDaoImpl genreDaoImpl = new GenreDaoImpl();
-        try {
-            transactionManager.startTransaction(genreDaoImpl);
-            return genreDaoImpl.findById(genreId);
-        }catch (DaoException e){
-            throw new ServiceException("Exception in method finding genre by id",e);
-        }finally {
-            transactionManager.endTransaction();
-        }
-    }
 }

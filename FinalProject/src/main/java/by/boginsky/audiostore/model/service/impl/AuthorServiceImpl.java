@@ -75,19 +75,4 @@ public class AuthorServiceImpl implements AuthorService {
             transactionManager.endTransaction();
         }
     }
-
-    public Optional<Author> findAuthorById(Long authorId) throws ServiceException {
-        TransactionManager transactionManager = new TransactionManager();
-        AuthorDaoImpl authorDaoImpl = new AuthorDaoImpl();
-        try {
-            transactionManager.startTransaction(authorDaoImpl);
-            return authorDaoImpl.findById(authorId);
-        } catch (DaoException e) {
-            throw new ServiceException("Exception in method finding author by id", e);
-        } finally {
-            transactionManager.endTransaction();
-        }
-    }
-
-
 }

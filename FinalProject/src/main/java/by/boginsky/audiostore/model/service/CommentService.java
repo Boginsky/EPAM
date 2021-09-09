@@ -14,6 +14,4 @@ public interface CommentService {
     List<Comment> findCommentBySongName(String songName) throws ServiceException;
 
     void addNewComment(String comment, Long songId, Long userId) throws ServiceException;
-
-    Optional<Comment> findCommentById(Long commentId) throws ServiceException;
 }

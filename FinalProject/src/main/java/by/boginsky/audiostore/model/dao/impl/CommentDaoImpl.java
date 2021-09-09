@@ -27,7 +27,7 @@ public class CommentDaoImpl extends BaseDao implements CommentDao {
         List<Comment> listOfComments = new ArrayList<>();
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_COMMENTS)) {
             ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
+            while (resultSet.next()) {
                 String commentMessage = resultSet.getString(COMMENT);
                 Long user_id = resultSet.getLong(USERS_USER_ID);
                 Long song_id = resultSet.getLong(SONGS_SONG_ID);
@@ -44,36 +44,13 @@ public class CommentDaoImpl extends BaseDao implements CommentDao {
     }
 
     @Override
-    public Optional<Comment> findById(Long commentId) throws DaoException {
-        Optional<Comment> comment = null;
-        try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_COMMENT_BY_ID)) {
-            preparedStatement.setLong(1, commentId);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                String commentMessage = resultSet.getString(COMMENT);
-                Long userId = resultSet.getLong(USERS_USER_ID);
-                Long songId = resultSet.getLong(SONGS_SONG_ID);
-                comment = Optional.of(Comment.builder()
-                        .setCommentMessage(commentMessage)
-                        .setUserId(userId)
-                        .setSongId(songId)
-                        .build());
-            }
-        } catch (SQLException e) {
-            throw new DaoException("SQLException, finding comment by id", e);
-        }
-        return comment;
-    }
-
-
-    @Override
     public List<Comment> findByUserName(String userFirstName, String userLastName) throws DaoException {
         List<Comment> listOfComments = new ArrayList<>();
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_COMMENT_BY_USER_NAME)) {
             preparedStatement.setString(1, userFirstName);
             preparedStatement.setString(2, userLastName);
             ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
+            while (resultSet.next()) {
                 String commentMessage = resultSet.getString(COMMENT);
                 Long userId = resultSet.getLong(USERS_USER_ID);
                 Long songId = resultSet.getLong(SONGS_SONG_ID);
@@ -95,7 +72,7 @@ public class CommentDaoImpl extends BaseDao implements CommentDao {
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_COMMENT_BY_SONG_NAME)) {
             preparedStatement.setString(1,songName);
             ResultSet resultSet = preparedStatement.executeQuery();
-            if(resultSet.next()){
+            while (resultSet.next()){
                 String commentMessage = resultSet.getString(COMMENT);
                 Long songId = resultSet.getLong(USERS_USER_ID);
                 Long userId = resultSet.getLong(SONGS_SONG_ID);

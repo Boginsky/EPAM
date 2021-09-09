@@ -12,8 +12,6 @@ public interface UserService {
 
     List<User> findAllUsers() throws ServiceException;
 
-    Optional<User> findById(Long userId) throws ServiceException;
-
     Optional<User> findUserByEmailAndPassword(String email, String password) throws ServiceException;
 
     Optional<Long> findUserByEmail(String email) throws ServiceException;
