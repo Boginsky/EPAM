@@ -9,6 +9,7 @@
     <%@include file="/includes/head.jsp" %>
 </head>
 <body>
+<%@include file="/includes/navbar.jsp"%>
 <div class="container">
     <div class="card w-50 mx-auto my-5"/>
     <div class="card-header text-center"><fmt:message key="label.welcome" bundle="${var}"/></div>
@@ -28,10 +29,6 @@
                 <button type="submit" class="btn btn-primary"><fmt:message key="label.signIn" bundle="${var}"/></button>
             </div>
             <br>
-            <div style="text-align: center">
-                <a href="./controller?command=english">EN</a>
-                <a href="./controller?command=russian">RU</a>
-            </div>
         </form>
     </div>
 </div>

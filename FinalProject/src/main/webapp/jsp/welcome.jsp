@@ -15,7 +15,8 @@
         <c:forEach var="elem" items="${listOfSongs}">
         <div class="col-md-4 my-3">
             <div class="card w-100" style="width: 18rem;">
-                <img class="card-img-top" src="./static/image/background.jpg" alt="Card image cap">
+                <img class="card-img-top" src="${elem.imageUrl}" alt="Card image cap">
+<%--                <img class="card-img-top" src="./static/image/background.jpg" alt="Card image cap">--%>
                 <div class="card-body">
                     <h5 class="card-title"><fmt:message key="label.songTitle" bundle="${var}"/><c:out value="${elem.songName}"/></h5>
                     <h6 class="price"><fmt:message key="label.price" bundle="${var}"/><c:out value="${elem.price}"/></h6>
