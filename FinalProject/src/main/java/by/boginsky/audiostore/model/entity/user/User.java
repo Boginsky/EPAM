@@ -136,6 +136,11 @@ public class User extends AbstractEntity {
             user = new User();
         }
 
+        public Builder setId(Long id){
+            user.setId(id);
+            return this;
+        }
+
         public Builder setEmail(String email){
             user.setEmail(email);
             return this;

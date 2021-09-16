@@ -21,14 +21,13 @@ import static by.boginsky.audiostore.model.dao.ColumnName.*;
 public class OrderDaoImpl extends BaseDao implements OrderDao {
 
     private static final String FIND_ALL_ORDERS = "SELECT order_id,order_date,order_status,user_id,song_id FROM orders JOIN orders_statuses ON order_statuses_order_statuses_id = order_statuses_id JOIN users ON users_user_id = user_id JOIN songs_has_orders on order_id = orders_order_id JOIN songs on songs_song_id = song_id";
-    private static final String FIND_ORDER_BY_ID = "SELECT order_date,order_status,user_id,song_id FROM orders JOIN orders_statuses ON order_statuses_order_statuses_id = order_statuses_id JOIN users ON users_user_id = user_id JOIN songs_has_orders on order_id = orders_order_id JOIN songs on songs_song_id = song_id WHERE order_id = ?";
     private static final String INSERT_INTO_ORDERS = "INSERT INTO orders (order_date,order_statuses_order_statuses_id,users_user_id) VALUES(?,?,?,?)";
     private static final String INSERT_INTO_SONGS_HAS_ORDERS = "INSERT INTO songs_has_orders (songs_song_id,orders_order_id) VALUES(?,?)";
     private static final String FIND_ALL_ORDERS_BY_USER_NAME = "SELECT order_id,order_date,order_status,user_id,song_id FROM orders JOIN orders_statuses ON order_statuses_order_statuses_id = order_statuses_id JOIN users ON users_user_id = user_id JOIN songs_has_orders on order_id = orders_order_id JOIN songs on songs_song_id = song_id WHERE first_name = ? AND last_name = ?";
     private static final String CANCEL_ORDER_BY_USER_ID = "UPDATE orders SET order_statuses_order_statuses_id = 3 WHERE users_user_id = ?";
     private static final String FIND_ALL_CANCELED_ORDERS_BY_USER_ID = "SELECT order_id,order_date,order_status,song_id FROM orders JOIN orders_statuses ON order_statuses_order_statuses_id = order_statuses_id JOIN users ON users_user_id = user_id JOIN songs_has_orders on order_id = orders_order_id JOIN songs on songs_song_id = song_id WHERE users_user_id = ? AND order_statuses_order_statuses_id = 3";
     private static final String FIND_TOTAL_PRICE_BY_ORDER_ID = "SELECT SUM(song_price) as total_price FROM orders JOIN songs_has_orders ON order_id = orders_order_id JOIN songs ON songs_song_id = song_id WHERE order_id = ?";
-
+    private static final String FIND_SONG_ID_BY_ORDER_ID = "SELECT song_id FROM songs JOIN songs_has_orders on song_id = songs_song_id JOIN orders on orders_order_id = order_id WHERE order_id = ?";
     @Override
     public List<Order> findAll() throws DaoException {
         List<Order> listOfOrders = new ArrayList<>();
@@ -39,13 +38,13 @@ public class OrderDaoImpl extends BaseDao implements OrderDao {
                 Timestamp dateOfCreation = resultSet.getTimestamp(ORDER_DATE_OF_CREATION);
                 String orderStatus = resultSet.getString(ORDER_STATUS);
                 Long userId = resultSet.getLong(USER_ID);
-                Long songId = resultSet.getLong(SONG_ID);
+                List<Long> songId = getSongsIdsForOrder(resultSet.getLong(ORDER_ID));
                 listOfOrders.add(Order.builder()
                         .setTotalPrice(totalPrice)
                         .setDateOfCreation(dateOfCreation.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime())
                         .setOrderStatus(Order.OrderStatus.valueOf(orderStatus))
                         .setUserId(userId)
-                        .setSongId(songId)
+                        .setSongs(songId)
                         .build());
             }
         } catch (SQLException e) {
@@ -86,7 +85,7 @@ public class OrderDaoImpl extends BaseDao implements OrderDao {
                         .setDateOfCreation(dateOfCreation.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime())
                         .setOrderStatus(Order.OrderStatus.valueOf(orderStatus))
                         .setUserId(userId)
-                        .setSongId(songId)
+//                        .setSongId(songId)
                         .build();
                 listOfOrders.add(order);
             }
@@ -122,7 +121,7 @@ public class OrderDaoImpl extends BaseDao implements OrderDao {
                         .setDateOfCreation(dateOfCreation.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime())
                         .setOrderStatus(Order.OrderStatus.valueOf(orderStatus))
                         .setUserId(userId)
-                        .setSongId(songId)
+//                        .setSongId(songId)
                         .build();
                 listOfOrders.add(order);
             }
@@ -156,4 +155,18 @@ public class OrderDaoImpl extends BaseDao implements OrderDao {
         }
     }
 
+    private List<Long> getSongsIdsForOrder(Long orderId) throws DaoException{
+        List<Long> listOfSongsId = new ArrayList<>();
+        try(PreparedStatement preparedStatement = connection.prepareStatement(FIND_SONG_ID_BY_ORDER_ID)){
+            preparedStatement.setLong(1,orderId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                Long song_id = resultSet.getLong(SONG_ID);
+                listOfSongsId.add(song_id);
+            }
+        }catch (SQLException e){
+            throw new DaoException("SQLException in method getting song's ids",e);
+        }
+        return listOfSongsId;
+    }
 }

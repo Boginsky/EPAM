@@ -16,6 +16,7 @@ public final class ColumnName {
     public static final String ALBUM_NAME = "album_name";
     public static final String ALBUM_DATE_OF_CREATION = "album_date_of_creation";
     public static final String ALBUM_INFO = "album_info";
+    public static final String ALBUM_IMG = "album_img";
 
     public static final String SONG_ID = "song_id";
     public static final String SONG_NAME = "song_name";

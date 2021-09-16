@@ -14,6 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
+
+import static by.boginsky.audiostore.util.constants.Attribute.*;
+
+
 public class MainCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {
@@ -23,12 +27,12 @@ public class MainCommand implements Command {
 
         try {
             listOfSongs = songService.findAllSongs();
-            httpSession.setAttribute("listOfSongs",listOfSongs);
+            httpSession.setAttribute(ALL_SONGS,listOfSongs);
         } catch (ServiceException e) {
             throw new CommandException("Exception in main command",e);
         }
         Router router = new Router();
-        router.setPagePath(ConfigurationManager.getProperty(PathPage.PATH_PAGE_MAIN));
+        router.setPagePath(ConfigurationManager.getProperty(PathPage.PATH_PAGE_ALL_SONGS));
         return router;
     }
 }

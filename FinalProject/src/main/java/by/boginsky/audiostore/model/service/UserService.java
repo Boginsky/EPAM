@@ -22,5 +22,5 @@ public interface UserService {
 
     void addUserMoney(String email, BigDecimal additionSum, BigDecimal userMoney) throws ServiceException;
 
-    void createUser(String email, String password, String firstName, String lastName, LocalDateTime dateOfCreation) throws ServiceException;
+    void createUser(User user, String encryptedPassword) throws ServiceException;
 }

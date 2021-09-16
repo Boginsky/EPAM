@@ -10,108 +10,116 @@
 </head>
 <body>
 <%@include file="/includes/navbar.jsp" %>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
 <div class="container">
     <br/>
     <div class="main-body">
         <div class="row gutters-sm">
-            <div class="col-md-4 mb-3">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex flex-column align-items-center text-center">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
-                                 class="rounded-circle" width="150">
-                            <div class="mt-3">
-                                <h4>John Doe</h4>
-                                <p class="text-secondary mb-1">Full Stack Developer</p>
-                                <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
-                            </div>
-                            <form>
-                                <div class="form-group">
-                                    <label for="exampleFormControlFile1">Example file input</label>
-                                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+            <div class="col-md-4">
+                <div class="d-flex flex-column align-items-center text-center">
+                    <img class="item" src="./static/image/2.jpg" alt="Card image cap">
+                    <%--                            <form>--%>
+                    <%--                                <div class="form-group">--%>
+                    <%--                                    <input type="file" class="form-control-file" id="exampleFormControlFile1">--%>
+                    <%--                                </div>--%>
+                    <%--                            </form>--%>
                 </div>
-
             </div>
             <div class="col-md-8">
                 <div class="card mb-3">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-sm-12 text-right">
-                                <a class="btn btn-info " target="__blank"
-                                   href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
-                            </div>
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Full Name</h6>
+                                <h6 class="mb-0"><fmt:message key="label.fullName" bundle="${var}"/></h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                Kenneth Valdez
+                                ${user.firstName} ${user.lastName}
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Email</h6>
+                                <h6 class="mb-0"><fmt:message key="label.email" bundle="${var}"/></h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                fip@jukmuh.al
+                                ${user.email}
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Balance</h6>
+                                <h6 class="mb-0"><fmt:message key="label.password" bundle="${var}"/></h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                (239) 816-9029
+                                *********
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Role</h6>
+                                <h6 class="mb-0"><fmt:message key="label.role" bundle="${var}"/></h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                (320) 380-4539
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Status</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                Bay Area, San Francisco, CA
+                                ${user.userRole}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-        <ul class="list-group">
-            <li class="list-group-item">
-                <button type="button" class="btn btn-secondary btn-lg btn-block">Block level button</button>
-            </li>
-            <li class="list-group-item">
-                <button type="button" class="btn btn-secondary btn-lg btn-block">Block level button</button>
-            </li>
-            <li class="list-group-item">
-                <button type="button" class="btn btn-secondary btn-lg btn-block">Block level button</button>
-            </li>
-            <li class="list-group-item">
-                <button type="button" class="btn btn-secondary btn-lg btn-block">Block level button</button>
-            </li>
-            <li class="list-group-item">
-                <button type="button" class="btn btn-secondary btn-lg btn-block">Block level button</button>
-            </li>
-        </ul>
+        <br/>
+        <table class="table table-striped table-responsive-md btn-table">
+            <tbody>
+            <tr>
+                <td style="width: 25%">
+                    <button type="button" class="btn btn-primary btn-lg btn-block">Добавить песню</button>
+                </td>
+                <td style="width: 25%">
+                    <button type="button" class="btn btn-primary btn-lg btn-block">Добавить альбом</button>
+                </td>
+                <td style="width: 25%">
+                    <button type="button" class="btn btn-primary btn-lg btn-block">Добавить жанр</button>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 25%">
+                    <button type="button" class="btn btn-primary btn-lg btn-block">Удалить песню</button>
+                </td>
+                <td style="width: 25%">
+                    <button type="button" class="btn btn-primary btn-lg btn-block">Удалить альбом</button>
+                </td>
+                <td style="width: 25%">
+                    <button type="button" class="btn btn-primary btn-lg btn-block">Удалить жанр</button>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 25%">
+                    <button type="button" class="btn btn-primary btn-lg btn-block">Заблокировать юзера</button>
+                </td>
+                <td style="width: 25%">
+                    <button type="button" class="btn btn-primary btn-lg btn-block">Разблокировать юзера</button>
+                </td>
+                <td style="width: 25%">
+                    <button type="button" class="btn btn-primary btn-lg btn-block">Назначить скидку юзеру</button>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 25%">
+                    <button type="button" class="btn btn-primary btn-lg btn-block">Редактировать комментарии</button>
+                </td>
+                <td style="width: 25%">
+                    <button type="button" class="btn btn-primary btn-lg btn-block">Посмотреть все заказы</button>
+                </td>
+                <td style="width: 25%">
+                    <button type="button" class="btn btn-primary btn-lg btn-block">Редактировать комментарии</button>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 25%">
+                    <button type="button" class="btn btn-primary btn-lg btn-block">Изменить пароль</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
         <%@include file="/includes/footer.jsp" %>
 </body>
-
 </html>

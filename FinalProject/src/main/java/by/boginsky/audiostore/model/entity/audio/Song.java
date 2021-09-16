@@ -113,6 +113,11 @@ public class Song extends AbstractEntity {
             song = new Song();
         }
 
+        public Builder setId(Long id){
+            song.setId(id);
+            return this;
+        }
+
         public Builder setSongName(String songName){
             song.setSongName(songName);
             return this;

@@ -25,7 +25,7 @@ public class SignInCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {
         HttpSession httpSession = httpServletRequest.getSession();
-        httpServletRequest.setAttribute(ERROR_SIGN_IN_MESSAGE, null);
+        httpServletRequest.setAttribute(ERROR_SIGN_IN_MESSAGE, null); // FIXME: 12.09.2021
 
         String email = httpServletRequest.getParameter(EMAIL);
         String password = httpServletRequest.getParameter(PASSWORD);

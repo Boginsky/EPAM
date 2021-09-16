@@ -17,7 +17,7 @@ public interface UserDao {
 
     void addUserMoney(String email, BigDecimal additionSum, BigDecimal userMoney) throws DaoException;
 
-    void createUser(String email, String password, String firstName, String lastName, Timestamp dateOfCreation) throws DaoException;
+    void createUser(User user, String password) throws DaoException;
 
-    public Optional<User> findUserByEmailAndPassword(String email,String password) throws DaoException;
+    public Optional<User> findUserByEmailAndPassword(String email,String encryptedPassword) throws DaoException;
 }

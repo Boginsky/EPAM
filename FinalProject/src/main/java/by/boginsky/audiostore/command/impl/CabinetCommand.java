@@ -27,7 +27,7 @@ public class CabinetCommand implements Command {
             } else if (user.getUserRole() == User.UserRole.USER) {
                 page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_MAIN_USER);
             }else {
-                page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_MAIN);
+                page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_LOGIN);
             }
         }
         Router router = new Router();

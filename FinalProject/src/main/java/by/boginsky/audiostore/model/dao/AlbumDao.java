@@ -9,6 +9,7 @@ import java.util.Optional;
 
 public interface AlbumDao {
 
+
     Optional<Album> findByName(String nameOfAlbum) throws DaoException;
 
     List<Album> findByGenre(String nameOfGenre) throws DaoException;

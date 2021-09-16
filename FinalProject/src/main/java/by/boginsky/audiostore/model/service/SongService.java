@@ -9,6 +9,8 @@ import java.util.Optional;
 
 public interface SongService {
 
+    Optional<Song> findSongById(Long songId) throws ServiceException;
+
     List<Song> findAllSongs() throws ServiceException;
 
     List<Song> findSongByName(String nameOfSong) throws ServiceException;

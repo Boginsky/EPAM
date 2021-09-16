@@ -22,7 +22,23 @@ public class AuthorDaoImpl extends BaseDao implements AuthorDao {
     private static final String INSERT_INTO_AUTHORS = "INSERT INTO authors (author_first_name,author_last_name,author_info_author_dob) VALUES (?,?,?,?)";
     private static final String FIND_ALL_AUTHORS = "SELECT author_first_name,author_last_name,author_info,author_dob FROM authors";
     private static final String FIND_AUTHOR_BY_ID = "SELECT author_first_name,author_last_name,author_info,author_dob FROM authors WHERE author_id = ?";
+    private static final String FIND_AUTHOR_BY_ALBUM_NAME = "SELECT author_first_name,author_last_name FROM authors JOIN songs ON author_id = authors_author_id JOIN albums on albums_album_id = album_id WHERE album_name = ?";
 
+
+
+    public Optional<String> findAuthorByAlbumName(String albumName) throws DaoException {
+        Optional<String> nameOfAuthor = null;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_AUTHOR_BY_ALBUM_NAME)){
+            preparedStatement.setString(1,albumName);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            String authorFirstName = resultSet.getString(AUTHOR_FIRST_NAME);
+            String authorLastName = resultSet.getString(AUTHOR_LAST_NAME);
+            nameOfAuthor = Optional.ofNullable(authorFirstName.concat(" ").concat(authorLastName));
+        }catch (SQLException e){
+            throw new DaoException("SQLException, searching author's name by album's name",e);
+        }
+        return nameOfAuthor;
+    }
 
     @Override
     public Optional<Author> findAuthorByName(String firstNameOfAuthor, String lastNameOfAuthor) throws DaoException {

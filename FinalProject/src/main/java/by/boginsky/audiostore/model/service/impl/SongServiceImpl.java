@@ -2,12 +2,14 @@ package by.boginsky.audiostore.model.service.impl;
 
 import by.boginsky.audiostore.exception.DaoException;
 import by.boginsky.audiostore.exception.ServiceException;
+import by.boginsky.audiostore.model.dao.SongDao;
 import by.boginsky.audiostore.model.dao.TransactionManager;
 import by.boginsky.audiostore.model.dao.impl.SongDaoImpl;
 import by.boginsky.audiostore.model.entity.audio.Song;
 import by.boginsky.audiostore.model.service.SongService;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -28,6 +30,21 @@ public class SongServiceImpl implements SongService {
         }
         return instance;
     }
+
+    @Override
+    public Optional<Song> findSongById(Long songId) throws ServiceException {
+        TransactionManager transactionManager = new TransactionManager();
+        SongDaoImpl songDaoImpl = new SongDaoImpl();
+        try {
+            transactionManager.startTransaction(songDaoImpl);
+            return songDaoImpl.findSongById(songId);
+        }catch (DaoException e){
+            throw new ServiceException("Exception in method finding song by id",e);
+        }finally {
+            transactionManager.endTransaction();
+        }
+    }
+
 
     public List<Song> findAllSongs() throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();

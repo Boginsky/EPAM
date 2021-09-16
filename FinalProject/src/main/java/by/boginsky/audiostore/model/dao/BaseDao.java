@@ -14,6 +14,8 @@ import java.util.Optional;
 
 public abstract class BaseDao<T extends AbstractEntity> {
 
+
+    // TODO: 13.09.2021 threads. будут ли все потоки использовать один коннекшен. если создать синглтон
     protected ProxyConnection connection;
 
     protected static final Logger logger = LogManager.getLogger();

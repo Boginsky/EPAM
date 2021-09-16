@@ -1,10 +1,12 @@
 package by.boginsky.audiostore.model.entity.user;
 
 import by.boginsky.audiostore.model.entity.AbstractEntity;
+import by.boginsky.audiostore.model.entity.audio.Song;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class Order extends AbstractEntity {
 
@@ -16,7 +18,7 @@ public class Order extends AbstractEntity {
     private LocalDateTime dateOfCreation;
     private OrderStatus orderStatus;
     private Long userId;
-    private Long songId;
+    private List<Long> listOfSongsId;
 
     public BigDecimal getTotalPrice() {
         return totalPrice;
@@ -50,12 +52,12 @@ public class Order extends AbstractEntity {
         this.userId = userId;
     }
 
-    public Long getSongId() {
-        return songId;
+    public List<Long> getListOfSongsId() {
+        return listOfSongsId;
     }
 
-    public void setSongId(Long songId) {
-        this.songId = songId;
+    public void setListOfSongsId(List<Long> listOfSongsId) {
+        this.listOfSongsId = listOfSongsId;
     }
 
     @Override
@@ -70,7 +72,7 @@ public class Order extends AbstractEntity {
                 dateOfCreation.equals(order.dateOfCreation) &&
                 orderStatus == order.orderStatus &&
                 userId.equals(order.userId) &&
-                songId.equals(order.songId);
+                listOfSongsId.equals(order.listOfSongsId);
     }
 
     @Override
@@ -80,7 +82,7 @@ public class Order extends AbstractEntity {
         result = 31 * result + ((dateOfCreation == null) ? 0 : dateOfCreation.hashCode());
         result = 31 * result + ((orderStatus == null) ? 0 : orderStatus.hashCode());
         result = 31 * result + ((userId == null) ? 0 : userId.hashCode());
-        result = 31 * result + ((songId == null) ? 0 : songId.hashCode());
+        result = 31 * result + ((listOfSongsId == null) ? 0 : listOfSongsId.hashCode());
         return result;
     }
 
@@ -91,7 +93,7 @@ public class Order extends AbstractEntity {
         sb.append(", dateOfCreation=").append(dateOfCreation);
         sb.append(", orderStatus=").append(orderStatus);
         sb.append(", userId=").append(userId);
-        sb.append(", songId=").append(songId);
+        sb.append(", songId=").append(listOfSongsId);
         sb.append('}');
         return sb.toString();
     }
@@ -122,13 +124,13 @@ public class Order extends AbstractEntity {
             return this;
         }
 
-        public Builder setUserId(Long userId){
-            order.setUserId(userId);
+        public Builder setUserId(Long id){
+            order.setUserId(id);
             return this;
         }
 
-        public Builder setSongId(Long songId){
-            order.setSongId(songId);
+        public Builder setSongs(List<Long> listOfSongsId){
+            order.setListOfSongsId(listOfSongsId);
             return this;
         }
 

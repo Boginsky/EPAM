@@ -5,8 +5,13 @@ import by.boginsky.audiostore.model.entity.audio.Song;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 public interface SongDao {
+
+    Optional<Song> findSongById(Long songId) throws DaoException;
+
+    List<Song> findSongByOrderId(Long songId) throws DaoException;
 
     List<Song> findSongByName(String nameOfSong) throws DaoException;
 

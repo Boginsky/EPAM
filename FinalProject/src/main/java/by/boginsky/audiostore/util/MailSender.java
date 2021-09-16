@@ -13,10 +13,9 @@ public class MailSender {
     private static final Logger logger = LogManager.getLogger();
 
     public static final String MAIL_PROPERTY_PATH = "mail.properties";
-    public static final String USER_KEY = "mail.user.user";
+    public static final String USER_KEY = "mail.user.email";
     public static final String PASSWORD_KEY = "mail.user.password";
-    public static final String MAIL_TITLE = "MY FIRST EMAIL";
-    public static final String MAIL_CONTENT_TYPE = "text/html";
+    public static final String MAIL_TITLE = "Verification code";
 
     public boolean sendEmail(String emailTo, String content) throws PropertyReaderException {
         boolean result;
@@ -31,7 +30,7 @@ public class MailSender {
             message.setFrom(new InternetAddress(user));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailTo));
             message.setSubject(MAIL_TITLE);
-            message.setContent(content, MAIL_CONTENT_TYPE);
+            message.setText(content);
             Transport.send(message);
             result = true;
         } catch (MessagingException e) {

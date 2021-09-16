@@ -9,9 +9,9 @@ import org.apache.logging.log4j.Logger;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 public class TransactionManager {
     private static final Logger logger = LogManager.getLogger();
+    // FIXME: 13.09.2021 on connection
     private ProxyConnection connection;
     private List<BaseDao> baseDaos;
 

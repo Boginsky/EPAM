@@ -131,12 +131,12 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    public void createUser(String email, String password, String firstName, String lastName, LocalDateTime dateOfCreation) throws ServiceException{
+    public void createUser(User user,String encryptedPassword) throws ServiceException{
         TransactionManager transactionManager = new TransactionManager();
         UserDaoImpl userDaoImpl = new UserDaoImpl();
         try {
             transactionManager.startTransaction(userDaoImpl);
-            userDaoImpl.createUser(email, password, firstName, lastName, Timestamp.valueOf(dateOfCreation));
+            userDaoImpl.createUser(user,encryptedPassword);
             transactionManager.commit();
         } catch (DaoException e) {
             try {

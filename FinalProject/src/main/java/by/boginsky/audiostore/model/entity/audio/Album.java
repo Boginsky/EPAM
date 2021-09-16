@@ -2,15 +2,15 @@ package by.boginsky.audiostore.model.entity.audio;
 
 import by.boginsky.audiostore.model.entity.AbstractEntity;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class Album extends AbstractEntity {
 
     private String albumName;
-    private LocalDateTime dateOfCreation;
+    private String authorName;
     private String informationAboutAlbum;
-
+    private String imageUrl;
 
     public String getAlbumName() {
         return albumName;
@@ -20,12 +20,12 @@ public class Album extends AbstractEntity {
         this.albumName = albumName;
     }
 
-    public LocalDateTime getDateOfCreation() {
-        return dateOfCreation;
+    public String getAuthorName() {
+        return authorName;
     }
 
-    public void setDateOfCreation(LocalDateTime dateOfCreation) {
-        this.dateOfCreation = dateOfCreation;
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
     }
 
     public String getInformationAboutAlbum() {
@@ -34,6 +34,14 @@ public class Album extends AbstractEntity {
 
     public void setInformationAboutAlbum(String informationAboutAlbum) {
         this.informationAboutAlbum = informationAboutAlbum;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     @Override
@@ -45,7 +53,8 @@ public class Album extends AbstractEntity {
         if (!super.equals(o)) return false;
         Album album = (Album) o;
         return albumName.equals(album.albumName) &&
-                dateOfCreation.equals(album.dateOfCreation) &&
+                authorName.equals(album.authorName) &&
+                imageUrl.equals(album.imageUrl) &&
                 informationAboutAlbum.equals(album.informationAboutAlbum);
     }
 
@@ -53,7 +62,8 @@ public class Album extends AbstractEntity {
     public int hashCode() {
         int result = 1;
         result = 31 * result + ((albumName == null) ? 0 : albumName.hashCode());
-        result = 31 * result + ((dateOfCreation == null) ? 0 : dateOfCreation.hashCode());
+        result = 31 * result + ((imageUrl == null) ? 0 : imageUrl.hashCode());
+        result = 31 * result + ((authorName == null) ? 0 : authorName.hashCode());
         result = 31 * result + ((informationAboutAlbum == null) ? 0 : informationAboutAlbum.hashCode());
         return result;
     }
@@ -62,8 +72,9 @@ public class Album extends AbstractEntity {
     public String toString() {
         final StringBuilder sb = new StringBuilder("Album{");
         sb.append("albumName='").append(albumName).append('\'');
-        sb.append(", dateOfCreation=").append(dateOfCreation);
+        sb.append(", dateOfCreation=").append(authorName);
         sb.append(", informationAboutAlbum='").append(informationAboutAlbum).append('\'');
+        sb.append(", imageUrl='").append(imageUrl).append('\'');
         sb.append('}');
         return sb.toString();
     }
@@ -84,8 +95,8 @@ public class Album extends AbstractEntity {
             return this;
         }
 
-        public Builder setDateOfCreation(LocalDateTime dateOfCreation){
-            album.setDateOfCreation(dateOfCreation);
+        public Builder setAuthorName(String authorName){
+            album.setAuthorName(authorName);
             return this;
         }
 
@@ -93,6 +104,17 @@ public class Album extends AbstractEntity {
             album.setInformationAboutAlbum(informationAboutAlbum);
             return this;
         }
+
+        public Builder setImageUrl(String imageUrl){
+            album.setImageUrl(imageUrl);
+            return this;
+        }
+
+        public Builder setAlbumId(Long albumId){
+            album.setId(albumId);
+            return this;
+        }
+
 
         public Album build(){
             return album;

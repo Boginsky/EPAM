@@ -17,7 +17,9 @@ import static by.boginsky.audiostore.model.dao.ColumnName.*;
 
 public class SongDaoImpl extends BaseDao implements SongDao {
 
-    private static final String FIND_ALL_SONGS = "SELECT song_name,song_img,song_price,author_first_name,author_last_name,genre_name,album_name FROM songs JOIN authors ON authors_author_id = author_id JOIN genres ON genres_genre_id = genre_id JOIN albums ON albums_album_id = album_id";
+    private static final String FIND_SONG_BY_ID = "SELECT song_id,song_name,song_img,song_price,author_first_name,author_last_name,genre_name,album_name FROM songs JOIN authors ON authors_author_id = author_id JOIN genres ON genres_genre_id = genre_id JOIN albums ON albums_album_id = album_id WHERE song_id = ?";
+    private static final String FIND_SONG_BY_ORDER_ID = "SELECT song_id,song_name,song_img,song_price,author_first_name,author_last_name,genre_name,album_name FROM songs JOIN authors ON authors_author_id = author_id JOIN genres ON genres_genre_id = genre_id JOIN albums ON albums_album_id = album_id JOIN songs_has_orders ON song_id = songs_song_id JOIN orders ON orders_order_id = order_id WHERE order_id = ?";
+    private static final String FIND_ALL_SONGS = "SELECT song_id,song_name,song_img,song_price,author_first_name,author_last_name,genre_name,album_name FROM songs JOIN authors ON authors_author_id = author_id JOIN genres ON genres_genre_id = genre_id JOIN albums ON albums_album_id = album_id";
     private static final String FIND_SONG_BY_NAME = "SELECT song_name,song_img,song_price,author_id,genre_id,album_id FROM songs JOIN authors ON authors_author_id = author_id JOIN genres ON genres_genre_id = genre_id JOIN albums ON albums_album_id = album_id WHERE song_name = ?";
     private static final String FIND_SONG_BY_AUTHOR_NAME = "SELECT song_name,song_img,song_price,author_id,genre_id,album_id FROM songs JOIN authors ON authors_author_id = author_id JOIN genres ON genres_genre_id = genre_id JOIN albums ON albums_album_id = album_id WHERE author_first_name = ? AND author_last_name = ?";
     private static final String FIND_SONG_BY_GENRE_NAME = "SELECT song_name,song_img,song_price,author_id,genre_id,album_id FROM songs JOIN authors ON authors_author_id = author_id JOIN genres ON genres_genre_id = genre_id JOIN albums ON albums_album_id = album_id WHERE genre_name = ?";
@@ -33,6 +35,7 @@ public class SongDaoImpl extends BaseDao implements SongDao {
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_SONGS)) {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
+                Long songId = resultSet.getLong(SONG_ID);
                 String songName = resultSet.getString(SONG_NAME);
                 String imageUrl = resultSet.getString(SONG_IMG);
                 BigDecimal songPrice = resultSet.getBigDecimal(SONG_PRICE);
@@ -41,6 +44,7 @@ public class SongDaoImpl extends BaseDao implements SongDao {
                 String genreName = resultSet.getString(GENRE_NAME);
                 String albumName = resultSet.getString(ALBUM_NAME);
                 listOfSongs.add(Song.builder()
+                        .setId(songId)
                         .setSongName(songName)
                         .setImageUrl(imageUrl)
                         .setPrice(songPrice)
@@ -136,6 +140,68 @@ public class SongDaoImpl extends BaseDao implements SongDao {
             }
         }catch (SQLException e){
             throw new DaoException("SQLException, finding song by genre's name",e);
+        }
+        return listOfSongs;
+    }
+
+    @Override
+    public Optional<Song> findSongById(Long songId) throws DaoException{
+        Optional<Song> foundSong = null;
+        try(PreparedStatement preparedStatement = connection.prepareStatement(FIND_SONG_BY_ID)){
+            preparedStatement.setLong(1,songId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                Long id = resultSet.getLong(SONG_ID);
+                String songName = resultSet.getString(SONG_NAME);
+                String imageUrl = resultSet.getString(SONG_IMG);
+                BigDecimal songPrice = resultSet.getBigDecimal(SONG_PRICE);
+                String authorFirstName = resultSet.getString(AUTHOR_FIRST_NAME);
+                String authorLastName = resultSet.getString(AUTHOR_LAST_NAME);
+                String genreName = resultSet.getString(GENRE_NAME);
+                String albumName = resultSet.getString(ALBUM_NAME);
+                foundSong = Optional.of(Song.builder()
+                        .setId(id)
+                        .setSongName(songName)
+                        .setImageUrl(imageUrl)
+                        .setPrice(songPrice)
+                        .setAuthor(authorFirstName.concat(" ").concat(authorLastName))
+                        .setGenre(genreName)
+                        .setAlbum(albumName)
+                        .build());
+            }
+        }catch (SQLException e){
+            throw new DaoException("SQLException in method finding song by id");
+        }
+        return foundSong;
+    }
+
+
+    @Override
+    public List<Song> findSongByOrderId(Long orderId) throws DaoException{
+        List<Song> listOfSongs = new ArrayList<>();
+        try(PreparedStatement preparedStatement = connection.prepareStatement(FIND_SONG_BY_ORDER_ID)){
+            preparedStatement.setLong(1,orderId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                String songName = resultSet.getString(SONG_NAME);
+                String imageUrl = resultSet.getString(SONG_IMG);
+                BigDecimal songPrice = resultSet.getBigDecimal(SONG_PRICE);
+                String authorFirstName = resultSet.getString(AUTHOR_FIRST_NAME);
+                String authorLastName = resultSet.getString(AUTHOR_LAST_NAME);
+                String genreName = resultSet.getString(GENRE_NAME);
+                String albumName = resultSet.getString(ALBUM_NAME);
+                listOfSongs.add(Song.builder()
+                        .setId(orderId)
+                        .setSongName(songName)
+                        .setImageUrl(imageUrl)
+                        .setPrice(songPrice)
+                        .setAuthor(authorFirstName.concat(" ").concat(authorLastName))
+                        .setGenre(genreName)
+                        .setAlbum(albumName)
+                        .build());
+            }
+        }catch (SQLException e){
+            throw new DaoException("SQLException in method finding song by order id");
         }
         return listOfSongs;
     }
