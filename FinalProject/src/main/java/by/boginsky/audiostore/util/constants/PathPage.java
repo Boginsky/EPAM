@@ -11,7 +11,9 @@ public final class PathPage {
     public static final String PATH_PAGE_REGISTRATION = "path.page.registration";
     public static final String PATH_PAGE_CONFIRM = "path.page.confirm";
     public static final String PATH_PAGE_ALL_SONGS= "path.page.allSongs";
-    public static final String PATH_PAGE_ALL_ALBUMS = "page.page.allAlbums";
+    public static final String PATH_PAGE_ALL_ALBUMS = "path.page.allAlbums";
+    public static final String PATH_PAGE_ALBUM = "path.page.album";
+    public static final String PATH_PAGE_ALL_AUTHORS = "path.page.allAuthors";
 
     private PathPage(){}
 }

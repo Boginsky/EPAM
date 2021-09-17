@@ -98,12 +98,12 @@ public class SongServiceImpl implements SongService {
         }
     }
 
-    public List<Song> findSongByAlbum(String nameOfAlbum) throws ServiceException{
+    public List<Song> findSongByAlbumId(Long albumId) throws ServiceException{
         TransactionManager transactionManager = new TransactionManager();
         SongDaoImpl songDaoImpl = new SongDaoImpl();
         try {
             transactionManager.startTransaction(songDaoImpl);
-            return songDaoImpl.findSongByAlbum(nameOfAlbum);
+            return songDaoImpl.findSongByAlbumId(albumId);
         } catch (DaoException e) {
             throw new ServiceException("Exception in method finding song by album's name", e);
         } finally {

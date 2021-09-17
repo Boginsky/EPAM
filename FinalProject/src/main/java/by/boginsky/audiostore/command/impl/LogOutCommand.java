@@ -18,7 +18,7 @@ public class LogOutCommand implements Command {
         HttpSession httpSession = httpServletRequest.getSession();
         Router router = new Router();
         httpSession.removeAttribute(USER);
-        router.setPagePath(ConfigurationManager.getProperty(PathPage.PATH_PAGE_MAIN));
+        router.setPagePath(ConfigurationManager.getProperty(PathPage.PATH_PAGE_LOGIN));
         return router;
     }
 }

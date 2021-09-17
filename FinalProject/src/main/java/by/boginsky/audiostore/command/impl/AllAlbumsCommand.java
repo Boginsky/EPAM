@@ -11,7 +11,6 @@ import by.boginsky.audiostore.util.ConfigurationManager;
 import by.boginsky.audiostore.util.constants.PathPage;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 import static by.boginsky.audiostore.util.constants.Attribute.ALL_ALBUMS;
@@ -20,12 +19,11 @@ import static by.boginsky.audiostore.util.constants.Attribute.ALL_ALBUMS;
 public class AllAlbumsCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {
-        HttpSession httpSession = httpServletRequest.getSession();
         List<Album> listOfAlbums;
         AlbumService albumService = AlbumServiceImpl.getInstance();
         try {
             listOfAlbums = albumService.findAllAlbums();
-            httpSession.setAttribute(ALL_ALBUMS, listOfAlbums);
+            httpServletRequest.setAttribute(ALL_ALBUMS, listOfAlbums);
         } catch (ServiceException e) {
             throw new CommandException("Exception in all albums command", e);
         }

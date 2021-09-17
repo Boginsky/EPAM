@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="./controller?command=main"><fmt:message key="label.main" bundle="${var}"/></a>
+    <a class="navbar-brand" href="./controller?command=all songs"><fmt:message key="label.main" bundle="${var}"/></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     </button>

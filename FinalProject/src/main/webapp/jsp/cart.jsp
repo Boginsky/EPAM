@@ -12,6 +12,8 @@
 <%@include file="/includes/navbar.jsp" %>
 <div class="container">
     <br/>
+    <%@include file="/includes/navbarsmall.jsp"%>
+    <br/>
     <table class="table table-light">
         <thead>
         <tr>
@@ -25,14 +27,14 @@
         </thead>
         <tbody>
         <c:set var="total" value="${0}"/>
-        <c:forEach var="album" items="${listOfSongsInCart}">
+        <c:forEach var="song" items="${listOfSongsInCart}">
             <tr>
-                <c:set var="total" value="${total + album.price}"/>
-                <td><c:out value="${album.songName}"/></td>
-                <td><c:out value="${album.author}"/></td>
-                <td><c:out value="${album.album}"/></td>
-                <td><c:out value="${album.genre}"/></td>
-                <td><c:out value="${album.price}"/></td>
+                <c:set var="total" value="${total + song.price}"/>
+                <td><c:out value="${song.songName}"/></td>
+                <td><c:out value="${song.author}"/></td>
+                <td><c:out value="${song.album}"/></td>
+                <td><c:out value="${song.genre}"/></td>
+                <td><c:out value="${song.price}"/></td>
                 <td>
                     <a class="btn btn-sm btn-danger" href="./controller?command=Remove from cart&trackId=${album.id}">Remove</a>
                 </td>

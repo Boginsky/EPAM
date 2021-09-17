@@ -23,11 +23,12 @@ public class SongDaoImpl extends BaseDao implements SongDao {
     private static final String FIND_SONG_BY_NAME = "SELECT song_name,song_img,song_price,author_id,genre_id,album_id FROM songs JOIN authors ON authors_author_id = author_id JOIN genres ON genres_genre_id = genre_id JOIN albums ON albums_album_id = album_id WHERE song_name = ?";
     private static final String FIND_SONG_BY_AUTHOR_NAME = "SELECT song_name,song_img,song_price,author_id,genre_id,album_id FROM songs JOIN authors ON authors_author_id = author_id JOIN genres ON genres_genre_id = genre_id JOIN albums ON albums_album_id = album_id WHERE author_first_name = ? AND author_last_name = ?";
     private static final String FIND_SONG_BY_GENRE_NAME = "SELECT song_name,song_img,song_price,author_id,genre_id,album_id FROM songs JOIN authors ON authors_author_id = author_id JOIN genres ON genres_genre_id = genre_id JOIN albums ON albums_album_id = album_id WHERE genre_name = ?";
-    private static final String FIND_SONG_BY_ALBUM_NAME = "SELECT song_name,song_img,song_price,author_id,genre_id,album_id FROM songs JOIN authors ON authors_author_id = author_id JOIN genres ON genres_genre_id = genre_id JOIN albums ON albums_album_id = album_id WHERE album_name = ?";
+    private static final String FIND_SONG_BY_ALBUM_ID = "SELECT song_id,song_name,song_img,song_price,author_first_name,author_last_name,genre_name,album_name FROM songs JOIN authors ON authors_author_id = author_id JOIN genres ON genres_genre_id = genre_id JOIN albums ON albums_album_id = album_id WHERE album_id = ?";
     private static final String UPDATE_SONG_NAME_BY_NAME = "UPDATE songs SET song_name = ? WHERE song_name = ?";
     private static final String UPDATE_SONG_PRICE_BY_NAME = "UPDATE songs SET song_price = ? WHERE song_name = ?";
     private static final String INSERT_INTO_SONGS_NEW_SONG = "INSERT INTO songs(song_name,song_img,song_price,genres_genre_id,authors_author_id,albums_album_id)VALUES(?,?,?,?,?,?)";
     private static final String INSERT_INTO_SONGS_NEW_SONG_WITHOUT_ALBUM = "INSERT INTO songs(song_name,song_img,song_price,genres_genre_id,authors_author_id)VALUES(?,?,?,?,?)";
+
 
     @Override
     public List<Song> findAll() throws DaoException {
@@ -207,29 +208,32 @@ public class SongDaoImpl extends BaseDao implements SongDao {
     }
 
     @Override
-    public List<Song> findSongByAlbum(String nameOfAlbum) throws DaoException {
+    public List<Song> findSongByAlbumId(Long albumId) throws DaoException {
         List<Song> listOfSongs = new ArrayList<>();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_SONG_BY_ALBUM_NAME)) {
-            preparedStatement.setString(1,nameOfAlbum);
+        try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_SONG_BY_ALBUM_ID)) {
+            preparedStatement.setLong(1,albumId);
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()){
+            while(resultSet.next()){
+                Long id = resultSet.getLong(SONG_ID);
                 String songName = resultSet.getString(SONG_NAME);
                 String imageUrl = resultSet.getString(SONG_IMG);
                 BigDecimal songPrice = resultSet.getBigDecimal(SONG_PRICE);
-                Long authorId = resultSet.getLong(AUTHOR_ID);
-                Long genreId = resultSet.getLong(GENRE_ID);
-                Long albumId = resultSet.getLong(ALBUM_ID);
+                String authorFirstName = resultSet.getString(AUTHOR_FIRST_NAME);
+                String authorLastName = resultSet.getString(AUTHOR_LAST_NAME);
+                String genreName = resultSet.getString(GENRE_NAME);
+                String albumName = resultSet.getString(ALBUM_NAME);
                 listOfSongs.add(Song.builder()
+                        .setId(id)
                         .setSongName(songName)
                         .setImageUrl(imageUrl)
                         .setPrice(songPrice)
-//                        .setAuthorId(authorId)
-//                        .setGenreId(genreId)
-//                        .setAlbumId(albumId)
+                        .setAuthor(authorFirstName.concat(" ").concat(authorLastName))
+                        .setGenre(genreName)
+                        .setAlbum(albumName)
                         .build());
             }
         }catch (SQLException e){
-            throw new DaoException("SQLException, finding song by album's name",e);
+            throw new DaoException("SQLException, finding song by album's id",e);
         }
         return listOfSongs;
     }

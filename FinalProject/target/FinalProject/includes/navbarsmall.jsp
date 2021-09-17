@@ -6,6 +6,6 @@
         <a class="navbar-brand" href="./controller?command=all albums"><fmt:message key="label.albums" bundle="${var}"/></a>
     </div>
     <div class="col" style="text-align: center">
-        <a class="navbar-brand" href="./controller?command=all genres"><fmt:message key="label.genres" bundle="${var}"/></a>
+        <a class="navbar-brand" href="./controller?command=all authors"><fmt:message key="label.authors" bundle="${var}"/></a>
     </div>
 </nav>

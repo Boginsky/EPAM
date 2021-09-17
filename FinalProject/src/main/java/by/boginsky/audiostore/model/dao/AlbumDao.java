@@ -9,6 +9,7 @@ import java.util.Optional;
 
 public interface AlbumDao {
 
+    Optional<Album> findById(Long albumId)throws DaoException;
 
     Optional<Album> findByName(String nameOfAlbum) throws DaoException;
 

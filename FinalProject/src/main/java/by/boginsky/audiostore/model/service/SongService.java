@@ -19,7 +19,7 @@ public interface SongService {
 
     List<Song> findSongByGenre(String nameOfGenre) throws ServiceException;
 
-    List<Song> findSongByAlbum(String nameOfAlbum) throws ServiceException;
+    List<Song> findSongByAlbumId(Long albumId) throws ServiceException;
 
     void updateSongName(String songPreviousName, String songNewName) throws ServiceException;
 

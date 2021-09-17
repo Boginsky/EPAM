@@ -7,7 +7,7 @@ public final class ColumnName {
     public static final String GENRE_INFO = "genre_info";
 
     public static final String AUTHOR_ID = "author_id";
-    public static final String AUTHOR_INFO = "author_info";
+    public static final String AUTHOR_IMG = "author_img";
     public static final String AUTHOR_LAST_NAME = "author_last_name";
     public static final String AUTHOR_FIRST_NAME = "author_first_name";
     public static final String AUTHOR_DATE_OF_BIRTH = "author_dob";

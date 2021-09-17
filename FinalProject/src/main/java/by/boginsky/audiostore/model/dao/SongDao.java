@@ -19,7 +19,7 @@ public interface SongDao {
 
     List<Song> findSongByGenre(String nameOfGenre) throws DaoException;
 
-    List<Song> findSongByAlbum(String nameOfAlbum) throws DaoException;
+    List<Song> findSongByAlbumId(Long albumId) throws DaoException;
 
     void updateSongName(String songPreviousName, String songNewName) throws DaoException;
 

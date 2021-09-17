@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface AlbumService {
+
+    Optional<Album> findAlbumById(Long albumId) throws ServiceException;
+
     List<Album> findAllAlbums() throws ServiceException;
 
     Optional<Album> findAlbumByName(String albumName) throws ServiceException;

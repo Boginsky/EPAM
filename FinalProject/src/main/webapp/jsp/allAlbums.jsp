@@ -23,9 +23,8 @@
                                 value="${album.albumName}"/></h5>
                         <h6 class="card-title"><fmt:message key="label.author" bundle="${var}"/><c:out
                                 value="${album.authorName}"/></h6>
-                        <h7 class="price"><fmt:message key="label.informationAboutAlbum" bundle="${var}"/><c:out
-                                value="${album.informationAboutAlbum}"/></h7>
-                        <div class="mt-3 d-flex justify-content-between" >
+                        <h7 class="price"><fmt:message key="label.informationAboutAlbum" bundle="${var}"/><c:out value="${album.informationAboutAlbum}"/></h7>
+                        <div class="mt-3 d-flex justify-content-center" >
                             <a href="./controller?command=All album song&albumId=${album.id}"
                                class="btn btn-dark" style="text-align: center"><fmt:message key="label.listOfSongs" bundle="${var}"/></a>
                         </div>

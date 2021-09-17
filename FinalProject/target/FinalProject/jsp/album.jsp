@@ -18,7 +18,7 @@
         <div class="row gutters-sm">
             <div class="col-md-4">
                 <div class="d-flex flex-column align-items-center text-center">
-                    <img class="item" src="./static/image/2.jpg" alt="Card image cap">
+                    <img class="item" src="${album.imageUrl}" alt="Card image cap">
                 </div>
             </div>
             <div class="col-md-8">
@@ -26,37 +26,28 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0"><fmt:message key="label.fullName" bundle="${var}"/></h6>
+                                <h6 class="mb-0"><fmt:message key="label.albumName" bundle="${var}"/></h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                ${user.firstName} ${user.lastName}
+                                ${album.albumName}
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0"><fmt:message key="label.email" bundle="${var}"/></h6>
+                                <h6 class="mb-0"><fmt:message key="label.author" bundle="${var}"/></h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                ${user.email}
+                                ${album.authorName}
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0"><fmt:message key="label.password" bundle="${var}"/></h6>
+                                <h6 class="mb-0"><fmt:message key="label.informationAboutAlbum" bundle="${var}"/></h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                *********
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0"><fmt:message key="label.role" bundle="${var}"/></h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                ${user.userRole}
+                                ${album.informationAboutAlbum}
                             </div>
                         </div>
                     </div>
@@ -65,47 +56,30 @@
         </div>
     </div>
 </div>
-<div class="col-md-12">
-    <div class="card mb-3">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-sm-3">
-                    <h6 class="mb-0"><fmt:message key="label.fullName" bundle="${var}"/></h6>
-                </div>
-                <div class="col-sm-9 text-secondary">
-                    ${user.firstName} ${user.lastName}
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-sm-3">
-                    <h6 class="mb-0"><fmt:message key="label.email" bundle="${var}"/></h6>
-                </div>
-                <div class="col-sm-9 text-secondary">
-                    ${user.email}
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-sm-3">
-                    <h6 class="mb-0"><fmt:message key="label.password" bundle="${var}"/></h6>
-                </div>
-                <div class="col-sm-9 text-secondary">
-                    *********
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-sm-3">
-                    <h6 class="mb-0"><fmt:message key="label.role" bundle="${var}"/></h6>
-                </div>
-                <div class="col-sm-9 text-secondary">
-                    ${user.userRole}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<table class="table table-light">
+    <thead>
+    <tr>
+        <th style="width: 25%" scope="col"><fmt:message key="label.songTitle" bundle="${var}"/></th>
+        <th style="width: 25%" scope="col"><fmt:message key="label.author" bundle="${var}"/></th>
+        <th style="width: 25%" scope="col"><fmt:message key="label.genre" bundle="${var}"/></th>
+        <th style="width: 25%" scope="col"><fmt:message key="label.price" bundle="${var}"/></th>
+        <th style="width: 25%" scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach var="song" items="${listOfSongsForAlbum}">
+        <tr>
+            <td><c:out value="${song.songName}"/></td>
+            <td><c:out value="${song.author}"/></td>
+            <td><c:out value="${song.genre}"/></td>
+            <td><c:out value="${song.price}"/></td>
+            <td>
+                <a class="btn btn-sm btn-dark" href="./controller?command=Add to cart&trackId=${song.id}"><fmt:message key="label.addToCart" bundle="${var}"/></a>
+            </td>
+        </tr>
+    </c:forEach>
+    </tbody>
+</table>
         <%@include file="/includes/footer.jsp" %>
 </body>
 </html>

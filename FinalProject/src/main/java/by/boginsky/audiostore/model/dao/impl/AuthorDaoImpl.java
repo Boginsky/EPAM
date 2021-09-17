@@ -20,7 +20,7 @@ public class AuthorDaoImpl extends BaseDao implements AuthorDao {
 
     private static final String FIND_AUTHOR_BY_AUTHOR_NAME = "SELECT (author_first_name,author_last_name,author_info,author_dob) FROM authors WHERE author_first_name = ? AND author_last_name = ?";
     private static final String INSERT_INTO_AUTHORS = "INSERT INTO authors (author_first_name,author_last_name,author_info_author_dob) VALUES (?,?,?,?)";
-    private static final String FIND_ALL_AUTHORS = "SELECT author_first_name,author_last_name,author_info,author_dob FROM authors";
+    private static final String FIND_ALL_AUTHORS = "SELECT DISTINCT author_id,author_first_name,author_last_name,author_img,genre_name FROM authors JOIN songs ON author_id = authors_author_id JOIN genres ON genres_genre_id = genre_id";
     private static final String FIND_AUTHOR_BY_ID = "SELECT author_first_name,author_last_name,author_info,author_dob FROM authors WHERE author_id = ?";
     private static final String FIND_AUTHOR_BY_ALBUM_NAME = "SELECT author_first_name,author_last_name FROM authors JOIN songs ON author_id = authors_author_id JOIN albums on albums_album_id = album_id WHERE album_name = ?";
 
@@ -49,13 +49,13 @@ public class AuthorDaoImpl extends BaseDao implements AuthorDao {
             ResultSet resultSet = preparedStatement.executeQuery();
             String authorFirstName = resultSet.getString(AUTHOR_FIRST_NAME);
             String authorLastName = resultSet.getString(AUTHOR_LAST_NAME);
-            String informationAboutAuthor = resultSet.getString(AUTHOR_INFO);
+//            String informationAboutAuthor = resultSet.getString(AUTHOR_INFO);
             Timestamp dateOfBirth = resultSet.getTimestamp(AUTHOR_DATE_OF_BIRTH);
             author = Optional.of(Author.builder()
                     .setFirstName(authorFirstName)
                     .setLastName(authorLastName)
-                    .setInformationAboutAuthor(informationAboutAuthor)
-                    .setDateOfBirth(dateOfBirth.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime())
+//                    .setInformationAboutAuthor(informationAboutAuthor)
+//                    .setDateOfBirth(dateOfBirth.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime())
                     .build());
         } catch (SQLException e) {
             throw new DaoException("SQLException, searching author by name", e);
@@ -82,15 +82,19 @@ public class AuthorDaoImpl extends BaseDao implements AuthorDao {
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_AUTHORS)) {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
+                Long authorId = resultSet.getLong(AUTHOR_ID);
                 String authorFirstName = resultSet.getString(AUTHOR_FIRST_NAME);
                 String authorLastName = resultSet.getString(AUTHOR_LAST_NAME);
-                String informationAboutAuthor = resultSet.getString(AUTHOR_INFO);
-                Timestamp dateOfBirth = resultSet.getTimestamp(AUTHOR_DATE_OF_BIRTH);
+                String informationAboutAuthor = resultSet.getString(AUTHOR_IMG);
+                String genreName = resultSet.getString(GENRE_NAME);
+                String imageUrl = resultSet.getString(AUTHOR_IMG);
                 listOfAuthors.add(Author.builder()
+                        .setId(authorId)
                         .setFirstName(authorFirstName)
                         .setLastName(authorLastName)
                         .setInformationAboutAuthor(informationAboutAuthor)
-                        .setDateOfBirth(dateOfBirth.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime())
+                        .setGenreName(genreName)
+                        .setImageUrl(imageUrl)
                         .build());
             }
         } catch (SQLException e) {

@@ -10,7 +10,6 @@ public enum CommandType {
     ENGLISH(new EnglishLanguageCommand()),
     RUSSIAN(new RussianLanguageCommand()),
     LOG_OUT(new LogOutCommand()),
-    MAIN(new MainCommand()),
     LOGIN(new LoginCommand()),
     CABINET(new CabinetCommand()),
     ADD_TO_CART(new AddToCartCommand()),
@@ -20,7 +19,9 @@ public enum CommandType {
     REGISTER(new RegisterCommand()),
     CONFIRM_REGISTRATION(new ConfirmRegistrationCommand()),
     ALL_SONGS(new AllSongsCommand()),
-    ALL_ALBUMS(new AllAlbumsCommand());
+    ALL_ALBUMS(new AllAlbumsCommand()),
+    ALL_ALBUM_SONG(new AllAlbumSongCommand()),
+    ALL_AUTHORS(new AllAuthorsCommand());
 
     private Command command;
 

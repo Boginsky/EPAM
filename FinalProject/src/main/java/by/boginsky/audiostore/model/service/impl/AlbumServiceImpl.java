@@ -30,6 +30,20 @@ public class AlbumServiceImpl implements AlbumService {
         return instance;
     }
 
+    @Override
+    public Optional<Album> findAlbumById(Long albumId) throws ServiceException {
+        TransactionManager transactionManager = new TransactionManager();
+        AlbumDaoImpl albumDaoImpl = new AlbumDaoImpl();
+        try {
+            transactionManager.startTransaction(albumDaoImpl);
+            return albumDaoImpl.findById(albumId);
+        }catch (DaoException e){
+            throw new ServiceException("Exception in method finding album by id",e);
+        }finally {
+            transactionManager.endTransaction();
+        }
+    }
+
     public List<Album> findAllAlbums() throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
         AlbumDaoImpl albumDaoImpl = new AlbumDaoImpl();

@@ -14,4 +14,5 @@ public interface AuthorService {
     Optional<Author> findAuthorByName(String firstNameOfAuthor, String lastNameOfAuthor) throws ServiceException;
 
     void addNewAuthor(String firstNameOfAuthor, String lastNameOfAuthor, String informationAboutAuthor, LocalDateTime dateOfBirth) throws ServiceException;
+
 }

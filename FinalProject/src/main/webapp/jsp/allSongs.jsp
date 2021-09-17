@@ -29,19 +29,19 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach var="album" items="${listOfSongs}">
+                            <c:forEach var="song" items="${listOfSongs}">
                             <tr>
                                 <td class="w-25">
-                                    <img src="${album.imageUrl}"
-                                         class="img-fluid img-thumbnail" alt="Image">
+                                    <img src="${song.imageUrl}"
+                                         class="img-fluid img-thumbnail" alt="Image"/>
                                 </td>
-                                <td ><c:out value="${album.songName}"/></td>
-                                <td ><c:out value="${album.author}"/></td>
-                                <td ><c:out value="${album.album}"/></td>
-                                <td ><c:out value="${album.genre}"/></td>
-                                <td ><c:out value="${album.price}"/>
+                                <td ><c:out value="${song.songName}"/></td>
+                                <td ><c:out value="${song.author}"/></td>
+                                <td ><c:out value="${song.album}"/></td>
+                                <td ><c:out value="${song.genre}"/></td>
+                                <td ><c:out value="${song.price}"/>
                                     <div class="mt-3 d-flex justify-content-between">
-                                        <a href="./controller?command=Add to cart&trackId=${album.id}"
+                                        <a href="./controller?command=Add to cart&trackId=${song.id}"
                                            class="btn btn-dark"><fmt:message key="label.addToCart" bundle="${var}"/></a>
                                     </div></td>
                             </tr>
@@ -55,4 +55,12 @@
 </div>
 <%@include file="/includes/footer.jsp" %>
 </body>
+<footer class="bg-light text-center text-lg-start">
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2020 Copyright:
+        <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+</footer>
 </html>

@@ -7,11 +7,11 @@ import java.time.LocalDateTime;
 
 public class Author extends AbstractEntity {
 
-
     private String firstName;
     private String lastName;
     private String informationAboutAuthor;
-    private LocalDateTime dateOfBirth;
+    private String genreName;
+    private String imageUrl;
 
     public String getFirstName() {
         return firstName;
@@ -37,12 +37,20 @@ public class Author extends AbstractEntity {
         this.informationAboutAuthor = informationAboutAuthor;
     }
 
-    public LocalDateTime getDateOfBirth() {
-        return dateOfBirth;
+    public String getGenreName() {
+        return genreName;
     }
 
-    public void setDateOfBirth(LocalDateTime dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setGenreName(String genreName) {
+        this.genreName = genreName;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     @Override
@@ -55,8 +63,9 @@ public class Author extends AbstractEntity {
         Author author = (Author) o;
         return firstName.equals(author.firstName) &&
                 lastName.equals(author.lastName) &&
-                informationAboutAuthor.equals(author.informationAboutAuthor) &&
-                dateOfBirth.equals(author.dateOfBirth);
+                genreName.equals(author.genreName) &&
+                imageUrl.equals(author.imageUrl) &&
+                informationAboutAuthor.equals(author.informationAboutAuthor);
     }
 
     @Override
@@ -64,8 +73,9 @@ public class Author extends AbstractEntity {
         int result = 1;
         result = 31 * result + ((firstName == null) ? 0 : firstName.hashCode());
         result = 31 * result + ((lastName == null) ? 0 : lastName.hashCode());
+        result = 31 * result + ((genreName == null) ? 0 : genreName.hashCode());
+        result = 31 * result + ((imageUrl == null) ? 0 : imageUrl.hashCode());
         result = 31 * result + ((informationAboutAuthor == null) ? 0 : informationAboutAuthor.hashCode());
-        result = 31 * result + ((dateOfBirth == null) ? 0 : dateOfBirth.hashCode());
         return result;
     }
 
@@ -74,8 +84,9 @@ public class Author extends AbstractEntity {
         final StringBuilder sb = new StringBuilder("Author{");
         sb.append("firstName='").append(firstName).append('\'');
         sb.append(", lastName='").append(lastName).append('\'');
-        sb.append(", informationAboutAuthor='").append(informationAboutAuthor).append('\'');
-        sb.append(", dateOfBirth=").append(dateOfBirth);
+        sb.append(", lastName='").append(genreName).append('\'');
+        sb.append(", lastName='").append(imageUrl).append('\'');
+        sb.append(", informationAboutAuthor='").append(informationAboutAuthor);
         sb.append('}');
         return sb.toString();
     }
@@ -91,6 +102,11 @@ public class Author extends AbstractEntity {
             author = new Author();
         }
 
+        public Builder setId(Long authorId){
+            author.setId(authorId);
+            return this;
+        }
+
         public Builder setFirstName(String firstName){
             author.setFirstName(firstName);
             return this;
@@ -101,13 +117,18 @@ public class Author extends AbstractEntity {
             return this;
         }
 
+        public Builder setGenreName(String genreName){
+            author.setGenreName(genreName);
+            return this;
+        }
+
         public Builder setInformationAboutAuthor(String informationAboutAuthor){
             author.setInformationAboutAuthor(informationAboutAuthor);
             return this;
         }
 
-        public Builder setDateOfBirth(LocalDateTime dateOfBirth){
-            author.setDateOfBirth(dateOfBirth);
+        public Builder setImageUrl(String imageUrl){
+            author.setImageUrl(imageUrl);
             return this;
         }
 
