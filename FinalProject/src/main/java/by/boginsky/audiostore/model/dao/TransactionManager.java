@@ -6,9 +6,11 @@ import by.boginsky.audiostore.model.pool.ProxyConnection;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 public class TransactionManager {
     private static final Logger logger = LogManager.getLogger();
     // FIXME: 13.09.2021 on connection
@@ -19,48 +21,49 @@ public class TransactionManager {
         baseDaos = new ArrayList<>();
     }
 
-    public void startTransaction(BaseDao ... baseDaos) throws DaoException {
-        if(connection == null){
+    public void startTransaction(BaseDao... baseDaos) throws DaoException {
+        if (connection == null) {
             connection = ConnectionPool.getInstance().getConnection();
         }
-        try{
+        try {
             connection.setAutoCommit(false);
-        }catch (SQLException e){
-            throw new DaoException("SQLException",e);
+            connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+        } catch (SQLException e) {
+            throw new DaoException("SQLException", e);
         }
-        for (BaseDao currentDao:baseDaos){
+        for (BaseDao currentDao : baseDaos) {
             currentDao.setConnection(connection);
             this.baseDaos.add(currentDao);
         }
     }
 
-    public void endTransaction(){
-        for(BaseDao currentDao : baseDaos){
+    public void endTransaction() {
+        for (BaseDao currentDao : baseDaos) {
             currentDao.setConnection(null);
         }
         baseDaos.clear();
-        if(connection != null){
+        if (connection != null) {
             ConnectionPool.getInstance().releaseConnection(connection);
             connection = null;
         }
     }
 
     public void commit() throws DaoException {
-        if(connection != null){
+        if (connection != null) {
             try {
                 connection.commit();
-            }catch (SQLException e){
+            } catch (SQLException e) {
                 logger.error("SQLException", e);
-                throw new DaoException("SQLException" , e);
+                throw new DaoException("SQLException", e);
             }
         }
     }
 
     public void rollback() throws DaoException {
-        if(connection != null){
+        if (connection != null) {
             try {
                 connection.rollback();
-            }catch (SQLException e){
+            } catch (SQLException e) {
                 logger.error("SQLException", e);
                 throw new DaoException("SQLException", e);
             }

@@ -8,7 +8,7 @@ import by.boginsky.audiostore.util.constants.PathPage;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class LoginCommand  implements Command {
+public class LoginCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {
         Router router = new Router();

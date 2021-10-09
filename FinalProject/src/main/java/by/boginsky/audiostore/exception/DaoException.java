@@ -1,6 +1,6 @@
 package by.boginsky.audiostore.exception;
 
-public class DaoException extends Exception{
+public class DaoException extends Exception {
     public DaoException() {
     }
 

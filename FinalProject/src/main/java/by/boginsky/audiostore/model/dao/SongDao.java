@@ -21,11 +21,13 @@ public interface SongDao {
 
     List<Song> findSongByAlbumId(Long albumId) throws DaoException;
 
+    List<String> findSongImg() throws DaoException;
+
     void updateSongName(String songPreviousName, String songNewName) throws DaoException;
 
     void updateSongPrice(BigDecimal songPrice, String songName) throws DaoException;
 
-    void insertSong(String songName, String imageUrl, BigDecimal songPrice,Long authorId, Long genreId,Long albumId) throws DaoException;
+    void insertSong(String songName, String imageUrl, BigDecimal songPrice, Long authorId, Long genreId, Long albumId) throws DaoException;
 
-    void insertSongWithoutAlbum(String songName, String imageUrl, BigDecimal songPrice,Long authorId, Long genreId) throws DaoException;
+    void insertSongWithoutAlbum(String songName, String imageUrl, BigDecimal songPrice, Long authorId, Long genreId) throws DaoException;
 }

@@ -1,5 +1,6 @@
 package by.boginsky.audiostore.model.service;
 
+import by.boginsky.audiostore.exception.DaoException;
 import by.boginsky.audiostore.exception.ServiceException;
 import by.boginsky.audiostore.model.entity.audio.Song;
 
@@ -20,6 +21,10 @@ public interface SongService {
     List<Song> findSongByGenre(String nameOfGenre) throws ServiceException;
 
     List<Song> findSongByAlbumId(Long albumId) throws ServiceException;
+
+    List<Song> findSongByOrderId(Long orderId) throws ServiceException;
+
+    List<String> findSongImg() throws ServiceException;
 
     void updateSongName(String songPreviousName, String songNewName) throws ServiceException;
 

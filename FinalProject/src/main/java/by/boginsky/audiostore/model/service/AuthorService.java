@@ -9,10 +9,10 @@ import java.util.Optional;
 
 public interface AuthorService {
 
+    Optional<Author> findById(Long authorId) throws ServiceException;
+
     List<Author> findAllAuthors() throws ServiceException;
 
-    Optional<Author> findAuthorByName(String firstNameOfAuthor, String lastNameOfAuthor) throws ServiceException;
-
-    void addNewAuthor(String firstNameOfAuthor, String lastNameOfAuthor, String informationAboutAuthor, LocalDateTime dateOfBirth) throws ServiceException;
+    void addNewAuthor(String nameOfAuthor, String informationAboutAuthor, LocalDateTime dateOfBirth) throws ServiceException;
 
 }

@@ -8,10 +8,11 @@ import by.boginsky.audiostore.model.entity.user.User;
 import by.boginsky.audiostore.model.service.UserService;
 import by.boginsky.audiostore.util.PasswordEncryption;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.math.BigDecimal;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -21,26 +22,27 @@ public class UserServiceImpl implements UserService {
     private static UserService instance;
     private static final AtomicBoolean isUserService = new AtomicBoolean(false);
 
-    private UserServiceImpl(){}
+    private UserServiceImpl() {
+    }
 
-    public static UserService getInstance(){
-        while(instance == null){
-            if(isUserService.compareAndSet(false,true)){
+    public static UserService getInstance() {
+        while (instance == null) {
+            if (isUserService.compareAndSet(false, true)) {
                 instance = new UserServiceImpl();
             }
         }
         return instance;
     }
 
-    public List<User> findAllUsers() throws ServiceException{
+    public List<User> findAllUsers() throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
         UserDaoImpl userDaoImpl = new UserDaoImpl();
         try {
             transactionManager.startTransaction(userDaoImpl);
             return userDaoImpl.findAll();
-        }catch (DaoException e){
-            throw new ServiceException("Service exception in method finding users",e);
-        }finally {
+        } catch (DaoException e) {
+            throw new ServiceException("Service exception in method finding users", e);
+        } finally {
             transactionManager.endTransaction();
         }
     }
@@ -51,35 +53,89 @@ public class UserServiceImpl implements UserService {
         password = PasswordEncryption.encryptsPassword(password);
         try {
             transactionManager.startTransaction(userDaoImpl);
-            Optional<User> optionalUser = userDaoImpl.findUserByEmailAndPassword(email,password);
+            Optional<User> optionalUser = userDaoImpl.findUserByEmailAndPassword(email, password);
             return userDaoImpl.findUserByEmailAndPassword(email, password);
-        }catch (DaoException e){
-            throw new ServiceException("Service exception in method finding user by email and password",e);
-        }finally {
+        } catch (DaoException e) {
+            throw new ServiceException("Service exception in method finding user by email and password", e);
+        } finally {
             transactionManager.endTransaction();
         }
     }
 
-    public Optional<Long> findUserByEmail(String email) throws ServiceException{
+    @Override
+    public String findPasswordByUserId(Long userId) throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
         UserDaoImpl userDaoImpl = new UserDaoImpl();
         try {
             transactionManager.startTransaction(userDaoImpl);
-            return userDaoImpl.findUserByEmail(email);
-        }catch (DaoException e){
-            throw new ServiceException("Service exception in method finding user by email",e);
-        }finally {
+            return userDaoImpl.findPasswordByUserId(userId);
+        } catch (DaoException e) {
+            throw new ServiceException("Service exception in method finding user's password by user id", e);
+        } finally {
             transactionManager.endTransaction();
         }
     }
 
-    public void updateUserPasswordByEmail(String email,String newPassword) throws ServiceException{
+    @Override
+    public String findUserPhotoImageUrl(Long userId) throws ServiceException {
+        TransactionManager transactionManager = new TransactionManager();
+        UserDaoImpl userDaoImpl = new UserDaoImpl();
+        try {
+            transactionManager.startTransaction(userDaoImpl);
+            return userDaoImpl.findUserPhotoImageUrl(userId);
+        } catch (DaoException e) {
+            throw new ServiceException("Service exception in method finding user's imageUrl by user id", e);
+        } finally {
+            transactionManager.endTransaction();
+        }
+    }
+
+    @Override
+    public void updateUserBonus(Long userId,BigDecimal bonus) throws ServiceException {
+        TransactionManager transactionManager = new TransactionManager();
+        UserDaoImpl userDaoImpl = new UserDaoImpl();
+        try {
+            transactionManager.startTransaction(userDaoImpl);
+            userDaoImpl.updateUserBonus(bonus,userId);
+            transactionManager.commit();
+        } catch (DaoException e) {
+            try {
+                transactionManager.rollback();
+            } catch (DaoException daoException) {
+                throw new ServiceException("Exception in method updating user's bonus by id(rollback)", daoException);
+            }
+            throw new ServiceException("Exception in method updating user's bonus by id", e);
+        } finally {
+            transactionManager.endTransaction();
+        }
+    }
+
+    public User findUserByEmail(String email) throws ServiceException {
+        TransactionManager transactionManager = new TransactionManager();
+        UserDaoImpl userDaoImpl = new UserDaoImpl();
+        Optional<User> user = Optional.empty();
+        try {
+            transactionManager.startTransaction(userDaoImpl);
+            user = userDaoImpl.findUserByEmail(email);
+            if (user.isPresent()) {
+                return user.get();
+            } else {
+                return user.get();
+            }
+        } catch (DaoException e) {
+            throw new ServiceException("Service exception in method finding user by email", e);
+        } finally {
+            transactionManager.endTransaction();
+        }
+    }
+
+    public void updateUserPasswordByEmail(String email, String newPassword) throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
         UserDaoImpl userDaoImpl = new UserDaoImpl();
         newPassword = PasswordEncryption.encryptsPassword(newPassword);
         try {
             transactionManager.startTransaction(userDaoImpl);
-            userDaoImpl.updateUserPasswordByEmail(email,newPassword);
+            userDaoImpl.updateUserPasswordByEmail(email, newPassword);
             transactionManager.commit();
         } catch (DaoException e) {
             try {
@@ -98,7 +154,7 @@ public class UserServiceImpl implements UserService {
         UserDaoImpl userDaoImpl = new UserDaoImpl();
         try {
             transactionManager.startTransaction(userDaoImpl);
-            userDaoImpl.updateUserEmail(newEmail,email);
+            userDaoImpl.updateUserEmail(newEmail, email);
             transactionManager.commit();
         } catch (DaoException e) {
             try {
@@ -112,12 +168,12 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    public void addUserMoney(String email, BigDecimal additionSum, BigDecimal userMoney) throws ServiceException{
+    public void updateUserMoney(Long userId, BigDecimal userMoney) throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
         UserDaoImpl userDaoImpl = new UserDaoImpl();
         try {
             transactionManager.startTransaction(userDaoImpl);
-            userDaoImpl.addUserMoney(email,additionSum,userMoney);
+            userDaoImpl.updateUserMoney(userId, userMoney);
             transactionManager.commit();
         } catch (DaoException e) {
             try {
@@ -131,12 +187,32 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    public void createUser(User user,String encryptedPassword) throws ServiceException{
+    @Override
+    public void updateUserName(String firstName, String lastName, Long userId) throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
         UserDaoImpl userDaoImpl = new UserDaoImpl();
         try {
             transactionManager.startTransaction(userDaoImpl);
-            userDaoImpl.createUser(user,encryptedPassword);
+            userDaoImpl.updateUserName(firstName, lastName, userId);
+            transactionManager.commit();
+        } catch (DaoException e) {
+            try {
+                transactionManager.rollback();
+            } catch (DaoException daoException) {
+                throw new ServiceException("Exception in method updating user's name(rollback)", daoException);
+            }
+            throw new ServiceException("Exception in method updating user's name", e);
+        } finally {
+            transactionManager.endTransaction();
+        }
+    }
+
+    public void createUser(User user, String encryptedPassword) throws ServiceException {
+        TransactionManager transactionManager = new TransactionManager();
+        UserDaoImpl userDaoImpl = new UserDaoImpl();
+        try {
+            transactionManager.startTransaction(userDaoImpl);
+            userDaoImpl.createUser(user, encryptedPassword);
             transactionManager.commit();
         } catch (DaoException e) {
             try {
@@ -145,6 +221,65 @@ public class UserServiceImpl implements UserService {
                 throw new ServiceException("Exception in method creation new user(rollback)", daoException);
             }
             throw new ServiceException("Exception in method creation new user money", e);
+        } finally {
+            transactionManager.endTransaction();
+        }
+    }
+
+    @Override
+    public void updateUserPassword(String password, Long userId) throws ServiceException {
+        TransactionManager transactionManager = new TransactionManager();
+        UserDaoImpl userDaoImpl = new UserDaoImpl();
+        try {
+            transactionManager.startTransaction(userDaoImpl);
+            userDaoImpl.updateUserPassword(password, userId);
+            transactionManager.commit();
+        } catch (DaoException e) {
+            try {
+                transactionManager.rollback();
+            } catch (DaoException daoException) {
+                throw new ServiceException("Exception in method updating password(rollback)", daoException);
+            }
+            throw new ServiceException("Exception in method updating password", e);
+        } finally {
+            transactionManager.endTransaction();
+        }
+    }
+
+    @Override
+    public boolean updateUserPhoto(InputStream inputStream, String path, Long userId) throws ServiceException {
+        boolean flag = false;
+        try {
+            byte[] bytesForFile = new byte[inputStream.available()];
+            inputStream.read(bytesForFile);
+            FileOutputStream fileOutputStream = new FileOutputStream(path);
+            fileOutputStream.write(bytesForFile);
+            fileOutputStream.flush();
+            fileOutputStream.close();
+            flag = true;
+            updateUserPhoto(path, userId);
+        }catch (IOException e) {
+            throw new ServiceException("Exception in method update user photo",e);
+        }
+        return flag;
+    }
+
+
+    private void updateUserPhoto(String path, Long userId) throws ServiceException {
+        TransactionManager transactionManager = new TransactionManager();
+        UserDaoImpl userDaoImpl = new UserDaoImpl();
+        try {
+            transactionManager.startTransaction(userDaoImpl);
+            path = "." + path.replace("\\", "/").substring(53);
+            userDaoImpl.updateUserPhoto(path, userId);
+            transactionManager.commit();
+        } catch (DaoException e) {
+            try {
+                transactionManager.rollback();
+            } catch (DaoException daoException) {
+                throw new ServiceException("Exception in method updating user's photo(rollback)", daoException);
+            }
+            throw new ServiceException("Exception in method updating user's photo", e);
         } finally {
             transactionManager.endTransaction();
         }

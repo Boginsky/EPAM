@@ -37,9 +37,9 @@ public class AlbumServiceImpl implements AlbumService {
         try {
             transactionManager.startTransaction(albumDaoImpl);
             return albumDaoImpl.findById(albumId);
-        }catch (DaoException e){
-            throw new ServiceException("Exception in method finding album by id",e);
-        }finally {
+        } catch (DaoException e) {
+            throw new ServiceException("Exception in method finding album by id", e);
+        } finally {
             transactionManager.endTransaction();
         }
     }
@@ -70,19 +70,11 @@ public class AlbumServiceImpl implements AlbumService {
         }
     }
 
-
+    @Override
     public List<Album> findAlbumByGenre(String nameOfGenre) throws ServiceException {
-        TransactionManager transactionManager = new TransactionManager();
-        AlbumDaoImpl albumDaoImpl = new AlbumDaoImpl();
-        try {
-            transactionManager.startTransaction(albumDaoImpl);
-            return albumDaoImpl.findByGenre(nameOfGenre);
-        } catch (DaoException e) {
-            throw new ServiceException("Exception in method finding album by genre name", e);
-        } finally {
-            transactionManager.endTransaction();
-        }
+        return null;
     }
+
 
     public void addNewAlbum(String nameOfAlbum, LocalDateTime dateOfCreation, String informationAboutAlbum) throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
@@ -98,6 +90,20 @@ public class AlbumServiceImpl implements AlbumService {
                 throw new ServiceException("Exception in method adding new album (rollback)", daoException);
             }
             throw new ServiceException("Exception in method adding new album", e);
+        } finally {
+            transactionManager.endTransaction();
+        }
+    }
+
+    @Override
+    public List<Album> findByAuthor(Long authorID) throws ServiceException {
+        TransactionManager transactionManager = new TransactionManager();
+        AlbumDaoImpl albumDaoImpl = new AlbumDaoImpl();
+        try {
+            transactionManager.startTransaction(albumDaoImpl);
+            return albumDaoImpl.findByAuthor(authorID);
+        } catch (DaoException e) {
+            throw new ServiceException("Exception in method finding album by author's id", e);
         } finally {
             transactionManager.endTransaction();
         }

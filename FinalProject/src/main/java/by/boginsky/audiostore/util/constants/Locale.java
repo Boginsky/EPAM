@@ -10,5 +10,6 @@ public final class Locale {
     public static final String RUSSIAN_LANGUAGE = "ru";
     public static final String RUSSIA = "RU";
 
-    private Locale(){}
+    private Locale() {
+    }
 }

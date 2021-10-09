@@ -9,45 +9,48 @@
     <%@include file="/includes/head.jsp" %>
 </head>
 <body>
-<%@include file="/includes/navbar.jsp" %>
-<div class="container">
-    <br/>
-    <%@include file="/includes/navbarsmall.jsp"%>
-    <br/>
-    <table class="table table-light">
-        <thead>
-        <tr>
-            <th style="width: 25%" scope="col">Name</th>
-            <th style="width: 25%" scope="col">Author</th>
-            <th style="width: 25%" scope="col">Album</th>
-            <th style="width: 25%" scope="col">Genre</th>
-            <th style="width: 25%" scope="col">Price</th>
-            <th style="width: 25%" scope="col">Cancel</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:set var="total" value="${0}"/>
-        <c:forEach var="song" items="${listOfSongsInCart}">
+<div class="bg">
+    <%@include file="/includes/navbar.jsp" %>
+    <div class="container">
+        <br/>
+        <%@include file="/includes/navbarsmall.jsp" %>
+        <br/>
+        <table class="table table-light">
+            <thead>
             <tr>
-                <c:set var="total" value="${total + song.price}"/>
-                <td><c:out value="${song.songName}"/></td>
-                <td><c:out value="${song.author}"/></td>
-                <td><c:out value="${song.album}"/></td>
-                <td><c:out value="${song.genre}"/></td>
-                <td><c:out value="${song.price}"/></td>
-                <td>
-                    <a class="btn btn-sm btn-danger" href="./controller?command=Remove from cart&trackId=${album.id}">Remove</a>
-                </td>
+                <th style="width: 25%" scope="col">Name</th>
+                <th style="width: 25%" scope="col">Author</th>
+                <th style="width: 25%" scope="col">Album</th>
+                <th style="width: 25%" scope="col">Genre</th>
+                <th style="width: 25%" scope="col">Price</th>
+                <th style="width: 25%" scope="col"></th>
             </tr>
-        </c:forEach>
-        </tbody>
-    </table>
-
-    <div class="float-right">
-        <div class="d-flex py-3">
-            <h3>Total price: ${total}</h3><a class="mx-3 btn btn-primary" href="#">Check Out</a></div>
+            </thead>
+            <tbody>
+            <c:set var="total" value="${0}"/>
+            <c:forEach var="song" items="${listOfSongsInCart}">
+                <tr>
+                    <c:set var="total" value="${total + song.price}"/>
+                    <td><c:out value="${song.songName}"/></td>
+                    <td><c:out value="${song.author}"/></td>
+                    <td><c:out value="${song.album}"/></td>
+                    <td><c:out value="${song.genre}"/></td>
+                    <td><c:out value="${song.price}"/></td>
+                    <td>
+                        <a class="btn btn-sm btn-danger"
+                           href="./controller?command=Remove_from_cart&trackId=${song.id}">Remove</a>
+                    </td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+        <div class="float-right">
+            <div class="d-flex py-3">
+                <h3>Total price: ${total}</h3>
+            </div>
+            <%@include file="/includes/submitOrder.jsp" %>
+        </div>
     </div>
-</div>
-<%@include file="/includes/footer.jsp" %>
 </body>
+<%@include file="/includes/footer.jsp" %>
 </html>

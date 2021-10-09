@@ -13,11 +13,12 @@ public final class InputDataValidatorImpl implements InputDataValidator {
     private static final String CHECK_PASSWORD = "[0-9a-zA-Z]{1,20}";
     private static final int MAX_LENGTH_USER_NAME = 255;
 
-    private InputDataValidatorImpl(){}
+    private InputDataValidatorImpl() {
+    }
 
-    public static InputDataValidator getInstance(){
-        while (instance == null){
-            if(isInputDataValidator.compareAndSet(false,true)){
+    public static InputDataValidator getInstance() {
+        while (instance == null) {
+            if (isInputDataValidator.compareAndSet(false, true)) {
                 instance = new InputDataValidatorImpl();
             }
         }

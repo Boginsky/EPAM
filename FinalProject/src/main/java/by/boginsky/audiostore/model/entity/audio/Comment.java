@@ -4,9 +4,11 @@ import by.boginsky.audiostore.model.entity.AbstractEntity;
 
 public class Comment extends AbstractEntity {
 
-    private String commentMessage;
     private Long userId;
-    private Long songId;
+    private Long albumId;
+    private String albumName;
+    private String commentMessage;
+    private String userImageUrl;
 
     public String getCommentMessage() {
         return commentMessage;
@@ -14,14 +16,6 @@ public class Comment extends AbstractEntity {
 
     public void setCommentMessage(String commentMessage) {
         this.commentMessage = commentMessage;
-    }
-
-    public Long getSongId() {
-        return songId;
-    }
-
-    public void setSongId(Long songId) {
-        this.songId = songId;
     }
 
     public Long getUserId() {
@@ -32,34 +26,64 @@ public class Comment extends AbstractEntity {
         this.userId = userId;
     }
 
+    public String getAlbumName() {
+        return albumName;
+    }
+
+    public void setAlbumName(String albumName) {
+        this.albumName = albumName;
+    }
+
+    public String getUserImageUrl() {
+        return userImageUrl;
+    }
+
+    public void setUserImageUrl(String userImageUrl) {
+        this.userImageUrl = userImageUrl;
+    }
+
+    public Long getAlbumId() {
+        return albumId;
+    }
+
+    public void setAlbumId(Long albumId) {
+        this.albumId = albumId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if(o == null || getClass() != o.getClass()){
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
         if (!super.equals(o)) return false;
         Comment comment = (Comment) o;
         return commentMessage.equals(comment.commentMessage) &&
-                songId.equals(comment.songId) &&
-                userId.equals(comment.userId);
+                userId.equals(comment.userId) &&
+                albumId.equals(comment.albumId) &&
+                albumName.equals(comment.albumName) &&
+                userImageUrl.equals(comment.userImageUrl);
     }
 
     @Override
     public int hashCode() {
         int result = 1;
         result = 31 * result + ((commentMessage == null) ? 0 : commentMessage.hashCode());
-        result = 31 * result + ((songId == null) ? 0 : songId.hashCode());
         result = 31 * result + ((userId == null) ? 0 : userId.hashCode());
+        result = 31 * result + ((albumId == null) ? 0 : albumId.hashCode());
+        result = 31 * result + ((albumName == null) ? 0 : albumName.hashCode());
+        result = 31 * result + ((userImageUrl == null) ? 0 : userImageUrl.hashCode());
         return result;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Comment{");
-        sb.append("commentMessage='").append(commentMessage).append('\'');
-        sb.append(", songId=").append(songId);
-        sb.append(", userId=").append(userId);
+        sb.append("userId=").append(userId);
+        sb.append(", albumId=").append(albumId);
+        sb.append(", albumName='").append(albumName).append('\'');
+        sb.append(", commentMessage='").append(commentMessage).append('\'');
+        sb.append(", userImageUrl='").append(userImageUrl).append('\'');
         sb.append('}');
         return sb.toString();
     }
@@ -75,24 +99,38 @@ public class Comment extends AbstractEntity {
             comment = new Comment();
         }
 
-        public Builder setCommentMessage(String commentMessage){
+        public Builder setId(Long commentId){
+            comment.setId(commentId);
+            return this;
+        }
+
+        public Builder setAlbumName(String albumName){
+            comment.setAlbumName(albumName);
+            return this;
+        }
+
+        public Builder setCommentMessage(String commentMessage) {
             comment.setCommentMessage(commentMessage);
             return this;
         }
 
-        public Builder setUserId(Long userId){
+        public Builder setAlbumId(Long albumId){
+            comment.setAlbumId(albumId);
+            return this;
+        }
+
+        public Builder setUserId(Long userId) {
             comment.setUserId(userId);
             return this;
         }
 
-        public Builder setSongId(Long songId){
-            comment.setSongId(songId);
+        public Builder setUserImageUrl(String userImageUrl) {
+            comment.setUserImageUrl(userImageUrl);
             return this;
         }
 
-        public Comment build(){
+        public Comment build() {
             return comment;
         }
     }
-
 }

@@ -10,14 +10,13 @@ import by.boginsky.audiostore.util.constants.PathPage;
 
 import javax.servlet.http.HttpServletRequest;
 
-// FIXME: 11.09.2021 need to make redirect on page of request not to main
 public class RussianLanguageCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {
         httpServletRequest.setAttribute(Attribute.CHANGE_LANGUAGE, Locale.RUSSIAN_LOCALE);
-        httpServletRequest.getSession().setAttribute(Attribute.CHANGE_LANGUAGE,Locale.RUSSIAN_LOCALE);
+        httpServletRequest.getSession().setAttribute(Attribute.CHANGE_LANGUAGE, Locale.RUSSIAN_LOCALE);
         Router router = new Router();
-        router.setPagePath(ConfigurationManager.getProperty(PathPage.PATH_PAGE_MAIN));
+        router.setPagePath(ConfigurationManager.getProperty(PathPage.PATH_PAGE_WELCOME));
         return router;
     }
 }

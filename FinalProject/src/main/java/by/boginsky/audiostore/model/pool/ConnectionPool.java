@@ -31,8 +31,8 @@ public class ConnectionPool {
                 ProxyConnection connection = ConnectionFactory.getConnection();
                 freeConnections.add(connection);
             }
-        }catch (SQLException e){
-            logger.error("Error with properties file",e);
+        } catch (SQLException e) {
+            logger.error("Error with properties file", e);
         }
     }
 

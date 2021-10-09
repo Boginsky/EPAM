@@ -1,17 +1,22 @@
 package by.boginsky.audiostore.model.service;
 
+import by.boginsky.audiostore.exception.DaoException;
 import by.boginsky.audiostore.exception.ServiceException;
 import by.boginsky.audiostore.model.entity.audio.Comment;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface CommentService {
+
     List<Comment> findAllComments() throws ServiceException;
 
-    List<Comment> findCommentsByUserName(String userFirstName, String userLastName) throws ServiceException;
+    List<Comment> findCommentsByAlbumId(Long albumId) throws ServiceException;
 
-    List<Comment> findCommentBySongName(String songName) throws ServiceException;
+    void insertNewComment(Long albumId,Long userId,String commentMessage) throws ServiceException;
 
-    void addNewComment(String comment, Long songId, Long userId) throws ServiceException;
+    void updatedComment(String commentMessage,Long commentId) throws ServiceException;
+
+    void deleteComment(Long commentId) throws ServiceException;
+
+    List<Comment> findCommentsByUserId(Long userId) throws ServiceException;
 }

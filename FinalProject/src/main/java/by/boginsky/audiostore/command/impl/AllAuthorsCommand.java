@@ -23,8 +23,8 @@ public class AllAuthorsCommand implements Command {
         try {
             listOfAuthors = authorService.findAllAuthors();
             httpServletRequest.setAttribute(ALL_AUTHORS, listOfAuthors);
-        }catch (ServiceException e){
-            throw new CommandException("Exception all authors command",e);
+        } catch (ServiceException e) {
+            throw new CommandException("Exception all authors command", e);
         }
         Router router = new Router();
         router.setPagePath(ConfigurationManager.getProperty(PathPage.PATH_PAGE_ALL_AUTHORS));

@@ -9,11 +9,11 @@ import java.util.Optional;
 
 public interface AlbumDao {
 
-    Optional<Album> findById(Long albumId)throws DaoException;
+    Optional<Album> findById(Long albumId) throws DaoException;
 
     Optional<Album> findByName(String nameOfAlbum) throws DaoException;
 
-    List<Album> findByGenre(String nameOfGenre) throws DaoException;
+    List<Album> findByAuthor(Long authorId) throws DaoException;
 
-    void insertAlbum(String name, Timestamp dateOfCreation,String informationAboutAlbum) throws DaoException;
+    void insertAlbum(String name, Timestamp dateOfCreation, String informationAboutAlbum) throws DaoException;
 }

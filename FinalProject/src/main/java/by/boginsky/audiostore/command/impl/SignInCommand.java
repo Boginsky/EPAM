@@ -5,7 +5,9 @@ import by.boginsky.audiostore.controller.Router;
 import by.boginsky.audiostore.exception.CommandException;
 import by.boginsky.audiostore.exception.ServiceException;
 import by.boginsky.audiostore.model.entity.user.User;
+import by.boginsky.audiostore.model.service.SongService;
 import by.boginsky.audiostore.model.service.UserService;
+import by.boginsky.audiostore.model.service.impl.SongServiceImpl;
 import by.boginsky.audiostore.model.service.impl.UserServiceImpl;
 import by.boginsky.audiostore.util.ConfigurationManager;
 import by.boginsky.audiostore.util.constants.PathPage;
@@ -14,6 +16,7 @@ import by.boginsky.audiostore.util.validator.impl.InputDataValidatorImpl;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 import java.util.Optional;
 
 import static by.boginsky.audiostore.util.constants.Attribute.*;
@@ -31,34 +34,42 @@ public class SignInCommand implements Command {
         String password = httpServletRequest.getParameter(PASSWORD);
 
         UserService userService = UserServiceImpl.getInstance();
-        InputDataValidator inputDataValidator = InputDataValidatorImpl.getInstance();
-        String page;
+        SongService songService = SongServiceImpl.getInstance();
 
         try {
-            if (inputDataValidator.isCorrectEmail(email) && inputDataValidator.isCorrectPassword(password)) {
-                Optional<User> optionalUser = userService.findUserByEmailAndPassword(email, password);
-                if (optionalUser.isPresent()) { // FIXME: 12.09.2021  500
-                    User user = optionalUser.get();
-                    if (user.getUserRole() == User.UserRole.USER) {
-                        page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_MAIN_USER);
-                    } else {
-                        page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_MAIN_ADMIN);
-                    }
-                    httpSession.setAttribute(ROLE, user.getUserRole());
-                    httpSession.setAttribute(EMAIL, user.getEmail());
-                    httpSession.setAttribute(USER, user);
-                    httpSession.setAttribute(PASSWORD, password);
-                } else {
-                    page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_LOGIN);
-                }
-            } else {
-                page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_LOGIN);
-            }
+            String page = getPage(httpSession, email, password, userService, songService);
             Router router = new Router();
             router.setPagePath(page);
             return router;
         } catch (ServiceException e) {
             throw new CommandException("Exception in signIn command", e);
         }
+    }
+
+    private String getPage(HttpSession httpSession, String email, String password, UserService userService, SongService songService) throws ServiceException {
+        String page;
+        if (validate(email, password)) {
+            Optional<User> optionalUser = userService.findUserByEmailAndPassword(email, password);
+            List<String> listOfSongImgUrl = songService.findSongImg();
+            if (optionalUser.isPresent()) {
+                User user = optionalUser.get();
+                page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_WELCOME);
+                httpSession.setAttribute(LIST_OF_SONGS_IMG_URL, listOfSongImgUrl);
+                httpSession.setAttribute(ROLE, user.getUserRole());
+                httpSession.setAttribute(EMAIL, user.getEmail());
+                httpSession.setAttribute(USER, user);
+                httpSession.setAttribute(PASSWORD, password);
+            } else {
+                page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_LOGIN);
+            }
+        } else {
+            page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_LOGIN);
+        }
+        return page;
+    }
+
+    private boolean validate(String email, String password) {
+        InputDataValidator inputDataValidator = InputDataValidatorImpl.getInstance();
+        return inputDataValidator.isCorrectEmail(email) && inputDataValidator.isCorrectPassword(password);
     }
 }

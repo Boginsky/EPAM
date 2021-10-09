@@ -9,7 +9,7 @@ public class ProxyConnection implements Connection {
 
     private Connection connection;
 
-    ProxyConnection(Connection connection){
+    ProxyConnection(Connection connection) {
         this.connection = connection;
     }
 
@@ -21,6 +21,7 @@ public class ProxyConnection implements Connection {
     public void close() {
         ConnectionPool.getInstance().releaseConnection(this);
     }
+
     @Override
     public Statement createStatement() throws SQLException {
         return connection.createStatement();

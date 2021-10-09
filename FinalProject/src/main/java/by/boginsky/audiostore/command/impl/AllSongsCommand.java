@@ -19,14 +19,13 @@ public class AllSongsCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {
 
-        List<Song> listOfSongs;
         SongService songService = SongServiceImpl.getInstance();
 
         try {
-            listOfSongs = songService.findAllSongs();
-            httpServletRequest.setAttribute(ALL_SONGS,listOfSongs);
+            List<Song> listOfSongs = songService.findAllSongs();
+            httpServletRequest.setAttribute(ALL_SONGS, listOfSongs);
         } catch (ServiceException e) {
-            throw new CommandException("Exception in main command",e);
+            throw new CommandException("Exception in main command", e);
         }
         Router router = new Router();
         router.setPagePath(ConfigurationManager.getProperty(PathPage.PATH_PAGE_ALL_SONGS));

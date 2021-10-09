@@ -9,24 +9,28 @@
     <%@include file="/includes/head.jsp" %>
 </head>
 <body>
-<%@include file="/includes/navbar.jsp"%>
-<div class="container">
-    <div class="card w-50 mx-auto my-5"/>
-    <div class="card-header text-center"><fmt:message key="label.welcome" bundle="${var}"/></div>
-    <div class="card-body">
-        <form action="./controller" name="command" method="post">
-            <div class="form-group">
-                <label><fmt:message key="label.confirmationCode" bundle="${var}"/></label>
-                <input type="text" class="form-control" name="confirmCode" placeholder="<fmt:message key="label.enterConfirmationCode" bundle="${var}"/>" required>
-            </div>
-            <div class="text-center">
-                <input type="hidden" name="command" value="Confirm registration"/>
-                <button type="submit" class="btn btn-primary"><fmt:message key="label.confirm" bundle="${var}"/></button>
-            </div>
-            <br>
-        </form>
+<div class="bg">
+    <%@include file="/includes/navbar.jsp" %>
+    <div class="container">
+        <div class="card w-50 mx-auto my-5"/>
+        <div class="card-header text-center"><fmt:message key="label.welcome" bundle="${var}"/></div>
+        <div class="card-body">
+            <form action="./controller" name="command" method="post">
+                <div class="form-group">
+                    <label><fmt:message key="label.confirmationCode" bundle="${var}"/></label>
+                    <input type="text" class="form-control" name="confirmCode"
+                           placeholder="<fmt:message key="label.enterConfirmationCode" bundle="${var}"/>" required>
+                </div>
+                <div class="text-center">
+                    <input type="hidden" name="command" value="Confirm registration"/>
+                    <button type="submit" class="btn btn-primary"><fmt:message key="label.confirm"
+                                                                               bundle="${var}"/></button>
+                </div>
+                <br>
+            </form>
+        </div>
     </div>
 </div>
-<%@include file="/includes/footer.jsp" %>
 </body>
+<%@include file="/includes/footer.jsp" %>
 </html>

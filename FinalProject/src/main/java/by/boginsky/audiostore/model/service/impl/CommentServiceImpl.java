@@ -8,7 +8,6 @@ import by.boginsky.audiostore.model.entity.audio.Comment;
 import by.boginsky.audiostore.model.service.CommentService;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class CommentServiceImpl implements CommentService {
@@ -19,15 +18,17 @@ public class CommentServiceImpl implements CommentService {
     private CommentServiceImpl() {
     }
 
-    public static CommentService getInstance(){
-        while (instance == null){
-            if(isCommentService.compareAndSet(false,true)){
+    public static CommentService getInstance() {
+        while (instance == null) {
+            if (isCommentService.compareAndSet(false, true)) {
                 instance = new CommentServiceImpl();
             }
         }
         return instance;
     }
 
+
+    @Override
     public List<Comment> findAllComments() throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
         CommentDaoImpl commentDaoImpl = new CommentDaoImpl();
@@ -39,50 +40,92 @@ public class CommentServiceImpl implements CommentService {
         } finally {
             transactionManager.endTransaction();
         }
-
     }
 
-    public List<Comment> findCommentsByUserName(String userFirstName, String userLastName) throws ServiceException {
+    @Override
+    public List<Comment> findCommentsByAlbumId(Long albumId) throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
         CommentDaoImpl commentDaoImpl = new CommentDaoImpl();
         try {
             transactionManager.startTransaction(commentDaoImpl);
-            return commentDaoImpl.findByUserName(userFirstName, userLastName);
+            return commentDaoImpl.findCommentsByAlbumId(albumId);
         } catch (DaoException e) {
-            throw new ServiceException("Exception in method finding comment by user's name", e);
+            throw new ServiceException("Exception in method finding all comments by album id", e);
         } finally {
             transactionManager.endTransaction();
         }
     }
 
-    public List<Comment> findCommentBySongName(String songName) throws ServiceException {
+    @Override
+    public void insertNewComment(Long albumId, Long userId, String commentMessage) throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
         CommentDaoImpl commentDaoImpl = new CommentDaoImpl();
         try {
             transactionManager.startTransaction(commentDaoImpl);
-            return commentDaoImpl.findBySongName(songName);
-        } catch (DaoException e) {
-            throw new ServiceException("Exception in method finding comment by song's name", e);
-        } finally {
-            transactionManager.endTransaction();
-        }
-    }
-
-    public void addNewComment(String comment, Long songId, Long userId) throws ServiceException {
-        TransactionManager transactionManager = new TransactionManager();
-        CommentDaoImpl commentDaoImpl = new CommentDaoImpl();
-        try {
-            transactionManager.startTransaction(commentDaoImpl);
-            commentDaoImpl.insertComment(comment, songId, userId);
+            commentDaoImpl.insertNewComment(albumId, userId, commentMessage);
             transactionManager.commit();
         } catch (DaoException e) {
             try {
                 transactionManager.rollback();
             } catch (DaoException daoException) {
-                throw new ServiceException("Exception in method adding new comment(rollback)", daoException);
+                throw new ServiceException("Exception in method adding new comment (rollback)", daoException);
             }
             throw new ServiceException("Exception in method adding new comment", e);
-        }finally {
+        } finally {
+            transactionManager.endTransaction();
+        }
+    }
+
+    @Override
+    public void updatedComment(String commentMessage, Long commentId) throws ServiceException {
+        TransactionManager transactionManager = new TransactionManager();
+        CommentDaoImpl commentDaoImpl = new CommentDaoImpl();
+        try {
+            transactionManager.startTransaction(commentDaoImpl);
+            commentDaoImpl.updatedComment(commentMessage, commentId);
+            transactionManager.commit();
+        } catch (DaoException e) {
+            try {
+                transactionManager.rollback();
+            } catch (DaoException daoException) {
+                throw new ServiceException("Exception in method updating comment (rollback)", daoException);
+            }
+            throw new ServiceException("Exception in method updating comment", e);
+        } finally {
+            transactionManager.endTransaction();
+        }
+    }
+
+    @Override
+    public void deleteComment(Long commentId) throws ServiceException {
+        TransactionManager transactionManager = new TransactionManager();
+        CommentDaoImpl commentDaoImpl = new CommentDaoImpl();
+        try {
+            transactionManager.startTransaction(commentDaoImpl);
+            commentDaoImpl.deleteComment(commentId);
+            transactionManager.commit();
+        } catch (DaoException e) {
+            try {
+                transactionManager.rollback();
+            } catch (DaoException daoException) {
+                throw new ServiceException("Exception in method deleting comment (rollback)", daoException);
+            }
+            throw new ServiceException("Exception in method deleting comment", e);
+        } finally {
+            transactionManager.endTransaction();
+        }
+    }
+
+    @Override
+    public List<Comment> findCommentsByUserId(Long userId) throws ServiceException {
+        TransactionManager transactionManager = new TransactionManager();
+        CommentDaoImpl commentDaoImpl = new CommentDaoImpl();
+        try {
+            transactionManager.startTransaction(commentDaoImpl);
+            return commentDaoImpl.findCommentsByUserId(userId);
+        } catch (DaoException e) {
+            throw new ServiceException("Exception in method finding comment by user id", e);
+        } finally {
             transactionManager.endTransaction();
         }
     }

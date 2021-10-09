@@ -18,20 +18,23 @@ public class ToCartCommand implements Command {
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {
         HttpSession httpSession = httpServletRequest.getSession();
         User user = (User) httpSession.getAttribute(USER);
-        String page;
-        if(user == null){
-            page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_LOGIN);
-        }else {
-            if(user.getUserRole() == User.UserRole.ADMIN){
-                page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_MAIN_ADMIN);
-            }else if (user.getUserRole() == User.UserRole.USER){
-                page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_CART);
-            }else {
-                page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_LOGIN);
-            }
-        }
+
+        String page = getPage(user);
         Router router = new Router();
         router.setPagePath(page);
         return router;
+    }
+
+    private String getPage(User user) {
+        if (user == null) {
+            return ConfigurationManager.getProperty(PathPage.PATH_PAGE_LOGIN);
+        }
+        if (user.getUserRole() == User.UserRole.ADMIN) {
+            return ConfigurationManager.getProperty(PathPage.PATH_PAGE_MAIN_ADMIN);
+        }
+        if (user.getUserRole() == User.UserRole.USER) {
+            return ConfigurationManager.getProperty(PathPage.PATH_PAGE_CART);
+        }
+        return ConfigurationManager.getProperty(PathPage.PATH_PAGE_LOGIN);
     }
 }

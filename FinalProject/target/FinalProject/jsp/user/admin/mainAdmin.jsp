@@ -9,6 +9,7 @@
     <%@include file="/includes/head.jsp" %>
 </head>
 <body>
+<div class="bg">
 <%@include file="/includes/navbar.jsp" %>
 <div class="container">
     <br/>
@@ -66,6 +67,7 @@
                 </div>
             </div>
         </div>
+    </div>
         <br/>
         <table class="table table-striped table-responsive-md btn-table">
             <tbody>
@@ -120,6 +122,7 @@
             </tr>
             </tbody>
         </table>
-        <%@include file="/includes/footer.jsp" %>
+</div>
 </body>
+<%@include file="/includes/footer.jsp" %>
 </html>

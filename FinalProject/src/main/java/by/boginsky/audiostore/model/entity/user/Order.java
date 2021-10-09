@@ -1,10 +1,8 @@
 package by.boginsky.audiostore.model.entity.user;
 
 import by.boginsky.audiostore.model.entity.AbstractEntity;
-import by.boginsky.audiostore.model.entity.audio.Song;
 
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -93,12 +91,12 @@ public class Order extends AbstractEntity {
         sb.append(", dateOfCreation=").append(dateOfCreation);
         sb.append(", orderStatus=").append(orderStatus);
         sb.append(", userId=").append(userId);
-        sb.append(", songId=").append(listOfSongsId);
+        sb.append(", listOfSongsId=").append(listOfSongsId);
         sb.append('}');
         return sb.toString();
     }
 
-    public static Builder builder(){
+    public static Builder builder() {
         return new Builder();
     }
 
@@ -109,32 +107,37 @@ public class Order extends AbstractEntity {
             order = new Order();
         }
 
-        public Builder setTotalPrice(BigDecimal totalPrice){
+        public Builder setId(Long id) {
+            order.setId(id);
+            return this;
+        }
+
+        public Builder setTotalPrice(BigDecimal totalPrice) {
             order.setTotalPrice(totalPrice);
             return this;
         }
 
-        public  Builder setDateOfCreation(LocalDateTime dateOfCreation){
+        public Builder setDateOfCreation(LocalDateTime dateOfCreation) {
             order.setDateOfCreation(dateOfCreation);
             return this;
         }
 
-        public Builder setOrderStatus(OrderStatus orderStatus){
+        public Builder setOrderStatus(OrderStatus orderStatus) {
             order.setOrderStatus(orderStatus);
             return this;
         }
 
-        public Builder setUserId(Long id){
+        public Builder setUserId(Long id) {
             order.setUserId(id);
             return this;
         }
 
-        public Builder setSongs(List<Long> listOfSongsId){
+        public Builder setSongs(List<Long> listOfSongsId) {
             order.setListOfSongsId(listOfSongsId);
             return this;
         }
 
-        public Order build(){
+        public Order build() {
             return order;
         }
     }

@@ -9,106 +9,185 @@
     <%@include file="/includes/head.jsp" %>
 </head>
 <body>
-<%@include file="/includes/navbar.jsp" %>
-<div class="container">
-    <br/>
-    <div class="main-body">
-        <div class="row gutters-sm">
-            <div class="col-md-4 mb-3">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex flex-column align-items-center text-center">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
-                                 class="rounded-circle" width="150">
-                            <div class="mt-3">
-                                <h4>John Doe</h4>
-                                <p class="text-secondary mb-1">Full Stack Developer</p>
-                                <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
-                            </div>
-                            <form>
-                                <div class="form-group">
-                                    <label for="exampleFormControlFile1">Example file input</label>
-                                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+<div class="bg">
+    <%@include file="/includes/navbar.jsp" %>
+    <div class="container">
+        <br/>
+        <div class="main-body">
+            <div class="row gutters-sm">
+                <div class="col-md-4">
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img class="item" src="${user.imageUrl}" alt="Card image cap">
+                        <form action="./controller" name="command" method="post" enctype="multipart/form-data">
+                            <input type="file" name="file">
+                            <input type="hidden" name="command" value="Change_photo"/>
+                            <button type="submit" class="btn btn-success btn-lg btn-block"><fmt:message
+                                    key="label.saveChanges"
+                                    bundle="${var}"/></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0"><fmt:message key="label.fullName" bundle="${var}"/></h6>
                                 </div>
-                            </form>
+                                <div class="col-sm-9 text-secondary">
+                                    ${user.firstName} ${user.lastName}
+                                    <%@include file="/includes/changeName.jsp" %>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0"><fmt:message key="label.email" bundle="${var}"/></h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    ${user.email}
+                                    </td>
+                                    <%@include file="/includes/changeEmail.jsp" %>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0"><fmt:message key="label.password" bundle="${var}"/></h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    ***************
+                                    <%@include file="/includes/changePassword.jsp" %>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0"><fmt:message key="label.balance" bundle="${var}"/></h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    ${user.balance}$ + ${user.bonus} <fmt:message key="label.bonus" bundle="${var}"/>
+                                    <%@include file="/includes/changeBalance.jsp" %>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0"><fmt:message key="label.role" bundle="${var}"/></h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    ${user.userRole}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-            <div class="col-md-8">
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Full Name</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                Kenneth Valdez
-                            </div>
+            <br/>
+            <div id="accordion">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                                    aria-expanded="true" aria-controls="collapseOne">
+                                <fmt:message key="label.orders" bundle="${var}"/>
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <table class="table table-light">
+                                <thead>
+                                <tr>
+                                    <th style="width: 25%" scope="col"><fmt:message key="label.orderNumber"
+                                                                                    bundle="${var}"/></th>
+                                    <th style="width: 25%" scope="col"><fmt:message key="label.orderDateOfCreation"
+                                                                                    bundle="${var}"/></th>
+                                    <th style="width: 25%" scope="col"><fmt:message key="label.orderStatus"
+                                                                                    bundle="${var}"/></th>
+                                    <th style="width: 25%" scope="col"><fmt:message key="label.totalPrice"
+                                                                                    bundle="${var}"/></th>
+                                    <th style="width: 25%" scope="col"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach var="order" items="${listOfOrders}">
+                                    <tr>
+                                        <td><c:out value="${order.id}"/></td>
+                                        <td><c:out value="${order.dateOfCreation}"/></td>
+                                        <td><c:out value="${order.orderStatus}"/></td>
+                                        <td><c:out value="${order.totalPrice}"/></td>
+                                        <td>
+                                            <a class="btn btn-sm btn-dark"
+                                               href="./controller?command=find_order&orderId=${order.id}"><fmt:message
+                                                    key="label.details" bundle="${var}"/></a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
                         </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Email</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                fip@jukmuh.al
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Balance</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                (239) 816-9029
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Discount</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                (320) 380-4539
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Status</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                Bay Area, San Francisco, CA
-                            </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                                    aria-expanded="false" aria-controls="collapseTwo">
+                                <fmt:message key="label.comments" bundle="${var}"/>
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body">
+                            <table class="table table-light">
+                                <thead>
+                                <tr>
+                                    <th style="width: 25%" scope="col"><fmt:message key="label.commentNumber"
+                                                                                    bundle="${var}"/></th>
+                                    <th style="width: 25%" scope="col"><fmt:message key="label.commentMessage"
+                                                                                    bundle="${var}"/></th>
+                                    <th style="width: 25%" scope="col"><fmt:message key="label.album"
+                                                                                    bundle="${var}"/></th>
+
+                                    <th style="width: 25%" scope="col"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach var="comment" items="${listOfComments}" varStatus="vs">
+                                    <form action="./controller" name="command" method="post">
+                                        <tr>
+                                            <td><c:out value="${comment.id}"/></td>
+                                            <td><c:out value="${comment.commentMessage}"/></td>
+                                            <td><c:out value="${comment.albumName}"/></td>
+                                            <td style="text-align: right">
+                                                <form action="./controller" name="command" method="post">
+                                                    <input type="hidden" name="command" value="remove_comment"/>
+                                                    <input type="hidden" name="commentId" value="${comment.id}"/>
+                                                    <input type="hidden" name="commentAlbumId" value="${comment.albumId}"/>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><fmt:message
+                                                            key="label.removeComment"
+                                                            bundle="${var}"/></button>
+                                                    <button type="button" class="btn btn-dark btn-sm" data-toggle="modal"
+                                                            data-target="#changeComment${vs.index}">
+                                                        <fmt:message key="label.change" bundle="${var}"/>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                            <%@include file="/includes/changeComment.jsp" %>
+                                        </tr>
+                                    </form>
+                                </c:forEach>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <table class="table table-striped table-responsive-md btn-table">
-            <tbody>
-            <tr>
-                <td style="width: 25%">
-                    <button type="button" class="btn btn-primary btn-lg btn-block">Песни</button>
-                </td>
-                <td style="width: 25%">
-                    <button type="button" class="btn btn-primary btn-lg btn-block">Альбомы</button>
-                </td>
-                <td style="width: 25%">
-                    <button type="button" class="btn btn-primary btn-lg btn-block">Жанры</button>
-                </td>
-            </tr>
-            <tr>
-                <td style="width: 25%">
-                    <button type="button" class="btn btn-primary btn-lg btn-block">Посмотреть мои комментарии</button>
-                </td>
-                <td style="width: 25%">
-                    <button type="button" class="btn btn-primary btn-lg btn-block">Изменить пароль</button>
-                </td>
-            </tr>
-        </table>
-        <%@include file="/includes/footer.jsp" %>
+    </div>
+</div>
+</div>
 </body>
+<%@include file="/includes/footer.jsp" %>
 </html>

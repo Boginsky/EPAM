@@ -3,14 +3,13 @@ package by.boginsky.audiostore.model.entity.user;
 import by.boginsky.audiostore.model.entity.AbstractEntity;
 
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class User extends AbstractEntity {
 
     public enum UserRole {
-        ADMIN, USER, GUEST;
+        ADMIN, USER;
     }
 
     public enum UserStatus {
@@ -20,7 +19,9 @@ public class User extends AbstractEntity {
     private String email;
     private String firstName;
     private String lastName;
+    private String imageUrl;
     private BigDecimal balance;
+    private BigDecimal bonus;
     private LocalDateTime userCreated;
     private UserRole userRole;
     private UserStatus userStatus;
@@ -81,18 +82,36 @@ public class User extends AbstractEntity {
         this.balance = balance;
     }
 
+    public BigDecimal getBonus() {
+        return bonus;
+    }
+
+    public void setBonus(BigDecimal bonus) {
+        this.bonus = bonus;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if(o == null || getClass() != o.getClass()){
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
         if (!super.equals(o)) return false;
         User user = (User) o;
         return Objects.equals(email, user.email) &&
-                Objects.equals(balance,user.balance) &&
+                Objects.equals(balance, user.balance) &&
+                Objects.equals(bonus, user.bonus) &&
                 Objects.equals(firstName, user.firstName) &&
                 Objects.equals(lastName, user.lastName) &&
+                Objects.equals(imageUrl, user.imageUrl) &&
                 Objects.equals(userCreated, user.userCreated) &&
                 userRole == user.userRole &&
                 userStatus == user.userStatus;
@@ -103,8 +122,10 @@ public class User extends AbstractEntity {
         int result = 1;
         result = 31 * result + ((email == null) ? 0 : email.hashCode());
         result = 31 * result + ((balance == null) ? 0 : balance.hashCode());
+        result = 31 * result + ((bonus == null) ? 0 : bonus.hashCode());
         result = 31 * result + ((firstName == null) ? 0 : firstName.hashCode());
         result = 31 * result + ((lastName == null) ? 0 : lastName.hashCode());
+        result = 31 * result + ((imageUrl == null) ? 0 : imageUrl.hashCode());
         result = 31 * result + ((userCreated == null) ? 0 : userCreated.hashCode());
         result = 31 * result + ((userRole == null) ? 0 : userRole.hashCode());
         result = 31 * result + ((userStatus == null) ? 0 : userStatus.hashCode());
@@ -117,7 +138,9 @@ public class User extends AbstractEntity {
         sb.append("email='").append(email).append('\'');
         sb.append(", firstName='").append(firstName).append('\'');
         sb.append(", lastName='").append(lastName).append('\'');
+        sb.append(", imageUrl='").append(imageUrl).append('\'');
         sb.append(", balance=").append(balance);
+        sb.append(", bonus=").append(bonus);
         sb.append(", userCreated=").append(userCreated);
         sb.append(", userRole=").append(userRole);
         sb.append(", userStatus=").append(userStatus);
@@ -125,58 +148,68 @@ public class User extends AbstractEntity {
         return sb.toString();
     }
 
-    public static Builder builder(){
+    public static Builder builder() {
         return new Builder();
     }
 
     public static class Builder {
         private User user;
 
-        public Builder(){
+        public Builder() {
             user = new User();
         }
 
-        public Builder setId(Long id){
+        public Builder setId(Long id) {
             user.setId(id);
             return this;
         }
 
-        public Builder setEmail(String email){
+        public Builder setEmail(String email) {
             user.setEmail(email);
             return this;
         }
 
-        public Builder setFirstName(String firstName){
+        public Builder setFirstName(String firstName) {
             user.setFirstName(firstName);
             return this;
         }
 
-        public Builder setLastName(String lastName){
+        public Builder setLastName(String lastName) {
             user.setLastName(lastName);
             return this;
         }
 
-        public Builder setUserCreated(LocalDateTime userCreated){
+        public Builder setUserCreated(LocalDateTime userCreated) {
             user.setUserCreated(userCreated);
             return this;
         }
 
-        public Builder setUserRole(UserRole userRole){
+        public Builder setUserRole(UserRole userRole) {
             user.setUserRole(userRole);
             return this;
         }
 
-        public Builder setUserStatus(UserStatus userStatus){
+        public Builder setUserStatus(UserStatus userStatus) {
             user.setUserStatus(userStatus);
             return this;
         }
 
-        public Builder setBalance(BigDecimal balance){
+        public Builder setBalance(BigDecimal balance) {
             user.setBalance(balance);
             return this;
         }
 
-        public User build(){
+        public Builder setBonus(BigDecimal bonus){
+            user.setBonus(bonus);
+            return this;
+        }
+
+        public Builder setImageUrl(String imagUrl){
+            user.setImageUrl(imagUrl);
+            return this;
+        }
+
+        public User build() {
             return user;
         }
     }

@@ -4,12 +4,16 @@ import by.boginsky.audiostore.exception.DaoException;
 import by.boginsky.audiostore.exception.ServiceException;
 import by.boginsky.audiostore.model.dao.TransactionManager;
 import by.boginsky.audiostore.model.dao.impl.OrderDaoImpl;
+import by.boginsky.audiostore.model.entity.audio.Song;
 import by.boginsky.audiostore.model.entity.user.Order;
+import by.boginsky.audiostore.model.entity.user.User;
 import by.boginsky.audiostore.model.service.OrderService;
+import by.boginsky.audiostore.model.service.UserService;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class OrderServiceImpl implements OrderService {
@@ -20,9 +24,9 @@ public class OrderServiceImpl implements OrderService {
     private OrderServiceImpl() {
     }
 
-    public static OrderService getInstance(){
-        while(instance == null){
-            if(isOrderService.compareAndSet(false,true)){
+    public static OrderService getInstance() {
+        while (instance == null) {
+            if (isOrderService.compareAndSet(false, true)) {
                 instance = new OrderServiceImpl();
             }
         }
@@ -42,26 +46,39 @@ public class OrderServiceImpl implements OrderService {
         }
     }
 
-    public void addNewOrder(Long orderStatusId, Long userId, Long songId, Long orderId) throws ServiceException {
+    public void addNewOrder(User user, BigDecimal moneyForPayment, BigDecimal bonusForPayment, BigDecimal totalPrice, Set<Song> songs) throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
+        UserService userService = UserServiceImpl.getInstance();
         OrderDaoImpl orderDaoImpl = new OrderDaoImpl();
-        try {
-            transactionManager.startTransaction(orderDaoImpl);
-            orderDaoImpl.insertOrder(orderStatusId, userId, songId, orderId);
-            transactionManager.commit();
-        } catch (DaoException e) {
-            throw new ServiceException("Exception in method adding new order", e);
-        } finally {
-            transactionManager.endTransaction();
+        List<Long> listOfSongsIds = new ArrayList<>();
+        for (Song song : songs) {
+            listOfSongsIds.add(song.getId());
+        }
+        if (bonusForPayment.compareTo(BigDecimal.ZERO) > 0) {
+            totalPrice = totalPrice.subtract(bonusForPayment);
+            userService.updateUserBonus(user.getId(), user.getBonus().subtract(bonusForPayment));
+        }
+        if (totalPrice.compareTo(BigDecimal.ZERO) > 0) {
+            try {
+                transactionManager.startTransaction(orderDaoImpl);
+                orderDaoImpl.insertOrder(user.getId(), listOfSongsIds);
+                transactionManager.commit();
+                BigDecimal userNewMoney = user.getBalance().subtract(totalPrice);
+                userService.updateUserMoney(user.getId(), userNewMoney);
+            } catch (DaoException e) {
+                throw new ServiceException("Exception in method adding new order", e);
+            } finally {
+                transactionManager.endTransaction();
+            }
         }
     }
 
-    public List<Order> findAllByUserName(String userFirstName, String userLastName) throws ServiceException {
+    public List<Order> findAllByUserId(Long userId) throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
         OrderDaoImpl orderDaoImpl = new OrderDaoImpl();
         try {
             transactionManager.startTransaction(orderDaoImpl);
-            return orderDaoImpl.findAllOrdersByUserName(userFirstName, userLastName);
+            return orderDaoImpl.findAllOrdersByUserId(userId);
         } catch (DaoException e) {
             throw new ServiceException("Exception in method finding order by user's name", e);
         } finally {
@@ -112,10 +129,6 @@ public class OrderServiceImpl implements OrderService {
         } finally {
             transactionManager.endTransaction();
         }
-    }
-
-    public boolean isEnoughMoney(BigDecimal userMoney, Long songId) throws ServiceException {
-        return false;
     }
 
     public void buySong(BigDecimal userMoney, BigDecimal songPrice) throws ServiceException {

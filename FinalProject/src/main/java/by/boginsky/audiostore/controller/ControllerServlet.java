@@ -10,12 +10,14 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+@MultipartConfig
 @WebServlet(name = "ControllerServlet", urlPatterns = "/controller")
 public class ControllerServlet extends HttpServlet {
 
@@ -47,7 +49,7 @@ public class ControllerServlet extends HttpServlet {
                         response.sendRedirect(request.getContextPath() + router.getPagePath());
                         break;
                     default:
-                        String page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_ERROR);
+                        String page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_ERROR500);
                         response.sendRedirect(request.getContextPath() + page + "");
                         break;
                 }
@@ -56,9 +58,9 @@ public class ControllerServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + page);
             }
         } catch (CommandException e) {
-            String page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_ERROR);
+            String page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_ERROR500);
             response.sendRedirect(request.getContextPath() + page);
-            logger.error("Internal error",e);
+            logger.error("Internal error", e);
         }
     }
 }

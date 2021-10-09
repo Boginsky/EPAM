@@ -18,4 +18,6 @@ public interface AlbumService {
     List<Album> findAlbumByGenre(String nameOfGenre) throws ServiceException;
 
     void addNewAlbum(String nameOfAlbum, LocalDateTime dateOfCreation, String informationAboutAlbum) throws ServiceException;
+
+    List<Album> findByAuthor(Long authorId) throws ServiceException;
 }

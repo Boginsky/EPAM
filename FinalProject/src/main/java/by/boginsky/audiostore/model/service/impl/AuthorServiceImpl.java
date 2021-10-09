@@ -31,6 +31,20 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
 
+    @Override
+    public Optional<Author> findById(Long authorId) throws ServiceException {
+        TransactionManager transactionManager = new TransactionManager();
+        AuthorDaoImpl authorDao = new AuthorDaoImpl(); // FIXME: 22.09.2021
+        try {
+            transactionManager.startTransaction(authorDao);
+            return authorDao.findById(authorId);
+        } catch (DaoException e) {
+            throw new ServiceException("Exception in method finding author by id", e);
+        } finally {
+            transactionManager.endTransaction();
+        }
+    }
+
     public List<Author> findAllAuthors() throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
         AuthorDaoImpl authorDaoImpl = new AuthorDaoImpl();
@@ -44,25 +58,12 @@ public class AuthorServiceImpl implements AuthorService {
         }
     }
 
-    public Optional<Author> findAuthorByName(String firstNameOfAuthor, String lastNameOfAuthor) throws ServiceException {
+    public void addNewAuthor(String nameOfAuthor, String informationAboutAuthor, LocalDateTime dateOfBirth) throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
         AuthorDaoImpl authorDaoImpl = new AuthorDaoImpl();
         try {
             transactionManager.startTransaction(authorDaoImpl);
-            return authorDaoImpl.findAuthorByName(firstNameOfAuthor, lastNameOfAuthor);
-        } catch (DaoException e) {
-            throw new ServiceException("Exception in method finding author by name", e);
-        } finally {
-            transactionManager.endTransaction();
-        }
-    }
-
-    public void addNewAuthor(String firstNameOfAuthor, String lastNameOfAuthor, String informationAboutAuthor, LocalDateTime dateOfBirth) throws ServiceException {
-        TransactionManager transactionManager = new TransactionManager();
-        AuthorDaoImpl authorDaoImpl = new AuthorDaoImpl();
-        try {
-            transactionManager.startTransaction(authorDaoImpl);
-            authorDaoImpl.insertAuthor(firstNameOfAuthor, lastNameOfAuthor, informationAboutAuthor, Timestamp.valueOf(dateOfBirth));
+            authorDaoImpl.insertAuthor(nameOfAuthor, informationAboutAuthor, Timestamp.valueOf(dateOfBirth));
             transactionManager.commit();
         } catch (DaoException e) {
             try {

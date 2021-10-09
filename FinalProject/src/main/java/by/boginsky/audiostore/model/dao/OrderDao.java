@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface OrderDao {
 
-    void insertOrder(Long orderStatusId, Long userId, Long songId, Long orderId) throws DaoException;
+    void insertOrder(Long userId, List<Long> songsId) throws DaoException;
 
-    List<Order> findAllOrdersByUserName(String userFirstName, String userLastName) throws DaoException;
+    List<Order> findAllOrdersByUserId(Long userId) throws DaoException;
 
     void cancelByUserId(Long userId) throws DaoException;
 

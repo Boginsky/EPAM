@@ -6,5 +6,6 @@ public final class Bundle {
     public static final String MESSAGE = "message";
     public static final String MAIL = "mail";
 
-    private Bundle(){}
+    private Bundle() {
+    }
 }

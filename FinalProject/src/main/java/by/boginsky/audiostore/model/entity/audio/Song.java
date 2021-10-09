@@ -64,7 +64,7 @@ public class Song extends AbstractEntity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if(o == null || getClass() != o.getClass()){
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
         if (!super.equals(o)) return false;
@@ -84,7 +84,7 @@ public class Song extends AbstractEntity {
         result = 31 * result + ((imageUrl == null) ? 0 : imageUrl.hashCode());
         result = 31 * result + ((price == null) ? 0 : price.hashCode());
         result = 31 * result + ((author == null) ? 0 : author.hashCode());
-        result = 31 * result + ((genre== null) ? 0 : genre.hashCode());
+        result = 31 * result + ((genre == null) ? 0 : genre.hashCode());
         result = 31 * result + ((album == null) ? 0 : album.hashCode());
         return result;
     }
@@ -95,60 +95,60 @@ public class Song extends AbstractEntity {
         sb.append("songName='").append(songName).append('\'');
         sb.append(", imageUrl='").append(imageUrl).append('\'');
         sb.append(", price=").append(price);
-        sb.append(", authorName='").append(author).append('\'');
-        sb.append(", genreName='").append(genre).append('\'');
-        sb.append(", albumName='").append(album).append('\'');
+        sb.append(", author='").append(author).append('\'');
+        sb.append(", genre='").append(genre).append('\'');
+        sb.append(", album='").append(album).append('\'');
         sb.append('}');
         return sb.toString();
     }
 
-    public static Builder builder(){
+    public static Builder builder() {
         return new Builder();
     }
 
     public static class Builder {
         private Song song;
 
-        public Builder(){
+        public Builder() {
             song = new Song();
         }
 
-        public Builder setId(Long id){
+        public Builder setId(Long id) {
             song.setId(id);
             return this;
         }
 
-        public Builder setSongName(String songName){
+        public Builder setSongName(String songName) {
             song.setSongName(songName);
             return this;
         }
 
-        public Builder setImageUrl (String imageUrl){
+        public Builder setImageUrl(String imageUrl) {
             song.setImageUrl(imageUrl);
             return this;
         }
 
-        public Builder setPrice (BigDecimal price){
+        public Builder setPrice(BigDecimal price) {
             song.setPrice(price);
             return this;
         }
 
-        public Builder setAuthor(String author){
+        public Builder setAuthor(String author) {
             song.setAuthor(author);
             return this;
         }
 
-        public Builder setGenre(String genre){
+        public Builder setGenre(String genre) {
             song.setGenre(genre);
             return this;
         }
 
-        public Builder setAlbum(String album){
+        public Builder setAlbum(String album) {
             song.setAlbum(album);
             return this;
         }
 
-        public Song build(){
+        public Song build() {
             return song;
         }
     }

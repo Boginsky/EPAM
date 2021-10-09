@@ -2,9 +2,6 @@ package by.boginsky.audiostore.model.entity.audio;
 
 import by.boginsky.audiostore.model.entity.AbstractEntity;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 public class Album extends AbstractEntity {
 
     private String albumName;
@@ -72,14 +69,14 @@ public class Album extends AbstractEntity {
     public String toString() {
         final StringBuilder sb = new StringBuilder("Album{");
         sb.append("albumName='").append(albumName).append('\'');
-        sb.append(", dateOfCreation=").append(authorName);
+        sb.append(", authorName='").append(authorName).append('\'');
         sb.append(", informationAboutAlbum='").append(informationAboutAlbum).append('\'');
         sb.append(", imageUrl='").append(imageUrl).append('\'');
         sb.append('}');
         return sb.toString();
     }
 
-    public static Builder builder(){
+    public static Builder builder() {
         return new Builder();
     }
 
@@ -90,33 +87,33 @@ public class Album extends AbstractEntity {
             album = new Album();
         }
 
-        public Builder setAlbumName(String albumName){
+        public Builder setAlbumName(String albumName) {
             album.setAlbumName(albumName);
             return this;
         }
 
-        public Builder setAuthorName(String authorName){
+        public Builder setAuthorName(String authorName) {
             album.setAuthorName(authorName);
             return this;
         }
 
-        public Builder setInformationAboutAlbum(String informationAboutAlbum){
+        public Builder setInformationAboutAlbum(String informationAboutAlbum) {
             album.setInformationAboutAlbum(informationAboutAlbum);
             return this;
         }
 
-        public Builder setImageUrl(String imageUrl){
+        public Builder setImageUrl(String imageUrl) {
             album.setImageUrl(imageUrl);
             return this;
         }
 
-        public Builder setAlbumId(Long albumId){
+        public Builder setAlbumId(Long albumId) {
             album.setId(albumId);
             return this;
         }
 
 
-        public Album build(){
+        public Album build() {
             return album;
         }
     }

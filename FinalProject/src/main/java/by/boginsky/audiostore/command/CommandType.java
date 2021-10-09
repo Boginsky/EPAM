@@ -5,7 +5,6 @@ import by.boginsky.audiostore.command.impl.language.EnglishLanguageCommand;
 import by.boginsky.audiostore.command.impl.language.RussianLanguageCommand;
 
 public enum CommandType {
-    // FIXME: 13.09.2021  add roles
     SIGN_IN(new SignInCommand()),
     ENGLISH(new EnglishLanguageCommand()),
     RUSSIAN(new RussianLanguageCommand()),
@@ -21,19 +20,30 @@ public enum CommandType {
     ALL_SONGS(new AllSongsCommand()),
     ALL_ALBUMS(new AllAlbumsCommand()),
     ALL_ALBUM_SONG(new AllAlbumSongCommand()),
-    ALL_AUTHORS(new AllAuthorsCommand());
+    ALL_AUTHORS(new AllAuthorsCommand()),
+    ALBUMS_FOR_AUTHOR(new AlbumsForAuthorCommand()),
+    SUBMIT_ORDER(new SubmitOrderCommand()),
+    CHANGE_EMAIL(new ChangeEmailCommand()),
+    CHANGE_NAME(new ChangeNameCommand()),
+    CHANGE_PASSWORD(new ChangePasswordCommand()),
+    CHANGE_BALANCE(new ChangeBalanceCommand()),
+    CHANGE_PHOTO(new ChangePhotoCommand()),
+    FIND_ORDER(new FindOrderCommand()),
+    ADD_COMMENT(new AddCommentCommand()),
+    CHANGE_COMMENT(new ChangeCommentCommand()),
+    REMOVE_COMMENT(new RemoveCommentCommand());
 
     private Command command;
 
-    public Command getCommand(){
+    public Command getCommand() {
         return command;
     }
 
-    public void setCommand(Command command){
+    public void setCommand(Command command) {
         this.command = command;
     }
 
-    CommandType(Command command){
+    CommandType(Command command) {
         setCommand(command);
     }
 }

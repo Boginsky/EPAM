@@ -1,46 +1,55 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <fmt:setLocale value="${changeLanguage}"/>
 <fmt:setBundle basename="pagecontent" var="var"/>
+<html>
 <head>
-    <title><fmt:message key="label.welcome" bundle="${var}"/></title>
+    <title><fmt:message key="label.mainPageTitle" bundle="${var}"/></title>
+    <style>
+        <%@include file="/static/css/main.css" %>
+    </style>
     <%@include file="/includes/head.jsp" %>
 </head>
 <body>
-<%@include file="/includes/navbar.jsp" %>
-<div class="container">
-    <br/>
-    <%@include file="/includes/navbarsmall.jsp"%>
-    <br/>
-    <%--    <div class="card-header my-4"><fmt:message key="label.allSongs" bundle="${var}"/></div>--%>
-    <div class="row">
-        <c:forEach var="album" items="${listOfSongs}">
-            <div class="col-md-4 my-3">
-                <div class="card w-100" style="width: 18rem;">
-                    <img class="card-img-top" src="${album.imageUrl}" alt="Card image cap">
-                        <%--                <img class="card-img-top" src="./static/image/background.jpg" alt="Card image cap">--%>
-                    <div class="card-body">
-                        <h5 class="card-title"><fmt:message key="label.songTitle" bundle="${var}"/><c:out
-                                value="${album.songName}"/></h5>
-                        <h6 class="price"><fmt:message key="label.price" bundle="${var}"/><c:out
-                                value="${album.price}"/></h6>
-                        <h7 class="author"><fmt:message key="label.author" bundle="${var}"/><c:out
-                                value="${album.author}"/></h7>
-                        <h7 class="album"><fmt:message key="label.album" bundle="${var}"/><c:out
-                                value="${album.album}"/></h7>
-                        <h7 class="genre"><fmt:message key="label.genre" bundle="${var}"/><c:out
-                                value="${album.genre}"/></h7>
-                        <div class="mt-3 d-flex justify-content-between">
-                            <a href="./controller?command=Add to cart&trackId=${album.id}"
-                               class="btn btn-dark"><fmt:message key="label.addToCart" bundle="${var}"/></a>
-                        </div>
-                    </div>
-                </div>
+<div class="bg">
+    <%@include file="/includes/navbar.jsp" %>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="card-container center">
+        <div class="card card-1">
+            <a href="./controller?command=all_songs">
+                <img class="topImage" src="${listOfSongsImgUrl[0]}" alt="Card image cap">
+            </a>
+            <div class="bottom">
+                <a type="button" class="btn btn-secondary btn-lg btn-block"
+                   href="./controller?command=all_songs"><fmt:message key="label.songs" bundle="${var}"/></a>
             </div>
-        </c:forEach>
+        </div>
+        <div class="card card-1">
+            <a href="./controller?command=all_albums">
+            <img class="topImage" src="${listOfSongsImgUrl[1]}" alt="Card image cap">
+            </a>
+                <div class="bottom">
+                <a type="button" class="btn btn-secondary btn-lg btn-block"
+                   href="./controller?command=all_albums"><fmt:message key="label.albums" bundle="${var}"/></a>
+            </div>
+        </div>
+        <div class="card card-1">
+            <a href="./controller?command=all_authors">
+            <img class="topImage" src="${listOfSongsImgUrl[2]}" alt="Card image cap">
+            </a>
+            <div class="bottom">
+                <a type="button" class="btn btn-secondary btn-lg btn-block"
+                   href="./controller?command=all_authors"><fmt:message key="label.authors" bundle="${var}"/></a>
+            </div>
+        </div>
     </div>
 </div>
-<%@include file="/includes/footer.jsp" %>
+</div>
 </body>
+<%@include file="/includes/footer.jsp" %>
 </html>

@@ -13,10 +13,11 @@ import by.boginsky.audiostore.util.constants.PathPage;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
-import static by.boginsky.audiostore.util.constants.Attribute.TRACK_ID;
-import static by.boginsky.audiostore.util.constants.Attribute.USER;
+import static by.boginsky.audiostore.util.constants.Attribute.*;
 
 public class AddToCartCommand implements Command {
     @Override
@@ -43,7 +44,7 @@ public class AddToCartCommand implements Command {
             } catch (ServiceException e) {
                 e.printStackTrace();
             }
-            httpSession.setAttribute("listOfSongsInCart", listOfSongsInCart);
+            httpSession.setAttribute(LIST_OF_SONGS_IN_CART, listOfSongsInCart);
             page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_CART);
             router.setPagePath(page);
         }

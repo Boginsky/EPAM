@@ -15,31 +15,59 @@ import java.util.Optional;
 
 import static by.boginsky.audiostore.model.dao.ColumnName.*;
 
+
 public class AlbumDaoImpl extends BaseDao implements AlbumDao {
 
     private static final String FIND_ALBUM_BY_NAME = "SELECT album_name,album_date_of_creation,album_info FROM albums WHERE album_name = ?";
     private static final String FIND_ALBUM_BY_GENRE = "SELECT album_name,album_date_of_creation,album_info FROM albums JOIN songs ON album_id = albums_album_id JOIN genres ON genres_genre_id = genre_id WHERE genre_name = ?";
     private static final String INSERT_INTO_ALBUMS = "INSERT INTO albums (album_name,album_date_of_creation,album_info) values (?,?,?)";
-    private static final String FIND_ALL_ALBUMS = "SELECT DISTINCT album_id,album_name,album_info,album_img,author_first_name,author_last_name FROM albums JOIN songs ON album_id = albums_album_id JOIN authors ON authors_author_id = author_id";
-    private static final String FIND_ALBUM_BY_ID = "SELECT DISTINCT album_id,album_name,album_info,album_img,author_first_name,author_last_name FROM albums JOIN songs ON album_id = albums_album_id JOIN authors ON authors_author_id = author_id WHERE album_id = ?";
+    private static final String FIND_ALL_ALBUMS = "SELECT DISTINCT album_id,album_name,album_info,album_img,author_name FROM albums JOIN songs ON album_id = albums_album_id JOIN authors ON authors_author_id = author_id";
+    private static final String FIND_ALBUM_BY_ID = "SELECT DISTINCT album_id,album_name,album_info,album_img,author_name FROM albums JOIN songs ON album_id = albums_album_id JOIN authors ON authors_author_id = author_id WHERE album_id = ?";
+    private static final String FIND_ALBUM_BY_AUTHOR_ID = "SELECT DISTINCT album_id,album_name,album_info,album_img,author_name FROM albums JOIN songs ON album_id = albums_album_id JOIN authors ON authors_author_id = author_id WHERE author_id = ?";
 
 
     @Override
+    public List<Album> findByAuthor(Long authorId) throws DaoException {
+        List<Album> listOfAlbums = new ArrayList<>();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALBUM_BY_AUTHOR_ID)) {
+            preparedStatement.setLong(1, authorId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Long albumId = resultSet.getLong(ALBUM_ID);
+                String albumName = resultSet.getString(ALBUM_NAME);
+                String albumInfo = resultSet.getString(ALBUM_INFO);
+                String albumImg = resultSet.getString(ALBUM_IMG);
+                String nameOfAuthor = resultSet.getString(AUTHOR_NAME);
+                listOfAlbums.add(Album.builder()
+                        .setAlbumId(albumId)
+                        .setAlbumName(albumName)
+                        .setInformationAboutAlbum(albumInfo)
+                        .setImageUrl(albumImg)
+                        .setAuthorName(nameOfAuthor)
+//                        .setAuthorName(format("%s %s", firstNameOfAuthor, lastNameOfAuthor))
+                        .build());
+            }
+        } catch (SQLException e) {
+            throw new DaoException("SQLException searching album by author's name", e);
+        }
+        return listOfAlbums;
+    }
+
+    @Override
     public Optional<Album> findById(Long albumId) throws DaoException {
-        Optional<Album> album = null;
+        Optional<Album> album = Optional.empty();
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALBUM_BY_ID)) {
             preparedStatement.setLong(1, albumId);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 String albumName = resultSet.getString(ALBUM_NAME);
-                String authorFirstName = resultSet.getString(AUTHOR_FIRST_NAME);
-                String authorLastName = resultSet.getString(AUTHOR_LAST_NAME);
+                String authorName = resultSet.getString(AUTHOR_NAME);
                 String informationAboutAlbum = resultSet.getString(ALBUM_INFO);
                 String imageUrl = resultSet.getString(ALBUM_IMG);
                 album = Optional.ofNullable(Album.builder()
                         .setAlbumId(albumId)
                         .setAlbumName(albumName)
-                        .setAuthorName(authorFirstName.concat(" ").concat(authorLastName))
+                        .setAuthorName(authorName)
                         .setInformationAboutAlbum(informationAboutAlbum)
                         .setImageUrl(imageUrl)
                         .build());
@@ -52,7 +80,7 @@ public class AlbumDaoImpl extends BaseDao implements AlbumDao {
 
     @Override
     public Optional<Album> findByName(String nameOfAlbum) throws DaoException {
-        Optional<Album> album = null;
+        Optional<Album> album = Optional.empty();
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALBUM_BY_NAME)) {
             preparedStatement.setString(1, nameOfAlbum);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -70,28 +98,6 @@ public class AlbumDaoImpl extends BaseDao implements AlbumDao {
             throw new DaoException("SQLException, searching album by name", e);
         }
         return album;
-    }
-
-    @Override
-    public List<Album> findByGenre(String nameOfGenre) throws DaoException {
-        List<Album> listOfIdAlbums = new ArrayList<>();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALBUM_BY_GENRE)) {
-            preparedStatement.setString(1, nameOfGenre);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                String albumName = resultSet.getString(ALBUM_NAME);
-                Timestamp dateOfCreation = resultSet.getTimestamp(ALBUM_DATE_OF_CREATION);
-                String albumInfo = resultSet.getString(ALBUM_INFO);
-                listOfIdAlbums.add(Album.builder()
-                        .setAlbumName(albumName)
-//                        .setDateOfCreation(dateOfCreation.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime())
-                        .setInformationAboutAlbum(albumInfo)
-                        .build());
-            }
-        } catch (SQLException e) {
-            throw new DaoException("SQLException, searching album by genre", e);
-        }
-        return listOfIdAlbums;
     }
 
     @Override
@@ -114,14 +120,13 @@ public class AlbumDaoImpl extends BaseDao implements AlbumDao {
             while (resultSet.next()) {
                 Long albumId = resultSet.getLong(ALBUM_ID);
                 String albumName = resultSet.getString(ALBUM_NAME);
-                String authorFirstName = resultSet.getString(AUTHOR_FIRST_NAME);
-                String authorLastName = resultSet.getString(AUTHOR_LAST_NAME);
+                String authorName = resultSet.getString(AUTHOR_NAME);
                 String informationAboutAlbum = resultSet.getString(ALBUM_INFO);
                 String imageUrl = resultSet.getString(ALBUM_IMG);
                 listOfAlbums.add(Album.builder()
                         .setAlbumId(albumId)
                         .setAlbumName(albumName)
-                        .setAuthorName(authorFirstName.concat(" ").concat(authorLastName))
+                        .setAuthorName(authorName)
                         .setInformationAboutAlbum(informationAboutAlbum)
                         .setImageUrl(imageUrl)
                         .build());

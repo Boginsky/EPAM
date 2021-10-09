@@ -8,18 +8,17 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
-<div class="fixed-bottom">
-    <div class="border-top"></div>
-    <footer class="bg-light text-center text-lg-start">
-        <div class="text-center p-3" style="background-color: lightgrey;">
-            <div style="text-align: center">
-                <a class="btn btn-primary" href="./controller?command=english">EN</a>
-                <a class="btn btn-primary" href="./controller?command=russian">RU</a>
+    <div class="fixed-bottom">
+        <footer class="bg-light text-center text-lg-start">
+            <div class="text-center p-1" style="background-color: lightgrey;">
+                <div style="text-align: center">
+                    <a class="btn btn-primary" href="./controller?command=english">EN</a>
+                    <a class="btn btn-primary" href="./controller?command=russian">RU</a>
+                </div>
+                <br/>
+                <div style="text-align: center">
+                    <h12>AudioStore 2021</h12>
+                </div>
             </div>
-            <br/>
-            <div style="text-align: center">
-                <h12>AudioStore 2021</h12>
-            </div>
-        </div>
-    </footer>
-</div>
+        </footer>
+    </div>

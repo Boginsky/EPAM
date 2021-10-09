@@ -10,17 +10,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static by.boginsky.audiostore.model.dao.ColumnName.*;
 
 public class CommentDaoImpl extends BaseDao implements CommentDao {
 
-    private static final String FIND_ALL_COMMENTS = "SELECT comment,users_user_id,songs_song_id FROM comments";
-    private static final String FIND_COMMENT_BY_ID = "SELECT comment,users_user_id,songs_song_id FROM comments WHERE comment_id = ?";
-    private static final String FIND_COMMENT_BY_USER_NAME = "SELECT comment,songs_song_id,users_user_id FROM comments JOIN users ON users_user_id = user_id WHERE first_name = ? AND last_name = ?";
-    private static final String FIND_COMMENT_BY_SONG_NAME = "SELECT comment,songs_song_id,users_user_id FROM comments JOIN songs ON songs_song_id = song_id WHERE song_name = ?";
-    private static final String INSERT_INTO_COMMENTS_NEW_COMMENT = "INSERT INTO comments (comment,songs_song_id,users_user_id) VALUES(?,?,?)";
+    private static final String FIND_ALL_COMMENTS = "SELECT users_user_id,albums_album_id,comment,user_img,comment_id,album_name FROM comments JOIN users ON users_user_id = user_id JOIN albums ON albums_album_id = album_id";
+    private static final String FIND_COMMENTS_BY_ALBUM_ID = "SELECT users_user_id,comment,albums_album_id,user_img,comment_id,album_name FROM comments JOIN users ON users_user_id = user_id JOIN albums ON albums_album_id = album_id WHERE albums_album_id = ?";
+    private static final String FIND_COMMENTS_BY_USER_ID = "SELECT comment,user_img,albums_album_id,comment_id,album_name FROM comments JOIN users ON users_user_id = user_id JOIN albums ON albums_album_id = album_id WHERE user_id = ?";
+    private static final String INSERT_NEW_COMMENT = "INSERT INTO  comments (users_user_id,albums_album_id,comment) VALUES(?,?,?)";
+    private static final String UPDATE_COMMENT = "UPDATE comments SET comment = ? WHERE comment_id = ?";
+    private static final String DELETE_COMMENT = "DELETE FROM comments WHERE comment_id = ?";
 
     @Override
     public List<Comment> findAll() throws DaoException {
@@ -28,13 +28,19 @@ public class CommentDaoImpl extends BaseDao implements CommentDao {
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_COMMENTS)) {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                String commentMessage = resultSet.getString(COMMENT);
-                Long user_id = resultSet.getLong(USERS_USER_ID);
-                Long song_id = resultSet.getLong(SONGS_SONG_ID);
+                String albumName = resultSet.getString(ALBUM_NAME);
+                Long albumId = resultSet.getLong(COMMENT_ALBUM_ID);
+                String commentMessage = resultSet.getString(COMMENT_MESSAGE);
+                Long commentId = resultSet.getLong(COMMENT_ID);
+                Long userId = resultSet.getLong(COMMENT_USER_ID);
+                String userImageUrl = resultSet.getString(USER_IMG);
                 listOfComments.add(Comment.builder()
                         .setCommentMessage(commentMessage)
-                        .setUserId(user_id)
-                        .setSongId(song_id)
+                        .setAlbumName(albumName)
+                        .setId(commentId)
+                        .setAlbumId(albumId)
+                        .setUserId(userId)
+                        .setUserImageUrl(userImageUrl)
                         .build());
             }
         } catch (SQLException e) {
@@ -44,60 +50,89 @@ public class CommentDaoImpl extends BaseDao implements CommentDao {
     }
 
     @Override
-    public List<Comment> findByUserName(String userFirstName, String userLastName) throws DaoException {
+    public List<Comment> findCommentsByAlbumId(Long albumId) throws DaoException {
         List<Comment> listOfComments = new ArrayList<>();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_COMMENT_BY_USER_NAME)) {
-            preparedStatement.setString(1, userFirstName);
-            preparedStatement.setString(2, userLastName);
+        try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_COMMENTS_BY_ALBUM_ID)) {
+            preparedStatement.setLong(1, albumId);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                String commentMessage = resultSet.getString(COMMENT);
-                Long userId = resultSet.getLong(USERS_USER_ID);
-                Long songId = resultSet.getLong(SONGS_SONG_ID);
+                String commentMessage = resultSet.getString(COMMENT_MESSAGE);
+                String albumName = resultSet.getString(ALBUM_NAME);
+                Long commentId = resultSet.getLong(COMMENT_ID);
+                Long userId = resultSet.getLong(COMMENT_USER_ID);
+                String userImageUrl = resultSet.getString(USER_IMG);
                 listOfComments.add(Comment.builder()
                         .setCommentMessage(commentMessage)
-                        .setSongId(songId)
+                        .setAlbumName(albumName)
+                        .setAlbumId(albumId)
+                        .setId(commentId)
                         .setUserId(userId)
+                        .setUserImageUrl(userImageUrl)
                         .build());
             }
         } catch (SQLException e) {
-            throw new DaoException("SQLException,finding comment by user name",e);
+            throw new DaoException("SQLException, finding all comments by album id", e);
         }
         return listOfComments;
     }
 
     @Override
-    public List<Comment> findBySongName(String songName) throws DaoException {
+    public List<Comment> findCommentsByUserId(Long userId) throws DaoException {
         List<Comment> listOfComments = new ArrayList<>();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_COMMENT_BY_SONG_NAME)) {
-            preparedStatement.setString(1,songName);
+        try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_COMMENTS_BY_USER_ID)) {
+            preparedStatement.setLong(1, userId);
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()){
-                String commentMessage = resultSet.getString(COMMENT);
-                Long songId = resultSet.getLong(USERS_USER_ID);
-                Long userId = resultSet.getLong(SONGS_SONG_ID);
+            while (resultSet.next()) {
+                String commentMessage = resultSet.getString(COMMENT_MESSAGE);
+                String albumName = resultSet.getString(ALBUM_NAME);
+                Long albumId = resultSet.getLong(COMMENT_ALBUM_ID);
+                Long commentId = resultSet.getLong(COMMENT_ID);
+                String userImageUrl = resultSet.getString(USER_IMG);
                 listOfComments.add(Comment.builder()
                         .setCommentMessage(commentMessage)
-                        .setSongId(songId)
+                        .setAlbumName(albumName)
+                        .setId(commentId)
+                        .setAlbumId(albumId)
                         .setUserId(userId)
+                        .setUserImageUrl(userImageUrl)
                         .build());
             }
-        }catch (SQLException e){
-            throw new DaoException("SQLException, finding comment by song name",e);
+        } catch (SQLException e) {
+            throw new DaoException("SQLException, finding all comments by user id", e);
         }
         return listOfComments;
     }
 
     @Override
-    public void insertComment(String comment, Long songId, Long userId) throws DaoException {
-        try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_INTO_COMMENTS_NEW_COMMENT)) {
-            preparedStatement.setString(1,comment);
-            preparedStatement.setLong(2,songId);
-            preparedStatement.setLong(3,userId);
+    public void insertNewComment(Long albumId, Long userId, String commentMessage) throws DaoException {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_NEW_COMMENT)) {
+            preparedStatement.setLong(1, userId);
+            preparedStatement.setLong(2, albumId);
+            preparedStatement.setString(3, commentMessage);
             preparedStatement.executeUpdate();
-        }catch (SQLException e){
-            throw new DaoException("SQLException, inserting new comment",e);
+        } catch (SQLException e) {
+            throw new DaoException("SQLException, inserting new comment", e);
         }
     }
 
+    @Override
+    public void updatedComment(String commentMessage, Long commentId) throws DaoException {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_COMMENT)) {
+            preparedStatement.setString(1, commentMessage);
+            preparedStatement.setLong(2, commentId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DaoException("SQLException, updating comment", e);
+        }
+    }
+
+    @Override
+    public void deleteComment(Long commentId) throws DaoException {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_COMMENT)) {
+            preparedStatement.setLong(1, commentId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DaoException("SQLException,deleting comment", e);
+        }
+    }
 }
