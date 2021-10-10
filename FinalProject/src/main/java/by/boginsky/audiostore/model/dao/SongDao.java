@@ -2,12 +2,15 @@ package by.boginsky.audiostore.model.dao;
 
 import by.boginsky.audiostore.exception.DaoException;
 import by.boginsky.audiostore.model.entity.audio.Song;
+import by.boginsky.audiostore.model.entity.user.User;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
 public interface SongDao {
+
+    List<Song> findAll() throws DaoException;
 
     Optional<Song> findSongById(Long songId) throws DaoException;
 

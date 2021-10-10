@@ -4,8 +4,8 @@ import by.boginsky.audiostore.model.entity.AbstractEntity;
 
 public class Comment extends AbstractEntity {
 
-    private Long userId;
     private Long albumId;
+    private String userName;
     private String albumName;
     private String commentMessage;
     private String userImageUrl;
@@ -18,12 +18,12 @@ public class Comment extends AbstractEntity {
         this.commentMessage = commentMessage;
     }
 
-    public Long getUserId() {
-        return userId;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getAlbumName() {
@@ -59,7 +59,7 @@ public class Comment extends AbstractEntity {
         if (!super.equals(o)) return false;
         Comment comment = (Comment) o;
         return commentMessage.equals(comment.commentMessage) &&
-                userId.equals(comment.userId) &&
+                userName.equals(comment.userName) &&
                 albumId.equals(comment.albumId) &&
                 albumName.equals(comment.albumName) &&
                 userImageUrl.equals(comment.userImageUrl);
@@ -69,7 +69,7 @@ public class Comment extends AbstractEntity {
     public int hashCode() {
         int result = 1;
         result = 31 * result + ((commentMessage == null) ? 0 : commentMessage.hashCode());
-        result = 31 * result + ((userId == null) ? 0 : userId.hashCode());
+        result = 31 * result + ((userName == null) ? 0 : userName.hashCode());
         result = 31 * result + ((albumId == null) ? 0 : albumId.hashCode());
         result = 31 * result + ((albumName == null) ? 0 : albumName.hashCode());
         result = 31 * result + ((userImageUrl == null) ? 0 : userImageUrl.hashCode());
@@ -79,7 +79,7 @@ public class Comment extends AbstractEntity {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Comment{");
-        sb.append("userId=").append(userId);
+        sb.append("userName=").append(userName);
         sb.append(", albumId=").append(albumId);
         sb.append(", albumName='").append(albumName).append('\'');
         sb.append(", commentMessage='").append(commentMessage).append('\'');
@@ -119,8 +119,8 @@ public class Comment extends AbstractEntity {
             return this;
         }
 
-        public Builder setUserId(Long userId) {
-            comment.setUserId(userId);
+        public Builder setUserName(String userName){
+            comment.setUserName(userName);
             return this;
         }
 

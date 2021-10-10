@@ -107,7 +107,7 @@
                             <div class="w-100">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="d-flex flex-row align-items-center"><span
-                                            class="mr-2"><c:out value="${user.firstName} ${user.lastName}"/></span>
+                                            class="mr-2"><c:out value="${comment.userName}"/></span>
                                     </div>
                                 </div>
                                 <p class="text-justify comment-text mb-0"><c:out

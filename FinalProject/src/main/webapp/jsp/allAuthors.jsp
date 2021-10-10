@@ -20,7 +20,7 @@
                 <div class="col-md-4 my-3">
                     <div class="card w-100" style="width: 18rem;">
                         <a href="./controller?command=Albums_for_author&authorId=${author.id}">
-                            <img class="card-img-top" src="${author.imageUrl}" alt="Card image cap">
+                            <img class="card-img-top" src="${author.imageUrl}" alt="Card image cap" style="height: 22rem">
                         </a>
                         <div class="card-body">
                             <h5 class="card-title"><c:out value="${author.name}"/></h5>

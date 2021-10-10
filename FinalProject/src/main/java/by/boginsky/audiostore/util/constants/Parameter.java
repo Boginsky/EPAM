@@ -18,6 +18,7 @@ public final class Parameter {
     public static final String MONEY_FOR_PAYMENT = "moneyForPayment";
     public static final String BONUS_FOR_PAYMENT = "bonusForPayment";
     public static final String TOTAL_PRICE = "total";
+    public static final String PAGE_ID = "pageId";
 
     private Parameter() {
     }

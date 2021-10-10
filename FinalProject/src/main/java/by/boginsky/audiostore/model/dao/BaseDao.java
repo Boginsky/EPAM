@@ -13,11 +13,8 @@ import java.util.List;
 
 public abstract class BaseDao<T extends AbstractEntity> {
 
-
     // TODO: 13.09.2021 threads. будут ли все потоки использовать один коннекшен. если создать синглтон
     protected ProxyConnection connection;
-
-    public abstract List<T> findAll() throws DaoException;
 
     public void setConnection(ProxyConnection connection) {
         this.connection = connection;

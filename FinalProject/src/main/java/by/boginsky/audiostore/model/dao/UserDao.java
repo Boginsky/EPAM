@@ -4,9 +4,12 @@ import by.boginsky.audiostore.exception.DaoException;
 import by.boginsky.audiostore.model.entity.user.User;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Optional;
 
 public interface UserDao {
+
+    List<User> findAll() throws DaoException;
 
     Optional<User> findUserByEmail(String email) throws DaoException;
 

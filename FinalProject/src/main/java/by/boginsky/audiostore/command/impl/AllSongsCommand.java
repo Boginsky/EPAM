@@ -11,16 +11,16 @@ import by.boginsky.audiostore.util.ConfigurationManager;
 import by.boginsky.audiostore.util.constants.PathPage;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Collections;
 import java.util.List;
 
 import static by.boginsky.audiostore.util.constants.Attribute.ALL_SONGS;
+import static by.boginsky.audiostore.util.constants.Parameter.PAGE_ID;
 
 public class AllSongsCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {
-
         SongService songService = SongServiceImpl.getInstance();
-
         try {
             List<Song> listOfSongs = songService.findAllSongs();
             httpServletRequest.setAttribute(ALL_SONGS, listOfSongs);
