@@ -22,7 +22,8 @@
     <div class="card-container center">
         <div class="card card-1">
             <a href="./controller?command=all_songs">
-                <img class="topImage" src="${listOfSongsImgUrl[0]}" alt="Card image cap">
+
+                <img class="topImage" src="./imageTransfer?imageUuid=${listOfSongsImgUrl[0]}" alt="Card image cap">
             </a>
             <div class="bottom">
                 <a type="button" class="btn btn-secondary btn-lg btn-block"
@@ -30,21 +31,21 @@
             </div>
         </div>
         <div class="card card-1">
-            <a href="./controller?command=all_albums">
-                <img class="topImage" src="${listOfSongsImgUrl[1]}" alt="Card image cap">
+            <a href="./controller?command=all_albums&pageId=1">
+                <img class="topImage" src="./imageTransfer?imageUuid=${listOfSongsImgUrl[1]}" alt="Card image cap">
             </a>
             <div class="bottom">
                 <a type="button" class="btn btn-secondary btn-lg btn-block"
-                   href="./controller?command=all_albums"><fmt:message key="label.albums" bundle="${var}"/></a>
+                   href="./controller?command=all_albums&pageId=1"><fmt:message key="label.albums" bundle="${var}"/></a>
             </div>
         </div>
         <div class="card card-1">
-            <a href="./controller?command=all_authors">
-                <img class="topImage" src="${listOfSongsImgUrl[2]}" alt="Card image cap">
+            <a href="./controller?command=all_authors&pageId=1">
+                <img class="topImage" src="./imageTransfer?imageUuid=${listOfSongsImgUrl[2]}" alt="Card image cap">
             </a>
             <div class="bottom">
                 <a type="button" class="btn btn-secondary btn-lg btn-block"
-                   href="./controller?command=all_authors"><fmt:message key="label.authors" bundle="${var}"/></a>
+                   href="./controller?command=all_authors&pageId=1"><fmt:message key="label.authors" bundle="${var}"/></a>
             </div>
         </div>
     </div>

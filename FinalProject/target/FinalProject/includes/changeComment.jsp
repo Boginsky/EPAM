@@ -6,9 +6,6 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle"><fmt:message key="label.changeComment"
                                                                                     bundle="${var}"/></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"></span>
-                    </button>
                 </div>
                 <div class="modal-body">
                     <input type="text" class="form-control" name="updatedComment"
@@ -23,7 +20,6 @@
 
                     <input type="hidden" name="command" value="change_comment"/>
                     <input type="hidden" name="commentId" value="${comment.id}"/>
-<%--                    <input type="hidden" name="commentAlbumId" value="${comment.albumId}"/>--%>
                     <button type="submit" class="btn btn-dark btn-lg btn-block"><fmt:message key="label.saveChanges"
                                                                                              bundle="${var}"/></button>
                 </div>

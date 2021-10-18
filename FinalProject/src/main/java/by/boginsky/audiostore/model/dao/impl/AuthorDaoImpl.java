@@ -5,37 +5,23 @@ import by.boginsky.audiostore.model.dao.AuthorDao;
 import by.boginsky.audiostore.model.dao.BaseDao;
 import by.boginsky.audiostore.model.entity.audio.Author;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import static by.boginsky.audiostore.model.dao.ColumnName.*;
 
-public class AuthorDaoImpl extends BaseDao implements AuthorDao {
+public class AuthorDaoImpl extends BaseDao<Author> implements AuthorDao {
 
-    private static final String INSERT_INTO_AUTHORS = "INSERT INTO authors (author_name,author_info_author_dob) VALUES (?,?,?)"; // FIXME: 29.09.2021
-    private static final String FIND_ALL_AUTHORS = "SELECT DISTINCT author_id,author_name,author_info,author_img,genre_name FROM authors JOIN songs ON author_id = authors_author_id JOIN genres ON genres_genre_id = genre_id";
-    private static final String FIND_AUTHOR_BY_ID = "SELECT DISTINCT author_id,author_name,author_info,author_img,genre_name FROM authors JOIN songs ON author_id = authors_author_id JOIN genres ON genres_genre_id = genre_id WHERE author_id = ?";
-    private static final String FIND_AUTHOR_BY_ALBUM_NAME = "SELECT author_name FROM authors JOIN songs ON author_id = authors_author_id JOIN albums on albums_album_id = album_id WHERE album_name = ?";
-
-
-    public Optional<String> findAuthorByAlbumName(String albumName) throws DaoException {
-        Optional<String> nameOfAuthor = Optional.empty();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_AUTHOR_BY_ALBUM_NAME)) {
-            preparedStatement.setString(1, albumName);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            String authorName = resultSet.getString(AUTHOR_NAME);
-            nameOfAuthor = Optional.ofNullable(authorName);
-        } catch (SQLException e) {
-            throw new DaoException("SQLException, searching author's name by album's name", e);
-        }
-        return nameOfAuthor;
-    }
-
+    private static final String INSERT_INTO_AUTHORS = "INSERT INTO authors (author_name,author_info) VALUES (?,?)";
+    private static final String FIND_ALL_AUTHORS_FOR_PAGE = "SELECT author_id,author_name,author_info,author_img FROM authors LIMIT ?,5";
+    private static final String FIND_ALL_AUTHORS = "SELECT author_id,author_name FROM authors";
+    private static final String FIND_AUTHOR_BY_ID = "SELECT author_id,author_name,author_info,author_img FROM authors WHERE author_id = ?";
+    private static final String FIND_GENRE_FOR_AUTHOR = "SELECT DISTINCT genre_name FROM authors JOIN songs ON author_id = authors_author_id JOIN genres ON genres_genre_id = genre_id WHERE author_id = ?";
+    private static final String UPDATE_AUTHOR_PHOTO = "UPDATE authors SET author_img = ? WHERE author_id = ?";
+    private static final String REMOVE_AUTHOR = "DELETE FROM authors WHERE author_id = ?";
+    private static final String UPDATE_AUTHOR = "UPDATE authors SET author_name = ?,author_info = ? WHERE author_id = ?";
 
     @Override
     public Optional<Author> findById(Long authorId) throws DaoException {
@@ -47,13 +33,12 @@ public class AuthorDaoImpl extends BaseDao implements AuthorDao {
                 String authorName = resultSet.getString(AUTHOR_NAME);
                 String informationAboutAuthor = resultSet.getString(AUTHOR_INFO);
                 String imageUrl = resultSet.getString(AUTHOR_IMG);
-                String genreName = resultSet.getString(GENRE_NAME);
                 author = Optional.ofNullable(Author.builder()
                         .setId(authorId)
                         .setName(authorName)
                         .setInformationAboutAuthor(informationAboutAuthor)
                         .setImageUrl(imageUrl)
-                        .setGenreName(genreName)
+                        .setListOfGenres(findGenresForAuthor(authorId))
                         .build());
             }
         } catch (SQLException e) {
@@ -64,15 +49,78 @@ public class AuthorDaoImpl extends BaseDao implements AuthorDao {
 
 
     @Override
-    public void insertAuthor(String authorName, String informationAboutAuthor, Timestamp dateOfBirth) throws DaoException {
-        try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_INTO_AUTHORS)) {
+    public Long insertAuthor(String authorName, String informationAboutAuthor) throws DaoException {
+        Long id = null; // FIXME: 15.10.2021 
+        try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_INTO_AUTHORS, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, authorName);
             preparedStatement.setString(2, informationAboutAuthor);
-            preparedStatement.setTimestamp(3, dateOfBirth);
             preparedStatement.executeUpdate();
+            ResultSet resultSet = preparedStatement.getGeneratedKeys();
+            if(resultSet.next()){
+                id = resultSet.getLong(1);
+            }
         } catch (SQLException e) {
             throw new DaoException("SQLException, inserting new author", e);
         }
+        return id;
+    }
+
+    @Override
+    public void updateAuthorPhoto(String authorImageUrl, Long authorId) throws DaoException {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_AUTHOR_PHOTO)) {
+            preparedStatement.setString(1,authorImageUrl);
+            preparedStatement.setLong(2,authorId);
+            preparedStatement.executeUpdate();
+        }catch (SQLException e){
+            throw new DaoException("SQLException, updating author's photo",e);
+        }
+    }
+
+    @Override
+    public void removeAuthor(Long authorId) throws DaoException {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(REMOVE_AUTHOR)) {
+            preparedStatement.setLong(1,authorId);
+            preparedStatement.executeUpdate();
+        }catch (SQLException e){
+            throw new DaoException("SQLException, removing author",e);
+        }
+    }
+
+    @Override
+    public void updateAuthor(Long authorId,String authorName, String authorInfo) throws DaoException {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_AUTHOR)) {
+            preparedStatement.setString(1,authorName);
+            preparedStatement.setString(2,authorInfo);
+            preparedStatement.setLong(3,authorId);
+            preparedStatement.executeUpdate();
+        }catch (SQLException e){
+            throw new DaoException("SQLException,updating author",e);
+        }
+    }
+
+    @Override
+    public List<Author> findAll(Long startPosition) throws DaoException {
+        List<Author> listOfAuthors = new ArrayList<>();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_AUTHORS_FOR_PAGE)) {
+            preparedStatement.setLong(1,startPosition);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Long authorId = resultSet.getLong(AUTHOR_ID);
+                String authorName = resultSet.getString(AUTHOR_NAME);
+                String informationAboutAuthor = resultSet.getString(AUTHOR_INFO);
+                String imageUrl = resultSet.getString(AUTHOR_IMG);
+                listOfAuthors.add(Author.builder()
+                        .setId(authorId)
+                        .setName(authorName)
+                        .setInformationAboutAuthor(informationAboutAuthor)
+                        .setListOfGenres(findGenresForAuthor(authorId))
+                        .setImageUrl(imageUrl)
+                        .build());
+            }
+        } catch (SQLException e) {
+            throw new DaoException("SQLException, finding all authors for page", e);
+        }
+        return listOfAuthors;
     }
 
     @Override
@@ -83,20 +131,28 @@ public class AuthorDaoImpl extends BaseDao implements AuthorDao {
             while (resultSet.next()) {
                 Long authorId = resultSet.getLong(AUTHOR_ID);
                 String authorName = resultSet.getString(AUTHOR_NAME);
-                String informationAboutAuthor = resultSet.getString(AUTHOR_INFO);
-                String genreName = resultSet.getString(GENRE_NAME);
-                String imageUrl = resultSet.getString(AUTHOR_IMG);
                 listOfAuthors.add(Author.builder()
                         .setId(authorId)
                         .setName(authorName)
-                        .setInformationAboutAuthor(informationAboutAuthor)
-                        .setGenreName(genreName)
-                        .setImageUrl(imageUrl)
                         .build());
             }
         } catch (SQLException e) {
             throw new DaoException("SQLException, finding all authors", e);
         }
         return listOfAuthors;
+    }
+
+    private List<String> findGenresForAuthor(Long authorId) throws DaoException {
+        List<String> listOfGenres = new ArrayList<>();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_GENRE_FOR_AUTHOR)) {
+            preparedStatement.setLong(1,authorId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                listOfGenres.add(resultSet.getString(GENRE_NAME));
+            }
+        }catch (SQLException e){
+            throw new DaoException("SQLException, finding genres for author",e);
+        }
+        return listOfGenres;
     }
 }

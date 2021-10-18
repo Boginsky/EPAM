@@ -9,10 +9,7 @@ import by.boginsky.audiostore.util.constants.PathPage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import static by.boginsky.audiostore.util.constants.Attribute.USER;
-
 public class LogOutCommand implements Command {
-
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {
         HttpSession httpSession = httpServletRequest.getSession();

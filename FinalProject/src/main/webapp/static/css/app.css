@@ -65,7 +65,7 @@ body, html {
 
 .bg {
     /* The image used */
-    background-image: url("./static/vinyl-disk-image.jpg");
+    background-image: url("./static/image/vinyl-disk-image.jpg");
 
     /* Full height */
     height: 100%;

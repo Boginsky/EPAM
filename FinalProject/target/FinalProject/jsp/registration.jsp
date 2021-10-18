@@ -15,7 +15,7 @@
         <div class="card w-50 mx-auto my-5"/>
         <div class="card-header text-center"><fmt:message key="label.welcome" bundle="${var}"/></div>
         <div class="card-body">
-            <form action="./controller" name="command" method="post">
+            <form action="./controller" name="command" method="get">
                 <div class="form-group">
                     <label><fmt:message key="label.email" bundle="${var}"/></label>
                     <input type="email" class="form-control" name="email"
@@ -40,7 +40,7 @@
                            required>
                 </div>
                 <div class="text-center">
-                    <input type="hidden" name="command" value="Register"/>
+                    <input type="hidden" name="command" value="register"/>
                     <button type="submit" class="btn btn-primary"><fmt:message key="label.signUp"
                                                                                bundle="${var}"/></button>
                 </div>

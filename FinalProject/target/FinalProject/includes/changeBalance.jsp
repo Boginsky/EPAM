@@ -1,5 +1,5 @@
 <button type="button" style="float: right" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#changeBalance">
-    <fmt:message key="label.change" bundle="${var}"/>
+    <fmt:message key="label.topUp" bundle="${var}"/>
 </button>
 
 <form action="./controller" name="command" method="post">

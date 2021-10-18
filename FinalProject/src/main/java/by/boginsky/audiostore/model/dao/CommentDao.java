@@ -8,8 +8,6 @@ import java.util.List;
 
 public interface CommentDao {
 
-    List<Comment> findAll() throws DaoException;
-
     List<Comment> findCommentsByAlbumId(Long albumId) throws DaoException;
 
     List<Comment> findCommentsByUserId(Long userId) throws DaoException;
@@ -18,6 +16,6 @@ public interface CommentDao {
 
     void updatedComment(String commentMessage,Long commentId) throws DaoException;
 
-    void deleteComment(Long commentId) throws DaoException;
+    void removeComment(Long commentId) throws DaoException;
 
 }

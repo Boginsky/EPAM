@@ -54,13 +54,12 @@ public class ControllerServlet extends HttpServlet {
                         break;
                 }
             } else {
-                String page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_LOGIN);
-                response.sendRedirect(request.getContextPath() + page);
+                response.sendRedirect(request.getContextPath() + ConfigurationManager.getProperty(PathPage.PATH_PAGE_LOGIN));
             }
         } catch (CommandException e) {
-            String page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_ERROR500);
-            response.sendRedirect(request.getContextPath() + page);
+            response.sendRedirect(request.getContextPath() + ConfigurationManager.getProperty(PathPage.PATH_PAGE_ERROR500));
             logger.error("Internal error", e);
+            throw new ServletException(e);
         }
     }
 }

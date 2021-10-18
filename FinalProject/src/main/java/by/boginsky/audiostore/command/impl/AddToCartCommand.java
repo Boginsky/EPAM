@@ -17,37 +17,46 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
-import static by.boginsky.audiostore.util.constants.Attribute.*;
+import static by.boginsky.audiostore.util.constants.Constant.*;
 
 public class AddToCartCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {
-        Router router = new Router();
+
         HttpSession httpSession = httpServletRequest.getSession();
         User user = (User) httpSession.getAttribute(USER);
+
+        String page = getString(httpServletRequest, httpSession, user);
+
+        Router router = new Router();
+        router.setPagePath(page);
+        return router;
+    }
+
+    private String getString(HttpServletRequest httpServletRequest, HttpSession httpSession, User user) throws CommandException {
         String page;
         if (user == null) {
             page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_LOGIN);
         } else {
-            Long audioId = Long.parseLong(httpServletRequest.getParameter(TRACK_ID));
-            Set<Song> listOfSongsInCart = (Set<Song>) httpSession.getAttribute("listOfSongsInCart");
-            SongService songService = SongServiceImpl.getInstance();
-            Optional<Song> foundSong = null;
-            try {
-                foundSong = songService.findSongById(audioId);
-                if (listOfSongsInCart == null) {
-                    listOfSongsInCart = new HashSet<>();
+            if (user.getUserRole() == User.UserRole.USER) {
+                Set<Song> listOfSongsInCart = (Set<Song>) httpSession.getAttribute(LIST_OF_SONGS_IN_CART);
+                SongService songService = SongServiceImpl.getInstance();
+                Optional<Song> foundSong = null;
+                try {
+                    Long audioId = Long.parseLong(httpServletRequest.getParameter(TRACK_ID));
+                    foundSong = songService.findSongById(audioId);
+                    if (listOfSongsInCart == null) {
+                        listOfSongsInCart = new HashSet<>();
+                    }
                     listOfSongsInCart.add(foundSong.get());
-                } else {
-                    listOfSongsInCart.add(foundSong.get());
+                } catch (ServiceException e) {
+                    logger.error("Exception in add to cart command", e);
+                    throw new CommandException("Exception in add to cart command", e);
                 }
-            } catch (ServiceException e) {
-                e.printStackTrace();
+                httpSession.setAttribute(LIST_OF_SONGS_IN_CART, listOfSongsInCart);
             }
-            httpSession.setAttribute(LIST_OF_SONGS_IN_CART, listOfSongsInCart);
             page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_CART);
-            router.setPagePath(page);
         }
-        return router;
+        return page;
     }
 }

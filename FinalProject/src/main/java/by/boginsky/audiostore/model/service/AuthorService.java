@@ -1,5 +1,6 @@
 package by.boginsky.audiostore.model.service;
 
+import by.boginsky.audiostore.exception.DaoException;
 import by.boginsky.audiostore.exception.ServiceException;
 import by.boginsky.audiostore.model.entity.audio.Author;
 
@@ -11,8 +12,14 @@ public interface AuthorService {
 
     Optional<Author> findById(Long authorId) throws ServiceException;
 
+    List<Author> findAllAuthors(Long pageId) throws ServiceException;
+
     List<Author> findAllAuthors() throws ServiceException;
 
-    void addNewAuthor(String nameOfAuthor, String informationAboutAuthor, LocalDateTime dateOfBirth) throws ServiceException;
+    Long addNewAuthor(String nameOfAuthor, String informationAboutAuthor) throws ServiceException;
+
+    void removeAuthor(Long authorId) throws ServiceException;
+
+    void updateAuthor(Long authorId,String authorName, String authorInfo) throws ServiceException;
 
 }

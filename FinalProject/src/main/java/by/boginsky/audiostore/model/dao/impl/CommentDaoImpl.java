@@ -14,42 +14,14 @@ import java.util.List;
 import static by.boginsky.audiostore.model.dao.ColumnName.*;
 import static java.lang.String.format;
 
-public class CommentDaoImpl extends BaseDao implements CommentDao {
+public class CommentDaoImpl extends BaseDao<Comment> implements CommentDao {
 
-    private static final String FIND_ALL_COMMENTS = "SELECT first_name,last_name,albums_album_id,comment,user_img,comment_id,album_name FROM comments JOIN users ON users_user_id = user_id JOIN albums ON albums_album_id = album_id";
-    private static final String FIND_COMMENTS_BY_ALBUM_ID = "SELECT first_name,last_name,comment,albums_album_id,user_img,comment_id,album_name FROM comments JOIN users ON users_user_id = user_id JOIN albums ON albums_album_id = album_id WHERE albums_album_id = ?";
+    private static final String FIND_ALL_COMMENTS = "SELECT users_user_id,first_name,last_name,albums_album_id,comment,user_img,comment_id,album_name FROM comments JOIN users ON users_user_id = user_id JOIN albums ON albums_album_id = album_id";
+    private static final String FIND_COMMENTS_BY_ALBUM_ID = "SELECT users_user_id,first_name,last_name,comment,albums_album_id,user_img,comment_id,album_name FROM comments JOIN users ON users_user_id = user_id JOIN albums ON albums_album_id = album_id WHERE albums_album_id = ?";
     private static final String FIND_COMMENTS_BY_USER_ID = "SELECT first_name,last_name,comment,user_img,albums_album_id,comment_id,album_name FROM comments JOIN users ON users_user_id = user_id JOIN albums ON albums_album_id = album_id WHERE user_id = ?";
     private static final String INSERT_NEW_COMMENT = "INSERT INTO  comments (users_user_id,albums_album_id,comment) VALUES(?,?,?)";
     private static final String UPDATE_COMMENT = "UPDATE comments SET comment = ? WHERE comment_id = ?";
-    private static final String DELETE_COMMENT = "DELETE FROM comments WHERE comment_id = ?";
-
-    @Override
-    public List<Comment> findAll() throws DaoException {
-        List<Comment> listOfComments = new ArrayList<>();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_COMMENTS)) {
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                String userFirstName = resultSet.getString(USER_FIRST_NAME);
-                String userLastName = resultSet.getString(USER_LAST_NAME);
-                String albumName = resultSet.getString(ALBUM_NAME);
-                Long albumId = resultSet.getLong(COMMENT_ALBUM_ID);
-                String commentMessage = resultSet.getString(COMMENT_MESSAGE);
-                Long commentId = resultSet.getLong(COMMENT_ID);
-                String userImageUrl = resultSet.getString(USER_IMG);
-                listOfComments.add(Comment.builder()
-                        .setCommentMessage(commentMessage)
-                        .setAlbumName(albumName)
-                        .setId(commentId)
-                        .setAlbumId(albumId)
-                        .setUserName(format("%s %s",userFirstName,userLastName))
-                        .setUserImageUrl(userImageUrl)
-                        .build());
-            }
-        } catch (SQLException e) {
-            throw new DaoException("SQLException, finding all comments", e);
-        }
-        return listOfComments;
-    }
+    private static final String REMOVE_COMMENT = "DELETE FROM comments WHERE comment_id = ?";
 
     @Override
     public List<Comment> findCommentsByAlbumId(Long albumId) throws DaoException {
@@ -63,11 +35,13 @@ public class CommentDaoImpl extends BaseDao implements CommentDao {
                 String commentMessage = resultSet.getString(COMMENT_MESSAGE);
                 String albumName = resultSet.getString(ALBUM_NAME);
                 Long commentId = resultSet.getLong(COMMENT_ID);
+                Long userId = resultSet.getLong(COMMENT_USER_ID);
                 String userImageUrl = resultSet.getString(USER_IMG);
                 listOfComments.add(Comment.builder()
                         .setCommentMessage(commentMessage)
                         .setAlbumName(albumName)
                         .setAlbumId(albumId)
+                        .setUserId(userId)
                         .setId(commentId)
                         .setUserName(format("%s %s",userFirstName,userLastName))
                         .setUserImageUrl(userImageUrl)
@@ -97,6 +71,7 @@ public class CommentDaoImpl extends BaseDao implements CommentDao {
                         .setCommentMessage(commentMessage)
                         .setAlbumName(albumName)
                         .setId(commentId)
+                        .setUserId(userId)
                         .setAlbumId(albumId)
                         .setUserName(format("%s %s",userFirstName,userLastName))
                         .setUserImageUrl(userImageUrl)
@@ -132,12 +107,12 @@ public class CommentDaoImpl extends BaseDao implements CommentDao {
     }
 
     @Override
-    public void deleteComment(Long commentId) throws DaoException {
-        try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_COMMENT)) {
+    public void removeComment(Long commentId) throws DaoException {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(REMOVE_COMMENT)) {
             preparedStatement.setLong(1, commentId);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new DaoException("SQLException,deleting comment", e);
+            throw new DaoException("SQLException,removing comment", e);
         }
     }
 }

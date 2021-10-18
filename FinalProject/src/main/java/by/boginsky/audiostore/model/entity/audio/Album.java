@@ -2,10 +2,12 @@ package by.boginsky.audiostore.model.entity.audio;
 
 import by.boginsky.audiostore.model.entity.AbstractEntity;
 
+import java.util.List;
+
 public class Album extends AbstractEntity {
 
     private String albumName;
-    private String authorName;
+    private List<String> listOfAuthors;
     private String informationAboutAlbum;
     private String imageUrl;
 
@@ -17,12 +19,12 @@ public class Album extends AbstractEntity {
         this.albumName = albumName;
     }
 
-    public String getAuthorName() {
-        return authorName;
+    public List<String> getListOfAuthors() {
+        return listOfAuthors;
     }
 
-    public void setAuthorName(String authorName) {
-        this.authorName = authorName;
+    public void setListOfAuthors(List<String> listOfAuthors) {
+        this.listOfAuthors = listOfAuthors;
     }
 
     public String getInformationAboutAlbum() {
@@ -50,7 +52,7 @@ public class Album extends AbstractEntity {
         if (!super.equals(o)) return false;
         Album album = (Album) o;
         return albumName.equals(album.albumName) &&
-                authorName.equals(album.authorName) &&
+                listOfAuthors.equals(album.listOfAuthors) &&
                 imageUrl.equals(album.imageUrl) &&
                 informationAboutAlbum.equals(album.informationAboutAlbum);
     }
@@ -60,7 +62,7 @@ public class Album extends AbstractEntity {
         int result = 1;
         result = 31 * result + ((albumName == null) ? 0 : albumName.hashCode());
         result = 31 * result + ((imageUrl == null) ? 0 : imageUrl.hashCode());
-        result = 31 * result + ((authorName == null) ? 0 : authorName.hashCode());
+        result = 31 * result + ((listOfAuthors == null) ? 0 : listOfAuthors.hashCode());
         result = 31 * result + ((informationAboutAlbum == null) ? 0 : informationAboutAlbum.hashCode());
         return result;
     }
@@ -69,7 +71,7 @@ public class Album extends AbstractEntity {
     public String toString() {
         final StringBuilder sb = new StringBuilder("Album{");
         sb.append("albumName='").append(albumName).append('\'');
-        sb.append(", authorName='").append(authorName).append('\'');
+        sb.append(", listOfAuthors='").append(listOfAuthors).append('\'');
         sb.append(", informationAboutAlbum='").append(informationAboutAlbum).append('\'');
         sb.append(", imageUrl='").append(imageUrl).append('\'');
         sb.append('}');
@@ -92,8 +94,8 @@ public class Album extends AbstractEntity {
             return this;
         }
 
-        public Builder setAuthorName(String authorName) {
-            album.setAuthorName(authorName);
+        public Builder setListOfAuthors(List<String> listOfAuthors){
+            album.setListOfAuthors(listOfAuthors);
             return this;
         }
 

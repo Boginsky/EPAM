@@ -10,10 +10,18 @@ import java.util.Optional;
 
 public interface AuthorDao {
 
+    List<Author> findAll(Long startPosition) throws DaoException;
+
     List<Author> findAll() throws DaoException;
 
     Optional<Author> findById(Long id) throws DaoException;
 
-    void insertAuthor(String authorName, String informationAboutAuthor, Timestamp dateOfBirth) throws DaoException;
+    Long insertAuthor(String authorName, String informationAboutAuthor) throws DaoException;
+
+    void updateAuthorPhoto(String authorImageUrl, Long authorId) throws DaoException;
+
+    void removeAuthor(Long authorId) throws DaoException;
+
+    void updateAuthor(Long authorId,String authorName, String authorInfo) throws DaoException;
 
 }

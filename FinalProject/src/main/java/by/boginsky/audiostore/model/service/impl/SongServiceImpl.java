@@ -57,45 +57,6 @@ public class SongServiceImpl implements SongService {
         }
     }
 
-    public List<Song> findSongByName(String nameOfSong) throws ServiceException {
-        TransactionManager transactionManager = new TransactionManager();
-        SongDaoImpl songDaoImpl = new SongDaoImpl();
-        try {
-            transactionManager.startTransaction(songDaoImpl);
-            return songDaoImpl.findSongByName(nameOfSong);
-        } catch (DaoException e) {
-            throw new ServiceException("Exception in method finding song by name", e);
-        } finally {
-            transactionManager.endTransaction();
-        }
-    }
-
-    public List<Song> findSongByAuthor(String authorFirstName, String authorLasName) throws ServiceException {
-        TransactionManager transactionManager = new TransactionManager();
-        SongDaoImpl songDaoImpl = new SongDaoImpl();
-        try {
-            transactionManager.startTransaction(songDaoImpl);
-            return songDaoImpl.findSongByAuthor(authorFirstName, authorLasName);
-        } catch (DaoException e) {
-            throw new ServiceException("Exception in method finding song by author's name", e);
-        } finally {
-            transactionManager.endTransaction();
-        }
-    }
-
-    public List<Song> findSongByGenre(String nameOfGenre) throws ServiceException {
-        TransactionManager transactionManager = new TransactionManager();
-        SongDaoImpl songDaoImpl = new SongDaoImpl();
-        try {
-            transactionManager.startTransaction(songDaoImpl);
-            return songDaoImpl.findSongByGenre(nameOfGenre);
-        } catch (DaoException e) {
-            throw new ServiceException("Exception in method finding song by genre's name", e);
-        } finally {
-            transactionManager.endTransaction();
-        }
-    }
-
     public List<Song> findSongByAlbumId(Long albumId) throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
         SongDaoImpl songDaoImpl = new SongDaoImpl();
@@ -137,46 +98,13 @@ public class SongServiceImpl implements SongService {
         }
     }
 
-    public void updateSongName(String songPreviousName, String songNewName) throws ServiceException {
+    public Long addNewSong(String songName,  BigDecimal songPrice, Long authorId, Long genreId, Long albumId) throws ServiceException {
+        Long id;
         TransactionManager transactionManager = new TransactionManager();
         SongDaoImpl songDaoImpl = new SongDaoImpl();
         try {
             transactionManager.startTransaction(songDaoImpl);
-            songDaoImpl.updateSongName(songNewName, songPreviousName);
-            transactionManager.commit();
-        } catch (DaoException e) {
-            try {
-                transactionManager.rollback();
-            } catch (DaoException daoException) {
-                throw new ServiceException("Exception in method updating song's name(rollback)", daoException);
-            }
-            throw new ServiceException("Exception in method updating song's name", e);
-        }
-    }
-
-    public void updateSongPrice(BigDecimal songPrice, String songName) throws ServiceException {
-        TransactionManager transactionManager = new TransactionManager();
-        SongDaoImpl songDaoImpl = new SongDaoImpl();
-        try {
-            transactionManager.startTransaction(songDaoImpl);
-            songDaoImpl.updateSongPrice(songPrice, songName);
-            transactionManager.commit();
-        } catch (DaoException e) {
-            try {
-                transactionManager.rollback();
-            } catch (DaoException daoException) {
-                throw new ServiceException("Exception in method updating song's price(rollback)", daoException);
-            }
-            throw new ServiceException("Exception in method updating song's price", e);
-        }
-    }
-
-    public void insertSong(String songName, String imageUrl, BigDecimal songPrice, Long authorId, Long genreId, Long albumId) throws ServiceException {
-        TransactionManager transactionManager = new TransactionManager();
-        SongDaoImpl songDaoImpl = new SongDaoImpl();
-        try {
-            transactionManager.startTransaction(songDaoImpl);
-            songDaoImpl.insertSong(songName, imageUrl, songPrice, authorId, genreId, albumId);
+            id = songDaoImpl.insertSong(songName, songPrice, authorId, genreId, albumId);
             transactionManager.commit();
         } catch (DaoException e) {
             try {
@@ -186,22 +114,42 @@ public class SongServiceImpl implements SongService {
             }
             throw new ServiceException("Exception in method adding new song", e);
         }
+        return id;
     }
 
-    public void insertSongWithoutAlbum(String songName, String imageUrl, BigDecimal songPrice, Long authorId, Long genreId) throws ServiceException {
+    @Override
+    public void removeSong(Long songId) throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
         SongDaoImpl songDaoImpl = new SongDaoImpl();
         try {
             transactionManager.startTransaction(songDaoImpl);
-            songDaoImpl.insertSongWithoutAlbum(songName, imageUrl, songPrice, authorId, genreId);
+            songDaoImpl.removeSong(songId);
             transactionManager.commit();
         } catch (DaoException e) {
             try {
                 transactionManager.rollback();
             } catch (DaoException daoException) {
-                throw new ServiceException("Exception in method adding new song without album(rollback)", daoException);
+                throw new ServiceException("Exception in method removing song(rollback)", daoException);
             }
-            throw new ServiceException("Exception in method adding new song without album", e);
+            throw new ServiceException("Exception in method removing song", e);
+        }
+    }
+
+    @Override
+    public void updateSong(String songName, BigDecimal songPrice, Long authorId, Long genreId, Long albumId, Long songId) throws ServiceException {
+        TransactionManager transactionManager = new TransactionManager();
+        SongDaoImpl songDaoImpl = new SongDaoImpl();
+        try {
+            transactionManager.startTransaction(songDaoImpl);
+            songDaoImpl.updateSong(songName,songPrice,authorId,genreId,albumId,songId);
+            transactionManager.commit();
+        } catch (DaoException e) {
+            try {
+                transactionManager.rollback();
+            } catch (DaoException daoException) {
+                throw new ServiceException("Exception in method updating song(rollback)", daoException);
+            }
+            throw new ServiceException("Exception in method updating song", e);
         }
     }
 }

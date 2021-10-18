@@ -31,7 +31,8 @@
                     <c:forEach var="song" items="${listOfSongs}">
                         <tr>
                             <td class="w-25">
-                                <img src="${song.imageUrl}"
+
+                                <img src="./imageTransfer?imageUuid=${song.imageUrl}"
                                      class="img-fluid img-thumbnail" alt="Image"/>
                             </td>
                             <td><c:out value="${song.songName}"/></td>

@@ -33,19 +33,6 @@ public class OrderServiceImpl implements OrderService {
         return instance;
     }
 
-    public List<Order> findAllOrders() throws ServiceException {
-        TransactionManager transactionManager = new TransactionManager();
-        OrderDaoImpl orderDaoImpl = new OrderDaoImpl();
-        try {
-            transactionManager.startTransaction(orderDaoImpl);
-            return orderDaoImpl.findAll();
-        } catch (DaoException e) {
-            throw new ServiceException("Exception in method finding all orders", e);
-        } finally {
-            transactionManager.endTransaction();
-        }
-    }
-
     public void addNewOrder(User user, BigDecimal moneyForPayment, BigDecimal bonusForPayment, BigDecimal totalPrice, Set<Song> songs) throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
         UserService userService = UserServiceImpl.getInstance();
@@ -86,52 +73,4 @@ public class OrderServiceImpl implements OrderService {
         }
     }
 
-    public void cancelOrderByUserId(Long userId) throws ServiceException {
-        TransactionManager transactionManager = new TransactionManager();
-        OrderDaoImpl orderDaoImpl = new OrderDaoImpl();
-        try {
-            transactionManager.startTransaction(orderDaoImpl);
-            orderDaoImpl.cancelByUserId(userId);
-            transactionManager.commit();
-        } catch (DaoException e) {
-            try {
-                transactionManager.rollback();
-            } catch (DaoException daoException) {
-                throw new ServiceException("Exception in method canceling order by user id(rollback)", daoException);
-            }
-            throw new ServiceException("Exception in method canceling order by user id", e);
-        } finally {
-            transactionManager.endTransaction();
-        }
-    }
-
-    public List<Order> findCanceledOrdersByUserId(Long userId) throws ServiceException {
-        TransactionManager transactionManager = new TransactionManager();
-        OrderDaoImpl orderDaoImpl = new OrderDaoImpl();
-        try {
-            transactionManager.startTransaction(orderDaoImpl);
-            return orderDaoImpl.findCanceledOrdersByUserId(userId);
-        } catch (DaoException e) {
-            throw new ServiceException("Exception in method finding canceled orders", e);
-        } finally {
-            transactionManager.endTransaction();
-        }
-    }
-
-    public BigDecimal getOrderTotalPrice(Long orderId) throws ServiceException {
-        TransactionManager transactionManager = new TransactionManager();
-        OrderDaoImpl orderDaoImpl = new OrderDaoImpl();
-        try {
-            transactionManager.startTransaction(orderDaoImpl);
-            return orderDaoImpl.getTotalOrderPriceByOrderID(orderId);
-        } catch (DaoException e) {
-            throw new ServiceException("Exception in method finding total price of order", e);
-        } finally {
-            transactionManager.endTransaction();
-        }
-    }
-
-    public void buySong(BigDecimal userMoney, BigDecimal songPrice) throws ServiceException {
-
-    }
 }

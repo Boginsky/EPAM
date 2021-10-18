@@ -27,21 +27,6 @@ public class CommentServiceImpl implements CommentService {
         return instance;
     }
 
-
-    @Override
-    public List<Comment> findAllComments() throws ServiceException {
-        TransactionManager transactionManager = new TransactionManager();
-        CommentDaoImpl commentDaoImpl = new CommentDaoImpl();
-        try {
-            transactionManager.startTransaction(commentDaoImpl);
-            return commentDaoImpl.findAll();
-        } catch (DaoException e) {
-            throw new ServiceException("Exception in method finding all comments", e);
-        } finally {
-            transactionManager.endTransaction();
-        }
-    }
-
     @Override
     public List<Comment> findCommentsByAlbumId(Long albumId) throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
@@ -97,12 +82,12 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public void deleteComment(Long commentId) throws ServiceException {
+    public void removeComment(Long commentId) throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
         CommentDaoImpl commentDaoImpl = new CommentDaoImpl();
         try {
             transactionManager.startTransaction(commentDaoImpl);
-            commentDaoImpl.deleteComment(commentId);
+            commentDaoImpl.removeComment(commentId);
             transactionManager.commit();
         } catch (DaoException e) {
             try {

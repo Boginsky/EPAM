@@ -14,24 +14,16 @@ public interface SongService {
 
     List<Song> findAllSongs() throws ServiceException;
 
-    List<Song> findSongByName(String nameOfSong) throws ServiceException;
-
-    List<Song> findSongByAuthor(String authorFirstName, String authorLasName) throws ServiceException;
-
-    List<Song> findSongByGenre(String nameOfGenre) throws ServiceException;
-
     List<Song> findSongByAlbumId(Long albumId) throws ServiceException;
 
     List<Song> findSongByOrderId(Long orderId) throws ServiceException;
 
     List<String> findSongImg() throws ServiceException;
 
-    void updateSongName(String songPreviousName, String songNewName) throws ServiceException;
+    Long addNewSong(String songName, BigDecimal songPrice, Long authorId, Long genreId, Long albumId) throws ServiceException;
 
-    void updateSongPrice(BigDecimal songPrice, String songName) throws ServiceException;
+    void removeSong(Long songId) throws ServiceException;
 
-    void insertSong(String songName, String imageUrl, BigDecimal songPrice, Long authorId, Long genreId, Long albumId) throws ServiceException;
-
-    void insertSongWithoutAlbum(String songName, String imageUrl, BigDecimal songPrice, Long authorId, Long genreId) throws ServiceException;
+    void updateSong(String songName, BigDecimal songPrice, Long authorId, Long genreId, Long albumId, Long songId) throws ServiceException;
 
 }

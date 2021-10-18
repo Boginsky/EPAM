@@ -17,14 +17,10 @@
             <div class="row gutters-sm">
                 <div class="col-md-4">
                     <div class="d-flex flex-column align-items-center text-center">
-                        <img class="item" src="${user.imageUrl}" alt="Card image cap">
-                        <form action="./controller" name="command" method="post" enctype="multipart/form-data">
-                            <input type="file" name="file">
-                            <input type="hidden" name="command" value="Change_photo"/>
-                            <button type="submit" class="btn btn-success btn-lg btn-block"><fmt:message
-                                    key="label.saveChanges"
-                                    bundle="${var}"/></button>
-                        </form>
+                        <img src="./imageTransfer?imageUuid=${user.imageUrl}" class="imageContainer" width="240px"
+                             height="240px"/>
+                        <br/>
+                        <%@include file="/includes/changePhoto.jsp" %>
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -77,6 +73,15 @@
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     ${user.userRole}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0"><fmt:message key="label.dateOfCreation" bundle="${var}"/></h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    ${user.userCreated}
                                 </div>
                             </div>
                         </div>
@@ -155,28 +160,26 @@
                                 </thead>
                                 <tbody>
                                 <c:forEach var="comment" items="${listOfComments}" varStatus="vs">
-                                    <form action="./controller" name="command" method="post">
-                                        <tr>
-                                            <td><c:out value="${comment.id}"/></td>
-                                            <td><c:out value="${comment.commentMessage}"/></td>
-                                            <td><c:out value="${comment.albumName}"/></td>
-                                            <td style="text-align: right">
-                                                <form action="./controller" name="command" method="post">
-                                                    <input type="hidden" name="command" value="remove_comment"/>
-                                                    <input type="hidden" name="commentId" value="${comment.id}"/>
-                                                    <input type="hidden" name="commentAlbumId" value="${comment.albumId}"/>
-                                                    <button type="submit" class="btn btn-danger btn-sm"><fmt:message
-                                                            key="label.removeComment"
-                                                            bundle="${var}"/></button>
-                                                    <button type="button" class="btn btn-dark btn-sm" data-toggle="modal"
-                                                            data-target="#changeComment${vs.index}">
-                                                        <fmt:message key="label.change" bundle="${var}"/>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                            <%@include file="/includes/changeComment.jsp" %>
-                                        </tr>
-                                    </form>
+                                    <tr>
+                                        <td><c:out value="${comment.id}"/></td>
+                                        <td><c:out value="${comment.commentMessage}"/></td>
+                                        <td><c:out value="${comment.albumName}"/></td>
+                                        <td style="text-align: right">
+                                            <form action="./controller" name="command" method="post">
+                                                <input type="hidden" name="command" value="remove_comment"/>
+                                                <input type="hidden" name="commentId" value="${comment.id}"/>
+                                                <input type="hidden" name="commentAlbumId" value="${comment.albumId}"/>
+                                                <button type="submit" class="btn btn-danger btn-sm"><fmt:message
+                                                        key="label.removeComment"
+                                                        bundle="${var}"/></button>
+                                                <button type="button" class="btn btn-dark btn-sm" data-toggle="modal"
+                                                        data-target="#changeComment${vs.index}">
+                                                    <fmt:message key="label.change" bundle="${var}"/>
+                                                </button>
+                                            </form>
+                                        </td>
+                                        <%@include file="/includes/changeComment.jsp" %>
+                                    </tr>
                                 </c:forEach>
                                 </tbody>
                             </table>

@@ -5,9 +5,7 @@ public final class PathPage {
     public static final String PATH_PAGE_LOGIN = "path.page.login";
     public static final String PATH_PAGE_MAIN_USER = "path.page.mainPageUser";
     public static final String PATH_PAGE_MAIN_ADMIN = "path.page.mainPageAdmin";
-    public static final String PATH_PAGE_ERROR404 = "path.page.error404";
     public static final String PATH_PAGE_ERROR500 = "path.page.error500";
-    public static final String PATH_PAGE_MAIN = "path.page.main";
     public static final String PATH_PAGE_WELCOME = "path.page.welcome";
     public static final String PATH_PAGE_CART = "path.page.cart";
     public static final String PATH_PAGE_REGISTRATION = "path.page.registration";
@@ -18,6 +16,11 @@ public final class PathPage {
     public static final String PATH_PAGE_ALL_AUTHORS = "path.page.allAuthors";
     public static final String PATH_PAGE_AUTHORS_ALBUMS = "path.page.authorsAlbums";
     public static final String PATH_PAGE_ORDER = "path.page.orderForUser";
+    public static final String PATH_PAGE_CHANGE_EMAIL_CONFIRM = "path.page.changeEmailConfirm";
+    public static final String PATH_PAGE_REMOVE_ACCOUNT = "path.page.removeAccount";
+    public static final String PATH_PAGE_USER_ORDERS_AND_COMMENTS = "path.page.userOrdersAndComments";
+    public static final String PATH_PAGE_ADD_SONG = "path.page.addSong";
+    public static final String PATH_PAGE_SUCCESS = "path.page.success";
 
     private PathPage() {
     }

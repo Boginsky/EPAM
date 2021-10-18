@@ -7,15 +7,14 @@ import by.boginsky.audiostore.exception.ServiceException;
 import by.boginsky.audiostore.model.entity.user.User;
 import by.boginsky.audiostore.model.service.UserService;
 import by.boginsky.audiostore.model.service.impl.UserServiceImpl;
-import by.boginsky.audiostore.util.ConfigurationManager;
 import by.boginsky.audiostore.util.PasswordEncryption;
-import by.boginsky.audiostore.util.constants.PathPage;
+import by.boginsky.audiostore.util.validator.InputDataValidator;
+import by.boginsky.audiostore.util.validator.impl.InputDataValidatorImpl;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import static by.boginsky.audiostore.util.constants.Attribute.USER;
-import static by.boginsky.audiostore.util.constants.Parameter.*;
+import static by.boginsky.audiostore.util.constants.Constant.*;
 
 public class ChangePasswordCommand implements Command {
     @Override
@@ -25,27 +24,36 @@ public class ChangePasswordCommand implements Command {
         String enteredPassword = httpServletRequest.getParameter(ENTERED_PASSWORD);
         String updatedPassword = httpServletRequest.getParameter(UPDATED_PASSWORD);
         String submittedPassword = httpServletRequest.getParameter(SUBMITTED_PASSWORD);
+
+        changePassword(user, enteredPassword, updatedPassword, submittedPassword);
+
+        CabinetCommand cabinetCommand = new CabinetCommand();
+        Router router = cabinetCommand.execute(httpServletRequest);
+        return router;
+    }
+
+    private void changePassword(User user, String enteredPassword, String updatedPassword, String submittedPassword) throws CommandException {
         UserService userService = UserServiceImpl.getInstance();
-        if (updatedPassword.equals(submittedPassword)) {
-            try {
-                String originalPassword = userService.findPasswordByUserId(user.getId());
-                enteredPassword = PasswordEncryption.encryptsPassword(enteredPassword);
-                if (originalPassword.equals(enteredPassword)) {
-                    submittedPassword = PasswordEncryption.encryptsPassword(submittedPassword);
-                    userService.updateUserPassword(submittedPassword,user.getId());
+        if (validate(enteredPassword,updatedPassword,submittedPassword)) {
+                try {
+                    String originalPassword = userService.findPasswordByUserId(user.getId());
+                    enteredPassword = PasswordEncryption.encryptsPassword(enteredPassword);
+                    if (originalPassword.equals(enteredPassword)) {
+                        submittedPassword = PasswordEncryption.encryptsPassword(submittedPassword);
+                        userService.updateUserPassword(submittedPassword, user.getId());
+                    }
+                } catch (ServiceException e) {
+                    logger.error("Exception in change password command", e);
+                    throw new CommandException("Exception in change password command", e);
                 }
-            }catch (ServiceException e){
-                throw new CommandException("Exception in change password command",e);
             }
         }
-        String page;
-        Router router = new Router();
-        if (user.getUserRole() == User.UserRole.USER) {
-            page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_MAIN_USER);
-        } else {
-            page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_MAIN_ADMIN);
-        }
-        router.setPagePath(page);
-        return router;
+
+    private boolean validate(String enteredPassword,String updatedPassword,String submittedPassword) {
+        InputDataValidator inputDataValidator = InputDataValidatorImpl.getInstance();
+        return inputDataValidator.isCorrectPassword(enteredPassword)
+                & inputDataValidator.isCorrectPassword(updatedPassword)
+                & inputDataValidator.isCorrectPassword(submittedPassword)
+                & inputDataValidator.arePasswordsEqual(updatedPassword,submittedPassword);
     }
 }

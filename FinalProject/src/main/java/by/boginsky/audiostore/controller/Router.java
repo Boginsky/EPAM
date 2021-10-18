@@ -9,7 +9,7 @@ public class Router {
         FORWARD, REDIRECT;
     }
 
-    private String pagePath = ConfigurationManager.getProperty(PathPage.PATH_PAGE_LOGIN);
+    private String pagePath = ConfigurationManager.getProperty(PathPage.PATH_PAGE_SUCCESS);
     private RouterType routerType = RouterType.FORWARD;
 
     public String getPagePath() {

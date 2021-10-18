@@ -11,11 +11,9 @@ import by.boginsky.audiostore.util.ConfigurationManager;
 import by.boginsky.audiostore.util.constants.PathPage;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Collections;
 import java.util.List;
 
-import static by.boginsky.audiostore.util.constants.Attribute.ALL_SONGS;
-import static by.boginsky.audiostore.util.constants.Parameter.PAGE_ID;
+import static by.boginsky.audiostore.util.constants.Constant.ALL_SONGS;
 
 public class AllSongsCommand implements Command {
     @Override

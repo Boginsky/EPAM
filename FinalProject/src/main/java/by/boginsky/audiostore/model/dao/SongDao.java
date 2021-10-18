@@ -16,21 +16,15 @@ public interface SongDao {
 
     List<Song> findSongByOrderId(Long songId) throws DaoException;
 
-    List<Song> findSongByName(String nameOfSong) throws DaoException;
-
-    List<Song> findSongByAuthor(String nameOfAuthor, String lastNameOfAuthor) throws DaoException;
-
-    List<Song> findSongByGenre(String nameOfGenre) throws DaoException;
-
     List<Song> findSongByAlbumId(Long albumId) throws DaoException;
 
     List<String> findSongImg() throws DaoException;
 
-    void updateSongName(String songPreviousName, String songNewName) throws DaoException;
+    void updateSong(String songName, BigDecimal songPrice, Long authorId, Long genreId, Long albumId, Long songId) throws DaoException;
 
-    void updateSongPrice(BigDecimal songPrice, String songName) throws DaoException;
+    void updateSongPhoto(String songImageUrl, Long songId) throws DaoException;
 
-    void insertSong(String songName, String imageUrl, BigDecimal songPrice, Long authorId, Long genreId, Long albumId) throws DaoException;
+    Long insertSong(String songName, BigDecimal songPrice, Long authorId, Long genreId, Long albumId) throws DaoException;
 
-    void insertSongWithoutAlbum(String songName, String imageUrl, BigDecimal songPrice, Long authorId, Long genreId) throws DaoException;
+    void removeSong(Long songId) throws DaoException;
 }

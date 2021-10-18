@@ -18,10 +18,12 @@
             <form action="./controller" name="command" method="post">
                 <div class="form-group">
                     <label><fmt:message key="label.confirmationCode" bundle="${var}"/></label>
-                    <input type="text" class="form-control" name="confirmCode"
+                    <input type="text" class="form-control" name="submittedConfirmCode"
                            placeholder="<fmt:message key="label.enterConfirmationCode" bundle="${var}"/>" required>
                 </div>
                 <div class="text-center">
+                    <input type="hidden" name="realConfirmCode" value="${realConfirmCode}">
+                    <input type="hidden" name="encryptedPassword" value="${encryptedPassword}">
                     <input type="hidden" name="command" value="Confirm registration"/>
                     <button type="submit" class="btn btn-primary"><fmt:message key="label.confirm"
                                                                                bundle="${var}"/></button>

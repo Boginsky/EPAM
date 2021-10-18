@@ -12,4 +12,8 @@ public interface InputDataValidator {
 
     boolean isCorrectPrice(BigDecimal price);
 
+    boolean isCorrectUserName(String userName);
+
+    String replaceScript(String value);
+
 }

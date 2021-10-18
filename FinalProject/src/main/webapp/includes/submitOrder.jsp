@@ -10,9 +10,6 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle"><fmt:message key="label.enterAmount"
                                                                                     bundle="${var}"/></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
                 </div>
                 <div class="modal-header">
                     <h8 class="modal-title"><fmt:message key="label.yourBalance" bundle="${var}"/>

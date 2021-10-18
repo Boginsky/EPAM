@@ -19,7 +19,7 @@
             <div class="row gutters-sm">
                 <div class="col-md-4">
                     <div class="d-flex flex-column align-items-center text-center">
-                        <img class="item" src="${album.imageUrl}" alt="Card image cap">
+                        <img class="item" src="./imageTransfer?imageUuid=${album.imageUrl}" alt="Card image cap">
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -39,7 +39,9 @@
                                     <h6 class="mb-0"><fmt:message key="label.author" bundle="${var}"/></h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    ${album.authorName}
+                                    <c:forEach var="author" items="${album.listOfAuthors}">
+                                    <h6><c:out value="${author}"/></h6>
+                                </c:forEach>
                                 </div>
                             </div>
                             <hr>
@@ -74,9 +76,19 @@
                         <td><c:out value="${song.author}"/></td>
                         <td><c:out value="${song.genre}"/></td>
                         <td><c:out value="${song.price}"/></td>
-                        <td>
+                        <td style="text-align: center">
+                            <c:if test="${user.userRole == 'ADMIN'}">
+                                <form action="./controller" name="command" method="post">
+                                    <a class="btn btn-sm btn-danger"
+                                       href="./controller?command=remove_song&trackId=${song.id}"><fmt:message
+                                            key="label.delete" bundle="${var}"/></a>
+                                    <a class="btn btn-sm btn-dark"
+                                       href="./controller?command=change_song&trackId=${song.id}"><fmt:message
+                                            key="label.change" bundle="${var}"/></a>
+                                </form>
+                            </c:if>
                             <a class="btn btn-sm btn-dark"
-                               href="./controller?command=Add_to_cart&trackId=${song.id}"><fmt:message
+                               href="./controller?command=add_to_cart&trackId=${song.id}"><fmt:message
                                     key="label.addToCart" bundle="${var}"/></a>
                         </td>
                     </tr>
@@ -90,7 +102,8 @@
                 <c:if test="${user.userRole == 'USER'}">
                     <form action="./controller" name="command" method="post">
                         <div class="mt-3 d-flex flex-row align-items-center p-3 form-color">
-                            <img src="${user.imageUrl}" width="50" class="rounded-circle mr-2"/>
+                            <img src="./imageTransfer?imageUuid=${user.imageUrl}" width="50px" height="10px"
+                                 class="rounded-circle mr-2"/>
                             <input type="text" class="form-control" name="newComment" required/>
                         </div>
                         <input type="hidden" name="command" value="add_comment"/>
@@ -102,7 +115,7 @@
                 <c:forEach var="comment" items="${listOfComments}" varStatus="vs">
                     <div class="mt-2">
                         <div class="mt-3 d-flex flex-row align-items-center p-3 form-color"><img
-                                src="${comment.userImageUrl}" width="40" height="40"
+                                src="./imageTransfer?imageUuid=${comment.userImageUrl}" width="50px" height="10px"
                                 class="rounded-circle mr-2">
                             <div class="w-100">
                                 <div class="d-flex justify-content-between align-items-center">
@@ -117,7 +130,7 @@
                                         <form action="./controller" name="command" method="post">
                                             <input type="hidden" name="command" value="remove_comment"/>
                                             <input type="hidden" name="commentId" value="${comment.id}"/>
-                                            <input type="hidden" name="commentAlbumId" value="${comment.albumId}"/>
+                                            <input type="hidden" name="albumId" value="${comment.albumId}"/>
                                             <button type="submit" class="btn btn-danger btn-sm"><fmt:message
                                                     key="label.removeComment"
                                                     bundle="${var}"/></button>

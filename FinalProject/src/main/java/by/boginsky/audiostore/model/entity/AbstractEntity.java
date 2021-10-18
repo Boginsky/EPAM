@@ -3,7 +3,7 @@ package by.boginsky.audiostore.model.entity;
 import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class AbstractEntity implements Serializable, Cloneable {
+public abstract class   AbstractEntity implements Serializable, Cloneable {
 
     private Long id;
 
@@ -31,6 +31,7 @@ public abstract class AbstractEntity implements Serializable, Cloneable {
         AbstractEntity that = (AbstractEntity) o;
         return Objects.equals(id, that.id);
     }
+
 
     @Override
     public int hashCode() {

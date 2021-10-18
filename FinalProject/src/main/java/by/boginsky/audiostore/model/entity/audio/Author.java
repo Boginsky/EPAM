@@ -2,19 +2,21 @@ package by.boginsky.audiostore.model.entity.audio;
 
 import by.boginsky.audiostore.model.entity.AbstractEntity;
 
+import java.util.List;
+
 public class Author extends AbstractEntity {
 
-    private String name;
+    private String authorName;
     private String informationAboutAuthor;
-    private String genreName;
+    private List<String> listOfGenres;
     private String imageUrl;
 
-    public String getName() {
-        return name;
+    public String getAuthorName() {
+        return authorName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
     }
 
 
@@ -26,12 +28,12 @@ public class Author extends AbstractEntity {
         this.informationAboutAuthor = informationAboutAuthor;
     }
 
-    public String getGenreName() {
-        return genreName;
+    public List<String> getListOfGenres() {
+        return listOfGenres;
     }
 
-    public void setGenreName(String genreName) {
-        this.genreName = genreName;
+    public void setListOfGenres(List<String> listOfGenres) {
+        this.listOfGenres = listOfGenres;
     }
 
     public String getImageUrl() {
@@ -50,8 +52,8 @@ public class Author extends AbstractEntity {
         }
         if (!super.equals(o)) return false;
         Author author = (Author) o;
-        return name.equals(author.name) &&
-                genreName.equals(author.genreName) &&
+        return authorName.equals(author.authorName) &&
+                listOfGenres.equals(author.listOfGenres) &&
                 imageUrl.equals(author.imageUrl) &&
                 informationAboutAuthor.equals(author.informationAboutAuthor);
     }
@@ -59,8 +61,8 @@ public class Author extends AbstractEntity {
     @Override
     public int hashCode() {
         int result = 1;
-        result = 31 * result + ((name == null) ? 0 : name.hashCode());
-        result = 31 * result + ((genreName == null) ? 0 : genreName.hashCode());
+        result = 31 * result + ((authorName == null) ? 0 : authorName.hashCode());
+        result = 31 * result + ((listOfGenres == null) ? 0 : listOfGenres.hashCode());
         result = 31 * result + ((imageUrl == null) ? 0 : imageUrl.hashCode());
         result = 31 * result + ((informationAboutAuthor == null) ? 0 : informationAboutAuthor.hashCode());
         return result;
@@ -69,9 +71,9 @@ public class Author extends AbstractEntity {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Author{");
-        sb.append("name='").append(name).append('\'');
+        sb.append("name='").append(authorName).append('\'');
         sb.append(", informationAboutAuthor='").append(informationAboutAuthor).append('\'');
-        sb.append(", genreName='").append(genreName).append('\'');
+        sb.append(", genreName='").append(listOfGenres).append('\'');
         sb.append(", imageUrl='").append(imageUrl).append('\'');
         sb.append('}');
         return sb.toString();
@@ -94,12 +96,12 @@ public class Author extends AbstractEntity {
         }
 
         public Builder setName(String name) {
-            author.setName(name);
+            author.setAuthorName(name);
             return this;
         }
 
-        public Builder setGenreName(String genreName) {
-            author.setGenreName(genreName);
+        public Builder setListOfGenres(List<String> listOfGenres){
+            author.setListOfGenres(listOfGenres);
             return this;
         }
 

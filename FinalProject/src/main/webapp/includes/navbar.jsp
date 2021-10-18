@@ -11,7 +11,6 @@
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                            aria-haspopup="true" aria-expanded="false">${user.firstName} ${user.lastName}</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#"><fmt:message key="label.change" bundle="${var}"/></a>
                             <a class="dropdown-item" href="./controller?command=cabinet"><fmt:message
                                     key="label.cabinet"
                                     bundle="${var}"/></a>
@@ -28,9 +27,14 @@
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="./controller?command=to_cart"><fmt:message key="label.cart"
                                                                                                       bundle="${var}"/></a>
+
+
                             <a class="dropdown-item" href="./controller?command=cabinet"><fmt:message
                                     key="label.cabinet"
                                     bundle="${var}"/></a>
+                            <a class="dropdown-item"
+                               href="./controller?command=remove_account&userId=${user.id}"><fmt:message
+                                    key="label.delete" bundle="${var}"/></a>
                             <div role="separator" class="dropdown-divider"></div>
                             <a class="dropdown-item" href="./controller?command=log_out"><fmt:message key="label.logout"
                                                                                                       bundle="${var}"/></a>

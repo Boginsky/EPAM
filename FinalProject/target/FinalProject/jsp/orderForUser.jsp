@@ -10,6 +10,7 @@
 </head>
 <body>
 <div class="bg">
+    <%@include file="/includes/navbar.jsp" %>
     <div class="container">
         <br>
         <%@include file="/includes/navbarsmall.jsp" %>

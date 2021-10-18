@@ -19,6 +19,9 @@
             <div class="error-description">
                 Ooops!! Something went wrong!
             </div>
+            <div class="error-description" style="text-align: center">
+                Exception: ${pageContext.exception.message}
+            </div>
             <div class="error-or">
                 <div class="or-line">></div>
                 <div class="or"> <a style="text-align: center" href="./controller?command=cabinet">

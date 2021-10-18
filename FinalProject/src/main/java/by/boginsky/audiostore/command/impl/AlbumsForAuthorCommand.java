@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
 
-import static by.boginsky.audiostore.util.constants.Attribute.*;
+import static by.boginsky.audiostore.util.constants.Constant.*;
 
 public class AlbumsForAuthorCommand implements Command {
     @Override
@@ -25,7 +25,6 @@ public class AlbumsForAuthorCommand implements Command {
         AlbumService albumService = AlbumServiceImpl.getInstance();
         AuthorService authorService = AuthorServiceImpl.getInstance();
         Long authorId = Long.parseLong(httpServletRequest.getParameter(AUTHOR_ID));
-
         String page = getPage(httpServletRequest, albumService, authorService, authorId);
         Router router = new Router();
         router.setPagePath(page);
@@ -48,7 +47,8 @@ public class AlbumsForAuthorCommand implements Command {
                 page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_ALL_AUTHORS);
             }
         } catch (ServiceException e) {
-            throw new CommandException("Exception in albumsOfAuthor command", e);
+            logger.error("Exception in albums for author command", e);
+            throw new CommandException("Exception in albums for author command", e);
         }
         return page;
     }

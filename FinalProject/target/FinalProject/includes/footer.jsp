@@ -1,3 +1,4 @@
+<%@taglib uri="/WEB-INF/customTag.tld" prefix="ctg" %>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -16,6 +17,9 @@
                     <a class="btn btn-primary" href="./controller?command=russian">RU</a>
                 </div>
                 <br/>
+                <div style="text-align: center">
+                    <ctg:emptyTag/>
+                </div>
                 <div style="text-align: center">
                     <h12>AudioStore 2021</h12>
                 </div>

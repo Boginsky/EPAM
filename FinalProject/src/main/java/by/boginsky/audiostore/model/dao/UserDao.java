@@ -13,13 +13,15 @@ public interface UserDao {
 
     Optional<User> findUserByEmail(String email) throws DaoException;
 
-    void updateUserPasswordByEmail(String email, String newPassword) throws DaoException;
+    User findUserById(Long userId) throws DaoException;
 
     void updateUserEmail(String email, String newEmail) throws DaoException;
 
     void updateUserMoney(Long userId, BigDecimal userMoney) throws DaoException;
 
     void createUser(User user, String password) throws DaoException;
+
+    void createAdmin(User user, String password) throws DaoException;
 
     void updateUserName(String firstName, String lastName, Long userId) throws DaoException;
 
@@ -33,6 +35,10 @@ public interface UserDao {
 
     void updateUserPhoto(String userImageUrl, Long userId) throws DaoException;
 
-    String findUserPhotoImageUrl(Long userId) throws DaoException;
+    void removeUser(Long userId) throws DaoException;
+
+    void blockUser(Long userId) throws DaoException;
+
+    void unblockUser(Long userId) throws DaoException;
 
 }

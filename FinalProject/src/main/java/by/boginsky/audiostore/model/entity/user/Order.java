@@ -9,7 +9,7 @@ import java.util.List;
 public class Order extends AbstractEntity {
 
     public enum OrderStatus {
-        PAID, NOT_PAID, CANCELED;
+        PAID, NOT_PAID, CANCELED; // FIXME: 12.10.2021
     }
 
     private BigDecimal totalPrice;

@@ -16,7 +16,7 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
-import static by.boginsky.audiostore.util.constants.Attribute.TRACK_ID;
+import static by.boginsky.audiostore.util.constants.Constant.TRACK_ID;
 
 public class RemoveFromCartCommand implements Command {
 
@@ -27,23 +27,26 @@ public class RemoveFromCartCommand implements Command {
         Long audioId = Long.parseLong(httpServletRequest.getParameter(TRACK_ID));
 
         listOfSongsInCart = getSongs(listOfSongsInCart, audioId);
-
         httpSession.setAttribute("listOfSongsInCart", listOfSongsInCart);
+
         Router router = new Router();
         router.setPagePath(ConfigurationManager.getProperty(PathPage.PATH_PAGE_CART));
         return router;
     }
 
-    private Set<Song> getSongs(Set<Song> listOfSongsInCart, Long audioId) {
+    private Set<Song> getSongs(Set<Song> listOfSongsInCart, Long audioId) throws CommandException {
         SongService songService = SongServiceImpl.getInstance();
         if (listOfSongsInCart == null) {
             listOfSongsInCart = new HashSet<>();
         }
         try {
             Optional<Song> foundSong = songService.findSongById(audioId);
-            listOfSongsInCart.remove(foundSong.get());
+            if (foundSong.isPresent()) {
+                listOfSongsInCart.remove(foundSong.get());
+            }
         } catch (ServiceException e) {
-            e.printStackTrace();
+            logger.error("Exception in remove from cart command", e);
+            throw new CommandException("Exception in remove from cart command", e);
         }
         return listOfSongsInCart;
     }

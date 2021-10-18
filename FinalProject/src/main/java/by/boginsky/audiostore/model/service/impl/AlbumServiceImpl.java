@@ -16,6 +16,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class AlbumServiceImpl implements AlbumService {
 
     private static AlbumService instance;
+    private static final Long MULTIPLIER = 5L;
     private static final AtomicBoolean isAlbumService = new AtomicBoolean(false);
 
     private AlbumServiceImpl() {
@@ -44,6 +45,21 @@ public class AlbumServiceImpl implements AlbumService {
         }
     }
 
+    public List<Album> findAllAlbums(Long pageId) throws ServiceException {
+        TransactionManager transactionManager = new TransactionManager();
+        AlbumDaoImpl albumDaoImpl = new AlbumDaoImpl();
+        Long startPosition = --pageId * MULTIPLIER;
+        try {
+            transactionManager.startTransaction(albumDaoImpl);
+            return albumDaoImpl.findAll(startPosition);
+        } catch (DaoException e) {
+            throw new ServiceException("Exception in method finding all albums for page", e);
+        } finally {
+            transactionManager.endTransaction();
+        }
+    }
+
+    @Override
     public List<Album> findAllAlbums() throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
         AlbumDaoImpl albumDaoImpl = new AlbumDaoImpl();
@@ -57,31 +73,13 @@ public class AlbumServiceImpl implements AlbumService {
         }
     }
 
-    public Optional<Album> findAlbumByName(String albumName) throws ServiceException {
+    public Long addNewAlbum(String nameOfAlbum, String informationAboutAlbum) throws ServiceException {
+        Long id;
         TransactionManager transactionManager = new TransactionManager();
         AlbumDaoImpl albumDaoImpl = new AlbumDaoImpl();
         try {
             transactionManager.startTransaction(albumDaoImpl);
-            return albumDaoImpl.findByName(albumName);
-        } catch (DaoException e) {
-            throw new ServiceException("Exception in method finding album by name", e);
-        } finally {
-            transactionManager.endTransaction();
-        }
-    }
-
-    @Override
-    public List<Album> findAlbumByGenre(String nameOfGenre) throws ServiceException {
-        return null;
-    }
-
-
-    public void addNewAlbum(String nameOfAlbum, LocalDateTime dateOfCreation, String informationAboutAlbum) throws ServiceException {
-        TransactionManager transactionManager = new TransactionManager();
-        AlbumDaoImpl albumDaoImpl = new AlbumDaoImpl();
-        try {
-            transactionManager.startTransaction(albumDaoImpl);
-            albumDaoImpl.insertAlbum(nameOfAlbum, Timestamp.valueOf(dateOfCreation), informationAboutAlbum);
+            id = albumDaoImpl.insertAlbum(nameOfAlbum, informationAboutAlbum);
             transactionManager.commit();
         } catch (DaoException e) {
             try {
@@ -93,17 +91,58 @@ public class AlbumServiceImpl implements AlbumService {
         } finally {
             transactionManager.endTransaction();
         }
+        return id;
     }
 
     @Override
-    public List<Album> findByAuthor(Long authorID) throws ServiceException {
+    public List<Album> findByAuthor(Long authorId) throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
         AlbumDaoImpl albumDaoImpl = new AlbumDaoImpl();
         try {
             transactionManager.startTransaction(albumDaoImpl);
-            return albumDaoImpl.findByAuthor(authorID);
+            return albumDaoImpl.findByAuthor(authorId);
         } catch (DaoException e) {
             throw new ServiceException("Exception in method finding album by author's id", e);
+        } finally {
+            transactionManager.endTransaction();
+        }
+    }
+
+    @Override
+    public void removeAlbum(Long albumId) throws ServiceException {
+        TransactionManager transactionManager = new TransactionManager();
+        AlbumDaoImpl albumDaoImpl = new AlbumDaoImpl();
+        try {
+            transactionManager.startTransaction(albumDaoImpl);
+            albumDaoImpl.removeAlbum(albumId);
+            transactionManager.commit();
+        } catch (DaoException e) {
+            try {
+                transactionManager.rollback();
+            } catch (DaoException daoException) {
+                throw new ServiceException("Exception in method removing album (rollback)", daoException);
+            }
+            throw new ServiceException("Exception in method removing album", e);
+        } finally {
+            transactionManager.endTransaction();
+        }
+    }
+
+    @Override
+    public void updateAlbum(Long albumId, String albumName, String albumInfo) throws ServiceException {
+        TransactionManager transactionManager = new TransactionManager();
+        AlbumDaoImpl albumDaoImpl = new AlbumDaoImpl();
+        try {
+            transactionManager.startTransaction(albumDaoImpl);
+            albumDaoImpl.updateAlbum(albumId,albumName,albumInfo);
+            transactionManager.commit();
+        } catch (DaoException e) {
+            try {
+                transactionManager.rollback();
+            } catch (DaoException daoException) {
+                throw new ServiceException("Exception in method updating album (rollback)", daoException);
+            }
+            throw new ServiceException("Exception in method updating album", e);
         } finally {
             transactionManager.endTransaction();
         }

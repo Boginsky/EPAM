@@ -19,9 +19,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
 
-import static by.boginsky.audiostore.util.constants.Attribute.*;
-import static by.boginsky.audiostore.util.constants.Parameter.EMAIL;
-import static by.boginsky.audiostore.util.constants.Parameter.PASSWORD;
+import static by.boginsky.audiostore.util.constants.Constant.*;
 
 
 public class SignInCommand implements Command {
@@ -30,40 +28,48 @@ public class SignInCommand implements Command {
         HttpSession httpSession = httpServletRequest.getSession();
         httpServletRequest.setAttribute(ERROR_SIGN_IN_MESSAGE, null); // FIXME: 12.09.2021
 
+        User user = (User) httpSession.getAttribute(USER);
         String email = httpServletRequest.getParameter(EMAIL);
         String password = httpServletRequest.getParameter(PASSWORD);
 
         UserService userService = UserServiceImpl.getInstance();
         SongService songService = SongServiceImpl.getInstance();
-
-        try {
-            String page = getPage(httpSession, email, password, userService, songService);
-            Router router = new Router();
-            router.setPagePath(page);
-            return router;
-        } catch (ServiceException e) {
-            throw new CommandException("Exception in signIn command", e);
+        String page;
+        if (user == null) {
+            page = getPage(httpSession, email, password, userService, songService);
+        } else {
+            page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_WELCOME);
         }
+
+        Router router = new Router();
+        router.setPagePath(page);
+        return router;
     }
 
-    private String getPage(HttpSession httpSession, String email, String password, UserService userService, SongService songService) throws ServiceException {
+    private String getPage(HttpSession httpSession, String email, String password, UserService userService, SongService songService) throws CommandException {
         String page;
-        if (validate(email, password)) {
-            Optional<User> optionalUser = userService.findUserByEmailAndPassword(email, password);
-            List<String> listOfSongImgUrl = songService.findSongImg();
-            if (optionalUser.isPresent()) {
-                User user = optionalUser.get();
-                page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_WELCOME);
-                httpSession.setAttribute(LIST_OF_SONGS_IMG_URL, listOfSongImgUrl);
-                httpSession.setAttribute(ROLE, user.getUserRole());
-                httpSession.setAttribute(EMAIL, user.getEmail());
-                httpSession.setAttribute(USER, user);
-                httpSession.setAttribute(PASSWORD, password);
+        try {
+            if (validate(email, password)) {
+                Optional<User> optionalUser = userService.findUserByEmailAndPassword(email, password);
+                List<String> listOfSongImgUrl = songService.findSongImg();
+                if (optionalUser.isPresent()) {
+                    User user = optionalUser.get();
+                    if (user.getUserStatus().equals(User.UserStatus.ACTIVE)) {
+                        page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_WELCOME);
+                        httpSession.setAttribute(LIST_OF_SONGS_IMG_URL, listOfSongImgUrl);
+                        httpSession.setAttribute(USER, user);
+                    } else {
+                        page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_LOGIN);
+                    }
+                } else {
+                    page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_LOGIN);
+                }
             } else {
                 page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_LOGIN);
             }
-        } else {
-            page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_LOGIN);
+        } catch (ServiceException e) {
+            logger.error("Exception in signIn command", e);
+            throw new CommandException("Exception in signIn command", e);
         }
         return page;
     }
