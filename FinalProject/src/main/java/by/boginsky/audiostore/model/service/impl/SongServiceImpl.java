@@ -12,6 +12,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/**
+ * The type Song service.
+ */
 public class SongServiceImpl implements SongService {
 
     private static SongService instance;
@@ -20,6 +23,11 @@ public class SongServiceImpl implements SongService {
     private SongServiceImpl() {
     }
 
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
     public static SongService getInstance() {
         while (instance == null) {
             if (isSongService.compareAndSet(false, true)) {
@@ -84,21 +92,7 @@ public class SongServiceImpl implements SongService {
         }
     }
 
-    @Override
-    public List<String> findSongImg() throws ServiceException {
-        TransactionManager transactionManager = new TransactionManager();
-        SongDaoImpl songDaoImpl = new SongDaoImpl();
-        try {
-            transactionManager.startTransaction(songDaoImpl);
-            return songDaoImpl.findSongImg();
-        } catch (DaoException e) {
-            throw new ServiceException("Exception in method finding song's img", e);
-        } finally {
-            transactionManager.endTransaction();
-        }
-    }
-
-    public Long addNewSong(String songName,  BigDecimal songPrice, Long authorId, Long genreId, Long albumId) throws ServiceException {
+    public Long addNewSong(String songName, BigDecimal songPrice, Long authorId, Long genreId, Long albumId) throws ServiceException {
         Long id;
         TransactionManager transactionManager = new TransactionManager();
         SongDaoImpl songDaoImpl = new SongDaoImpl();
@@ -141,7 +135,7 @@ public class SongServiceImpl implements SongService {
         SongDaoImpl songDaoImpl = new SongDaoImpl();
         try {
             transactionManager.startTransaction(songDaoImpl);
-            songDaoImpl.updateSong(songName,songPrice,authorId,genreId,albumId,songId);
+            songDaoImpl.updateSong(songName, songPrice, authorId, genreId, albumId, songId);
             transactionManager.commit();
         } catch (DaoException e) {
             try {

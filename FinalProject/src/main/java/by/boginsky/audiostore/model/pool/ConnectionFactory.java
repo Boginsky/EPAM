@@ -9,6 +9,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
+/**
+ * The type Connection factory.
+ */
 class ConnectionFactory {
 
     private static final String url;
@@ -34,6 +37,12 @@ class ConnectionFactory {
         }
     }
 
+    /**
+     * Gets connection.
+     *
+     * @return the connection
+     * @throws SQLException the sql exception
+     */
     static ProxyConnection getConnection() throws SQLException {
         return new ProxyConnection(DriverManager.getConnection(url, properties));
     }

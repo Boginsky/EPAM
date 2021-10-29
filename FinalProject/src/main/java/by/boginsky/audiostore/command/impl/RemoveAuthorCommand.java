@@ -14,17 +14,18 @@ import javax.servlet.http.HttpSession;
 import static by.boginsky.audiostore.util.constants.Constant.AUTHOR_ID;
 import static by.boginsky.audiostore.util.constants.Constant.USER;
 
+/**
+ * The type Remove author command.
+ */
 public class RemoveAuthorCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {
         HttpSession httpSession = httpServletRequest.getSession();
         User user = (User) httpSession.getAttribute(USER);
         Long authorId = Long.parseLong(httpServletRequest.getParameter(AUTHOR_ID));
-
         if (user.getUserRole() == User.UserRole.ADMIN) {
             removeAuthor(authorId);
         }
-
         AllAuthorsCommand allAuthorsCommand = new AllAuthorsCommand();
         Router router = allAuthorsCommand.execute(httpServletRequest);
         return router;

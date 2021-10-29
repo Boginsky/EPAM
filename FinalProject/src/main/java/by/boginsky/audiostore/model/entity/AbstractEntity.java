@@ -3,21 +3,42 @@ package by.boginsky.audiostore.model.entity;
 import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class   AbstractEntity implements Serializable, Cloneable {
+/**
+ * The type Abstract entity.
+ */
+public abstract class AbstractEntity implements Serializable, Cloneable {
 
     private Long id;
 
+    /**
+     * Instantiates a new Abstract entity.
+     */
     public AbstractEntity() {
     }
 
+    /**
+     * Instantiates a new Abstract entity.
+     *
+     * @param id the id
+     */
     public AbstractEntity(Long id) {
         this.id = id;
     }
 
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * Sets id.
+     *
+     * @param id the id
+     */
     public void setId(Long id) {
         this.id = id;
     }

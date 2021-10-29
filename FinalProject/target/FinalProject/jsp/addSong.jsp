@@ -29,13 +29,6 @@
                                    placeholder="<fmt:message key="label.price" bundle="${var}"/>" min="0" max="100">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="inputImage"><fmt:message key="label.image" bundle="${var}"/></label>
-                        <input class="file-path validate" type="file" name="file" id="inputImage" placeholder="<fmt:message
-                                    key="label.uploadFile"
-                                    bundle="${var}"/>">
-                        <input type="hidden" name="target" value="song">
-                    </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="genres"><fmt:message key="label.genre" bundle="${var}"/></label>

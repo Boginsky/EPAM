@@ -13,17 +13,18 @@ import javax.servlet.http.HttpSession;
 
 import static by.boginsky.audiostore.util.constants.Constant.*;
 
+/**
+ * The type Confirm registration command.
+ */
 public class ConfirmRegistrationCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {
         HttpSession httpSession = httpServletRequest.getSession();
         String submittedCode = httpServletRequest.getParameter(SUBMITTED_CONFIRM_CODE).trim();
         String realCode = (httpServletRequest.getParameter(REAL_CONFIRM_CODE)).trim();
-
         confirmRegistration(httpServletRequest, httpSession, submittedCode, realCode);
-
-        AllSongsCommand allSongsCommand = new AllSongsCommand();
-        Router router = allSongsCommand.execute(httpServletRequest);
+        CabinetCommand cabinetCommand = new CabinetCommand();
+        Router router = cabinetCommand.execute(httpServletRequest);
         return router;
     }
 

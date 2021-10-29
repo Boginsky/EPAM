@@ -4,6 +4,9 @@ import by.boginsky.audiostore.model.entity.AbstractEntity;
 
 import java.util.List;
 
+/**
+ * The type Author.
+ */
 public class Author extends AbstractEntity {
 
     private String authorName;
@@ -11,35 +14,75 @@ public class Author extends AbstractEntity {
     private List<String> listOfGenres;
     private String imageUrl;
 
+    /**
+     * Gets author name.
+     *
+     * @return the author name
+     */
     public String getAuthorName() {
         return authorName;
     }
 
+    /**
+     * Sets author name.
+     *
+     * @param authorName the author name
+     */
     public void setAuthorName(String authorName) {
         this.authorName = authorName;
     }
 
 
+    /**
+     * Gets information about author.
+     *
+     * @return the information about author
+     */
     public String getInformationAboutAuthor() {
         return informationAboutAuthor;
     }
 
+    /**
+     * Sets information about author.
+     *
+     * @param informationAboutAuthor the information about author
+     */
     public void setInformationAboutAuthor(String informationAboutAuthor) {
         this.informationAboutAuthor = informationAboutAuthor;
     }
 
+    /**
+     * Gets list of genres.
+     *
+     * @return the list of genres
+     */
     public List<String> getListOfGenres() {
         return listOfGenres;
     }
 
+    /**
+     * Sets list of genres.
+     *
+     * @param listOfGenres the list of genres
+     */
     public void setListOfGenres(List<String> listOfGenres) {
         this.listOfGenres = listOfGenres;
     }
 
+    /**
+     * Gets image url.
+     *
+     * @return the image url
+     */
     public String getImageUrl() {
         return imageUrl;
     }
 
+    /**
+     * Sets image url.
+     *
+     * @param imageUrl the image url
+     */
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
@@ -79,42 +122,88 @@ public class Author extends AbstractEntity {
         return sb.toString();
     }
 
+    /**
+     * Builder builder.
+     *
+     * @return the builder
+     */
     public static Builder builder() {
         return new Builder();
     }
 
+    /**
+     * The type Builder.
+     */
     public static class Builder {
-        private Author author;
+        private final Author author;
 
+        /**
+         * Instantiates a new Builder.
+         */
         public Builder() {
             author = new Author();
         }
 
+        /**
+         * Sets id.
+         *
+         * @param authorId the author id
+         * @return the id
+         */
         public Builder setId(Long authorId) {
             author.setId(authorId);
             return this;
         }
 
+        /**
+         * Sets name.
+         *
+         * @param name the name
+         * @return the name
+         */
         public Builder setName(String name) {
             author.setAuthorName(name);
             return this;
         }
 
-        public Builder setListOfGenres(List<String> listOfGenres){
+        /**
+         * Sets list of genres.
+         *
+         * @param listOfGenres the list of genres
+         * @return the list of genres
+         */
+        public Builder setListOfGenres(List<String> listOfGenres) {
             author.setListOfGenres(listOfGenres);
             return this;
         }
 
+        /**
+         * Sets information about author.
+         *
+         * @param informationAboutAuthor the information about author
+         * @return the information about author
+         */
         public Builder setInformationAboutAuthor(String informationAboutAuthor) {
             author.setInformationAboutAuthor(informationAboutAuthor);
             return this;
         }
 
+        /**
+         * Sets image url.
+         *
+         * @param imageUrl the image url
+         * @return the image url
+         */
         public Builder setImageUrl(String imageUrl) {
             author.setImageUrl(imageUrl);
             return this;
         }
 
+        /**
+         * Build author.
+         *
+         * @return the author
+         */
         public Author build() {
             return author;
         }

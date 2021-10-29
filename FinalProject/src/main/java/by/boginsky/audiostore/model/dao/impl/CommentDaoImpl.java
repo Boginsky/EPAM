@@ -14,9 +14,11 @@ import java.util.List;
 import static by.boginsky.audiostore.model.dao.ColumnName.*;
 import static java.lang.String.format;
 
+/**
+ * The type Comment dao.
+ */
 public class CommentDaoImpl extends BaseDao<Comment> implements CommentDao {
 
-    private static final String FIND_ALL_COMMENTS = "SELECT users_user_id,first_name,last_name,albums_album_id,comment,user_img,comment_id,album_name FROM comments JOIN users ON users_user_id = user_id JOIN albums ON albums_album_id = album_id";
     private static final String FIND_COMMENTS_BY_ALBUM_ID = "SELECT users_user_id,first_name,last_name,comment,albums_album_id,user_img,comment_id,album_name FROM comments JOIN users ON users_user_id = user_id JOIN albums ON albums_album_id = album_id WHERE albums_album_id = ?";
     private static final String FIND_COMMENTS_BY_USER_ID = "SELECT first_name,last_name,comment,user_img,albums_album_id,comment_id,album_name FROM comments JOIN users ON users_user_id = user_id JOIN albums ON albums_album_id = album_id WHERE user_id = ?";
     private static final String INSERT_NEW_COMMENT = "INSERT INTO  comments (users_user_id,albums_album_id,comment) VALUES(?,?,?)";
@@ -43,7 +45,7 @@ public class CommentDaoImpl extends BaseDao<Comment> implements CommentDao {
                         .setAlbumId(albumId)
                         .setUserId(userId)
                         .setId(commentId)
-                        .setUserName(format("%s %s",userFirstName,userLastName))
+                        .setUserName(format("%s %s", userFirstName, userLastName))
                         .setUserImageUrl(userImageUrl)
                         .build());
             }
@@ -73,7 +75,7 @@ public class CommentDaoImpl extends BaseDao<Comment> implements CommentDao {
                         .setId(commentId)
                         .setUserId(userId)
                         .setAlbumId(albumId)
-                        .setUserName(format("%s %s",userFirstName,userLastName))
+                        .setUserName(format("%s %s", userFirstName, userLastName))
                         .setUserImageUrl(userImageUrl)
                         .build());
             }

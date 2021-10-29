@@ -5,7 +5,7 @@
 <fmt:setBundle basename="pagecontent" var="var"/>
 <html>
 <head>
-    <title><fmt:message key="label.mainPageTitle" bundle="${var}"/></title>
+    <title><fmt:message key="label.userPage" bundle="${var}"/>${userFound.firstName} ${userFound.lastName}</title>
     <%@include file="/includes/head.jsp" %>
 </head>
 <body>
@@ -41,6 +41,36 @@
                                     </td>
                                 </div>
                             </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0"><fmt:message key="label.balance" bundle="${var}"/></h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    ${userFound.balance}$ ${user.bonus} <fmt:message key="label.bonus" bundle="${var}"/>
+                                    </td>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0"><fmt:message key="label.dateOfRegistration" bundle="${var}"/></h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    ${userFound.userCreated}
+                                    </td>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0"><fmt:message key="label.userStatus" bundle="${var}"/></h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    ${userFound.userStatus}
+                                    </td>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -58,7 +88,7 @@
                     </div>
                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body">
-                            <table class="table table-light">
+                            <table class="table table-light" style="text-align: center">
                                 <thead>
                                 <tr>
                                     <th style="width: 25%" scope="col"><fmt:message key="label.orderNumber"
@@ -77,7 +107,6 @@
                                     <tr>
                                         <td><c:out value="${order.id}"/></td>
                                         <td><c:out value="${order.dateOfCreation}"/></td>
-                                        <td><c:out value="${order.orderStatus}"/></td>
                                         <td><c:out value="${order.totalPrice}"/></td>
                                         <td>
                                             <a class="btn btn-sm btn-dark"

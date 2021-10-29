@@ -7,11 +7,20 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * The type Password encryption.
+ */
 public class PasswordEncryption {
 
     private static final String MESSAGE_DIGEST_5 = "MD5";
     private static final Logger logger = LogManager.getLogger();
 
+    /**
+     * Encrypts password string.
+     *
+     * @param password the password
+     * @return the string
+     */
     public static String encryptsPassword(String password) {
         MessageDigest messageDigest;
         byte[] digest = new byte[0];

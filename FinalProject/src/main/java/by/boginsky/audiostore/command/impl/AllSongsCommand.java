@@ -15,6 +15,9 @@ import java.util.List;
 
 import static by.boginsky.audiostore.util.constants.Constant.ALL_SONGS;
 
+/**
+ * The type All songs command.
+ */
 public class AllSongsCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {

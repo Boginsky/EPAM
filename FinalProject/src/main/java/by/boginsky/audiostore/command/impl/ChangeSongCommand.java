@@ -21,12 +21,13 @@ import java.util.List;
 
 import static by.boginsky.audiostore.util.constants.Constant.*;
 
+/**
+ * The type Change song command.
+ */
 public class ChangeSongCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {
-
         getLists(httpServletRequest);
-
         Router router = new Router();
         router.setPagePath(ConfigurationManager.getProperty(PathPage.PATH_PAGE_ADD_SONG));
         return router;
@@ -34,11 +35,9 @@ public class ChangeSongCommand implements Command {
 
     private void getLists(HttpServletRequest httpServletRequest) throws CommandException {
         Long songId = Long.parseLong(httpServletRequest.getParameter(SONG_ID));
-
         List<Author> listOfAuthors;
         List<Genre> listOfGenres;
         List<Album> listOfAlbums;
-
         AlbumService albumService = AlbumServiceImpl.getInstance();
         AuthorService authorService = AuthorServiceImpl.getInstance();
         GenreService genreService = GenreServiceImpl.getInstance();

@@ -32,8 +32,7 @@
                                                                                     bundle="${var}"/></th>
                                     <th style="width: 25%" scope="col"><fmt:message key="label.album"
                                                                                     bundle="${var}"/></th>
-                                    <th style="width: 25%" scope="col"><fmt:message key="label.genre"
-                                                                                    bundle="${var}"/></th>
+                                    <th style="width: 25%" scope="col"><fmt:message key="label.genre" bundle="${var}"/></th>
                                     <th style="width: 25%" scope="col"><fmt:message key="label.price"
                                                                                     bundle="${var}"/></th>
                                 </tr>

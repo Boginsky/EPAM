@@ -40,11 +40,13 @@
                             <td><c:out value="${song.album}"/></td>
                             <td><c:out value="${song.genre}"/></td>
                             <td><c:out value="${song.price}"/>
+                                <c:if test="${user.userRole == 'USER'}">
                                 <div class="mt-3 d-flex justify-content-between">
                                     <a href="./controller?command=add_to_cart&trackId=${song.id}"
                                        class="btn btn-dark"><fmt:message key="label.addToCart"
                                                                          bundle="${var}"/></a>
                                 </div>
+                                </c:if>
                             </td>
                         </tr>
                     </c:forEach>

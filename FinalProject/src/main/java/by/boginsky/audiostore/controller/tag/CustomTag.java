@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * The type Custom tag.
+ */
 public class CustomTag extends TagSupport {
     @Override
     public int doStartTag() throws JspException {

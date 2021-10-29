@@ -8,9 +8,20 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+/**
+ * The type Property reader.
+ */
 public class PropertyReader {
+
     private static final Logger logger = LogManager.getLogger();
 
+    /**
+     * Read properties.
+     *
+     * @param path the path
+     * @return the properties
+     * @throws PropertyReaderException the property reader exception
+     */
     public Properties read(String path) throws PropertyReaderException {
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         try (InputStream inputStream = classLoader.getResourceAsStream(path)) {

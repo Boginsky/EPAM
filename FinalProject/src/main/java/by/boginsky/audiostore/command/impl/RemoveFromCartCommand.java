@@ -18,6 +18,9 @@ import java.util.Set;
 
 import static by.boginsky.audiostore.util.constants.Constant.TRACK_ID;
 
+/**
+ * The type Remove from cart command.
+ */
 public class RemoveFromCartCommand implements Command {
 
     @Override
@@ -25,10 +28,8 @@ public class RemoveFromCartCommand implements Command {
         HttpSession httpSession = httpServletRequest.getSession();
         Set<Song> listOfSongsInCart = (Set<Song>) httpSession.getAttribute("listOfSongsInCart");
         Long audioId = Long.parseLong(httpServletRequest.getParameter(TRACK_ID));
-
         listOfSongsInCart = getSongs(listOfSongsInCart, audioId);
         httpSession.setAttribute("listOfSongsInCart", listOfSongsInCart);
-
         Router router = new Router();
         router.setPagePath(ConfigurationManager.getProperty(PathPage.PATH_PAGE_CART));
         return router;

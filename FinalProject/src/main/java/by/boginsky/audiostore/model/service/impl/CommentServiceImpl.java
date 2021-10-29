@@ -10,6 +10,9 @@ import by.boginsky.audiostore.model.service.CommentService;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/**
+ * The type Comment service.
+ */
 public class CommentServiceImpl implements CommentService {
 
     private static CommentService instance;
@@ -18,6 +21,11 @@ public class CommentServiceImpl implements CommentService {
     private CommentServiceImpl() {
     }
 
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
     public static CommentService getInstance() {
         while (instance == null) {
             if (isCommentService.compareAndSet(false, true)) {

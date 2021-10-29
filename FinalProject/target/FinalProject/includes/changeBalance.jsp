@@ -18,7 +18,7 @@
                         </div>
                         <div class="form-group">
                             <label><fmt:message key="label.cartNumber" bundle="${var}"/></label>
-                            <input type="text" class="form-control" maxlength="20" autocomplete="off"
+                            <input type="text" class="form-control" maxlength="16" autocomplete="off"
                                    pattern="\d{16}" required="required">
                         </div>
                         <div class="form-group row">

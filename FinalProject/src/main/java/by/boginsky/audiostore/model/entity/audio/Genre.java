@@ -2,14 +2,27 @@ package by.boginsky.audiostore.model.entity.audio;
 
 import by.boginsky.audiostore.model.entity.AbstractEntity;
 
+/**
+ * The type Genre.
+ */
 public class Genre extends AbstractEntity {
 
     private String genreName;
 
+    /**
+     * Gets genre name.
+     *
+     * @return the genre name
+     */
     public String getGenreName() {
         return genreName;
     }
 
+    /**
+     * Sets genre name.
+     *
+     * @param genreName the genre name
+     */
     public void setGenreName(String genreName) {
         this.genreName = genreName;
     }
@@ -28,7 +41,7 @@ public class Genre extends AbstractEntity {
     @Override
     public int hashCode() {
         int result = 1;
-        return  31 * result + ((genreName == null) ? 0 : genreName.hashCode());
+        return 31 * result + ((genreName == null) ? 0 : genreName.hashCode());
     }
 
     @Override
@@ -39,28 +52,56 @@ public class Genre extends AbstractEntity {
         return sb.toString();
     }
 
-    public static Builder builder(){
+    /**
+     * Builder builder.
+     *
+     * @return the builder
+     */
+    public static Builder builder() {
         return new Builder();
     }
 
+    /**
+     * The type Builder.
+     */
     public static class Builder {
-        private Genre genre;
+        private final Genre genre;
 
-        public Builder(){
+        /**
+         * Instantiates a new Builder.
+         */
+        public Builder() {
             genre = new Genre();
         }
 
-        public Builder setId(Long id){
+        /**
+         * Sets id.
+         *
+         * @param id the id
+         * @return the id
+         */
+        public Builder setId(Long id) {
             genre.setId(id);
             return this;
         }
 
-        public Builder setGenreName(String genreName){
+        /**
+         * Sets genre name.
+         *
+         * @param genreName the genre name
+         * @return the genre name
+         */
+        public Builder setGenreName(String genreName) {
             genre.setGenreName(genreName);
             return this;
         }
 
-        public Genre build(){
+        /**
+         * Build genre.
+         *
+         * @return the genre
+         */
+        public Genre build() {
             return genre;
         }
     }

@@ -11,6 +11,9 @@ import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * The type Connection pool.
+ */
 public class ConnectionPool {
 
     private static final Logger logger = LogManager.getLogger();
@@ -36,6 +39,11 @@ public class ConnectionPool {
         }
     }
 
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
     public static ConnectionPool getInstance() {
         if (!create.get()) {
             try {
@@ -51,8 +59,12 @@ public class ConnectionPool {
         return instance;
     }
 
-    // FIXME: 03.09.2021 change on connection
-    public ProxyConnection getConnection() {
+    /**
+     * Gets connection.
+     *
+     * @return the connection
+     */
+    public Connection getConnection() {
         ProxyConnection connection = null;
         try {
             connection = freeConnections.take();
@@ -64,6 +76,12 @@ public class ConnectionPool {
         return connection;
     }
 
+    /**
+     * Release connection boolean.
+     *
+     * @param connection the connection
+     * @return the boolean
+     */
     public boolean releaseConnection(Connection connection) {
         boolean result = true;
         if (connection instanceof ProxyConnection && busyConnections.remove(connection)) {
@@ -80,6 +98,9 @@ public class ConnectionPool {
         return result;
     }
 
+    /**
+     * Destroy pool.
+     */
     public void destroyPool() {
         try {
             for (ProxyConnection freeConnection : freeConnections) {

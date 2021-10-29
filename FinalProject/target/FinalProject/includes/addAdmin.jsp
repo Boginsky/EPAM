@@ -9,11 +9,11 @@
                 </div>
                 <div class="modal-body">
                     <input type="email" class="form-control" name="email"
-                           placeholder="<fmt:message key="label.enterYourEmail" bundle="${var}"/>" value="${fn:escapeXml(user.email)}" required>
+                           placeholder="<fmt:message key="label.enterYourEmail" bundle="${var}"/>"required>
                 </div>
                 <div class="modal-body">
                     <input type="password" class="form-control" name="password"
-                           placeholder="<fmt:message key="label.enterYourPassword" bundle="${var}"/>" value="${fn:escapeXml("********")}"
+                           placeholder="<fmt:message key="label.enterYourPassword" bundle="${var}"/>"
                            required>
                 </div>
                 <div class="modal-body">
@@ -28,7 +28,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-default btn-lg btn-block" data-dismiss="modal"><fmt:message key="label.close" bundle="${var}"/></button>
-                    <input type="hidden" name="userRole" value="${fn:escapeXml("ADMIN")}"/>
+                    <input type="hidden" name="userRole" />
                     <input type="hidden" name="command" value="register"/>
                     <button type="submit" class="btn btn-dark btn-lg btn-block"><fmt:message key="label.signUp" bundle="${var}"/></button>
                 </div>

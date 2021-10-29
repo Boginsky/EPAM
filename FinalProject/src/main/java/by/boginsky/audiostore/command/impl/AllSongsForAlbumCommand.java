@@ -22,15 +22,16 @@ import java.util.Optional;
 
 import static by.boginsky.audiostore.util.constants.Constant.*;
 
+/**
+ * The type All songs for album command.
+ */
 public class AllSongsForAlbumCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {
-
         SongService songService = SongServiceImpl.getInstance();
         AlbumService albumService = AlbumServiceImpl.getInstance();
         CommentService commentService = CommentServiceImpl.getInstance();
         Long albumId = Long.parseLong(httpServletRequest.getParameter(ALBUM_ID));
-
         String page = getPage(httpServletRequest, songService, albumService, commentService, albumId);
         Router router = new Router();
         router.setPagePath(page);

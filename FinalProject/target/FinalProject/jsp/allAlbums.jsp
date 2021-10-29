@@ -18,7 +18,7 @@
             <c:forEach var="album" items="${listOfAlbums}" varStatus="vs">
                 <div class="col-md-4 my-3">
                     <div class="card w-100" style="width: 18rem;">
-                        <a href="./controller?command=all_album_song&albumId=${album.id}">
+                        <a href="./controller?command=all_songs_for_album&albumId=${album.id}">
                             <img class="card-img-top" src="./imageTransfer?imageUuid=${album.imageUrl}" alt="Card image cap">
                         </a>
                         <div class="card-body" style="text-align: center">

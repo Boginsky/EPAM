@@ -17,6 +17,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * The type Controller servlet.
+ */
 @MultipartConfig
 @WebServlet(name = "ControllerServlet", urlPatterns = "/controller")
 public class ControllerServlet extends HttpServlet {
@@ -59,7 +62,7 @@ public class ControllerServlet extends HttpServlet {
         } catch (CommandException e) {
             response.sendRedirect(request.getContextPath() + ConfigurationManager.getProperty(PathPage.PATH_PAGE_ERROR500));
             logger.error("Internal error", e);
-            throw new ServletException(e);
+            throw new ServletException("Internal error", e);
         }
     }
 }

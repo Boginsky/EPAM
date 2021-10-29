@@ -20,7 +20,7 @@
                     <div class="file-path-wrapper">
                         <input class="file-path validate" type="file" name="file" placeholder="Upload file">
                         <input type="hidden" name="command" value="add_author"/>
-                        <input type="hidden" name="target" value="author">
+                        <input type="hidden" name="target" value="author/">
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-success btn-lg btn-block"><fmt:message
                                     key="label.add"

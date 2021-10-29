@@ -14,24 +14,26 @@
     <div class="h-100 row align-items-center">
         <div class="container" style="text-align: center;background: white">
             <h1 class="display-1">
-                Удаление аккаунта - безвозвратная операция! Удаление аккаунта
-                <br/>НЕ МОЖЕТ БЫТЬ ОТМЕНЕНО.
-                <br/> Пожалуйста, подтвердите удаление:
+                <fmt:message key="label.removeAccountText1" bundle="${var}"/>
+                <br/><fmt:message key="label.removeAccountText2" bundle="${var}"/>
+                <br/><fmt:message key="label.removeAccountText3" bundle="${var}"/>
                 <c:choose>
                 <c:when test="${userToRemove == null}">
                 <br/>${user.firstName} ${user.lastName}!
             </h1>
             <hr/>
             <a class="btn btn-dark btn-lg btn-block" style="text-align: center"
-               href="./controller?command=remove_account_confirm&userId=${user.id}">REMOVE CONFIRM</a>\
+               href="./controller?command=remove_account_confirm&userId=${user.id}"><fmt:message
+                    key="label.removeConfirm" bundle="${var}"/></a>\
             <br/>
             </c:when>
             <c:otherwise>
                 <br/>${userToRemove.firstName} ${userToRemove.lastName}!
                 </h1>
                 <hr/>
-                <a class="btn btn-dark btn-lg btn-block" style="text-align: center"
-                   href="./controller?command=remove_account_confirm&userId=${userToRemove.id}">REMOVE CONFIRM</a>\
+                <a class="btn btn-danger btn-lg btn-block" style="text-align: center"
+                   href="./controller?command=remove_account_confirm&userId=${userToRemove.id}"><fmt:message
+                        key="label.removeConfirm" bundle="${var}"/></a>\
                 <br/>
             </c:otherwise>
             </c:choose>

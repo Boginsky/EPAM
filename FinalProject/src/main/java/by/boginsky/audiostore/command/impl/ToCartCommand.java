@@ -12,13 +12,15 @@ import javax.servlet.http.HttpSession;
 
 import static by.boginsky.audiostore.util.constants.Constant.USER;
 
+/**
+ * The type To cart command.
+ */
 public class ToCartCommand implements Command {
 
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {
         HttpSession httpSession = httpServletRequest.getSession();
         User user = (User) httpSession.getAttribute(USER);
-
         String page = getPage(user);
         Router router = new Router();
         router.setPagePath(page);

@@ -63,7 +63,7 @@
             <c:forEach var="album" items="${listOfAlbums}">
                 <div class="col-md-4 my-3">
                     <div class="card w-100" style="width: 18rem;">
-                        <a href="./controller?command=all_album_song&albumId=${album.id}">
+                        <a href="./controller?command=all_songs_for_album&albumId=${album.id}">
                             <img class="card-img-top" src="./imageTransfer?imageUuid=${album.imageUrl}"
                                  alt="Card image cap">
                         </a>
@@ -75,7 +75,7 @@
                                 <h5><c:out value="${author}"/></h5>
                             </c:forEach>
                             <div class="mt-3 d-flex justify-content-center">
-                                <a href="./controller?command=all_album_song&albumId=${album.id}"
+                                <a href="./controller?command=all_songs_for_album&albumId=${album.id}"
                                    class="btn btn-dark" style="text-align: center"><fmt:message key="label.listOfSongs"
                                                                                                 bundle="${var}"/></a>
                             </div>

@@ -40,8 +40,8 @@
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     <c:forEach var="author" items="${album.listOfAuthors}">
-                                    <h6><c:out value="${author}"/></h6>
-                                </c:forEach>
+                                        <h6><c:out value="${author}"/></h6>
+                                    </c:forEach>
                                 </div>
                             </div>
                             <hr>
@@ -76,20 +76,24 @@
                         <td><c:out value="${song.author}"/></td>
                         <td><c:out value="${song.genre}"/></td>
                         <td><c:out value="${song.price}"/></td>
-                        <td style="text-align: center">
-                            <c:if test="${user.userRole == 'ADMIN'}">
-                                <form action="./controller" name="command" method="post">
-                                    <a class="btn btn-sm btn-danger"
-                                       href="./controller?command=remove_song&trackId=${song.id}"><fmt:message
-                                            key="label.delete" bundle="${var}"/></a>
-                                    <a class="btn btn-sm btn-dark"
-                                       href="./controller?command=change_song&trackId=${song.id}"><fmt:message
-                                            key="label.change" bundle="${var}"/></a>
-                                </form>
-                            </c:if>
-                            <a class="btn btn-sm btn-dark"
-                               href="./controller?command=add_to_cart&trackId=${song.id}"><fmt:message
-                                    key="label.addToCart" bundle="${var}"/></a>
+                        <td style="text-align: right">
+                            <c:choose>
+                                <c:when test="${user.userRole == 'ADMIN'}">
+                                    <form action="./controller" name="command" method="post">
+                                        <a type="button" class="btn btn-danger btn-sm"
+                                           href="./controller?command=remove_song&trackId=${song.id}"><fmt:message
+                                                key="label.delete" bundle="${var}"/></a>
+                                        <a type="button" class="btn btn-dark btn-sm"
+                                           href="./controller?command=change_song&trackId=${song.id}"><fmt:message
+                                                key="label.change" bundle="${var}"/></a>
+                                    </form>
+                                </c:when>
+                                <c:otherwise>
+                                    <a type="button" class="btn btn-sm btn-dark"
+                                       href="./controller?command=add_to_cart&trackId=${song.id}"><fmt:message
+                                            key="label.addToCart" bundle="${var}"/></a>
+                                </c:otherwise>
+                            </c:choose>
                         </td>
                     </tr>
                 </c:forEach>
@@ -108,8 +112,9 @@
                         </div>
                         <input type="hidden" name="command" value="add_comment"/>
                         <input type="hidden" name="albumId" value="${album.id}"/>
-                        <button type="submit" class="btn btn-dark btn-lg btn-block"><fmt:message key="label.addComment"
-                                                                                                 bundle="${var}"/></button>
+                        <button type="submit" class="btn btn-dark btn-lg btn-block"><fmt:message
+                                key="label.addComment"
+                                bundle="${var}"/></button>
                     </form>
                 </c:if>
                 <c:forEach var="comment" items="${listOfComments}" varStatus="vs">
@@ -146,7 +151,7 @@
                         </div>
                     </div>
                 </c:forEach>
-            </div>
+            </div
             <br/>
         </div>
     </div>

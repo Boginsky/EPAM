@@ -10,7 +10,7 @@
                 </div>
                 <div class="modal-body">
                     <input type="text" class="form-control" name="albumName" placeholder="<fmt:message key="label.albumName"
-                                                                                                bundle="${var}"/>" value="'${fn:escapeXml("<script>ASDASDADS</script>")}'"  required>
+                                                                                                bundle="${var}"/>" required>
                 </div>
                 <div class="modal-body">
                     <input type="text" class="form-control" name="albumInfo" value="<fmt:message key="label.informationAboutAlbum"
@@ -21,7 +21,7 @@
                     <div class="file-path-wrapper">
                         <input class="file-path validate" type="file" name="file" placeholder="Upload file">
                         <input type="hidden" name="command" value="add_album"/>
-                        <input type="hidden" name="target" value="${fn:escapeXml("<script>ASDASDADS</script>")}">
+                        <input type="hidden" name="target" value="album/">
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-success btn-lg btn-block"><fmt:message
                                     key="label.add"

@@ -11,7 +11,7 @@
     <div class="error-container error-500">
         <div class="error">
             <div class="error-title">
-                Server Error
+                Not Found
             </div>
             <div class="error-number">
                 404

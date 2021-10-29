@@ -7,9 +7,22 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * The interface Command.
+ */
 public interface Command {
 
-    static final Logger logger = LogManager.getLogger();
+    /**
+     * The constant logger.
+     */
+    Logger logger = LogManager.getLogger();
 
+    /**
+     * Execute router.
+     *
+     * @param httpServletRequest the http servlet request
+     * @return the router
+     * @throws CommandException the command exception
+     */
     Router execute(HttpServletRequest httpServletRequest) throws CommandException;
 }

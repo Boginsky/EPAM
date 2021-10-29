@@ -8,10 +8,12 @@
                                                                                     bundle="${var}"/></h5>
                 </div>
                 <div class="modal-body">
-                    <input type="text" class="form-control" name="authorName" placeholder="${author.authorName}" required>
+                    <input type="text" class="form-control" name="authorName" placeholder="${author.authorName}"
+                           required>
                 </div>
                 <div class="modal-body">
-                    <input type="text" class="form-control" name="authorInfo" placeholder="${author.informationAboutAuthor}" required>
+                    <input type="text" class="form-control" name="authorInfo"
+                           placeholder="${author.informationAboutAuthor}" required>
                 </div>
                 <br/>
                 <div class="modal-body">
@@ -19,7 +21,7 @@
                         <input class="file-path validate" type="file" name="file" placeholder="Upload file">
                         <input type="hidden" name="authorId" value="${author.id}">
                         <input type="hidden" name="command" value="change_author"/>
-                        <input type="hidden" name="target" value="author">
+                        <input type="hidden" name="target" value="author/">
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-success btn-lg btn-block"><fmt:message
                                     key="label.change"

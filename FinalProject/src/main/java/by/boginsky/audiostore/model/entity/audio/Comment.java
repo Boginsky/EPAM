@@ -2,6 +2,9 @@ package by.boginsky.audiostore.model.entity.audio;
 
 import by.boginsky.audiostore.model.entity.AbstractEntity;
 
+/**
+ * The type Comment.
+ */
 public class Comment extends AbstractEntity {
 
     private Long albumId;
@@ -11,50 +14,110 @@ public class Comment extends AbstractEntity {
     private String commentMessage;
     private String userImageUrl;
 
+    /**
+     * Gets comment message.
+     *
+     * @return the comment message
+     */
     public String getCommentMessage() {
         return commentMessage;
     }
 
+    /**
+     * Sets comment message.
+     *
+     * @param commentMessage the comment message
+     */
     public void setCommentMessage(String commentMessage) {
         this.commentMessage = commentMessage;
     }
 
+    /**
+     * Gets user name.
+     *
+     * @return the user name
+     */
     public String getUserName() {
         return userName;
     }
 
+    /**
+     * Sets user name.
+     *
+     * @param userName the user name
+     */
     public void setUserName(String userName) {
         this.userName = userName;
     }
 
+    /**
+     * Gets album name.
+     *
+     * @return the album name
+     */
     public String getAlbumName() {
         return albumName;
     }
 
+    /**
+     * Sets album name.
+     *
+     * @param albumName the album name
+     */
     public void setAlbumName(String albumName) {
         this.albumName = albumName;
     }
 
+    /**
+     * Gets user image url.
+     *
+     * @return the user image url
+     */
     public String getUserImageUrl() {
         return userImageUrl;
     }
 
+    /**
+     * Sets user image url.
+     *
+     * @param userImageUrl the user image url
+     */
     public void setUserImageUrl(String userImageUrl) {
         this.userImageUrl = userImageUrl;
     }
 
+    /**
+     * Gets album id.
+     *
+     * @return the album id
+     */
     public Long getAlbumId() {
         return albumId;
     }
 
+    /**
+     * Sets album id.
+     *
+     * @param albumId the album id
+     */
     public void setAlbumId(Long albumId) {
         this.albumId = albumId;
     }
 
+    /**
+     * Gets user id.
+     *
+     * @return the user id
+     */
     public Long getUserId() {
         return userId;
     }
 
+    /**
+     * Sets user id.
+     *
+     * @param userId the user id
+     */
     public void setUserId(Long userId) {
         this.userId = userId;
     }
@@ -100,52 +163,110 @@ public class Comment extends AbstractEntity {
         return sb.toString();
     }
 
+    /**
+     * Builder builder.
+     *
+     * @return the builder
+     */
     public static Builder builder() {
         return new Builder();
     }
 
+    /**
+     * The type Builder.
+     */
     public static class Builder {
-        private Comment comment;
+        private final Comment comment;
 
+        /**
+         * Instantiates a new Builder.
+         */
         public Builder() {
             comment = new Comment();
         }
 
-        public Builder setId(Long commentId){
+        /**
+         * Sets id.
+         *
+         * @param commentId the comment id
+         * @return the id
+         */
+        public Builder setId(Long commentId) {
             comment.setId(commentId);
             return this;
         }
 
-        public Builder setAlbumName(String albumName){
+        /**
+         * Sets album name.
+         *
+         * @param albumName the album name
+         * @return the album name
+         */
+        public Builder setAlbumName(String albumName) {
             comment.setAlbumName(albumName);
             return this;
         }
 
+        /**
+         * Sets comment message.
+         *
+         * @param commentMessage the comment message
+         * @return the comment message
+         */
         public Builder setCommentMessage(String commentMessage) {
             comment.setCommentMessage(commentMessage);
             return this;
         }
 
-        public Builder setAlbumId(Long albumId){
+        /**
+         * Sets album id.
+         *
+         * @param albumId the album id
+         * @return the album id
+         */
+        public Builder setAlbumId(Long albumId) {
             comment.setAlbumId(albumId);
             return this;
         }
 
-        public Builder setUserId(Long userId){
+        /**
+         * Sets user id.
+         *
+         * @param userId the user id
+         * @return the user id
+         */
+        public Builder setUserId(Long userId) {
             comment.setUserId(userId);
             return this;
         }
 
-        public Builder setUserName(String userName){
+        /**
+         * Sets user name.
+         *
+         * @param userName the user name
+         * @return the user name
+         */
+        public Builder setUserName(String userName) {
             comment.setUserName(userName);
             return this;
         }
 
+        /**
+         * Sets user image url.
+         *
+         * @param userImageUrl the user image url
+         * @return the user image url
+         */
         public Builder setUserImageUrl(String userImageUrl) {
             comment.setUserImageUrl(userImageUrl);
             return this;
         }
 
+        /**
+         * Build comment.
+         *
+         * @return the comment
+         */
         public Comment build() {
             return comment;
         }

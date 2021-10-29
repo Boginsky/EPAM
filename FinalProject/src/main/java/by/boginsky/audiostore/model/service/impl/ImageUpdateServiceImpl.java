@@ -5,7 +5,6 @@ import by.boginsky.audiostore.exception.ServiceException;
 import by.boginsky.audiostore.model.dao.TransactionManager;
 import by.boginsky.audiostore.model.dao.impl.AlbumDaoImpl;
 import by.boginsky.audiostore.model.dao.impl.AuthorDaoImpl;
-import by.boginsky.audiostore.model.dao.impl.SongDaoImpl;
 import by.boginsky.audiostore.model.dao.impl.UserDaoImpl;
 import by.boginsky.audiostore.model.service.ImageUpdateService;
 
@@ -14,19 +13,28 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import static java.lang.String.format;
+
+/**
+ * The type Image update service.
+ */
 public class ImageUpdateServiceImpl implements ImageUpdateService {
 
-    private static final String USER = "user";
-    private static final String ALBUM = "album";
-    private static final String AUTHOR = "author";
-    private static final String SONG = "song";
-    private static final String PATH = "E:/EPAM/HoweWork/EPAM/FinalProject/images/"; // FIXME: 13.10.2021 
+    private static final String USER = "user/";
+    private static final String ALBUM = "album/";
+    private static final String AUTHOR = "author/";
+    private static final String PATH = "E:/EPAM/HoweWork/EPAM/FinalProject/images/";
     private static ImageUpdateService instance;
     private static final AtomicBoolean isImageUpdateService = new AtomicBoolean(false);
 
     private ImageUpdateServiceImpl() {
     }
 
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
     public static ImageUpdateService getInstance() {
         while (instance == null) {
             if (isImageUpdateService.compareAndSet(false, true)) {
@@ -40,8 +48,7 @@ public class ImageUpdateServiceImpl implements ImageUpdateService {
     public void updatePhoto(InputStream inputStream, String target, Long targetId, String fileName) throws ServiceException {
         try {
             byte[] bytesForFile = new byte[inputStream.available()];
-            String path = PATH;
-            path += target + "/" + fileName;
+            String path = format("%s%s%s", PATH, target, fileName);
             inputStream.read(bytesForFile);
             FileOutputStream fileOutputStream = new FileOutputStream(path);
             fileOutputStream.write(bytesForFile);
@@ -73,12 +80,6 @@ public class ImageUpdateServiceImpl implements ImageUpdateService {
                     AuthorDaoImpl authorDaoImpl = new AuthorDaoImpl();
                     transactionManager.startTransaction(authorDaoImpl);
                     authorDaoImpl.updateAuthorPhoto(path, targetId);
-                    transactionManager.commit();
-                    break;
-                case SONG:
-                    SongDaoImpl songDaoImpl = new SongDaoImpl();
-                    transactionManager.startTransaction(songDaoImpl);
-                    songDaoImpl.updateSongPhoto(path,targetId);
                     transactionManager.commit();
                     break;
             }

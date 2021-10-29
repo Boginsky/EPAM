@@ -17,6 +17,9 @@ import static by.boginsky.audiostore.util.constants.Constant.ALL_ALBUMS;
 import static by.boginsky.audiostore.util.constants.Constant.PAGE_ID;
 
 
+/**
+ * The type All albums command.
+ */
 public class AllAlbumsCommand implements Command {
 
     private static final Long START_PAGE = 1L;

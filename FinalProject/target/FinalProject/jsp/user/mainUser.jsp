@@ -78,7 +78,7 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0"><fmt:message key="label.dateOfCreation" bundle="${var}"/></h6>
+                                    <h6 class="mb-0"><fmt:message key="label.dateOfRegistration" bundle="${var}"/></h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     ${user.userCreated}
@@ -101,14 +101,12 @@
                     </div>
                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body">
-                            <table class="table table-light">
+                            <table class="table table-light" style="text-align: center">
                                 <thead>
                                 <tr>
                                     <th style="width: 25%" scope="col"><fmt:message key="label.orderNumber"
                                                                                     bundle="${var}"/></th>
                                     <th style="width: 25%" scope="col"><fmt:message key="label.orderDateOfCreation"
-                                                                                    bundle="${var}"/></th>
-                                    <th style="width: 25%" scope="col"><fmt:message key="label.orderStatus"
                                                                                     bundle="${var}"/></th>
                                     <th style="width: 25%" scope="col"><fmt:message key="label.totalPrice"
                                                                                     bundle="${var}"/></th>
@@ -120,7 +118,6 @@
                                     <tr>
                                         <td><c:out value="${order.id}"/></td>
                                         <td><c:out value="${order.dateOfCreation}"/></td>
-                                        <td><c:out value="${order.orderStatus}"/></td>
                                         <td><c:out value="${order.totalPrice}"/></td>
                                         <td>
                                             <a class="btn btn-sm btn-dark"

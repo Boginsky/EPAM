@@ -4,19 +4,23 @@ import by.boginsky.audiostore.model.pool.ConnectionPool;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-import javax.servlet.http.HttpSession;
 
+/**
+ * The type Context listener.
+ */
 @WebListener
 public class ContextListener implements ServletContextListener {
 
-    private static Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger();
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-
+        ServletContext ctx = sce.getServletContext();
+        ctx.setAttribute("changeLanguage", "en_US");
     }
 
     @Override

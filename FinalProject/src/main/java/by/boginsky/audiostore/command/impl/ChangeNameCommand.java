@@ -16,6 +16,9 @@ import javax.servlet.http.HttpSession;
 import static by.boginsky.audiostore.util.constants.Constant.*;
 
 
+/**
+ * The type Change name command.
+ */
 public class ChangeNameCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {
@@ -23,9 +26,7 @@ public class ChangeNameCommand implements Command {
         User user = (User) httpSession.getAttribute(USER);
         String updatedFirstName = httpServletRequest.getParameter(FIRST_NAME);
         String updatedLastName = httpServletRequest.getParameter(LAST_NAME);
-
         updateName(user, updatedFirstName, updatedLastName);
-
         CabinetCommand cabinetCommand = new CabinetCommand();
         Router router = cabinetCommand.execute(httpServletRequest);
         return router;

@@ -19,6 +19,9 @@ import java.util.Optional;
 
 import static by.boginsky.audiostore.util.constants.Constant.*;
 
+/**
+ * The type Albums for author command.
+ */
 public class AlbumsForAuthorCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {

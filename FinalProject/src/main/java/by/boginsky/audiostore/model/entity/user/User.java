@@ -6,14 +6,37 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+/**
+ * The type User.
+ */
 public class User extends AbstractEntity {
 
+    /**
+     * The enum User role.
+     */
     public enum UserRole {
-        ADMIN, USER;
+        /**
+         * Admin user role.
+         */
+        ADMIN,
+        /**
+         * User user role.
+         */
+        USER
     }
 
+    /**
+     * The enum User status.
+     */
     public enum UserStatus {
-        BLOCKED, ACTIVE;
+        /**
+         * Blocked user status.
+         */
+        BLOCKED,
+        /**
+         * Active user status.
+         */
+        ACTIVE
     }
 
     private String email;
@@ -26,74 +49,164 @@ public class User extends AbstractEntity {
     private UserRole userRole;
     private UserStatus userStatus;
 
+    /**
+     * Gets email.
+     *
+     * @return the email
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Sets email.
+     *
+     * @param email the email
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     * Gets first name.
+     *
+     * @return the first name
+     */
     public String getFirstName() {
         return firstName;
     }
 
+    /**
+     * Sets first name.
+     *
+     * @param firstName the first name
+     */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
+    /**
+     * Gets last name.
+     *
+     * @return the last name
+     */
     public String getLastName() {
         return lastName;
     }
 
+    /**
+     * Sets last name.
+     *
+     * @param lastName the last name
+     */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
+    /**
+     * Gets user created.
+     *
+     * @return the user created
+     */
     public LocalDateTime getUserCreated() {
         return userCreated;
     }
 
+    /**
+     * Sets user created.
+     *
+     * @param userCreated the user created
+     */
     public void setUserCreated(LocalDateTime userCreated) {
         this.userCreated = userCreated;
     }
 
+    /**
+     * Gets user role.
+     *
+     * @return the user role
+     */
     public UserRole getUserRole() {
         return userRole;
     }
 
+    /**
+     * Sets user role.
+     *
+     * @param userRole the user role
+     */
     public void setUserRole(UserRole userRole) {
         this.userRole = userRole;
     }
 
+    /**
+     * Gets user status.
+     *
+     * @return the user status
+     */
     public UserStatus getUserStatus() {
         return userStatus;
     }
 
+    /**
+     * Sets user status.
+     *
+     * @param userStatus the user status
+     */
     public void setUserStatus(UserStatus userStatus) {
         this.userStatus = userStatus;
     }
 
+    /**
+     * Gets balance.
+     *
+     * @return the balance
+     */
     public BigDecimal getBalance() {
         return balance;
     }
 
+    /**
+     * Sets balance.
+     *
+     * @param balance the balance
+     */
     public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
 
+    /**
+     * Gets bonus.
+     *
+     * @return the bonus
+     */
     public BigDecimal getBonus() {
         return bonus;
     }
 
+    /**
+     * Sets bonus.
+     *
+     * @param bonus the bonus
+     */
     public void setBonus(BigDecimal bonus) {
         this.bonus = bonus;
     }
 
+    /**
+     * Gets image url.
+     *
+     * @return the image url
+     */
     public String getImageUrl() {
         return imageUrl;
     }
 
+    /**
+     * Sets image url.
+     *
+     * @param imageUrl the image url
+     */
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
@@ -148,67 +261,143 @@ public class User extends AbstractEntity {
         return sb.toString();
     }
 
+    /**
+     * Builder builder.
+     *
+     * @return the builder
+     */
     public static Builder builder() {
         return new Builder();
     }
 
+    /**
+     * The type Builder.
+     */
     public static class Builder {
-        private User user;
+        private final User user;
 
+        /**
+         * Instantiates a new Builder.
+         */
         public Builder() {
             user = new User();
         }
 
+        /**
+         * Sets id.
+         *
+         * @param id the id
+         * @return the id
+         */
         public Builder setId(Long id) {
             user.setId(id);
             return this;
         }
 
+        /**
+         * Sets email.
+         *
+         * @param email the email
+         * @return the email
+         */
         public Builder setEmail(String email) {
             user.setEmail(email);
             return this;
         }
 
+        /**
+         * Sets first name.
+         *
+         * @param firstName the first name
+         * @return the first name
+         */
         public Builder setFirstName(String firstName) {
             user.setFirstName(firstName);
             return this;
         }
 
+        /**
+         * Sets last name.
+         *
+         * @param lastName the last name
+         * @return the last name
+         */
         public Builder setLastName(String lastName) {
             user.setLastName(lastName);
             return this;
         }
 
+        /**
+         * Sets user created.
+         *
+         * @param userCreated the user created
+         * @return the user created
+         */
         public Builder setUserCreated(LocalDateTime userCreated) {
             user.setUserCreated(userCreated);
             return this;
         }
 
+        /**
+         * Sets user role.
+         *
+         * @param userRole the user role
+         * @return the user role
+         */
         public Builder setUserRole(UserRole userRole) {
             user.setUserRole(userRole);
             return this;
         }
 
+        /**
+         * Sets user status.
+         *
+         * @param userStatus the user status
+         * @return the user status
+         */
         public Builder setUserStatus(UserStatus userStatus) {
             user.setUserStatus(userStatus);
             return this;
         }
 
+        /**
+         * Sets balance.
+         *
+         * @param balance the balance
+         * @return the balance
+         */
         public Builder setBalance(BigDecimal balance) {
             user.setBalance(balance);
             return this;
         }
 
-        public Builder setBonus(BigDecimal bonus){
+        /**
+         * Sets bonus.
+         *
+         * @param bonus the bonus
+         * @return the bonus
+         */
+        public Builder setBonus(BigDecimal bonus) {
             user.setBonus(bonus);
             return this;
         }
 
-        public Builder setImageUrl(String imagUrl){
+        /**
+         * Sets image url.
+         *
+         * @param imagUrl the imag url
+         * @return the image url
+         */
+        public Builder setImageUrl(String imagUrl) {
             user.setImageUrl(imagUrl);
             return this;
         }
 
+        /**
+         * Build user.
+         *
+         * @return the user
+         */
         public User build() {
             return user;
         }

@@ -21,27 +21,25 @@ import java.util.List;
 
 import static by.boginsky.audiostore.util.constants.Constant.*;
 
+/**
+ * The type Add song command.
+ */
 public class AddSongCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {
-
         getLists(httpServletRequest);
-
         Router router = new Router();
         router.setPagePath(ConfigurationManager.getProperty(PathPage.PATH_PAGE_ADD_SONG));
         return router;
     }
 
     private void getLists(HttpServletRequest httpServletRequest) throws CommandException {
-
         List<Author> listOfAuthors;
         List<Album> listOfAlbums;
         List<Genre> listOfGenres;
-
         AlbumService albumService = AlbumServiceImpl.getInstance();
         AuthorService authorService = AuthorServiceImpl.getInstance();
         GenreService genreService = GenreServiceImpl.getInstance();
-
         try {
             listOfAuthors = authorService.findAllAuthors();
             listOfGenres = genreService.findAllGenres();
@@ -50,7 +48,6 @@ public class AddSongCommand implements Command {
             logger.error("Exception in add song command", e);
             throw new CommandException("Exception in add song command", e);
         }
-
         httpServletRequest.setAttribute(LIST_OF_AUTHORS, listOfAuthors);
         httpServletRequest.setAttribute(LIST_OF_GENRES, listOfGenres);
         httpServletRequest.setAttribute(LIST_OF_ALBUMS, listOfAlbums);

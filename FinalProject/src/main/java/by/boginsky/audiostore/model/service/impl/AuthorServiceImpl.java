@@ -2,18 +2,18 @@ package by.boginsky.audiostore.model.service.impl;
 
 import by.boginsky.audiostore.exception.DaoException;
 import by.boginsky.audiostore.exception.ServiceException;
-import by.boginsky.audiostore.model.dao.AuthorDao;
 import by.boginsky.audiostore.model.dao.TransactionManager;
 import by.boginsky.audiostore.model.dao.impl.AuthorDaoImpl;
 import by.boginsky.audiostore.model.entity.audio.Author;
 import by.boginsky.audiostore.model.service.AuthorService;
 
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/**
+ * The type Author service.
+ */
 public class AuthorServiceImpl implements AuthorService {
 
     private static AuthorService instance;
@@ -23,6 +23,11 @@ public class AuthorServiceImpl implements AuthorService {
     private AuthorServiceImpl() {
     }
 
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
     public static AuthorService getInstance() {
         while (instance == null) {
             if (isAuthorService.compareAndSet(false, true)) {
@@ -122,7 +127,7 @@ public class AuthorServiceImpl implements AuthorService {
         AuthorDaoImpl authorDaoImpl = new AuthorDaoImpl();
         try {
             transactionManager.startTransaction(authorDaoImpl);
-            authorDaoImpl.updateAuthor(authorId,authorName,authorInfo);
+            authorDaoImpl.updateAuthor(authorId, authorName, authorInfo);
             transactionManager.commit();
         } catch (DaoException e) {
             try {

@@ -19,28 +19,28 @@ import java.io.InputStream;
 
 import static by.boginsky.audiostore.util.constants.Constant.*;
 
+/**
+ * The type Add author command.
+ */
 public class AddAuthorCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {
-
         HttpSession httpSession = httpServletRequest.getSession();
         User user = (User) httpSession.getAttribute(USER);
-
         String target = httpServletRequest.getParameter(TARGET);
         String authorName = httpServletRequest.getParameter(AUTHOR_NAME);
         String authorInfo = httpServletRequest.getParameter(AUTHOR_INFO);
         if (user.getUserRole() == User.UserRole.ADMIN) {
             addAuthor(httpServletRequest, target, authorName, authorInfo);
         }
-        AllAuthorsCommand allAuthorsCommand = new AllAuthorsCommand();
-        Router router = allAuthorsCommand.execute(httpServletRequest);
+        Router router = new Router();
+        router.setRedirect();
         return router;
     }
 
     private void addAuthor(HttpServletRequest httpServletRequest, String target, String authorName, String authorInfo) throws CommandException {
         ImageUpdateService imageUpdateService = ImageUpdateServiceImpl.getInstance();
         AuthorService authorService = AuthorServiceImpl.getInstance();
-
         try {
             Long authorId = authorService.addNewAuthor(authorName, authorInfo);
             Part part = httpServletRequest.getPart(FILE);

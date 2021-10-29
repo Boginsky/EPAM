@@ -15,13 +15,14 @@ import javax.servlet.http.HttpServletRequest;
 import static by.boginsky.audiostore.util.constants.Constant.USER_ID;
 import static by.boginsky.audiostore.util.constants.Constant.USER_TO_REMOVE;
 
+/**
+ * The type Remove account command.
+ */
 public class RemoveAccountCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {
         Long userId = Long.valueOf(httpServletRequest.getParameter(USER_ID));
-
         removeAccount(httpServletRequest, userId);
-
         Router router = new Router();
         router.setPagePath(ConfigurationManager.getProperty(PathPage.PATH_PAGE_REMOVE_ACCOUNT));
         return router;

@@ -14,26 +14,28 @@ import java.math.BigDecimal;
 
 import static by.boginsky.audiostore.util.constants.Constant.*;
 
+/**
+ * The type Change bonuses command.
+ */
 public class ChangeBonusesCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {
         HttpSession httpSession = httpServletRequest.getSession();
         User user = (User) httpSession.getAttribute(USER);
         if (user.getUserRole() == User.UserRole.ADMIN) {
-            updateBonuses(httpServletRequest);
+            updateBonuses(httpServletRequest, user);
         }
         CabinetCommand cabinetCommand = new CabinetCommand();
         Router router = cabinetCommand.execute(httpServletRequest);
         return router;
     }
 
-    private void updateBonuses(HttpServletRequest httpServletRequest) throws CommandException {
+    private void updateBonuses(HttpServletRequest httpServletRequest, User user) throws CommandException {
         UserService userService = UserServiceImpl.getInstance();
         Long userId = Long.valueOf(httpServletRequest.getParameter(USER_ID));
         BigDecimal addedBonuses = BigDecimal.valueOf(Long.parseLong(httpServletRequest.getParameter(ADDED_BONUSES)));
         BigDecimal userBonuses = BigDecimal.valueOf(Long.parseLong(httpServletRequest.getParameter(USER_BONUSES)));
         userBonuses = userBonuses.add(addedBonuses);
-
         try {
             userService.updateUserBonus(userId, userBonuses);
         } catch (ServiceException e) {

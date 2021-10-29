@@ -5,13 +5,19 @@ import by.boginsky.audiostore.model.dao.AuthorDao;
 import by.boginsky.audiostore.model.dao.BaseDao;
 import by.boginsky.audiostore.model.entity.audio.Author;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import static by.boginsky.audiostore.model.dao.ColumnName.*;
 
+/**
+ * The type Author dao.
+ */
 public class AuthorDaoImpl extends BaseDao<Author> implements AuthorDao {
 
     private static final String INSERT_INTO_AUTHORS = "INSERT INTO authors (author_name,author_info) VALUES (?,?)";
@@ -50,13 +56,13 @@ public class AuthorDaoImpl extends BaseDao<Author> implements AuthorDao {
 
     @Override
     public Long insertAuthor(String authorName, String informationAboutAuthor) throws DaoException {
-        Long id = null; // FIXME: 15.10.2021 
+        Long id = null;
         try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_INTO_AUTHORS, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, authorName);
             preparedStatement.setString(2, informationAboutAuthor);
             preparedStatement.executeUpdate();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
-            if(resultSet.next()){
+            if (resultSet.next()) {
                 id = resultSet.getLong(1);
             }
         } catch (SQLException e) {
@@ -68,33 +74,33 @@ public class AuthorDaoImpl extends BaseDao<Author> implements AuthorDao {
     @Override
     public void updateAuthorPhoto(String authorImageUrl, Long authorId) throws DaoException {
         try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_AUTHOR_PHOTO)) {
-            preparedStatement.setString(1,authorImageUrl);
-            preparedStatement.setLong(2,authorId);
+            preparedStatement.setString(1, authorImageUrl);
+            preparedStatement.setLong(2, authorId);
             preparedStatement.executeUpdate();
-        }catch (SQLException e){
-            throw new DaoException("SQLException, updating author's photo",e);
+        } catch (SQLException e) {
+            throw new DaoException("SQLException, updating author's photo", e);
         }
     }
 
     @Override
     public void removeAuthor(Long authorId) throws DaoException {
         try (PreparedStatement preparedStatement = connection.prepareStatement(REMOVE_AUTHOR)) {
-            preparedStatement.setLong(1,authorId);
+            preparedStatement.setLong(1, authorId);
             preparedStatement.executeUpdate();
-        }catch (SQLException e){
-            throw new DaoException("SQLException, removing author",e);
+        } catch (SQLException e) {
+            throw new DaoException("SQLException, removing author", e);
         }
     }
 
     @Override
-    public void updateAuthor(Long authorId,String authorName, String authorInfo) throws DaoException {
+    public void updateAuthor(Long authorId, String authorName, String authorInfo) throws DaoException {
         try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_AUTHOR)) {
-            preparedStatement.setString(1,authorName);
-            preparedStatement.setString(2,authorInfo);
-            preparedStatement.setLong(3,authorId);
+            preparedStatement.setString(1, authorName);
+            preparedStatement.setString(2, authorInfo);
+            preparedStatement.setLong(3, authorId);
             preparedStatement.executeUpdate();
-        }catch (SQLException e){
-            throw new DaoException("SQLException,updating author",e);
+        } catch (SQLException e) {
+            throw new DaoException("SQLException,updating author", e);
         }
     }
 
@@ -102,7 +108,7 @@ public class AuthorDaoImpl extends BaseDao<Author> implements AuthorDao {
     public List<Author> findAll(Long startPosition) throws DaoException {
         List<Author> listOfAuthors = new ArrayList<>();
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_AUTHORS_FOR_PAGE)) {
-            preparedStatement.setLong(1,startPosition);
+            preparedStatement.setLong(1, startPosition);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Long authorId = resultSet.getLong(AUTHOR_ID);
@@ -145,13 +151,13 @@ public class AuthorDaoImpl extends BaseDao<Author> implements AuthorDao {
     private List<String> findGenresForAuthor(Long authorId) throws DaoException {
         List<String> listOfGenres = new ArrayList<>();
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_GENRE_FOR_AUTHOR)) {
-            preparedStatement.setLong(1,authorId);
+            preparedStatement.setLong(1, authorId);
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 listOfGenres.add(resultSet.getString(GENRE_NAME));
             }
-        }catch (SQLException e){
-            throw new DaoException("SQLException, finding genres for author",e);
+        } catch (SQLException e) {
+            throw new DaoException("SQLException, finding genres for author", e);
         }
         return listOfGenres;
     }

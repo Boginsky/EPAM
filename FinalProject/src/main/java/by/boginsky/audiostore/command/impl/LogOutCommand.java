@@ -9,6 +9,9 @@ import by.boginsky.audiostore.util.constants.PathPage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+/**
+ * The type Log out command.
+ */
 public class LogOutCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {

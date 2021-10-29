@@ -8,6 +8,9 @@ import by.boginsky.audiostore.util.constants.PathPage;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * The type Sign up command.
+ */
 public class SignUpCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {

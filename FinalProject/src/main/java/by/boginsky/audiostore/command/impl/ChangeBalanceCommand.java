@@ -15,6 +15,9 @@ import java.math.BigDecimal;
 import static by.boginsky.audiostore.util.constants.Constant.AMOUNT_OF_MONEY;
 import static by.boginsky.audiostore.util.constants.Constant.USER;
 
+/**
+ * The type Change balance command.
+ */
 public class ChangeBalanceCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {
@@ -23,8 +26,8 @@ public class ChangeBalanceCommand implements Command {
         if (user.getUserRole() == User.UserRole.USER) {
             updateBalance(httpServletRequest, user);
         }
-        CabinetCommand cabinetCommand = new CabinetCommand();
-        Router router = cabinetCommand.execute(httpServletRequest);
+        Router router = new Router();
+        router.setRedirect();
         return router;
     }
 

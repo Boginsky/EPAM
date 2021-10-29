@@ -16,6 +16,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/**
+ * The type Order service.
+ */
 public class OrderServiceImpl implements OrderService {
 
     private static OrderService instance;
@@ -24,6 +27,11 @@ public class OrderServiceImpl implements OrderService {
     private OrderServiceImpl() {
     }
 
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
     public static OrderService getInstance() {
         while (instance == null) {
             if (isOrderService.compareAndSet(false, true)) {

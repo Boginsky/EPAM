@@ -14,6 +14,9 @@ import javax.servlet.http.HttpSession;
 import static by.boginsky.audiostore.util.constants.Constant.SONG_ID;
 import static by.boginsky.audiostore.util.constants.Constant.USER;
 
+/**
+ * The type Remove song command.
+ */
 public class RemoveSongCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {

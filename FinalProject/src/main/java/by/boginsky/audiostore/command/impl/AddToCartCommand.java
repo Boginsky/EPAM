@@ -19,15 +19,15 @@ import java.util.Set;
 
 import static by.boginsky.audiostore.util.constants.Constant.*;
 
+/**
+ * The type Add to cart command.
+ */
 public class AddToCartCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {
-
         HttpSession httpSession = httpServletRequest.getSession();
         User user = (User) httpSession.getAttribute(USER);
-
         String page = getString(httpServletRequest, httpSession, user);
-
         Router router = new Router();
         router.setPagePath(page);
         return router;
@@ -54,8 +54,10 @@ public class AddToCartCommand implements Command {
                     throw new CommandException("Exception in add to cart command", e);
                 }
                 httpSession.setAttribute(LIST_OF_SONGS_IN_CART, listOfSongsInCart);
+                page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_CART);
+            } else {
+                page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_WELCOME);
             }
-            page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_CART);
         }
         return page;
     }

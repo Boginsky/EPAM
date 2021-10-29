@@ -22,13 +22,15 @@ import java.util.List;
 
 import static by.boginsky.audiostore.util.constants.Constant.*;
 
+/**
+ * The type Find user orders and comments command.
+ */
 public class FindUserOrdersAndCommentsCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {
         HttpSession httpSession = httpServletRequest.getSession();
         User user = (User) httpSession.getAttribute(USER);
         Long searchingUserId = Long.valueOf(httpServletRequest.getParameter(USER_ID));
-
         String page = findUserOrdersAndComments(httpServletRequest, user, searchingUserId);
         Router router = new Router();
         router.setPagePath(page);

@@ -23,24 +23,28 @@ import java.util.List;
 import static by.boginsky.audiostore.util.constants.Constant.*;
 
 
+/**
+ * The type Cabinet command.
+ */
 public class CabinetCommand implements Command {
 
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {
-
         OrderService orderService = OrderServiceImpl.getInstance();
         UserService userService = UserServiceImpl.getInstance();
         CommentService commentService = CommentServiceImpl.getInstance();
         HttpSession httpSession = httpServletRequest.getSession();
         User user = (User) httpSession.getAttribute(USER);
-
-        String page = getPage(httpServletRequest, orderService, userService, commentService, user);
-        try { // FIXME: 17.10.2021 
-            user = userService.findUserByEmail(user.getEmail());
+        try {
+            if (user != null) {
+                user = userService.findUserByEmail(user.getEmail());
+                httpSession.setAttribute(USER, user);
+            }
         } catch (ServiceException e) {
+            logger.error("Exception in cabinet command", e);
             throw new CommandException("Exception in cabinet command", e);
         }
-        httpSession.setAttribute(USER, user);
+        String page = getPage(httpServletRequest, orderService, userService, commentService, user);
         Router router = new Router();
         router.setPagePath(page);
         return router;

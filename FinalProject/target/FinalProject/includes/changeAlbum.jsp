@@ -21,7 +21,7 @@
                                     bundle="${var}"/>">
                         <input type="hidden" name="albumId" value="${album.id}">
                         <input type="hidden" name="command" value="change_album"/>
-                        <input type="hidden" name="target" value="album">
+                        <input type="hidden" name="target" value="album/">
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-success btn-lg btn-block"><fmt:message
                                     key="label.change"

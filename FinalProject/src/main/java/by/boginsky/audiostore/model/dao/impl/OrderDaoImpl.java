@@ -14,14 +14,18 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static by.boginsky.audiostore.model.dao.ColumnName.*;
 
+/**
+ * The type Order dao.
+ */
 public class OrderDaoImpl extends BaseDao<Order> implements OrderDao {
 
-    private static final String INSERT_INTO_ORDERS = "INSERT INTO orders (order_date,order_statuses_order_statuses_id,users_user_id) VALUES(?,?,?)";
+    private static final String INSERT_INTO_ORDERS = "INSERT INTO orders (order_date,users_user_id) VALUES(?,?)";
     private static final String INSERT_INTO_SONGS_HAS_ORDERS = "INSERT INTO songs_has_orders (songs_song_id,orders_order_id) VALUES(?,?)";
-    private static final String FIND_ALL_ORDERS_BY_USER_ID = "SELECT order_id,order_date,order_status FROM orders JOIN orders_statuses ON order_statuses_order_statuses_id = order_statuses_id JOIN users ON users_user_id = user_id WHERE user_id = ?";
+    private static final String FIND_ALL_ORDERS_BY_USER_ID = "SELECT order_id,order_date FROM orders JOIN users ON users_user_id = user_id WHERE user_id = ?";
     private static final String FIND_TOTAL_PRICE_BY_ORDER_ID = "SELECT SUM(song_price) as total_price FROM orders JOIN songs_has_orders ON order_id = orders_order_id JOIN songs ON songs_song_id = song_id WHERE order_id = ?";
     private static final String FIND_SONG_ID_BY_ORDER_ID = "SELECT song_id FROM songs JOIN songs_has_orders on song_id = songs_song_id JOIN orders on orders_order_id = order_id WHERE order_id = ?";
 
@@ -29,8 +33,7 @@ public class OrderDaoImpl extends BaseDao<Order> implements OrderDao {
     public void insertOrder(Long userId, List<Long> songsId) throws DaoException {
         try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_INTO_ORDERS, PreparedStatement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setTimestamp(1, Timestamp.from(Instant.now()));
-            preparedStatement.setLong(2, 1);
-            preparedStatement.setLong(3, userId);
+            preparedStatement.setLong(2, userId);
             preparedStatement.executeUpdate();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
             if (resultSet.next()) {
@@ -45,7 +48,6 @@ public class OrderDaoImpl extends BaseDao<Order> implements OrderDao {
     @Override
     public List<Order> findAllOrdersByUserId(Long userId) throws DaoException {
         List<Order> listOfOrders = new ArrayList<>();
-        Order order = null;
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_ORDERS_BY_USER_ID)) {
             preparedStatement.setLong(1, userId);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -53,13 +55,11 @@ public class OrderDaoImpl extends BaseDao<Order> implements OrderDao {
                 Long orderId = resultSet.getLong(ORDER_ID);
                 BigDecimal totalPrice = getTotalOrderPriceByOrderID(orderId);
                 Timestamp dateOfCreation = resultSet.getTimestamp(ORDER_DATE_OF_CREATION);
-                String orderStatus = resultSet.getString(ORDER_STATUS);
                 List<Long> songId = getSongsIdsForOrder(resultSet.getLong(ORDER_ID));
                 listOfOrders.add(Order.builder()
                         .setId(orderId)
                         .setTotalPrice(totalPrice)
                         .setDateOfCreation(dateOfCreation.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime())
-                        .setOrderStatus(Order.OrderStatus.valueOf(orderStatus))
                         .setUserId(userId)
                         .setSongs(songId)
                         .build());
@@ -71,17 +71,17 @@ public class OrderDaoImpl extends BaseDao<Order> implements OrderDao {
     }
 
     private BigDecimal getTotalOrderPriceByOrderID(Long orderId) throws DaoException {
-        BigDecimal bigDecimal = null;
+        Optional<BigDecimal> totalOrderPrice = Optional.empty();
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_TOTAL_PRICE_BY_ORDER_ID)) {
             preparedStatement.setLong(1, orderId);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                bigDecimal = resultSet.getBigDecimal(ORDER_TOTAL_PRICE);
+                totalOrderPrice = Optional.ofNullable(resultSet.getBigDecimal(ORDER_TOTAL_PRICE));
             }
         } catch (SQLException e) {
             throw new DaoException("SQLException, getting total order's price", e);
         }
-        return bigDecimal;
+        return totalOrderPrice.orElseThrow(DaoException::new);
     }
 
     private void insertSongsHasOrders(List<Long> songsId, Long orderId) throws DaoException {

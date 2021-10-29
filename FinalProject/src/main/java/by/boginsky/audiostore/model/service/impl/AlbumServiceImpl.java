@@ -7,12 +7,13 @@ import by.boginsky.audiostore.model.dao.impl.AlbumDaoImpl;
 import by.boginsky.audiostore.model.entity.audio.Album;
 import by.boginsky.audiostore.model.service.AlbumService;
 
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/**
+ * The type Album service.
+ */
 public class AlbumServiceImpl implements AlbumService {
 
     private static AlbumService instance;
@@ -22,6 +23,11 @@ public class AlbumServiceImpl implements AlbumService {
     private AlbumServiceImpl() {
     }
 
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
     public static AlbumService getInstance() {
         while (instance == null) {
             if (isAlbumService.compareAndSet(false, true)) {
@@ -40,6 +46,20 @@ public class AlbumServiceImpl implements AlbumService {
             return albumDaoImpl.findById(albumId);
         } catch (DaoException e) {
             throw new ServiceException("Exception in method finding album by id", e);
+        } finally {
+            transactionManager.endTransaction();
+        }
+    }
+
+    @Override
+    public List<String> findAlbumImg() throws ServiceException {
+        TransactionManager transactionManager = new TransactionManager();
+        AlbumDaoImpl albumDaoImpl = new AlbumDaoImpl();
+        try {
+            transactionManager.startTransaction(albumDaoImpl);
+            return albumDaoImpl.findAlbumImg();
+        } catch (DaoException e) {
+            throw new ServiceException("Exception in method finding album's img", e);
         } finally {
             transactionManager.endTransaction();
         }
@@ -74,7 +94,7 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     public Long addNewAlbum(String nameOfAlbum, String informationAboutAlbum) throws ServiceException {
-        Long id;
+        Long id; // FIXME: 29.10.2021 
         TransactionManager transactionManager = new TransactionManager();
         AlbumDaoImpl albumDaoImpl = new AlbumDaoImpl();
         try {
@@ -134,7 +154,7 @@ public class AlbumServiceImpl implements AlbumService {
         AlbumDaoImpl albumDaoImpl = new AlbumDaoImpl();
         try {
             transactionManager.startTransaction(albumDaoImpl);
-            albumDaoImpl.updateAlbum(albumId,albumName,albumInfo);
+            albumDaoImpl.updateAlbum(albumId, albumName, albumInfo);
             transactionManager.commit();
         } catch (DaoException e) {
             try {

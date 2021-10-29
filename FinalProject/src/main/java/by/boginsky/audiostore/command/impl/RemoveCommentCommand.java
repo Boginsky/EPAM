@@ -11,16 +11,17 @@ import javax.servlet.http.HttpServletRequest;
 
 import static by.boginsky.audiostore.util.constants.Constant.COMMENT_ID;
 
+/**
+ * The type Remove comment command.
+ */
 public class RemoveCommentCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {
         CommentService commentService = CommentServiceImpl.getInstance();
         Long commentId = Long.parseLong(httpServletRequest.getParameter(COMMENT_ID));
-
         removeComment(commentService, commentId);
-
-        AllSongsForAlbumCommand allSongsForAlbumCommand = new AllSongsForAlbumCommand();
-        Router router = allSongsForAlbumCommand.execute(httpServletRequest);
+        CabinetCommand cabinetCommand = new CabinetCommand();
+        Router router = cabinetCommand.execute(httpServletRequest);
         return router;
     }
 

@@ -16,6 +16,9 @@ import java.util.List;
 import static by.boginsky.audiostore.util.constants.Constant.ALL_AUTHORS;
 import static by.boginsky.audiostore.util.constants.Constant.PAGE_ID;
 
+/**
+ * The type All authors command.
+ */
 public class AllAuthorsCommand implements Command {
 
     private static final Long START_PAGE = 1L;

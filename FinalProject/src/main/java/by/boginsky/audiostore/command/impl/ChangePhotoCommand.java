@@ -15,14 +15,15 @@ import java.io.InputStream;
 
 import static by.boginsky.audiostore.util.constants.Constant.*;
 
+/**
+ * The type Change photo command.
+ */
 public class ChangePhotoCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {
         String target = httpServletRequest.getParameter(TARGET);
         Long targetId = Long.valueOf(httpServletRequest.getParameter(TARGET_ID));
-
         updatePhoto(httpServletRequest, target, targetId);
-
         CabinetCommand cabinetCommand = new CabinetCommand();
         Router router = cabinetCommand.execute(httpServletRequest);
         return router;

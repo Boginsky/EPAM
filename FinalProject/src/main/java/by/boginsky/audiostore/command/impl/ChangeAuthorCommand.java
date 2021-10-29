@@ -19,6 +19,9 @@ import java.io.InputStream;
 
 import static by.boginsky.audiostore.util.constants.Constant.*;
 
+/**
+ * The type Change author command.
+ */
 public class ChangeAuthorCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {

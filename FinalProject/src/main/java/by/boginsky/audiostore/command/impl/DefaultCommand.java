@@ -8,6 +8,9 @@ import by.boginsky.audiostore.util.constants.PathPage;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * The type Default command.
+ */
 public class DefaultCommand implements Command {
 
     @Override

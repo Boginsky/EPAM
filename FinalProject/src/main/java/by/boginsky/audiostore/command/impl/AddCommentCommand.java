@@ -13,20 +13,21 @@ import javax.servlet.http.HttpSession;
 
 import static by.boginsky.audiostore.util.constants.Constant.*;
 
+/**
+ * The type Add comment command.
+ */
 public class AddCommentCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {
-
         HttpSession httpSession = httpServletRequest.getSession();
         User user = (User) httpSession.getAttribute(USER);
-
         Long albumId = Long.parseLong(httpServletRequest.getParameter(ALBUM_ID));
         String comment = httpServletRequest.getParameter(COMMENT);
         if (user.getUserRole() == User.UserRole.USER) {
             addComment(user, albumId, comment);
         }
-        AllSongsForAlbumCommand allAlbumSongCommand = new AllSongsForAlbumCommand();
-        Router router = allAlbumSongCommand.execute(httpServletRequest);
+        Router router = new Router();
+        router.setRedirect();
         return router;
     }
 

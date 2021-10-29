@@ -10,6 +10,9 @@ import by.boginsky.audiostore.model.service.GenreService;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/**
+ * The type Genre service.
+ */
 public class GenreServiceImpl implements GenreService {
 
     private static GenreService instance;
@@ -18,6 +21,11 @@ public class GenreServiceImpl implements GenreService {
     private GenreServiceImpl() {
     }
 
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
     public static GenreService getInstance() {
         while (instance == null) {
             if (isGenreService.compareAndSet(false, true)) {

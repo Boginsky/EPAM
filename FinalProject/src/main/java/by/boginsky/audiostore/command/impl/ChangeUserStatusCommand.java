@@ -14,6 +14,9 @@ import javax.servlet.http.HttpSession;
 import static by.boginsky.audiostore.util.constants.Constant.*;
 
 
+/**
+ * The type Change user status command.
+ */
 public class ChangeUserStatusCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {
@@ -22,9 +25,10 @@ public class ChangeUserStatusCommand implements Command {
         UserService userService = UserServiceImpl.getInstance();
         Long userId = Long.parseLong(httpServletRequest.getParameter(USER_ID));
         String userStatus = httpServletRequest.getParameter(USER_STATUS);
-
-        if (user.getUserRole().equals(User.UserRole.ADMIN)) {
-            updateStatus(userService, userId, userStatus);
+        if(user != null) {
+            if (user.getUserRole().equals(User.UserRole.ADMIN) & userId != 1) {
+                updateStatus(userService, userId, userStatus);
+            }
         }
         CabinetCommand cabinetCommand = new CabinetCommand();
         Router router = cabinetCommand.execute(httpServletRequest);

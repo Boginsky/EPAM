@@ -14,6 +14,9 @@ import java.util.List;
 import static by.boginsky.audiostore.model.dao.ColumnName.GENRE_ID;
 import static by.boginsky.audiostore.model.dao.ColumnName.GENRE_NAME;
 
+/**
+ * The type Genre dao.
+ */
 public class GenreDaoImpl extends BaseDao<Genre> implements GenreDao {
 
     private static final String FIND_ALL_GENRES = "SELECT genre_id,genre_name FROM genres";
@@ -23,7 +26,7 @@ public class GenreDaoImpl extends BaseDao<Genre> implements GenreDao {
         List<Genre> listOfGenres = new ArrayList<>();
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_GENRES)) {
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 Long genreId = resultSet.getLong(GENRE_ID);
                 String genreName = resultSet.getString(GENRE_NAME);
                 listOfGenres.add(Genre.builder()
@@ -31,8 +34,8 @@ public class GenreDaoImpl extends BaseDao<Genre> implements GenreDao {
                         .setGenreName(genreName)
                         .build());
             }
-        }catch (SQLException e){
-            throw new DaoException("SQLException, finding all genres",e);
+        } catch (SQLException e) {
+            throw new DaoException("SQLException, finding all genres", e);
         }
         return listOfGenres;
     }

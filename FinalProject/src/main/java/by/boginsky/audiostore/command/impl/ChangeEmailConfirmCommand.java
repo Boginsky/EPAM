@@ -15,6 +15,9 @@ import javax.servlet.http.HttpSession;
 
 import static by.boginsky.audiostore.util.constants.Constant.*;
 
+/**
+ * The type Change email confirm command.
+ */
 public class ChangeEmailConfirmCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {
@@ -23,8 +26,15 @@ public class ChangeEmailConfirmCommand implements Command {
         String updatedEmail = httpServletRequest.getParameter(UPDATED_EMAIL);
         String realConfirmCode = httpServletRequest.getParameter(REAL_CONFIRM_CODE);
         String submittedConfirmCode = httpServletRequest.getParameter(SUBMITTED_CONFIRM_CODE);
-        UserService userService = UserServiceImpl.getInstance();
+        updateEmail(user, updatedEmail, realConfirmCode, submittedConfirmCode);
+        httpSession.setAttribute(USER, user);
+        CabinetCommand cabinetCommand = new CabinetCommand();
+        Router router = cabinetCommand.execute(httpServletRequest);
+        return router;
+    }
 
+    private void updateEmail(User user, String updatedEmail, String realConfirmCode, String submittedConfirmCode) throws CommandException {
+        UserService userService = UserServiceImpl.getInstance();
         if (realConfirmCode.equals(submittedConfirmCode)) {
             if (validate(updatedEmail)) {
                 try {
@@ -36,13 +46,9 @@ public class ChangeEmailConfirmCommand implements Command {
                 }
             }
         }
-
-        CabinetCommand cabinetCommand = new CabinetCommand();
-        Router router = cabinetCommand.execute(httpServletRequest);
-        return router;
     }
 
-    private boolean validate(String updatedEmail){
+    private boolean validate(String updatedEmail) {
         InputDataValidator inputDataValidator = InputDataValidatorImpl.getInstance();
         return inputDataValidator.isCorrectEmail(updatedEmail);
     }

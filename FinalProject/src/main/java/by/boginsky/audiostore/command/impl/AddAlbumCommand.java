@@ -19,13 +19,14 @@ import java.io.InputStream;
 
 import static by.boginsky.audiostore.util.constants.Constant.*;
 
+/**
+ * The type Add album command.
+ */
 public class AddAlbumCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {
-
         HttpSession httpSession = httpServletRequest.getSession();
         User user = (User) httpSession.getAttribute(USER);
-
         String target = httpServletRequest.getParameter(TARGET);
         String albumName = httpServletRequest.getParameter(ALBUM_NAME);
         String albumInfo = httpServletRequest.getParameter(ALBUM_INFO);

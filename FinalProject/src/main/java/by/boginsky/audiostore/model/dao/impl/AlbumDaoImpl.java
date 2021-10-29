@@ -5,7 +5,10 @@ import by.boginsky.audiostore.model.dao.AlbumDao;
 import by.boginsky.audiostore.model.dao.BaseDao;
 import by.boginsky.audiostore.model.entity.audio.Album;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -13,6 +16,9 @@ import java.util.Optional;
 import static by.boginsky.audiostore.model.dao.ColumnName.*;
 
 
+/**
+ * The type Album dao.
+ */
 public class AlbumDaoImpl extends BaseDao<Album> implements AlbumDao {
 
     private static final String INSERT_INTO_ALBUMS = "INSERT INTO albums (album_name,album_info) values (?,?)";
@@ -24,6 +30,23 @@ public class AlbumDaoImpl extends BaseDao<Album> implements AlbumDao {
     private static final String UPDATE_ALBUM_PHOTO = "UPDATE albums SET album_img = ? WHERE album_id = ?";
     private static final String REMOVE_ALBUM = "DELETE FROM albums WHERE album_id = ?";
     private static final String UPDATE_ALBUM = "UPDATE albums SET album_name = ?, album_info = ? WHERE album_id = ?";
+    private static final String FIND_ALBUM_IMG = "SELECT album_img FROM albums ORDER BY RAND() LIMIT 3";
+
+    @Override
+    public List<String> findAlbumImg() throws DaoException {
+        List<String> listOfAlbumsImgUrl = new ArrayList<>();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALBUM_IMG)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String imageUrl = resultSet.getString(ALBUM_IMG);
+                listOfAlbumsImgUrl.add(imageUrl);
+            }
+        } catch (SQLException e) {
+            throw new DaoException("SQLException, finding album's img", e);
+        }
+        return listOfAlbumsImgUrl;
+    }
+
 
     @Override
     public List<Album> findByAuthor(Long authorId) throws DaoException {
@@ -52,17 +75,17 @@ public class AlbumDaoImpl extends BaseDao<Album> implements AlbumDao {
 
     @Override
     public Long insertAlbum(String name, String informationAboutAlbum) throws DaoException {
-        Long id = null; // FIXME: 15.10.2021
-        try (PreparedStatement preparedStatement =connection.prepareStatement(INSERT_INTO_ALBUMS, Statement.RETURN_GENERATED_KEYS)) {
-            preparedStatement.setString(1,name);
-            preparedStatement.setString(2,informationAboutAlbum);
+        Long id = null;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_INTO_ALBUMS, Statement.RETURN_GENERATED_KEYS)) {
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, informationAboutAlbum);
             preparedStatement.executeUpdate();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
-            if(resultSet.next()){
+            if (resultSet.next()) {
                 id = resultSet.getLong(1);
             }
-        }catch (SQLException e){
-            throw new DaoException("SQLException, inserting new album",e);
+        } catch (SQLException e) {
+            throw new DaoException("SQLException, inserting new album", e);
         }
         return id;
     }
@@ -94,33 +117,33 @@ public class AlbumDaoImpl extends BaseDao<Album> implements AlbumDao {
     @Override
     public void updateAlbumPhoto(String albumImageUrl, Long albumId) throws DaoException {
         try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_ALBUM_PHOTO)) {
-            preparedStatement.setString(1,albumImageUrl);
-            preparedStatement.setLong(2,albumId);
+            preparedStatement.setString(1, albumImageUrl);
+            preparedStatement.setLong(2, albumId);
             preparedStatement.executeUpdate();
-        }catch (SQLException e) {
-            throw new DaoException("SQLException, updating album photo",e);
+        } catch (SQLException e) {
+            throw new DaoException("SQLException, updating album photo", e);
         }
     }
 
     @Override
     public void removeAlbum(Long albumId) throws DaoException {
         try (PreparedStatement preparedStatement = connection.prepareStatement(REMOVE_ALBUM)) {
-            preparedStatement.setLong(1,albumId);
+            preparedStatement.setLong(1, albumId);
             preparedStatement.executeUpdate();
-        }catch (SQLException e){
-            throw new DaoException("SQLException,removing album",e);
+        } catch (SQLException e) {
+            throw new DaoException("SQLException,removing album", e);
         }
     }
 
     @Override
     public void updateAlbum(Long albumId, String albumName, String albumInfo) throws DaoException {
         try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_ALBUM)) {
-            preparedStatement.setString(1,albumName);
-            preparedStatement.setString(2,albumInfo);
-            preparedStatement.setLong(3,albumId);
+            preparedStatement.setString(1, albumName);
+            preparedStatement.setString(2, albumInfo);
+            preparedStatement.setLong(3, albumId);
             preparedStatement.executeUpdate();
-        }catch (SQLException e){
-            throw new DaoException("SQLException, updating album",e);
+        } catch (SQLException e) {
+            throw new DaoException("SQLException, updating album", e);
         }
     }
 
@@ -128,7 +151,7 @@ public class AlbumDaoImpl extends BaseDao<Album> implements AlbumDao {
     public List<Album> findAll(Long startPosition) throws DaoException {
         List<Album> listOfAlbums = new ArrayList<>();
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_ALBUMS_FOR_PAGE)) {
-            preparedStatement.setLong(1,startPosition);
+            preparedStatement.setLong(1, startPosition);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Long albumId = resultSet.getLong(ALBUM_ID);
@@ -154,7 +177,7 @@ public class AlbumDaoImpl extends BaseDao<Album> implements AlbumDao {
         List<Album> listOfAlbums = new ArrayList<>();
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_ALBUMS)) {
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 Long albumId = resultSet.getLong(ALBUM_ID);
                 String albumName = resultSet.getString(ALBUM_NAME);
                 listOfAlbums.add(Album.builder()
@@ -162,8 +185,8 @@ public class AlbumDaoImpl extends BaseDao<Album> implements AlbumDao {
                         .setAlbumName(albumName)
                         .build());
             }
-        }catch (SQLException e){
-            throw new DaoException("SQLException, finding all albums",e);
+        } catch (SQLException e) {
+            throw new DaoException("SQLException, finding all albums", e);
         }
         return listOfAlbums;
     }
@@ -171,13 +194,13 @@ public class AlbumDaoImpl extends BaseDao<Album> implements AlbumDao {
     private List<String> findAuthorsForAlbum(Long albumId) throws DaoException {
         List<String> listOfAuthors = new ArrayList<>();
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_AUTHOR_NAME_FOR_ALBUM)) {
-            preparedStatement.setLong(1,albumId);
+            preparedStatement.setLong(1, albumId);
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 listOfAuthors.add(resultSet.getString(AUTHOR_NAME));
             }
-        }catch (SQLException e){
-            throw new DaoException("SQLException finding author's name for album",e);
+        } catch (SQLException e) {
+            throw new DaoException("SQLException finding author's name for album", e);
         }
         return listOfAuthors;
     }

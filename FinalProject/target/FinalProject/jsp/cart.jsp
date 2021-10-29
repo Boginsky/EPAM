@@ -18,11 +18,11 @@
         <table class="table table-light">
             <thead>
             <tr>
-                <th style="width: 25%" scope="col">Name</th>
-                <th style="width: 25%" scope="col">Author</th>
-                <th style="width: 25%" scope="col">Album</th>
-                <th style="width: 25%" scope="col">Genre</th>
-                <th style="width: 25%" scope="col">Price</th>
+                <th style="width: 25%" scope="col"><fmt:message key="label.songTitle" bundle="${var}"/></th>
+                <th style="width: 25%" scope="col"><fmt:message key="label.author" bundle="${var}"/></th>
+                <th style="width: 25%" scope="col"><fmt:message key="label.album" bundle="${var}"/></th>
+                <th style="width: 25%" scope="col"><fmt:message key="label.genre" bundle="${var}"/></th>
+                <th style="width: 25%" scope="col"><fmt:message key="label.price" bundle="${var}"/></th>
                 <th style="width: 25%" scope="col"></th>
             </tr>
             </thead>
@@ -38,7 +38,7 @@
                     <td><c:out value="${song.price}"/></td>
                     <td>
                         <a class="btn btn-sm btn-danger"
-                           href="./controller?command=Remove_from_cart&trackId=${song.id}">Remove</a>
+                           href="./controller?command=remove_from_cart&trackId=${song.id}">Remove</a>
                     </td>
                 </tr>
             </c:forEach>

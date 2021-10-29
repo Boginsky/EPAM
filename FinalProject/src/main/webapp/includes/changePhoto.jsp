@@ -16,7 +16,7 @@
                         <input class="file-path validate" type="file" name="file" placeholder="Upload file">
                         <br/>
                         <input type="hidden" name="command" value="change_photo"/>
-                        <input type="hidden" name="target" value="user">
+                        <input type="hidden" name="target" value="user/">
                         <input type="hidden" name="targetId" value="${user.id}">
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-success btn-lg btn-block"><fmt:message

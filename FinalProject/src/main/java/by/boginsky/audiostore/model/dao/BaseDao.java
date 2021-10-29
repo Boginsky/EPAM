@@ -1,22 +1,27 @@
 package by.boginsky.audiostore.model.dao;
 
-import by.boginsky.audiostore.exception.DaoException;
 import by.boginsky.audiostore.model.entity.AbstractEntity;
-import by.boginsky.audiostore.model.pool.ProxyConnection;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.List;
 
+/**
+ * The type Base dao.
+ *
+ * @param <T> the type parameter
+ */
 public abstract class BaseDao<T extends AbstractEntity> {
 
-    // TODO: 13.09.2021 threads. будут ли все потоки использовать один коннекшен. если создать синглтон
-    protected ProxyConnection connection;
+    /**
+     * The Connection.
+     */
+    protected Connection connection;
 
-    public void setConnection(ProxyConnection connection) {
+    /**
+     * Sets connection.
+     *
+     * @param connection the connection
+     */
+    public void setConnection(Connection connection) {
         this.connection = connection;
     }
 

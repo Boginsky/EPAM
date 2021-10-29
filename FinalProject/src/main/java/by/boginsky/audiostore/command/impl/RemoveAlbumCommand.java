@@ -14,16 +14,17 @@ import javax.servlet.http.HttpSession;
 import static by.boginsky.audiostore.util.constants.Constant.ALBUM_ID;
 import static by.boginsky.audiostore.util.constants.Constant.USER;
 
+/**
+ * The type Remove album command.
+ */
 public class RemoveAlbumCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {
         HttpSession httpSession = httpServletRequest.getSession();
         User user = (User) httpSession.getAttribute(USER);
-
         if (user.getUserRole() == User.UserRole.ADMIN) {
             removeAlbum(httpServletRequest);
         }
-
         AllAlbumsCommand allAlbumsCommand = new AllAlbumsCommand();
         Router router = allAlbumsCommand.execute(httpServletRequest);
         return router;

@@ -8,16 +8,14 @@ import by.boginsky.audiostore.model.entity.user.User;
 import by.boginsky.audiostore.model.service.UserService;
 import by.boginsky.audiostore.util.PasswordEncryption;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.math.BigDecimal;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/**
+ * The type User service.
+ */
 public class UserServiceImpl implements UserService {
 
     private static UserService instance;
@@ -26,6 +24,11 @@ public class UserServiceImpl implements UserService {
     private UserServiceImpl() {
     }
 
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
     public static UserService getInstance() {
         while (instance == null) {
             if (isUserService.compareAndSet(false, true)) {
@@ -54,7 +57,6 @@ public class UserServiceImpl implements UserService {
         password = PasswordEncryption.encryptsPassword(password);
         try {
             transactionManager.startTransaction(userDaoImpl);
-            Optional<User> optionalUser = userDaoImpl.findUserByEmailAndPassword(email, password);
             return userDaoImpl.findUserByEmailAndPassword(email, password);
         } catch (DaoException e) {
             throw new ServiceException("Service exception in method finding user by email and password", e);
@@ -69,10 +71,10 @@ public class UserServiceImpl implements UserService {
         UserDaoImpl userDaoImpl = new UserDaoImpl();
         try {
             transactionManager.startTransaction(userDaoImpl);
-            return userDaoImpl.findUserById(userId);
-        }catch (DaoException e){
-            throw new ServiceException("Service exception in method finding user name by id",e);
-        }finally {
+            return userDaoImpl.findUserById(userId).orElseThrow(ServiceException::new);
+        } catch (DaoException e) {
+            throw new ServiceException("Service exception in method finding user name by id", e);
+        } finally {
             transactionManager.endTransaction();
         }
     }
@@ -83,7 +85,7 @@ public class UserServiceImpl implements UserService {
         UserDaoImpl userDaoImpl = new UserDaoImpl();
         try {
             transactionManager.startTransaction(userDaoImpl);
-            return userDaoImpl.findPasswordByUserId(userId);
+            return userDaoImpl.findPasswordByUserId(userId).orElseThrow(ServiceException::new);
         } catch (DaoException e) {
             throw new ServiceException("Service exception in method finding user's password by user id", e);
         } finally {
@@ -92,12 +94,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUserBonus(Long userId,BigDecimal bonus) throws ServiceException {
+    public void updateUserBonus(Long userId, BigDecimal bonus) throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
         UserDaoImpl userDaoImpl = new UserDaoImpl();
         try {
             transactionManager.startTransaction(userDaoImpl);
-            userDaoImpl.updateUserBonus(bonus,userId);
+            userDaoImpl.updateUserBonus(bonus, userId);
             transactionManager.commit();
         } catch (DaoException e) {
             try {
@@ -117,11 +119,8 @@ public class UserServiceImpl implements UserService {
         UserDaoImpl userDaoImpl = new UserDaoImpl();
         try {
             transactionManager.startTransaction(userDaoImpl);
-            User user = userDaoImpl.findUserById(userId);
-            if(!(user.getUserRole().equals(User.UserRole.ADMIN))){
-                userDaoImpl.removeUser(userId);
-                transactionManager.commit();
-            }
+            userDaoImpl.removeUser(userId);
+            transactionManager.commit();
         } catch (DaoException e) {
             try {
                 transactionManager.rollback();
@@ -140,9 +139,9 @@ public class UserServiceImpl implements UserService {
         UserDaoImpl userDaoImpl = new UserDaoImpl();
         try {
             transactionManager.startTransaction(userDaoImpl);
-            if(userStatus.equalsIgnoreCase(String.valueOf(User.UserStatus.ACTIVE))){
+            if (userStatus.equalsIgnoreCase(String.valueOf(User.UserStatus.ACTIVE))) {
                 userDaoImpl.blockUser(userId);
-            }else {
+            } else {
                 userDaoImpl.unblockUser(userId);
             }
             transactionManager.commit();
@@ -168,22 +167,24 @@ public class UserServiceImpl implements UserService {
             if (user.isPresent()) {
                 return user.get();
             } else {
-                return user.get();
+                throw new ServiceException("Exception in method changing user status by user id");
             }
         } catch (DaoException e) {
-            throw new ServiceException("Service exception in method finding user by email", e);
+            throw new ServiceException("Exception in method finding user by email", e);
         } finally {
             transactionManager.endTransaction();
         }
     }
 
-    public void updateUserEmail(String email, String newEmail) throws ServiceException {
+    public void updateUserEmail(String email, String updatedEmail) throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
         UserDaoImpl userDaoImpl = new UserDaoImpl();
         try {
-            transactionManager.startTransaction(userDaoImpl);
-            userDaoImpl.updateUserEmail(newEmail, email);
-            transactionManager.commit();
+            if (isUnique(updatedEmail)) {
+                transactionManager.startTransaction(userDaoImpl);
+                userDaoImpl.updateUserEmail(updatedEmail, email);
+                transactionManager.commit();
+            }
         } catch (DaoException e) {
             try {
                 transactionManager.rollback();
@@ -293,4 +294,21 @@ public class UserServiceImpl implements UserService {
             transactionManager.endTransaction();
         }
     }
+
+    private boolean isUnique(String updatedEmail) throws ServiceException {
+        boolean flag = true;
+        List<User> listOfUsersEmail;
+        try {
+            listOfUsersEmail = findAllUsers();
+            for (User user : listOfUsersEmail) {
+                if (user.getEmail().equals(updatedEmail)) {
+                    flag = false;
+                }
+            }
+        } catch (ServiceException e) {
+            throw new ServiceException("Exception in method is unique email", e);
+        }
+        return flag;
+    }
+
 }

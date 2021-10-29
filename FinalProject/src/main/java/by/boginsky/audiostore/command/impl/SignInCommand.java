@@ -5,11 +5,13 @@ import by.boginsky.audiostore.controller.Router;
 import by.boginsky.audiostore.exception.CommandException;
 import by.boginsky.audiostore.exception.ServiceException;
 import by.boginsky.audiostore.model.entity.user.User;
-import by.boginsky.audiostore.model.service.SongService;
+import by.boginsky.audiostore.model.service.AlbumService;
 import by.boginsky.audiostore.model.service.UserService;
-import by.boginsky.audiostore.model.service.impl.SongServiceImpl;
+import by.boginsky.audiostore.model.service.impl.AlbumServiceImpl;
 import by.boginsky.audiostore.model.service.impl.UserServiceImpl;
 import by.boginsky.audiostore.util.ConfigurationManager;
+import by.boginsky.audiostore.util.MessageManager;
+import by.boginsky.audiostore.util.constants.Message;
 import by.boginsky.audiostore.util.constants.PathPage;
 import by.boginsky.audiostore.util.validator.InputDataValidator;
 import by.boginsky.audiostore.util.validator.impl.InputDataValidatorImpl;
@@ -22,50 +24,54 @@ import java.util.Optional;
 import static by.boginsky.audiostore.util.constants.Constant.*;
 
 
+/**
+ * The type Sign in command.
+ */
 public class SignInCommand implements Command {
     @Override
     public Router execute(HttpServletRequest httpServletRequest) throws CommandException {
-        HttpSession httpSession = httpServletRequest.getSession();
-        httpServletRequest.setAttribute(ERROR_SIGN_IN_MESSAGE, null); // FIXME: 12.09.2021
-
+        HttpSession httpSession = httpServletRequest.getSession(true);
+        MessageManager messageManager = MessageManager.defineLocale((String) httpSession.getAttribute(CHANGE_LANGUAGE));
         User user = (User) httpSession.getAttribute(USER);
         String email = httpServletRequest.getParameter(EMAIL);
         String password = httpServletRequest.getParameter(PASSWORD);
-
-        UserService userService = UserServiceImpl.getInstance();
-        SongService songService = SongServiceImpl.getInstance();
         String page;
         if (user == null) {
-            page = getPage(httpSession, email, password, userService, songService);
+            page = getPage(httpServletRequest, httpSession, messageManager, email, password);
         } else {
-            page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_WELCOME);
+            page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_LOGIN);
+            httpServletRequest.setAttribute(ERROR_SIGN_IN_MESSAGE, messageManager.getMessage(Message.PATH_ERROR_SIGN_IN_ALREADY_IN_SYSTEM));
         }
-
         Router router = new Router();
         router.setPagePath(page);
         return router;
     }
 
-    private String getPage(HttpSession httpSession, String email, String password, UserService userService, SongService songService) throws CommandException {
+    private String getPage(HttpServletRequest httpServletRequest, HttpSession httpSession, MessageManager messageManager, String email, String password) throws CommandException {
         String page;
+        UserService userService = UserServiceImpl.getInstance();
+        AlbumService albumService = AlbumServiceImpl.getInstance();
         try {
             if (validate(email, password)) {
                 Optional<User> optionalUser = userService.findUserByEmailAndPassword(email, password);
-                List<String> listOfSongImgUrl = songService.findSongImg();
+                List<String> listOfAlbumImgUrl = albumService.findAlbumImg();
                 if (optionalUser.isPresent()) {
                     User user = optionalUser.get();
                     if (user.getUserStatus().equals(User.UserStatus.ACTIVE)) {
                         page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_WELCOME);
-                        httpSession.setAttribute(LIST_OF_SONGS_IMG_URL, listOfSongImgUrl);
+                        httpSession.setAttribute(LIST_OF_ALBUMS_IMG_URL, listOfAlbumImgUrl);
                         httpSession.setAttribute(USER, user);
                     } else {
                         page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_LOGIN);
+                        httpServletRequest.setAttribute(ERROR_SIGN_IN_MESSAGE, messageManager.getMessage(Message.PATH_ERROR_SIGN_IN_STATUS_BLOCKED));
                     }
                 } else {
                     page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_LOGIN);
+                    httpServletRequest.setAttribute(ERROR_SIGN_IN_MESSAGE, messageManager.getMessage(Message.PATH_ERROR_SIGN_IN_WRONG_PASSWORD_OR_EMAIL));
                 }
             } else {
                 page = ConfigurationManager.getProperty(PathPage.PATH_PAGE_LOGIN);
+                httpServletRequest.setAttribute(ERROR_SIGN_IN_MESSAGE, messageManager.getMessage(Message.PATH_ERROR_SIGN_IN_WRONG_PASSWORD_OR_EMAIL));
             }
         } catch (ServiceException e) {
             logger.error("Exception in signIn command", e);

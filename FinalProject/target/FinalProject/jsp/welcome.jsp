@@ -14,16 +14,15 @@
 <body>
 <div class="bg">
     <%@include file="/includes/navbar.jsp" %>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
     <div class="card-container center">
         <div class="card card-1">
             <a href="./controller?command=all_songs">
-
-                <img class="topImage" src="./imageTransfer?imageUuid=${listOfSongsImgUrl[0]}" alt="Card image cap">
+                <img class="topImage" src="./imageTransfer?imageUuid=${listOfAlbumsImgUrl[0]}" alt="Card image cap">
             </a>
             <div class="bottom">
                 <a type="button" class="btn btn-secondary btn-lg btn-block"
@@ -32,7 +31,7 @@
         </div>
         <div class="card card-1">
             <a href="./controller?command=all_albums&pageId=1">
-                <img class="topImage" src="./imageTransfer?imageUuid=${listOfSongsImgUrl[1]}" alt="Card image cap">
+                <img class="topImage" src="./imageTransfer?imageUuid=${listOfAlbumsImgUrl[1]}" alt="Card image cap">
             </a>
             <div class="bottom">
                 <a type="button" class="btn btn-secondary btn-lg btn-block"
@@ -41,7 +40,7 @@
         </div>
         <div class="card card-1">
             <a href="./controller?command=all_authors&pageId=1">
-                <img class="topImage" src="./imageTransfer?imageUuid=${listOfSongsImgUrl[2]}" alt="Card image cap">
+                <img class="topImage" src="./imageTransfer?imageUuid=${listOfAlbumsImgUrl[2]}" alt="Card image cap">
             </a>
             <div class="bottom">
                 <a type="button" class="btn btn-secondary btn-lg btn-block"
