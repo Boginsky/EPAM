@@ -26,25 +26,26 @@
    15. Leave comments
    16. Remove his commets
    17. Change his commets
-
+   18. Add personal photo
+   19. Change personal photo
 
  # Admin role
    1. Go to the "welcome" page
    2. Change locale
    3. Log out
-   4. Delete his account
-   5. Top up user's bonuses
-   6. Change password
-   7. Change email
-   8. Change name
-   9. View user's account
-   10. View user's orders
-   11. View user's comments
-   12. View songs,albums,authors 
-   13. Remove user's commets
-   14. Modify user's commets
-   15. Block/Unblock user
-   16. Add personal photo
+   4. Top up user's bonuses
+   5. Change password
+   6. Change email
+   7. Change name
+   8. View user's account
+   9. View user's orders
+   10. View user's comments
+   11. View songs,albums,authors 
+   12. Remove user's commets
+   13. Modify user's commets
+   14. Block/Unblock user
+   15. Add personal photo
+   16. Change personal photo
    17. Add new songs,authors,albums
    18. Modify songs,authors,albums
    19. Create new admin
