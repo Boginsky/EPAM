@@ -17,7 +17,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class AlbumServiceImpl implements AlbumService {
 
     private static AlbumService instance;
-    private static final Long MULTIPLIER = 5L;
+    private static final Long MULTIPLIER = 12L;
     private static final AtomicBoolean isAlbumService = new AtomicBoolean(false);
 
     private AlbumServiceImpl() {

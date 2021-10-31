@@ -17,6 +17,10 @@ public final class Message {
      * The constant PATH_ERROR_SIGN_IN_STATUS_BLOCKED.
      */
     public static final String PATH_ERROR_SIGN_IN_STATUS_BLOCKED = "message.errorSignInStatusBlocked";
+    /**
+     * The constant PATH_ERROR_NOT_ENOUGH_MONEY.
+     */
+    public static final String PATH_ERROR_NOT_ENOUGH_MONEY = "message.notEnoughMoney";
 
     private Message() {
     }

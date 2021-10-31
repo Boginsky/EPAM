@@ -5,7 +5,7 @@
 <fmt:setBundle basename="pagecontent" var="var"/>
 <html>
 <head>
-    <title><fmt:message key="label.operationSuccsed" bundle="${var}"/></title>
+    <title><fmt:message key="label.operationSucceed" bundle="${var}"/></title>
     <%@include file="/includes/head.jsp" %>
     <style>
         <%@include file="/static/css/main.css" %>

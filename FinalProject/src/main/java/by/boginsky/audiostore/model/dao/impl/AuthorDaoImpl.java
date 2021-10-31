@@ -21,7 +21,7 @@ import static by.boginsky.audiostore.model.dao.ColumnName.*;
 public class AuthorDaoImpl extends BaseDao<Author> implements AuthorDao {
 
     private static final String INSERT_INTO_AUTHORS = "INSERT INTO authors (author_name,author_info) VALUES (?,?)";
-    private static final String FIND_ALL_AUTHORS_FOR_PAGE = "SELECT author_id,author_name,author_info,author_img FROM authors LIMIT ?,5";
+    private static final String FIND_ALL_AUTHORS_FOR_PAGE = "SELECT author_id,author_name,author_info,author_img FROM authors LIMIT ?,12";
     private static final String FIND_ALL_AUTHORS = "SELECT author_id,author_name FROM authors";
     private static final String FIND_AUTHOR_BY_ID = "SELECT author_id,author_name,author_info,author_img FROM authors WHERE author_id = ?";
     private static final String FIND_GENRE_FOR_AUTHOR = "SELECT DISTINCT genre_name FROM authors JOIN songs ON author_id = authors_author_id JOIN genres ON genres_genre_id = genre_id WHERE author_id = ?";

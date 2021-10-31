@@ -5,7 +5,7 @@
 <fmt:setBundle basename="pagecontent" var="var"/>
 <html>
 <head>
-    <title>Cart</title>
+    <title><fmt:message key="label.cart" bundle="${var}"/></title>
     <%@include file="/includes/head.jsp" %>
 </head>
 <body>
@@ -16,6 +16,11 @@
         <%@include file="/includes/navbarsmall.jsp" %>
         <br/>
         <table class="table table-light">
+            <c:if test="${notEnoughMoney != null}">
+                <div class="alert alert-danger" role="alert" style="text-align: center">
+                        ${notEnoughMoney}
+                </div>
+            </c:if>
             <thead>
             <tr>
                 <th style="width: 25%" scope="col"><fmt:message key="label.songTitle" bundle="${var}"/></th>

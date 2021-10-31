@@ -150,6 +150,10 @@ public final class Constant {
      */
     public static final String ERROR_SIGN_IN_MESSAGE = "errorSignInMessage";
     /**
+     * The constant NOT_ENOUGH_MONEY.
+     */
+    public static final String NOT_ENOUGH_MONEY = "notEnoughMoney";
+    /**
      * The constant USER.
      */
     public static final String USER = "user";

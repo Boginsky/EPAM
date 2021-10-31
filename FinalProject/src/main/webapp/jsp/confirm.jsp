@@ -5,7 +5,7 @@
 <fmt:setBundle basename="pagecontent" var="var"/>
 <html>
 <head>
-    <title>Confirm</title>
+    <title><fmt:message key="label.confirm" bundle="${var}"/></title>
     <%@include file="/includes/head.jsp" %>
 </head>
 <body>

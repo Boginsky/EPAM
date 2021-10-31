@@ -17,7 +17,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class AuthorServiceImpl implements AuthorService {
 
     private static AuthorService instance;
-    private static final Long MULTIPLIER = 2L;
+    private static final Long MULTIPLIER = 12L;
     private static final AtomicBoolean isAuthorService = new AtomicBoolean(false);
 
     private AuthorServiceImpl() {

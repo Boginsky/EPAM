@@ -5,7 +5,7 @@
 <fmt:setBundle basename="pagecontent" var="var"/>
 <html>
 <head>
-    <title>AudioStore</title>
+    <title><fmt:message key="label.registration" bundle="${var}"/></title>
     <%@include file="/includes/head.jsp" %>
 </head>
 <body>

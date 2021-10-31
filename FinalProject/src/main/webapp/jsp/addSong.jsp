@@ -4,7 +4,7 @@
 <fmt:setLocale value="${changeLanguage}"/>
 <fmt:setBundle basename="pagecontent" var="var"/>
 <head>
-    <title><fmt:message key="label.welcome" bundle="${var}"/></title>
+    <title><fmt:message key="label.addSong" bundle="${var}"/></title>
     <%@include file="/includes/head.jsp" %>
 </head>
 <body>

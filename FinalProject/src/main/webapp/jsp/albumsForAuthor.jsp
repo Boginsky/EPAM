@@ -5,7 +5,7 @@
 <fmt:setBundle basename="pagecontent" var="var"/>
 <html>
 <head>
-    <title><fmt:message key="label.mainPageTitle" bundle="${var}"/></title>
+    <title><fmt:message key="label.albumForAuthor" bundle="${var}"/> ${author.authorName}</title>
     <%@include file="/includes/head.jsp" %>
 </head>
 <body>

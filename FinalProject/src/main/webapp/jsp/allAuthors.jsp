@@ -5,7 +5,7 @@
 <fmt:setLocale value="${changeLanguage}"/>
 <fmt:setBundle basename="pagecontent" var="var"/>
 <head>
-    <title><fmt:message key="label.welcome" bundle="${var}"/></title>
+    <title><fmt:message key="label.authors" bundle="${var}"/></title>
     <%@include file="/includes/head.jsp" %>
 </head>
 <body>
@@ -50,16 +50,16 @@
                     </div>
                 </div>
             </c:forEach>
+            <br/>
+            <c:if test="${pageId > 12}">
+                <a class="btn btn-dark btn-lg btn-block"
+                   href="./controller?command=all_authors&pageId=${pageId-2}">Previous</a>
+            </c:if>
+            <c:if test="${fn:length(listOfAuthors) >= 12}">
+                <a class="btn btn-dark btn-lg btn-block"
+                   href="./controller?command=all_authors&pageId=${pageId}">Next</a>
+            </c:if>
         </div>
-        <br/>
-        <c:if test="${pageId > 2}">
-            <a class="btn btn-dark btn-lg btn-block"
-               href="./controller?command=all_authors&pageId=${pageId-2}">Previous</a>
-        </c:if>
-        <c:if test="${fn:length(listOfAuthors) >= 2}">
-            <a class="btn btn-dark btn-lg btn-block"
-               href="./controller?command=all_authors&pageId=${pageId}">Next</a>
-        </c:if>
     </div>
 </div>
 </body>

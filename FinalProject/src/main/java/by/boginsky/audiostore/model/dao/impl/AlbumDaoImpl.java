@@ -22,7 +22,7 @@ import static by.boginsky.audiostore.model.dao.ColumnName.*;
 public class AlbumDaoImpl extends BaseDao<Album> implements AlbumDao {
 
     private static final String INSERT_INTO_ALBUMS = "INSERT INTO albums (album_name,album_info) values (?,?)";
-    private static final String FIND_ALL_ALBUMS_FOR_PAGE = "SELECT album_id,album_name,album_info,album_img FROM albums LIMIT ?,5";
+    private static final String FIND_ALL_ALBUMS_FOR_PAGE = "SELECT album_id,album_name,album_info,album_img FROM albums LIMIT ?,12";
     private static final String FIND_AUTHOR_NAME_FOR_ALBUM = "SELECT DISTINCT author_name FROM albums JOIN songs ON album_id = albums_album_id JOIN authors ON authors_author_id = author_id WHERE album_id = ?";
     private static final String FIND_ALL_ALBUMS = "SELECT album_id,album_name FROM albums";
     private static final String FIND_ALBUM_BY_ID = "SELECT DISTINCT album_id,album_name,album_info,album_img,author_name FROM albums JOIN songs ON album_id = albums_album_id JOIN authors ON authors_author_id = author_id WHERE album_id = ?";

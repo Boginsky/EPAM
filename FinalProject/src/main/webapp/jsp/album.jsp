@@ -5,7 +5,7 @@
 <fmt:setBundle basename="pagecontent" var="var"/>
 <html>
 <head>
-    <title><fmt:message key="label.mainPageTitle" bundle="${var}"/></title>
+    <title><fmt:message key="label.album" bundle="${var}"/></title>
     <%@include file="/includes/head.jsp" %>
 </head>
 <body>
@@ -152,7 +152,6 @@
                     </div>
                 </c:forEach>
             </div
-            <br/>
         </div>
     </div>
 </div>
