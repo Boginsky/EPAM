@@ -94,7 +94,7 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     public Long addNewAlbum(String nameOfAlbum, String informationAboutAlbum) throws ServiceException {
-        Long id; // FIXME: 29.10.2021 
+        Long id;
         TransactionManager transactionManager = new TransactionManager();
         AlbumDaoImpl albumDaoImpl = new AlbumDaoImpl();
         try {
