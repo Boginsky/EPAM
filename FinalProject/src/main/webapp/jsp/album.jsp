@@ -88,11 +88,12 @@
                                                 key="label.change" bundle="${var}"/></a>
                                     </form>
                                 </c:when>
-                                <c:otherwise>
+                                <c:when test="${user.userRole == 'USER'}">
                                     <a type="button" class="btn btn-sm btn-dark"
                                        href="./controller?command=add_to_cart&trackId=${song.id}"><fmt:message
                                             key="label.addToCart" bundle="${var}"/></a>
-                                </c:otherwise>
+
+                                </c:when>
                             </c:choose>
                         </td>
                     </tr>

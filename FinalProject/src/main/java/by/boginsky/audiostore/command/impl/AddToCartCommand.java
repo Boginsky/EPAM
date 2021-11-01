@@ -41,7 +41,7 @@ public class AddToCartCommand implements Command {
             if (user.getUserRole() == User.UserRole.USER) {
                 Set<Song> listOfSongsInCart = (Set<Song>) httpSession.getAttribute(LIST_OF_SONGS_IN_CART);
                 SongService songService = SongServiceImpl.getInstance();
-                Optional<Song> foundSong = null;
+                Optional<Song> foundSong;
                 try {
                     Long audioId = Long.parseLong(httpServletRequest.getParameter(TRACK_ID));
                     foundSong = songService.findSongById(audioId);

@@ -14,17 +14,17 @@ public class XSSFilter implements Filter {
 
     private String apostrophe = "&#39;";
 
-    public void init(FilterConfig var1) {
-        String var2 = var1.getInitParameter("apostrophe");
-        if (var2 != null) {
-            this.apostrophe = var2.trim();
+    public void init(FilterConfig filterConfig) {
+        String var = filterConfig.getInitParameter("apostrophe");
+        if (var != null) {
+            this.apostrophe = var.trim();
         }
     }
 
     public void destroy() {
     }
 
-    public void doFilter(ServletRequest var1, ServletResponse var2, FilterChain var3) throws IOException, ServletException {
-        var3.doFilter(new RequestWrapper((HttpServletRequest) var1, this.apostrophe), var2);
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        filterChain.doFilter(new RequestWrapper((HttpServletRequest) servletRequest, this.apostrophe), servletResponse);
     }
 }

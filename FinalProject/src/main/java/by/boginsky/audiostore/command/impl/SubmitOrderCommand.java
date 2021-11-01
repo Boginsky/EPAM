@@ -45,7 +45,7 @@ public class SubmitOrderCommand implements Command {
     }
 
     private boolean submitOrder(HttpSession httpSession, Set<Song> listOfSongsInCart, User user, BigDecimal moneyForPayment, BigDecimal bonusForPayment, BigDecimal totalPrice) throws CommandException {
-        if (moneyForPayment.add(bonusForPayment).compareTo(totalPrice) > 0) {
+        if (moneyForPayment.add(bonusForPayment).compareTo(totalPrice) >= 0) {
             if (listOfSongsInCart.size() != 0) {
                 OrderService orderService = OrderServiceImpl.getInstance();
                 try {

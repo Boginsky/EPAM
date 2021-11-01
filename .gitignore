@@ -3,6 +3,8 @@
 
 # Log file
 *.log
+mail.properties
+database.properties
 
 images/
 logs/

@@ -14,16 +14,16 @@ public final class RequestWrapper extends HttpServletRequestWrapper {
     /**
      * Instantiates a new Request wrapper.
      *
-     * @param var1 the var 1
-     * @param var2 the var 2
+     * @param servletRequest the servletRequest
+     * @param var the var
      */
-    public RequestWrapper(HttpServletRequest var1, String var2) {
-        super(var1);
-        this.apostrophe = var2;
+    public RequestWrapper(HttpServletRequest servletRequest, String var) {
+        super(servletRequest);
+        this.apostrophe = var;
     }
 
-    public String getParameter(String var1) {
-        String var2 = super.getParameter(var1);
+    public String getParameter(String var) {
+        String var2 = super.getParameter(var);
         return var2 == null ? null : this.cleanXSS(var2);
     }
 
